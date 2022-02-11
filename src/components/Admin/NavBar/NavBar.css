@@ -1,0 +1,307 @@
+
+.navContent > ul {
+
+    width: 90%;
+    height: 2em;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font-size: 1.3em;
+    border-radius: 30px;
+    margin: auto;
+
+}
+
+.navContent > ul > li {
+
+    width: 100%;
+    height: 1.8em;
+    color: #fff;
+    margin: auto;
+    text-align: center;
+    display:  block;
+
+}
+
+.izq {
+
+    border-radius: 30px 0 0 30px;
+
+}
+
+.der {
+
+    border-radius: 0 30px 30px 0;
+
+}
+
+@keyframes activeColor {
+
+    from { 
+        
+        background:rgba(0, 0, 0, 0);
+    
+    }
+
+    to {
+
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.9) 100%);
+
+    }
+    
+}
+
+.navContent > ul > li:hover, .navContent > ul > li > ul > li:hover {
+
+    cursor: pointer;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.9) 100%);
+    animation: activeColor 0.5s;
+
+}
+
+/* .action {
+    width: 2em;
+    height: 2em;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.7) 100%);
+    border: 1px solid red;
+
+} */
+
+@keyframes slidein {
+
+    from {
+      height: 0%;
+      background:rgba(0, 0, 0, 0);
+      color: rgba(255, 255, 255, 0);
+    }
+  
+    to {
+      height: 5%;
+      background:rgba(0, 0, 0, 0.8);
+      color: rgba(255, 255, 255, 1);
+    }
+
+}
+
+.navContent > ul > li > ul {
+
+    list-style:none;
+    display:none;
+    position:absolute;
+    margin: 0.5em 0 0 0;
+
+}
+
+.navContent > ul > li > ul > li {
+
+    align-items: center;
+    padding: 0 0.9em;
+
+}
+
+.navContent > ul > li:hover > ul {
+
+    width: 30%;
+    display: block;
+    background:rgba(0, 0, 0, 0.8);
+    animation: slidein 0.3s;
+    
+  }
+
+  .menuResponsive {
+
+    display: none;
+
+  }
+
+  /* De esta parte para abajo va todo lo responsive */
+
+  @media screen and (max-width: 1000px) {
+
+    .navContent > ul {
+
+        font-size: 1em;
+
+    }
+      
+  }
+
+  @media screen and (max-width: 700px) {
+    
+    .navContent {
+
+        background:rgba(0, 0, 0, 0.7);
+
+    }
+
+    .navContent > ul {
+
+        display: none;
+
+    }
+
+    .menuResponsive {
+
+        display: block;
+
+    }
+
+    @keyframes girarMenu0 {
+
+        from {
+
+            transform: rotate(90deg);
+
+        }
+
+        to {
+
+            transform: rotate(0deg);
+
+        }
+
+    }
+
+    .menuResponsive__icon {
+
+        width: 2.5em;
+        display: flex;
+        justify-content: start;
+        padding: 0.5em;
+        animation: girarMenu0 0.5s;
+
+    }
+
+    @keyframes slideMenuOcultar {
+
+        from {
+
+            position: absolute;
+            left: 0;
+
+        }
+
+        to {
+
+            left: -30%;
+
+        }
+
+    }
+
+    .menuResponsive__ulDesactive {
+
+        position: absolute;
+        left: -40%;
+        animation: slideMenuOcultar 0.3s;
+
+    }
+
+    .menuResponsive__ulDesactive > li {
+
+        background: rgba(0, 0, 0, 0.7);
+
+    }
+
+    .menuResponsive__ulDesactive > li > ul {
+
+        display: none;
+
+    }
+
+    @keyframes slideMenuMostrar {
+
+        from {
+
+            position: absolute;
+            left: -30%;
+
+        }
+
+        to {
+
+            left: 0;
+
+        }
+
+    }
+
+    .menuResponsive__ulActive {
+
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        line-height: 1.5em;
+        padding: 0.5em 1em;
+        list-style: none;
+        display: block;
+        position: absolute;
+        text-align: left;
+        animation: slideMenuMostrar 0.3s;
+
+    }
+
+    .menuResponsive__ulActive > li > ul {
+
+        display: none;
+        list-style: none;
+
+    }
+
+    @keyframes slideSubMenu {
+
+        from {
+
+            position: absolute;
+            left: 0%;
+
+        }
+
+        to {
+
+            left: 8.3em;
+
+        }
+        
+    }
+
+    .menuResponsive__ulActive > li:hover > ul {
+
+        width: 13em;
+        background:rgba(0, 0, 0, 0.8);
+        padding: 0.5em;
+        display: block;
+        position: absolute;
+        left: 8.3em;
+        animation: slideSubMenu 0.3s;
+
+    }
+
+    @keyframes girarMenu90 {
+
+        from {
+
+            transform: rotate(0deg);
+
+        }
+
+        to {
+
+            transform: rotate(90deg);
+
+        }
+
+    }
+
+    .giro {
+
+        width: 2.5em;
+        display: flex;
+        justify-content: start;
+        padding: 0.5em;
+        animation: girarMenu90 0.5s;
+        transform: rotate(90deg);
+
+    }
+
+  }

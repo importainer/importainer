@@ -1,0 +1,115 @@
+.OfertaContainer {
+  width: 100%;
+  background: url('https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Fondos%2Fwebfond.webp?alt=media&token=ee7e701d-e62a-40f2-935a-ccd1192a7195');
+  background-size: cover;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+
+
+.OfertaTitle {
+  background-color: #fff;
+  width: 200px;
+  margin: auto;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+
+.OFC {
+  width: 75%;
+  margin: auto;
+}
+
+.CardsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.CardsContainer-flechaSig {
+
+  background: rgba(112, 112, 112, 0.3);
+  margin: auto 0;
+  border-radius: 50%;
+
+}
+
+.CardsContainer-flechaSig:hover {
+
+  cursor: pointer;
+  animation-duration: 1s;
+  animation-name: siguiente;
+
+}
+
+@keyframes siguiente {
+  
+  from {
+
+    position: relative;
+    left: -2%;
+
+  }
+
+  to {
+    
+    position: relative;
+    left: 0;
+
+  }
+  
+}
+
+.CardsContainer-flechaAnt {
+
+  background: rgba(112, 112, 112, 0.3);
+  margin: auto 0;
+  border-radius: 50%;
+
+}
+
+.CardsContainer-flechaAnt:hover {
+
+  cursor: pointer;
+  animation-duration: 1s;
+  animation: anterior 0.7s;
+
+}
+
+@keyframes anterior {
+
+  from {
+
+    position: relative;
+    left: 2%;
+
+  }
+
+  to {
+    
+    position: relative;
+    left: 0;
+
+  }
+
+}
+
+/* ====== Responsive ====== */
+@media screen and (max-width: 1300px) {
+  .OFC {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .OFC {
+    width: 70%;
+  }
+  .CardsContainer {
+    display: grid;
+    justify-content: center;
+  }
+}

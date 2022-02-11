@@ -1,0 +1,146 @@
+
+.CreatePubContent {
+
+    width: 100%;
+    height: 100vh;
+    background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 1px solid #000000;
+
+}
+
+.formCreatePub {
+
+    width: 80%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 2em auto;
+    text-align: center;
+    padding: 1em 0;
+
+}
+
+.formCreatePub > textarea, .formCreatePub-titleSelect > input[type="text"] {
+
+    color: #fff;
+    margin: 1em auto;
+    border: 1px solid #fff;
+
+}
+
+.formCreatePub > input[type="number"], input[type="file"] {
+
+    height: 2em;
+    margin: 0 3em;
+
+}
+
+.formCreatePub > input[type="submit"] {
+
+    margin: 1em auto;
+
+}
+
+.formCreatePub > textarea::placeholder, .formCreatePub-titleSelect > input[type="text"]::placeholder {
+
+    color: #fff;
+
+}
+
+.formCreatePub-titleSelect > input[type="text"], select {
+
+    display: inline-block;
+    margin: 0 5%;
+
+}
+
+.formCreatePub-titleSelect > input[type="text"] {
+
+    width: 50%;
+
+}
+
+.formCreatePub-titleSelect > select {
+
+    width: 30%;
+    height: 2.5em;
+    background:rgba(0, 0, 0, 0);
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 3px;
+
+}
+
+.formCreatePub-titleSelect > select > option {
+
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+.formCreatePub-titleSelect > select:hover {
+
+    cursor: pointer;
+
+}
+
+.formCreatePub-Precios {
+
+    margin: 1em auto;
+
+}
+
+.formCreatePub-Precios > div {
+
+    width: 50%;
+    display: inline-block;
+    margin: 0 auto;
+
+}
+
+.formCreatePub-Precios > div > input[type="number"] {
+
+    height: 2em;
+    margin: 0 0.5em;
+    padding: 1em;
+    border: 0px;
+    border-radius: 5px;
+
+}
+
+.formCreatePub-Precios > div > input[type="text"] {
+
+    width: 80%;
+    border: 1px solid #fff;
+    color: #fff;
+
+}
+
+.formCreatePub-Precios > div > input[type="text"]::placeholder {
+
+    color: #fff;
+
+}
+
+.desc {
+
+    width: 20%;
+
+}
+
+/*===== Responsive =====*/
+@media screen and (max-width: 800px) {
+    /*===== Formulario crear Publicacion =====*/
+
+    .formCreatePub-Precios > div {
+
+        width: 100%;
+        display: block;
+        margin: 1em auto;
+    
+    }
+
+  }
+  

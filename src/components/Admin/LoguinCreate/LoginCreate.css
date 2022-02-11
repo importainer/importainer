@@ -1,0 +1,72 @@
+
+.LogInCreateContent {
+
+    width: 100%;
+    height: 100vh;
+    background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 1px solid #000000;
+
+}
+
+.loginForm {
+
+    width: 70%;
+    background: rgba(2, 2, 2, 0.5);
+    margin: 3em auto;
+    padding: 0.5em;
+    text-align: center;
+    box-sizing:content-box;
+
+}
+
+.loginForm > input {
+
+    width: 80%;
+    height: 3em;
+    border-radius: 3px;
+    margin: 0.5em 0;
+
+}
+
+.loginForm > input[type="email"], input[type="password"] {
+
+    border: 1px solid #000000;
+    padding: 0.5em;
+
+}
+
+.loginForm > input[type="submit"] {
+
+    background: #000000;
+    font-size: 1em;
+    color: #fff;
+
+}
+
+.loginForm > input[type="submit"]:hover {
+
+    cursor: pointer;
+
+}
+
+.loginForm > select {
+
+    width: 30%;
+    height: 3em;
+    border-radius: 3px;
+    margin: 0.5em 0;
+    padding: 0px;
+    font-size: 1em;
+    text-align: center;
+
+}
+
+.loginForm > select:hover {
+
+    cursor: pointer;
+
+}
