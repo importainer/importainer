@@ -26,11 +26,13 @@
 .CardsContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 
 .CardsContainer-flechaSig {
 
+  width: 60%;
   background: rgba(112, 112, 112, 0.3);
   margin: auto 0;
   border-radius: 50%;
@@ -40,8 +42,6 @@
 .CardsContainer-flechaSig:hover {
 
   cursor: pointer;
-  animation-duration: 1s;
-  animation-name: siguiente;
 
 }
 
@@ -50,7 +50,7 @@
   from {
 
     position: relative;
-    left: -2%;
+    left: -20%;
 
   }
 
@@ -63,8 +63,31 @@
   
 }
 
+.content-flech {
+
+  width: 7%;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+
+}
+
+.content-flech:hover .CardsContainer-flechaSig {
+
+  animation: siguiente 1s;
+
+}
+
+.content-flech:hover .CardsContainer-flechaAnt {
+
+
+  animation: anterior 0.7s;
+
+}
+
 .CardsContainer-flechaAnt {
 
+  width: 60%;
   background: rgba(112, 112, 112, 0.3);
   margin: auto 0;
   border-radius: 50%;
@@ -74,8 +97,6 @@
 .CardsContainer-flechaAnt:hover {
 
   cursor: pointer;
-  animation-duration: 1s;
-  animation: anterior 0.7s;
 
 }
 
@@ -84,7 +105,7 @@
   from {
 
     position: relative;
-    left: 2%;
+    left: 20%;
 
   }
 

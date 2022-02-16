@@ -54,36 +54,6 @@ export default function() {
 
     }
 
-    const persona = {
-
-        correo: 'elianaol@gmail.com',
-        nombre: 'Eliana Rosa',
-        apellido: 'Olmos',
-        direccion: 'Albarellos 543',
-        cp: '1753 Campana',
-        provincia: 'Buenos Aires',
-        vencimiento: '12/02/2024',
-        grupo: 'M-2998',
-        orden: '047',
-        cuotN: 21,
-        plan: '(1530) 100% 240',
-        modAhorro: '30 mts 2',
-        valorM: '2.225.660,24',
-        alicuota: '9.273,58',
-        segVida: '550,00',
-        gAdm: '1.502,05',
-        pagas: 20,
-        anticip: 0,
-        licit: 0,
-        impagas: 21,
-        emit: 200,
-        aVencer: 22,
-        total: '11.325,63',
-        estPl: 'Pausado',
-        estCasa: 'No Asignado',
-
-    }
-
     const selectActive = (e) => {
 
         const id = e.target.id;

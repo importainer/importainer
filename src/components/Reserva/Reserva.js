@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import variables from "./key.json";
 import "./Reserva.css";
 
 const Reserva = (props) => {

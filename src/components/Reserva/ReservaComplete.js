@@ -4,6 +4,7 @@ import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import axios from "axios";
 import "./ReservaComplete.css";
+import variables from "./key.json";
 // import dotenv from "dotenv";
 // dotenv.config();
 
@@ -11,6 +12,14 @@ import "./ReservaComplete.css";
 
 const ReservaComplete = ({codCRM}) => {
 
+  const req = new XMLHttpRequest();
+  req.open('GET', document.location, false);
+  req.send(null);
+  const headers = req.getResponseHeader('x-api-key');
+  console.log(headers, 'key');
+  // const headersParse = JSON.parse(headers)
+  // console.log(headersParse, 'key');
+  
   const idModelCRM = {
 
     'general': 148,
@@ -28,7 +37,7 @@ const ReservaComplete = ({codCRM}) => {
     
     if(idModelCRM.hasOwnProperty(codCRM)) {
 
-      axios.post("/landing-contacts",{
+      axios.post("https://api.doubletick.com.ar/v2/landing-contacts",{
     
         "name":infoRes.name,
         "phone":infoRes.phone,
@@ -41,17 +50,17 @@ const ReservaComplete = ({codCRM}) => {
 
         headers: {
       
-          'X-API-KEY': 'landingimportainer10382728',
-    
+          'X-API-KEY': headers,
+          
         }
 
       })
       .then(bien => console.log(bien, 'ok'))
-      .catch(err => console.log(err, 'ERROR'))
+      .catch(err => console.log(err.message, 'ERROR'))
 
     } else {
 
-      axios.post("/landing-contacts",{
+      axios.post("https://api.doubletick.com.ar/v2/landing-contacts",{
     
         "name":infoRes.name,
         "phone":infoRes.phone,
@@ -63,12 +72,12 @@ const ReservaComplete = ({codCRM}) => {
       },{
         headers: {
       
-          'X-API-KEY': 'landingimportainer10382728',
+          'X-API-KEY': headers,
     
         }
       })
       .then(bien => console.log(bien, 'ok'))
-      .catch(err => console.log(err, 'ERROR'))
+      .catch(err => console.log(err.message, 'ERROR'))
 
     }
     

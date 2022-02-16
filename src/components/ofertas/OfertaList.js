@@ -90,15 +90,24 @@ const anterior = () => {
 
   return (
     <div className="OfertaContainer">
+
        <h1 className="OfertaTitle">Ofertas</h1>
+
       <div className="OFC">
+
         <div className="CardsContainer">
 
-          <div className="CardsContainer-flechaAnt">
+          <div className="content-flech">
 
-            <ArrowBackIosNewIcon sx={{ fontSize: 60, color: '#FF0000' }} onClick={anterior} />
+            <div className="CardsContainer-flechaAnt">
+
+              <ArrowBackIosNewIcon sx={{ fontSize: 60, color: '#FF0000' }} onClick={anterior} />
+
+            </div>
 
           </div>
+
+          
 
           {
             //----------- esta card es con los datos de la base de datos
@@ -146,11 +155,17 @@ const anterior = () => {
 
           }
 
-          <div className="CardsContainer-flechaSig">
+          <div className="content-flech">
 
-            <ArrowForwardIosIcon sx={{ fontSize: 60, color: '#FF0000' }} onClick={siguiente} />
+            <div className="CardsContainer-flechaSig">
+
+              <ArrowForwardIosIcon sx={{ fontSize: 60, color: '#FF0000' }} onClick={siguiente} />
+
+            </div>
 
           </div>
+
+          
         
         </div>
       </div>

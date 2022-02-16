@@ -67,7 +67,7 @@ const App = () => (
   <>
 
     <HashRouter>
-      {/* <NavBarPrinc></NavBarPrinc> */}
+      
       <Switch>
         <Route exact path="/" component={Home} />
 

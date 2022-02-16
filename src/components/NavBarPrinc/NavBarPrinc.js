@@ -31,7 +31,7 @@ export default class NavBarPrinc extends Component {
                 <Link to="../proyectos" >Proyectos</Link>
                 <a href="#contacto" onClick={this.firstClick}>Contacto</a>
               </ul>
-              <LoginUser />
+              {/* <LoginUser /> */}
             </nav>
           </div>
 
