@@ -1,7 +1,11 @@
 .CreatePubContent {
 
     width: 100%;
+<<<<<<< HEAD
     height: 100vh;
+=======
+    height: 100vw;
+>>>>>>> 73c5989 (conect emanuel)
     background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;

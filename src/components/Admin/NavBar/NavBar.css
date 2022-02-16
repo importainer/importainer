@@ -86,8 +86,13 @@
 
 .navContent > ul > li > ul {
 
+<<<<<<< HEAD
     list-style:none;
     display:none;
+=======
+    list-style: none;
+    display: none;
+>>>>>>> 73c5989 (conect emanuel)
     position:absolute;
     margin: 0.5em 0 0 0;
 
