@@ -12,10 +12,13 @@ import variables from "./key.json";
 
 const ReservaComplete = ({codCRM}) => {
 
-  const req = new XMLHttpRequest();
-  req.open('GET', document.location, false);
-  req.send(null);
-  const headers = req.getResponseHeader('x-api-key');
+  // const req = new XMLHttpRequest();
+  // req.open('GET', document.location, false);
+  // req.send(null);
+  // const headers = req.getResponseHeader('x-api-key');
+
+  const headers = variables.KEY;
+
   console.log(headers, 'key');
   // const headersParse = JSON.parse(headers)
   // console.log(headersParse, 'key');
