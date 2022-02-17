@@ -17,8 +17,9 @@ const ReservaComplete = ({codCRM}) => {
   // req.send(null);
   // const headers = req.getResponseHeader('x-api-key');
 
-  const headers = variables.KEY;
-
+  // const headers = variables.KEY;
+  const headers = process.env.REACT_APP_KEY;
+  console.log(process.env, 'todo process')
   console.log(headers, 'key');
   // const headersParse = JSON.parse(headers)
   // console.log(headersParse, 'key');
