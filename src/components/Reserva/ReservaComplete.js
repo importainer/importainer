@@ -4,25 +4,10 @@ import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import axios from "axios";
 import "./ReservaComplete.css";
-import variables from "./key.json";
-// import dotenv from "dotenv";
-// dotenv.config();
 
-// axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001/";
-
-const ReservaComplete = ({codCRM}) => {
-
-  // const req = new XMLHttpRequest();
-  // req.open('GET', document.location, false);
-  // req.send(null);
-  // const headers = req.getResponseHeader('x-api-key');
-
-  // const headers = variables.KEY;
+export default function ReservaComplete({codCRM, bloqued}) {
+  
   const headers = process.env.REACT_APP_KEY;
-  console.log(process.env, 'todo process')
-  console.log(headers, 'key');
-  // const headersParse = JSON.parse(headers)
-  // console.log(headersParse, 'key');
   
   const idModelCRM = {
 
@@ -36,7 +21,7 @@ const ReservaComplete = ({codCRM}) => {
     '120mts': 159,
 
   }
-  // console.log(process.env.REACT_APP_AUTH0_DOMAIN, 'probando')
+  
   const reservaCRM = (infoRes) => {
     
     if(idModelCRM.hasOwnProperty(codCRM)) {
@@ -89,9 +74,9 @@ const ReservaComplete = ({codCRM}) => {
 
   const addUser = async (userObject) => {
     
-    reservaCRM(userObject)
+    // reservaCRM(userObject)
 
-    await addDoc(collection(db, "reservas"), { userObject });
+    // await addDoc(collection(db, "reservas"), { userObject });
 
   };
 
@@ -104,9 +89,7 @@ const ReservaComplete = ({codCRM}) => {
       <h3 className="ReservaTitle">
         En breve un asesor se va a contactar contigo
       </h3>
-      <Reserva add={addUser} codCRM={codCRM} />
+      <Reserva add={addUser} codCRM={codCRM} bloqued={bloqued} />
     </div>
   );
 };
-
-export default ReservaComplete;

@@ -42,21 +42,21 @@ export default function LoginIn() {
 
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-      });
+    });
       
-        const [open, setOpen] = React.useState(false);
-      
-        const handleClick = () => {
-          setOpen(true);
-        };
-      
-        const handleClose = (event, reason) => {
-          if (reason === 'clickaway') {
-            return;
-          }
-      
-          setOpen(false);
-        };
+    const [open, setOpen] = React.useState(false);
+    
+    const handleClick = () => {
+        setOpen(true);
+    };
+    
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+    
+        setOpen(false);
+    };
 
 
 
@@ -152,23 +152,23 @@ export default function LoginIn() {
 
             <div className="formLogIn">
 
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 
-                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                    <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
 
-                    Verifique que los datos ingresados sean correctos!
+                        Verifique que los datos ingresados sean correctos!
 
-                </Alert>
+                    </Alert>
 
-            </Snackbar>
+                </Snackbar>
 
-            <h1>Ingresar</h1>
+                <h1>Ingresar</h1>
 
-            <input name='email' type="email" placeholder="Email" onChange={e => changeLogin(e)} />
+                <input name='email' type="email" placeholder="Email" onChange={e => changeLogin(e)} />
 
-            <input name='password' type='password' placeholder="Password" onChange={e => changeLogin(e)} />
+                <input name='password' type='password' placeholder="Password" onChange={e => changeLogin(e)} />
 
-            <input id="formButtonLogIn" onClick={LogIn} type='submit' value='Ingresar' />
+                <input id="formButtonLogIn" onClick={LogIn} type='submit' value='Ingresar' />
 
             </div>
 

@@ -1,21 +1,24 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router-dom";
 import "./NavBarSec.css";
 import { Link } from 'react-router-dom';
 import LogoImportainer from './../../images/Logo500.png';
 import LoginUser from "../LoginUser/LoginUser";
 
-export default class NavBarSec extends Component {
+export default function NavBarSec(props) {
 
-//Show - remove menu
-  firstClick() {
+  const history = useHistory();
+
+  //Show - remove menu
+  const firstClick = () => {
+
       document.querySelector(".nav-menu").classList.toggle("show");
+
       document.getElementById("nav-icon").classList.toggle("fa-times");
+
   }
 
-
-  render() {
-
-    const { title, link } = this.props;
+  const { title, link } = props;
 
     return (
       <div className="header">
@@ -28,7 +31,7 @@ export default class NavBarSec extends Component {
 
           <nav className="nav-menu" id="nav-menu">
             <ul className="nav-right">
-              <Link to={link} className="subrayado">
+              <Link to={link ? link : history.location.pathname} className="subrayado">
                 {title}
               </Link>
               <Link to="/" >Inicio</Link>
@@ -41,9 +44,8 @@ export default class NavBarSec extends Component {
         </div>
 
         <div className="menu-btn-s" id="menu-btn">
-          <i className="fas fa-bars fa-2x" id="nav-icon" onClick={this.firstClick}></i>
+          <i className="fas fa-bars fa-2x" id="nav-icon" onClick={firstClick}></i>
         </div>
       </div>
     );
-  }
 }
