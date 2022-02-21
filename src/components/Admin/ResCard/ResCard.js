@@ -19,7 +19,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
     const [checked2, setChecked2] = useState(checkedDB);
 
     if(Object.keys(reserva).length === 0) {
-
+        // console.log(checkedDB)
         setReserva({
 
             id,
@@ -99,7 +99,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
         setChecked2(checked)
 
     }
-
+    console.log(reserva, 'final')
     return (
 
         <>

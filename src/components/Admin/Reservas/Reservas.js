@@ -3,11 +3,16 @@ import { db, app } from "../../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import NavBar from "../NavBar/NavBar";
 import ResCard from "../ResCard/ResCard";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import "./Reservas.css";
 
 export default function Reservas() {
 
-    const [reservas, setReservas] = useState([])
+    const [reservas, setReservas] = useState([]);
+    const [reservasBakup, setReservasBakup] = useState([]);
+    const [alignment, setAlignment] = useState('all');
+    const [alignment2, setAlignment2] = useState(alignment);
 
     useEffect(() => {
 
@@ -31,13 +36,61 @@ export default function Reservas() {
 
             }));
 
+            setReservasBakup(getcollec.docs.map(e => {
+                
+                return {
+
+                    id: e.id,
+                    checked: e.data().userObject.checked,
+                    codCRM: e.data().userObject.codCRM,
+                    email: e.data().userObject.email,
+                    message: e.data().userObject.message,
+                    name: e.data().userObject.name,
+                    phone: e.data().userObject.phone,
+
+                }
+
+            }));
+
         }
 
         callResDB();
 
     }, []);
 
-    // console.log(reservas, 'reservas');
+    const filterList = () => {
+
+        if(alignment !== alignment2) {
+
+            if(alignment === 'past') {
+    
+                setReservas(reservasBakup.filter(e => e.checked === true));
+    
+            } else if(alignment === 'notPast') {
+                
+                setReservas(reservasBakup.filter(e => e.checked === false));
+    
+            } else {
+
+                setReservas(reservasBakup);
+
+            }
+
+            setAlignment2(alignment);
+
+        }
+
+    }
+
+    const handleChange = (event, newAlignment) => {
+
+        setAlignment(newAlignment);
+
+    };
+
+    filterList();
+
+    console.log(reservas, 'reservas');
 
     return (
 
@@ -51,7 +104,17 @@ export default function Reservas() {
                 
                 <div>
 
-
+                    <ToggleButtonGroup
+                        color="error"
+                        value={alignment}
+                        exclusive
+                        onChange={handleChange}
+                        size="small"
+                    >
+                        <ToggleButton value="all">Todos</ToggleButton>
+                        <ToggleButton value="past">Pasados</ToggleButton>
+                        <ToggleButton value="notPast">No Pasados</ToggleButton>
+                    </ToggleButtonGroup>
 
                 </div>
 
