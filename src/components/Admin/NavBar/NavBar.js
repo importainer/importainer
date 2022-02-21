@@ -101,6 +101,7 @@ export default function NavBar() {
 
                 {/* <div className="action" ></div> */}
                 <li className="izq" ><Link to="/indexAdm" >Home</Link></li>
+                <li><Link to="/ReservasADM">Reservas</Link></li>
                 <li>Publicaciones
 
                     <ul>

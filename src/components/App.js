@@ -55,12 +55,11 @@ import ListPub from "./Admin/ListPublic/ListPublic";
 import EditarPub from "./Admin/EditarPub/EditarPub";
 import LoginUser from "./Admin/ListUser/ListUser";
 import UserDetail from "./Admin/UserDetail/UserDetail";
+import ReservasADM from "./Admin/Reservas/Reservas";
 
 // ===== USER =====
 
 import Plan from "./User/Plan/Plan";
-
-import NavBarPrinc from "./NavBarPrinc/NavBarPrinc";
 
 const App = () => (
 
@@ -80,6 +79,7 @@ const App = () => (
         <Route exact path="/EditarPub" component={EditarPub} />
         <Route exact path="/users" component={LoginUser} />
         <Route exact path="/UserDetail" component={UserDetail} />
+        <Route exact path="/ReservasADM" component={ReservasADM} />
 
         {/* ===== USER ===== */}
         <Route exact path="/DatoPlan" component={Plan} />

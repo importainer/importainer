@@ -1,0 +1,20 @@
+.contReservas {
+
+    width: 100%;
+    height: 100%;
+    background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 1px solid #000000;
+    text-align: center;
+
+}
+
+.contReservas__contResCard {
+
+    width: 80%;
+    margin: 0.5em auto;
+
+}

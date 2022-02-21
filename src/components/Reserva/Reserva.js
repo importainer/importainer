@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import "./Reserva.css";
 
 const Reserva = (props) => {
+
+  const dia = new Date().getDate();
+  const mes = new Date().getMonth();
+  const año = new Date().getFullYear();
+
+  const hoy = `${dia} / ${mes} / ${año}`;
   
   const initialStateValues = {
     name: "",
@@ -9,6 +15,8 @@ const Reserva = (props) => {
     phone: "",
     message: "",
     codCRM: props.codCRM,
+    checked: false,
+    fecha: hoy,
   }
 
   const [values, setValues] = useState(initialStateValues);
@@ -64,6 +72,7 @@ const Reserva = (props) => {
           target=""
           method="get"
           name="formDatosPersonales"
+          onSubmit={handleSubmit}
         >
           <input
             type="text"

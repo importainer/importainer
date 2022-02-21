@@ -75,8 +75,8 @@ export default function ReservaComplete({codCRM, bloqued}) {
   const addUser = async (userObject) => {
     
     // reservaCRM(userObject)
-
-    // await addDoc(collection(db, "reservas"), { userObject });
+    console.log(userObject, 'ver')
+    await addDoc(collection(db, "reservas"), { userObject });
 
   };
 

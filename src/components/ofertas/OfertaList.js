@@ -89,13 +89,14 @@ const anterior = () => {
 }
 
   return (
+    
     <div className="OfertaContainer">
 
-       <h1 className="OfertaTitle">Ofertas</h1>
+      <h1 className="OfertaTitle">Ofertas</h1>
 
-      <div className="OFC">
+      <div className="OFC" key={inicio} >
 
-        <div className="CardsContainer">
+        <div className="CardsContainer" key={inicio} >
 
           <div className="content-flech">
 
@@ -107,18 +108,17 @@ const anterior = () => {
 
           </div>
 
-          
-
           {
             //----------- esta card es con los datos de la base de datos
 
-            listRender.map(e => {
+            listRender.map((e, i) => {
               
               return (
 
                 <>
 
                   <OfertaCard
+                    key={i}
                     codCRM={e.codCRM}
                     title={e.title}
                     img={e.file}
