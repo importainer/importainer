@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import CardList from "../CardList/CardList";
 import "./ListPublic.css";
 
-export default function ListPublic() {
+export default function ListPublic({location}) {
     
     const [datos, setDatos] = useState([]);
 
@@ -65,7 +65,7 @@ export default function ListPublic() {
 
         <div className="CreatePubContent">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <h1>Publicaciones</h1>
 

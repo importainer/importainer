@@ -7,7 +7,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import "./Reservas.css";
 
-export default function Reservas() {
+export default function Reservas({location}) {
 
     const [reservas, setReservas] = useState([]);
     const [reservasBakup, setReservasBakup] = useState([]);
@@ -94,7 +94,7 @@ export default function Reservas() {
 
         <div className="contReservas">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <div className="contReservas__fil" >
 

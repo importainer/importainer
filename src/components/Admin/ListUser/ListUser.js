@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { db, app } from "../../../firebase";
+import { db, } from "../../../firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import NavBar from '../NavBar/NavBar';
 import UserCard from '../UserCard/UserCard';
-import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
-// import { users } from '../../../usersMoq';
 import './ListUser.css';
 
-export default function ListUser() {
+export default function ListUser({location}) {
 
   const history = useHistory();
 
@@ -28,8 +26,6 @@ export default function ListUser() {
   
       const querySnapshot = await getDocs(collection(db, "estadoCliente"));
 
-    //   const pub = querySnapshot.docs.filter(doc => doc.data().status !== false);
-
       const pub = querySnapshot.docs;
   
       setUser(pub.map(e => e.data()));
@@ -40,12 +36,6 @@ export default function ListUser() {
 
     getData();
   
-    // setUser([data]);
-
-    // setUser2(users);
-
-    
-    
   }, []);
 
   const auth = getAuth();
@@ -58,12 +48,12 @@ export default function ListUser() {
       const uid = user.uid;
         
         // ...
-      console.log('123')
+      
     } else {
 
       // User is signed out
       // ...
-      console.log('asd')
+      
       history.push("/admin")
       
     }
@@ -124,14 +114,6 @@ export default function ListUser() {
 
     } else {
       
-      // setOrden(users.reduce((acc, user) => {
-
-      //   if(user.grupo === value) acc.push(user.orden);
-
-      //   return acc;
-
-      // }, []));
-
       if(value !== "") {
 
         if(grupo.includes(value)) {
@@ -139,11 +121,6 @@ export default function ListUser() {
           setUserSecond(userSecond.filter(e => e.grupo === value))
 
         }
-
-
-        // const userSearch = userSecond.find(e => e.grupo === value);
-
-        // if(userSearch !== undefined) setUserSecond([userSearch]);
 
       } else {
 
@@ -206,21 +183,15 @@ export default function ListUser() {
 
     }
 
-    // console.log(window.innerWidth)
-
   }
 
   widthToWindow()
-
-  // console.log(orden, 'dbOrden')
-
-  // console.log(grupo, 'grupo')
 
   return (
 
       <div className="listUserContent" >
 
-          <NavBar />
+          <NavBar tipo={location.state.tipo} />
 
           <h1>Estados de Usuarios</h1>
           

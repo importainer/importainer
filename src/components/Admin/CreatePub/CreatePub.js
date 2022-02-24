@@ -10,7 +10,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import "./CreatePub.css";
 
-export default function CreatePub() {
+export default function CreatePub({location}) {
 
     const history = useHistory();
     
@@ -289,7 +289,7 @@ export default function CreatePub() {
 
         <div className="CreatePubContent">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <form className="formCreatePub">
 

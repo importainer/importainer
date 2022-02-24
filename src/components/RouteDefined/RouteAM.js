@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { HashRouter, Route, useHistory } from 'react-router-dom';
-import { db, app } from '../../firebase';
+import React, { useState } from 'react';
+import { Route, useHistory } from 'react-router-dom';
+import { db, } from '../../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDocs, collection } from 'firebase/firestore';
-import Login from "../Admin/LoginIn/LoginIn";
 
 export default function RouteAM({ path, component }) {
     
     const auth = getAuth();
+
     const history = useHistory();
 
     const [userLog, setUserLog] = useState([]);
+
     const [usersDB, setUsersDB] = useState([]);
+
     const [userConect, setUserConect] = useState([]);
-    const [estado, setEstado] = useState(true);
 
     const consDB = async () => {
         
@@ -61,11 +62,11 @@ export default function RouteAM({ path, component }) {
 
                 case 'admin':
                     
-                    return <Route exact path={path} component={component} />
+                    return <Route exact location={{ pathname:{path}, state: {tipo: userConect?.tipo} }} component={component} />
     
                 case "marketing":
     
-                    return <Route exact path={path} component={component} />
+                    return <Route exact location={{ pathname:{path}, state: {tipo: userConect?.tipo} }} component={component} />
     
                 case 'user':
     
@@ -80,8 +81,9 @@ export default function RouteAM({ path, component }) {
                         break;
     
                 case null:
+
                     history.push("/admin");
-                    // return <Route exact path={"/admin"} component={Login} />
+                    
                         break;
     
             }

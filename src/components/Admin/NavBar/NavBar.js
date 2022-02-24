@@ -9,7 +9,7 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import "./NavBar.css";
 
 export default function NavBar({tipo}) {
-
+    
     const history = useHistory();
 
     const auth = getAuth();
@@ -21,30 +21,6 @@ export default function NavBar({tipo}) {
             }).catch((error) => {
             // An error happened.
             })
-
-    }
-
-    const rutaCreate = () => {
-        
-        history.push("/LoginCreate")
-
-    }
-
-    const rutaHome = () => {
-        
-        history.push("/indexAdm")
-
-    }
-
-    const rutaCreatePub = () => {
-        
-        history.push("/CreatePub")
-
-    }
-    
-    const rutaListPub = () => {
-        
-        history.push("/ListaPublicaciones")
 
     }
 

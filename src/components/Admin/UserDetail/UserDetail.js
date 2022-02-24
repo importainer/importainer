@@ -246,7 +246,7 @@ export default function UserDetail({ location }) {
 
         <div className="userDetailContent" >
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <div className="userDetailContent__fac" >
 

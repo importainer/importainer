@@ -23,6 +23,12 @@
 
 }
 
+.loginForm > h1 {
+
+    color: #fff;
+
+}
+
 .loginForm > input {
 
     width: 80%;

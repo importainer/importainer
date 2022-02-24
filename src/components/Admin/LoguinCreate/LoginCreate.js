@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "fir
 import { app } from "../../../firebase";
 import "./LoginCreate.css";
 
-export default function Loguin() {
+export default function Loguin({location}) {
 
     const history = useHistory()
 
@@ -43,7 +43,6 @@ export default function Loguin() {
         } else {
             // User is signed out
             // ...
-            history.push("/admin")
         }
     });
 
@@ -68,10 +67,14 @@ export default function Loguin() {
                 // Signed in
                 const user = userCredential.user;
 
+                console.log('se creo el usuario')
+
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+
+                console.log(errorCode, errorMessage, 'error al crear usuario')
                 // ..
 
             });
@@ -87,33 +90,38 @@ export default function Loguin() {
     
         });
 
-        // history.push("/IndexAdm")
-
     }
 
     return (
 
         <div className="LogInCreateContent">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <div className="loginForm">
 
-            <h1>Crear Cuenta</h1>
+                <h1>Crear Cuenta</h1>
 
-            <input id='email' name='email' type='email' value={login.email} placeholder='Email' onChange={e => changeLogin(e)} />
+                <input id='email' name='email' type='email' value={login.email} placeholder='Email' onChange={e => changeLogin(e)} />
 
-            <input id='password' name='password' type='password' value={login.password} placeholder='Password' onChange={e => changeLogin(e)} />
+                <input id='password' name='password' type='password' value={login.password} placeholder='Password' onChange={e => changeLogin(e)} />
 
-            <select name='tipo' onChange={e => changeLogin(e)} >
+                <select name='tipo' onChange={e => changeLogin(e)} >
 
-                <option value='user' >Usuario</option>
+                    <option value='user' >Usuario</option>
 
-                <option value='admin' >Admin</option>
+                    <option value='admin' >Admin</option>
 
-            </select>
+                    {
+                        
+                        location.state.tipo === "marketing" ? 
+                            <option value='marketing' >Marketing</option> : null
+                    
+                    }
 
-            <input id="formButton" onClick={createLogin} type='submit' value='Ingresar' />
+                </select>
+
+                <input id="formButton" onClick={createLogin} type='submit' value='Ingresar' />
 
             </div>
 

@@ -1,41 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { db, app } from "../../../firebase";
+import { db, } from "../../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import NavBar from "../NavBar/NavBar";
 import Graphics from "../Graphic/Graphic";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./IndexAdm.css";
 
-export default function IndexAdm(props) {
-    console.log(props)
-    const history = useHistory()
+export default function IndexAdm({location}) {
 
     const auth = getAuth();
 
     const [publicaciones, setPublicaciones] = useState([]);
     const [reservas, setReservas] = useState([]);
-    const [login, setLogin] = useState([]);
 
     const score = [];
 
     useEffect(() => {
-
-        const getUser = async () => {
-
-            const querySnapshot = await getDocs(collection(db, "login"));
-
-            setLogin(querySnapshot.docs.map(doc => {
-
-                let pubRecorrida = doc.data();
-
-                return pubRecorrida;
-
-            }));
-
-        }
-
-        // getUser();
 
         const getPub = async () => {
       
@@ -74,26 +54,10 @@ export default function IndexAdm(props) {
 
         if(user) {
 
-            // const email = user.email;
-           
-            // const loginStatus = login.find(e => e.email === email)
-            
-            // if (loginStatus.tipo === 'admin') {
-            //     // User is signed in, see docs for a list of available properties
-            //     // https://firebase.google.com/docs/reference/js/firebase.User
-                
-            // } else {
-            //     // User is signed out
-            //     // ...
-            //     history.push("/")
-            // }
-
         } else {
             // User is signed out
             // ...
             
-            // history.push("/admin")
-
         }
         
     });
@@ -132,7 +96,7 @@ export default function IndexAdm(props) {
 
         <div className="IndexAdmContent">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <Graphics publicaciones={publicaciones} puntuacion={score} />
 

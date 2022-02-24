@@ -274,7 +274,7 @@ export default function EditarPub({location}) {
 
         <div className="editarContent">
 
-            <NavBar />
+            <NavBar tipo={location.state.tipo} />
 
             <h1>Edita la Publicacion</h1>
 
