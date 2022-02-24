@@ -8,8 +8,9 @@
     justify-content: center;
     list-style: none;
     font-size: 1.3em;
-    border-radius: 30px;
+    border-radius: 0 0 30px 30px;
     margin: auto;
+    /* transform:skew(-45deg , -30deg); */
 
 }
 
@@ -26,13 +27,13 @@
 
 .izq {
 
-    border-radius: 30px 0 0 30px;
+    border-radius: 0 0 0 30px;
 
 }
 
 .der {
 
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 0 30px 0;
 
 }
 
@@ -52,21 +53,27 @@
     
 }
 
-.navContent > ul > li:hover, .navContent > ul > li > ul > li:hover {
+/* .navContent > ul > li:hover, .navContent > ul > li > ul > li:hover {
 
     cursor: pointer;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.9) 100%);
     animation: activeColor 0.5s;
 
-}
+} */
 
-/* .action {
+.action {
+    
     width: 2em;
     height: 2em;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.7) 100%);
     border: 1px solid red;
+    left: 0%;
+    box-sizing: border-box;
+/* opacity:.5; */
+transition: all 1s ease-in-out;
+z-index: 1;
 
-} */
+}
 
 @keyframes slidein {
 

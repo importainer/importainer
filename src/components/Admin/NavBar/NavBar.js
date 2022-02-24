@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import "./NavBar.css";
 
@@ -24,18 +20,56 @@ export default function NavBar({tipo}) {
 
     }
 
-    const rutaListUser = () => {}
+    const style = () => {
 
-    // const style = () => {
+        const element = document.getElementsByTagName('li');
 
-    //     const element = document.querySelectorAll('li:hover');
+        const active = document.getElementsByClassName("action");
+        // console.log(document.getElementById("mnuPrin"));
 
-    //     element.className = "acrion"
+        const cant = element.length;
 
-    // }
+        const sec = 100 / cant;
+        
+        for (let i = 0; i < element.length; i++) {
 
-    // style();
-// 
+
+            const e = element[i];
+
+            const porcen = sec;
+
+            e.addEventListener('mouseover', () => {
+
+                if(e.id) {
+
+                    console.log(e.id)
+                    active[0].style.position = "relative";
+                    active[0].style.left = '80%';
+    
+                    // active[0].className = "";
+    
+                    // e.className = "action";
+    
+                    sec = sec * 2;
+                    
+                }
+                
+            });
+
+            e.addEventListener('mouseout', () => {
+
+                
+
+                // e.className = "";
+
+            })
+            
+        }
+
+    }
+
+    style();
+
 
     const [giro, setGiro] = useState(true);
 
@@ -75,17 +109,17 @@ export default function NavBar({tipo}) {
 
             <ul className='menuResponsiveUL'>
 
-                {/* <div className="action" ></div> */}
-                <li className="izq" ><Link to="/indexAdm" >Home</Link></li>
+                <div className="action" ></div>
+                <li id="mnuPrin" className="izq" ><Link to="/indexAdm" >Home</Link></li>
                 {
 
-                    tipo === 'marketing' ? <li><Link to="/ReservasADM">Reservas</Link></li> : null
+                    tipo === 'marketing' ? <li id="mnuPrin" ><Link to="/ReservasADM">Reservas</Link></li> : null
 
                 }
 
                 {
 
-                    tipo === 'marketing' ? <li>Publicaciones
+                    tipo === 'marketing' ? <li id="mnuPrin" >Publicaciones
 
                             <ul>
 
@@ -98,7 +132,7 @@ export default function NavBar({tipo}) {
 
                 }
 
-                <li>Usuarios
+                <li id="mnuPrin" >Usuarios
 
                     <ul>
 
@@ -114,7 +148,7 @@ export default function NavBar({tipo}) {
 
                 </li>
                 {/* <li onClick={rutaListUser}>Lista Usuarios</li> */}
-                <li className="der" onClick={logOut}>LogOut</li>
+                <li id="mnuPrin" className="der" onClick={logOut}>LogOut</li>
 
             </ul>
 

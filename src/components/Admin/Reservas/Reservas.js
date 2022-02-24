@@ -100,7 +100,7 @@ export default function Reservas({location}) {
 
                 <h1>Reservas</h1>   
                 
-                <div>
+                <div className="fill__toggleButtonGroup" >
 
                     <ToggleButtonGroup
                         color="error"
