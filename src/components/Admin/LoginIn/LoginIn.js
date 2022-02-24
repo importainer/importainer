@@ -92,23 +92,24 @@ export default function LoginIn() {
     const verify = (e) => {
 
         onAuthStateChanged(auth, (user) => {
-
+            
             if(user) {
                 
                 const email = user.email;
                
                 const loginStatus = loginDB.find(e => e.email === email)
-    
-                if (loginStatus.tipo === 'admin') {
+                console.log(loginStatus.tipo, 'fui yo')
+                if (loginStatus.tipo === 'admin' || loginStatus.tipo === 'marketing') {
                     // User is signed in, see docs for a list of available properties
                     // https://firebase.google.com/docs/reference/js/firebase.User
                     history.push("/indexAdm")
                     
-                } else {
-                    // User is signed out
-                    // ...
-                    history.push("/")
-                }
+                } 
+                // else {
+                //     // User is signed out
+                //     // ...
+                //     history.push("/")
+                // }
     
             }
             

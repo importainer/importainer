@@ -8,7 +8,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function NavBar({tipo}) {
 
     const history = useHistory();
 
@@ -101,22 +101,37 @@ export default function NavBar() {
 
                 {/* <div className="action" ></div> */}
                 <li className="izq" ><Link to="/indexAdm" >Home</Link></li>
-                <li><Link to="/ReservasADM">Reservas</Link></li>
-                <li>Publicaciones
+                {
 
-                    <ul>
+                    tipo === 'marketing' ? <li><Link to="/ReservasADM">Reservas</Link></li> : null
 
-                        <li><Link to="/ListaPublicaciones" >Listado de Publicaciones</Link></li>
-                        <li><Link to="/CreatePub" >Crear Publicacion</Link></li>
+                }
 
-                    </ul>
+                {
 
-                </li>
+                    tipo === 'marketing' ? <li>Publicaciones
+
+                            <ul>
+
+                                <li><Link to="/ListaPublicaciones" >Listado de Publicaciones</Link></li>
+                                <li><Link to="/CreatePub" >Crear Publicacion</Link></li>
+
+                            </ul>
+
+                        </li> : null
+
+                }
+
                 <li>Usuarios
 
                     <ul>
 
-                        <li><Link to='/users' >Listado de Usuarios</Link></li>
+                        {
+
+                            tipo === 'admin' ? <li><Link to='/users' >Listado de Usuarios</Link></li> : null
+
+                        }
+
                         <li><Link to="/LoginCreate" >Crear Usuario</Link></li>
 
                     </ul>

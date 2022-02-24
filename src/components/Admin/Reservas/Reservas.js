@@ -90,8 +90,6 @@ export default function Reservas() {
 
     filterList();
 
-    console.log(reservas, 'reservas');
-
     return (
 
         <div className="contReservas">
@@ -119,7 +117,6 @@ export default function Reservas() {
                 </div>
 
             </div>
-
 
             <div className="contReservas__contResCard">
 

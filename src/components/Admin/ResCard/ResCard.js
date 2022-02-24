@@ -9,7 +9,7 @@ import { red } from '@mui/material/colors';
 import "./ResCard.css";
 
 export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB }) {
-
+    
     const [reserva, setReserva] = useState({});
 
     const [active, setActive] = useState(false);
@@ -18,8 +18,12 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
 
     const [checked2, setChecked2] = useState(checkedDB);
 
-    if(Object.keys(reserva).length === 0) {
-        // console.log(checkedDB)
+    if(Object.keys(reserva).length === 0 || reserva.id !== id) {
+
+        setChecked(checkedDB);
+
+        setChecked2(checkedDB);
+        
         setReserva({
 
             id,
@@ -89,9 +93,9 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
         checked ? setChecked(false) : setChecked(true);
 
     }
-
+    
     if(checked !== checked2) {
-
+        
         const userObject = {...reserva, checked}
 
         actualizarDB({userObject});
@@ -99,7 +103,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
         setChecked2(checked)
 
     }
-    console.log(reserva, 'final')
+    
     return (
 
         <>

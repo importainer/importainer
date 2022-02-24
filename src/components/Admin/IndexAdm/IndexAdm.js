@@ -7,8 +7,8 @@ import Graphics from "../Graphic/Graphic";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import "./IndexAdm.css";
 
-export default function IndexAdm() {
-    
+export default function IndexAdm(props) {
+    console.log(props)
     const history = useHistory()
 
     const auth = getAuth();
@@ -35,7 +35,7 @@ export default function IndexAdm() {
 
         }
 
-        getUser();
+        // getUser();
 
         const getPub = async () => {
       
@@ -74,24 +74,25 @@ export default function IndexAdm() {
 
         if(user) {
 
-            const email = user.email;
+            // const email = user.email;
            
-            const loginStatus = login.find(e => e.email === email)
+            // const loginStatus = login.find(e => e.email === email)
             
-            if (loginStatus.tipo === 'admin') {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
+            // if (loginStatus.tipo === 'admin') {
+            //     // User is signed in, see docs for a list of available properties
+            //     // https://firebase.google.com/docs/reference/js/firebase.User
                 
-            } else {
-                // User is signed out
-                // ...
-                history.push("/")
-            }
+            // } else {
+            //     // User is signed out
+            //     // ...
+            //     history.push("/")
+            // }
 
         } else {
             // User is signed out
             // ...
-            history.push("/admin")
+            
+            // history.push("/admin")
 
         }
         

@@ -4,6 +4,9 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Franquicias from "../pages/Franquicias";
 import ContactoPage from "../pages/ContactoPage";
+import RouteAdm from "./RouteDefined/RouteAdm";
+import RouteMark from "./RouteDefined/RouteMark";
+import RouteAM from "./RouteDefined/RouteAM";
 // import ContainerGeneral from "../pages/Containers/ContainerGeneral";
 
 // ===== PROYECTOS ======
@@ -72,14 +75,17 @@ const App = () => (
 
         {/* ===== ADMINISTACION ===== */}
         <Route exact path="/admin" component={Login} />
-        <Route exact path="/indexAdm" component={IndexAdm} />
-        <Route exact path="/LoginCreate" component={LoginCreate} />
-        <Route exact path="/CreatePub" component={CreatePub} />
-        <Route exact path="/ListaPublicaciones" component={ListPub} />
-        <Route exact path="/EditarPub" component={EditarPub} />
-        <Route exact path="/users" component={LoginUser} />
-        <Route exact path="/UserDetail" component={UserDetail} />
-        <Route exact path="/ReservasADM" component={ReservasADM} />
+        {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
+        <RouteAM path="/indexAdm" component={IndexAdm} />
+        <RouteAM path="/LoginCreate" component={LoginCreate} />
+        {/* RouteAdm RUTAS DE ACCESO ADMINISTRACION */}
+        <RouteAdm path="/users" component={LoginUser} />
+        <RouteAdm path="/UserDetail" component={UserDetail} />
+        {/* RouteMark RUTAS DE ACCESO MARKETING */}
+        <RouteMark path="/CreatePub" component={CreatePub} />
+        <RouteMark path="/ListaPublicaciones" component={ListPub} />
+        <RouteMark path="/EditarPub" component={EditarPub} />
+        <RouteMark path="/ReservasADM" component={ReservasADM} />
 
         {/* ===== USER ===== */}
         <Route exact path="/DatoPlan" component={Plan} />
