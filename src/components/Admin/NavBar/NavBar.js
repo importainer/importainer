@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { getAuth,signOut } from "firebase/auth";
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import "./NavBar.css";
 
 export default function NavBar({tipo}) {
-    
-    const history = useHistory();
 
     const auth = getAuth();
     
@@ -25,46 +23,76 @@ export default function NavBar({tipo}) {
         const element = document.getElementsByTagName('li');
 
         const active = document.getElementsByClassName("action");
-        // console.log(document.getElementById("mnuPrin"));
 
-        const cant = element.length;
+        const elementos = [];
 
-        const sec = 100 / cant;
+        setInterval(() => {
+
+            active[0].style.background = "linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,0,0,0.2) 5%,rgba(255,0,0,0.9) 100%)";
+            active[0].style.opacity = ".4";
+
+        }, 1000)
+
+        setInterval(() => {
+
+            active[0].style.background = "linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,0,0,0.2) 5%,rgba(255,0,0,0.4) 100%)";
+            active[0].style.opacity = "1";
+
+        }, 1500)
         
         for (let i = 0; i < element.length; i++) {
 
 
             const e = element[i];
 
-            const porcen = sec;
+            if(e.id) {
 
+                elementos.push(e);
+
+            }
+
+        }
+        
+        elementos.forEach((e, i) => {
+
+            const cantidad = elementos.length;
+
+            const sect = 100 / cantidad;
+            
             e.addEventListener('mouseover', () => {
 
-                if(e.id) {
+                if (i === 0) {
 
-                    console.log(e.id)
-                    active[0].style.position = "relative";
-                    active[0].style.left = '80%';
-    
-                    // active[0].className = "";
-    
-                    // e.className = "action";
-    
-                    sec = sec * 2;
+                    active[0].style.borderRadius = "0 0 0 30px";
                     
-                }
-                
-            });
+                } else if(i === elementos.length - 1) {
 
+                    active[0].style.borderRadius = "0 0 30px 0";
+
+                } else active[0].style.borderRadius = "0 0 0 0";
+
+                active[0].style.position = "absolute";
+
+                active[0].style.left = `${sect * i}%`;
+
+                active[0].style.width = `${sect}%`;
+                
+                
+
+            });
+            
             e.addEventListener('mouseout', () => {
 
-                
+                active[0].style.width = "2%";
 
-                // e.className = "";
+                active[0].style.left = "0%";
 
-            })
-            
-        }
+                active[0].style.borderRadius = "0 0 0 30px";
+
+
+            });
+
+        });
 
     }
 
@@ -107,6 +135,8 @@ export default function NavBar({tipo}) {
 
         <div className="navContent">
 
+{/* <div className='menuResponsiveUL__cont' ><div className="action" ></div></div> */}
+
             <ul className='menuResponsiveUL'>
 
                 <div className="action" ></div>
@@ -119,7 +149,7 @@ export default function NavBar({tipo}) {
 
                 {
 
-                    tipo === 'marketing' ? <li id="mnuPrin" >Publicaciones
+                    tipo === 'marketing' ? <li id="mnuPrin hover" >Publicaciones
 
                             <ul>
 

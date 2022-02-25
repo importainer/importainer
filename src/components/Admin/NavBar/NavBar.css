@@ -1,7 +1,24 @@
 
-.navContent > ul {
+.navContent {
 
     width: 90%;
+    margin: auto;
+    position: relative;
+
+}
+
+/* .menuResponsiveUL__cont {
+
+    width: 90%;
+    height: 2.7em;
+    border: 1px solid black;
+    position: absolute;
+    left: 5%;
+
+} */
+
+.navContent > ul {
+
     height: 2em;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
@@ -22,6 +39,8 @@
     margin: auto;
     text-align: center;
     display:  block;
+    z-index: 1;
+    cursor: pointer;
 
 }
 
@@ -53,25 +72,29 @@
     
 }
 
-/* .navContent > ul > li:hover, .navContent > ul > li > ul > li:hover {
+.navContent > ul > li > ul > li:hover {
 
     cursor: pointer;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.9) 100%);
     animation: activeColor 0.5s;
 
-} */
+}
 
 .action {
-    
-    width: 2em;
+
+    width: 2%;
     height: 2em;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.7) 100%);
+    position: absolute;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 10%,rgba(255,0,0,0.9) 100%);
     border: 1px solid red;
-    left: 0%;
+    border-radius: 0 0 0 30px;
     box-sizing: border-box;
-/* opacity:.5; */
-transition: all 1s ease-in-out;
-z-index: 1;
+    /* opacity:.8; */
+    transition: all 1s ease-in-out;
+    z-index: 1;
+    cursor: pointer;
+    /* margin: 0 0 0 5%; */
 
 }
 
@@ -97,6 +120,7 @@ z-index: 1;
     display: none;
     position:absolute;
     margin: 0.5em 0 0 0;
+    z-index: 1;
 
 }
 
@@ -104,6 +128,7 @@ z-index: 1;
 
     align-items: center;
     padding: 0 0.9em;
+    z-index: 1;
 
 }
 
