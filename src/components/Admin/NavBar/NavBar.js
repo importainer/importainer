@@ -87,7 +87,7 @@ export default function NavBar({tipo}) {
 
                 active[0].style.left = "0%";
 
-                active[0].style.borderRadius = "0 0 0 30px";
+                active[0].style.borderRadius = "0 30px 0 30px";
 
 
             });
@@ -95,6 +95,12 @@ export default function NavBar({tipo}) {
         });
 
     }
+
+    // setTimeout(() => {
+
+    //     style();
+
+    // }, 500)
 
     style();
 

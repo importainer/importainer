@@ -11,25 +11,25 @@ import MuiAlert from '@mui/material/Alert';
 import "./EditarPub.css";
 
 export default function EditarPub({location}) {
-
+    
     const history = useHistory();
 
     const storageRefIMG = app.storage().ref(`/ImgPublicaciones/`);
 
-    const auth = getAuth();
+    // const auth = getAuth();
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-            // ...
-        } else {
-            // User is signed out
-            // ...
-            history.push("/admin")
-        }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         // User is signed in, see docs for a list of available properties
+    //         // https://firebase.google.com/docs/reference/js/firebase.User
+    //         const uid = user.uid;
+    //         // ...
+    //     } else {
+    //         // User is signed out
+    //         // ...
+    //         history.push("/admin")
+    //     }
+    // });
 
     const [datos, setDatos] = useState({
 
@@ -42,6 +42,18 @@ export default function EditarPub({location}) {
 
     });
 
+    const disabledButton = () => {
+
+        setTimeout(() => {
+
+            const file = document.getElementById("fileButton");
+        
+            file.disabled = true;
+
+        })
+
+    }
+
     useEffect(() => {
 
         const getData = async () => {
@@ -49,7 +61,7 @@ export default function EditarPub({location}) {
           const querySnapshot = await getDocs(collection(db, "publicacion"));
 
             const res = querySnapshot.docs.filter(e => e.id === location.state.id)
-
+            // console.log(querySnapshot.docs)
             setDatos(res[0]?.data());
       
         }
@@ -81,19 +93,22 @@ export default function EditarPub({location}) {
     const handleClose = (event, reason) => {
 
         if (reason === 'clickaway') {
-
+            
             return;
 
         }
     
         setOpen(false);
+
+        history.push("/ListaPublicaciones");
+
     };
 
     const calcularDesc = () => {
         
-        const price = datos.price;
+        const price = datos?.price;
 
-        const porcen = parseInt(datos.porcen);
+        const porcen = parseInt(datos?.porcen);
 
         const valDesc = Math.trunc((price * porcen) / 100);
 
@@ -178,9 +193,8 @@ export default function EditarPub({location}) {
                         });
                         res.items.forEach(async (itemRef) => {
                             // All the items under listRef.
-                            
                             if(await itemRef.getDownloadURL() == datos.file) {
-
+                                
                                 fileDelete(itemRef.name)
 
                             }
@@ -194,6 +208,10 @@ export default function EditarPub({location}) {
     }
 
     const archivoHandler = async (e) => {
+
+        const file = document.getElementById("fileButton");
+        
+        file.disabled = true;
 
         searchImgDB()
 
@@ -209,16 +227,21 @@ export default function EditarPub({location}) {
 
         setDatos({ ...datos, file: enlaceImg})
 
+        setTimeout(() => {
+
+            file.disabled = false;
+
+        }, 1000)
 
     };
 
-    function writeNewPost() {
+    async function writeNewPost() {
 
         setAlertUploadImg(true);
 
         const collectionRef = app.firestore().collection("publicacion").doc(location.state.id);
-
-        const doc = collectionRef.update(datos);
+        
+        const doc = await collectionRef.update(datos);
 
         handleClick();
 
@@ -310,7 +333,7 @@ export default function EditarPub({location}) {
 
             </div>
 
-            <input className="editarContent-Buton" type="submit" value="Guardar" onClick={writeNewPost} />
+            <input id="fileButton" className="editarContent-Buton" type="submit" value="Guardar" onClick={writeNewPost} />
 
             {alertMessage()}
 

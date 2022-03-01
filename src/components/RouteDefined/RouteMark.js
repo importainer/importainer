@@ -4,7 +4,7 @@ import { db } from '../../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDocs, collection } from 'firebase/firestore';
 
-export default function RouteAM({ path, component }) {
+export default function RouteAM({ path, component, location }) {
     
     const auth = getAuth();
 
@@ -66,7 +66,7 @@ export default function RouteAM({ path, component }) {
 
             case "marketing":
 
-                return <Route exact location={{ pathname:{path}, state: {tipo: userConect?.tipo} }} component={component} />
+                return <Route exact location={{ pathname:{path}, state: { tipo: userConect?.tipo, id:location.state?.id } }} component={component} />
 
             case 'user':
 

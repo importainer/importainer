@@ -8,7 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import "./ResCard.css";
 
-export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB }) {
+export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB, fecha }) {
     
     const [reserva, setReserva] = useState({});
 
@@ -33,6 +33,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
             message,
             name,
             phone,
+            fecha,
 
         })
 
@@ -144,6 +145,8 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
                         <p className='reservaCard__datDer' >{phone}</p>
 
                         <p className='reservaCard__mess' >{message}</p>
+
+                        <p className='reservaCard__mess' >{fecha}</p>
 
                     </div>
 

@@ -6,7 +6,7 @@ import MuiAlert from '@mui/material/Alert';
 import "./CardList.css";
 
 export default function CardList({ img, title, pricePub, id }) {
-
+    
     const history = useHistory();
     
     const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ export default function CardList({ img, title, pricePub, id }) {
 
             <div className="cardContent-text">Precio Publicado: ${pricePub}</div>
 
-            <Link to={{ pathname: '/EditarPub', state: { id: id }}} ><div className="cardContent-textHover">Editar</div></Link>
+            <Link to={{ pathname: '/EditarPub', state: { ...{}, id: id }}} ><div className="cardContent-textHover">Editar</div></Link>
 
             <input type="submit" value="Eliminar" onClick={deletePost} />
 

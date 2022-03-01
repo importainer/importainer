@@ -13,27 +13,31 @@ export default function ListPublic({location}) {
 
         const getData = async () => {
       
-          const querySnapshot = await getDocs(collection(db, "publicacion"));
+            getDocs(collection(db, "publicacion"))
+                .then(el => {
 
-          const pub = querySnapshot.docs.filter(doc => doc.data().status !== false);
-      
-          setDatos(pub.map(doc => {
-            // 
-            return {
+                    const pub = el.docs.filter(doc => doc.data().status !== false)
 
-                id: doc.id,
-                codCRM: doc.data().codCRM,
-                description: doc.data().description,
-                file: doc.data().file,
-                porcen: doc.data().porcen,
-                price: doc.data().price,
-                priceDesc: doc.data().priceDesc,
-                title: doc.data().title,
-                status: doc.data().status,
+                    setDatos(pub.map(doc => {
 
-            }
+                        return {
+        
+                            id: doc.id,
+                            codCRM: doc.data().codCRM,
+                            description: doc.data().description,
+                            file: doc.data().file,
+                            porcen: doc.data().porcen,
+                            price: doc.data().price,
+                            priceDesc: doc.data().priceDesc,
+                            title: doc.data().title,
+                            status: doc.data().status,
+        
+                        }
+        
+                    }));
 
-          }));
+                })
+                .catch(err => console.log(err, 'error'));
       
         }
         const data = getData()
@@ -60,7 +64,6 @@ export default function ListPublic({location}) {
       
     }
 
-    // 
     return (
 
         <div className="CreatePubContent">
@@ -72,9 +75,10 @@ export default function ListPublic({location}) {
             <div>
 
                 {
-
+                    
+                    datos[0]?.hasOwnProperty('id') ? 
                     datos.sort(orderDate).map( (e, i) => {
-                        
+
                         return (
 
                             <>
@@ -85,7 +89,7 @@ export default function ListPublic({location}) {
 
                         )
 
-                    })
+                    }) : null
 
                 }
 

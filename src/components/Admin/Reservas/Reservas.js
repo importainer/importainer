@@ -21,7 +21,17 @@ export default function Reservas({location}) {
             const getcollec = await getDocs(collection(db, 'reservas'));
 
             setReservas(getcollec.docs.map(e => {
-                
+
+                const arr = e.data().userObject.fecha.split('/');
+
+                const dia = arr[0];
+
+                const mes = arr[1];
+
+                const año = arr[2];
+
+                const hoy = new Date(año,mes,dia)
+
                 return {
 
                     id: e.id,
@@ -31,12 +41,23 @@ export default function Reservas({location}) {
                     message: e.data().userObject.message,
                     name: e.data().userObject.name,
                     phone: e.data().userObject.phone,
+                    fecha: hoy.toISOString(),
 
                 }
 
             }));
 
             setReservasBakup(getcollec.docs.map(e => {
+
+                const arr = e.data().userObject.fecha.split('/');
+
+                const dia = arr[0];
+
+                const mes = arr[1];
+
+                const año = arr[2];
+
+                const hoy = new Date(año,mes,dia)
                 
                 return {
 
@@ -47,6 +68,7 @@ export default function Reservas({location}) {
                     message: e.data().userObject.message,
                     name: e.data().userObject.name,
                     phone: e.data().userObject.phone,
+                    fecha: hoy.toISOString(),
 
                 }
 
@@ -90,6 +112,14 @@ export default function Reservas({location}) {
 
     filterList();
 
+    const ordenarFecha = (a, b) => {
+
+        if(a > b) return -1
+        else if(a < b) return 1
+        else return 0
+
+    }
+
     return (
 
         <div className="contReservas">
@@ -122,7 +152,7 @@ export default function Reservas({location}) {
 
             {
 
-                reservas.map((e, i) => {
+                reservas.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).map((e, i) => {
                     
                     return (
 
@@ -135,6 +165,7 @@ export default function Reservas({location}) {
                             codCRM={e.codCRM} 
                             phone={e.phone} 
                             message={e.message !== "" ? e.message : "No hay mensajes"} 
+                            fecha={e.fecha}
                             
                         />
 

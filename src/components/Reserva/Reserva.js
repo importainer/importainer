@@ -7,7 +7,7 @@ const Reserva = (props) => {
   const mes = new Date().getMonth();
   const año = new Date().getFullYear();
 
-  const hoy = `${dia} / ${mes} / ${año}`;
+  const hoy = `${dia}/${mes + 1}/${año}`;
   
   const initialStateValues = {
     name: "",
