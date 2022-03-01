@@ -11,6 +11,14 @@ import MuiAlert from '@mui/material/Alert';
 import "./EditarPub.css";
 
 export default function EditarPub({location}) {
+
+    window.onscroll = () => {
+        
+        const contenedor = document.getElementsByClassName("editarContent")
+
+        contenedor[0].style.height = "100%";
+
+    }
     
     const history = useHistory();
 
@@ -155,7 +163,7 @@ export default function EditarPub({location}) {
 
         } else {
 
-            setCalcular(true)
+            setCalcular(false)
             
             setDatos({ ...datos, [name]: value });
 
@@ -241,7 +249,13 @@ export default function EditarPub({location}) {
 
         const collectionRef = app.firestore().collection("publicacion").doc(location.state.id);
         
-        const doc = await collectionRef.update(datos);
+        const doc = await collectionRef.update({
+
+            ...datos,
+            price: datos.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+            priceDesc: datos.priceDesc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+    
+        });
 
         handleClick();
 

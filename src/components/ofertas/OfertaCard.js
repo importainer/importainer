@@ -30,7 +30,7 @@ const OfertaCard = ({
   descuento,
   precioListaAntes
 }) => {
-  
+  console.log(description?.split("/"))
   return (
     <div className="OfertaCard">
       <div className="OfertaCardTop">
@@ -40,7 +40,19 @@ const OfertaCard = ({
       <div className="OfertaContImg">
         <img src={img} alt="" ClassName="img-oferta" loading="lazy" />
       </div>
-      <p className="OfertaCardDesc">{description}</p>
+      <p className="OfertaCardDesc">{description?.split("/").map((e, i) => {
+
+        return (
+
+          <>
+
+            {e}<br/>
+
+          </>
+
+        )
+
+      })}</p>
       <h3 className="OfertaCardSubtitle">Condicion de pago</h3>
 
       <Tabs

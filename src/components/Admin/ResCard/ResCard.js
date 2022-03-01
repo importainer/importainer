@@ -113,7 +113,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
 
                 <div className='reservaCard__contentTitle' >
 
-                    <h4>{name}</h4>
+                    <div className='contentTitle__Header' ><h4>{name}</h4><h3>{fecha}</h3></div>
 
                     <div className="titleDetail__Switch">
 
@@ -145,8 +145,6 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
                         <p className='reservaCard__datDer' >{phone}</p>
 
                         <p className='reservaCard__mess' >{message}</p>
-
-                        <p className='reservaCard__mess' >{fecha}</p>
 
                     </div>
 

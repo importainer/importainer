@@ -120,6 +120,14 @@ export default function Reservas({location}) {
 
     }
 
+    // window.onscroll = () => {
+        
+    //     const contenedor = document.getElementsByClassName("contReservas")
+
+    //     contenedor[0].style.height = "100%";
+
+    // }
+
     return (
 
         <div className="contReservas">
@@ -153,7 +161,9 @@ export default function Reservas({location}) {
             {
 
                 reservas.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).map((e, i) => {
-                    
+
+                    const fechaMap = new Date(e.fecha);
+
                     return (
 
                         <ResCard 
@@ -165,7 +175,8 @@ export default function Reservas({location}) {
                             codCRM={e.codCRM} 
                             phone={e.phone} 
                             message={e.message !== "" ? e.message : "No hay mensajes"} 
-                            fecha={e.fecha}
+                            fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`}
+                            key={i}
                             
                         />
 
