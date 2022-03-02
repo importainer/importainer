@@ -16,10 +16,12 @@ export default class NavBarTerc extends Component {
     return (
       <div className="header">
         <div className="menu-bar">
-          <div className="logo-princ">
+          <div className="logo-P">
+
             <Link to="/">
-              <img src={LogoImportainer} className="logo" alt="logo" />
+              <img src='https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Logos%2FLOGO%201000X1000_Mesa%20de%20trabajo%201.png?alt=media&token=544ff206-b6d6-41cd-b6b6-bcee5f06a347' className="logo" alt="logo" />
             </Link>
+
           </div>
 
           <nav className="nav-menu" id="nav-menu">

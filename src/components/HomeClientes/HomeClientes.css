@@ -37,6 +37,7 @@
   display: block;
   border-radius: 50%;
   margin: auto;
+  box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.8);
 }
 
 .content-card {
@@ -50,8 +51,12 @@
   font-size: 1.5rem;
 }
 
+.content-card h3 {
+  margin: 0 0 .5em 0;
+}
+
 .content-card p {
-  font-size: 1.1vw;
+  font-size: .8vw;
 }
 
 .boton-clientes {

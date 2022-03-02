@@ -47,6 +47,7 @@ import Reservas from "../pages/Reservas";
 import Aspectos from "../pages/Aspectos";
 import OfertaList from "../components/ofertas/OfertaList";
 import test from "../pages/test";
+import Compania from "./Compañia";
 
 // ===== ADMIN =====
 
@@ -121,6 +122,9 @@ const App = () => (
         />
         <Route exact path="/emprendimientos/bar45m2" component={Bar45M2} />
         <Route exact path="/emprendimientos/local90m2" component={Local90M2} />
+
+        {/* ====== COMPAÑIA ===== */}
+        <Route exact path="/compañia" component={Compania} />
 
         {/* ===== EXTERIOR ===== */}
         <Route exact path="/exterior" component={Exterior} />

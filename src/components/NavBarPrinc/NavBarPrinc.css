@@ -1,9 +1,9 @@
 /*===== Logo Importainer =====*/
-.logo-princ {
-  display: flex;
+/* .logo-princ {
+  width: 1300px;
   height: 70px;
-  width: 130px;
   display: flex;
+  background:rgba(0, 0, 0, .7);
   align-items: center;
   margin-left: 50px;
   margin-top: -10px;
@@ -11,8 +11,26 @@
   z-index: 5;
 }
 
+.logo-princ > img {
+
+  background:rgba(255, 0, 0, 0.7);
+  width: 1000px;
+
+} */
+
+.logo-P {
+
+  width: 15%;
+  height: 5%;
+  object-fit: cover;
+  align-items: center;
+  margin: 0 3%;
+  display: flex;
+
+}
+
 .logo {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .container {

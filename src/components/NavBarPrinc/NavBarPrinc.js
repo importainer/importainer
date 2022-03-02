@@ -1,47 +1,49 @@
 import React, { Component } from "react";
 import { Link, HashRouter } from 'react-router-dom';
 import LoginUser from '../LoginUser/LoginUser';
-import LogoImportainer from './../../images/Logo500.png';
 import "./NavBarPrinc.css";
 
-export default class NavBarPrinc extends Component {
+export default function NavBarPrinc() {
   //Show - remove menu
-  firstClick() {
+  
+  const firstClick = () => {
     document.querySelector(".nav-menu-p").classList.toggle("show");
     document.getElementById("nav-icon").classList.toggle("fa-times");
   }
 
-  render() {
-    return ( 
-      <div className="all">
+  return ( 
+    <div className="all">
 
-        <HashRouter>
+      <HashRouter>
 
-          <div className="menu-bar-p">
-            <div className="logo-princ">
-              <Link to="/">
-                <img src={LogoImportainer} className="logo" alt="logo" />
-              </Link>
-            </div>
+        <div className="menu-bar-p">
 
-            <nav className="nav-menu-p" id="nav-menu">
-              <ul className="nav-right-p">
-                <a href="#compañia" onClick={this.firstClick}>Compañias</a>
-                <Link to="../franquicias">Franquicias</Link>
-                <Link to="../proyectos" >Proyectos</Link>
-                <a href="#contacto" onClick={this.firstClick}>Contacto</a>
-              </ul>
-              {/* <LoginUser /> */}
-            </nav>
+          <div className="logo-P">
+
+            <Link to="/">
+              <img src='https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Logos%2FLOGO%201000X1000_Mesa%20de%20trabajo%201.png?alt=media&token=544ff206-b6d6-41cd-b6b6-bcee5f06a347' className="logo" alt="logo" />
+            </Link>
+
           </div>
 
-          <div className="menu-btn-p" id="menu-btn">
-            <i className="fas fa-bars fa-2x" id="nav-icon" onClick={this.firstClick}></i>
-          </div>
-        
-        </HashRouter>
-      </div>
-    );
-  }
+          <nav className="nav-menu-p" id="nav-menu">
+            <ul className="nav-right-p">
+              {/* <Link to="/compañia" onClick={firstClick} >Compañias</Link> */}
+              <a href="#compañia" onClick={firstClick}>Compañias</a>
+              <Link to="../franquicias">Franquicias</Link>
+              <Link to="../proyectos" >Proyectos</Link>
+              <a href="#contacto" onClick={firstClick}>Contacto</a>
+            </ul>
+            {/* <LoginUser /> */}
+          </nav>
+        </div>
+
+        <div className="menu-btn-p" id="menu-btn">
+          <i className="fas fa-bars fa-2x" id="nav-icon" onClick={firstClick}></i>
+        </div>
+      
+      </HashRouter>
+    </div>
+  );
 }
 

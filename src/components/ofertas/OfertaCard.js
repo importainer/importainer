@@ -30,7 +30,7 @@ const OfertaCard = ({
   descuento,
   precioListaAntes
 }) => {
-  console.log(description?.split("/"))
+  
   return (
     <div className="OfertaCard">
       <div className="OfertaCardTop">

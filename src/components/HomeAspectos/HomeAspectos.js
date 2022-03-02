@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HomeAspectos.css";
-import test1 from "./../../images/test/test1.jpg";
-import test2 from "./../../images/test/test2.jpg";
-import fibra from "./../../images/test/firbra.jpg";
 
 export default function HomeAspectosCard() {
+
+  const containerIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fcontainer.jpg?alt=media&token=a49f7386-3d5e-4e44-8fcb-f010cda43f2d";
+  const lanaVidrioIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2FlanaVidrio.jpg?alt=media&token=734a5dfc-9d89-4065-a33c-78e59ca41b93";
+  const piloteIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fpilote.JPG?alt=media&token=fdf36e74-d819-4b5e-b78b-91354bfcdd5d";
+
   return (
     <div>
       <section className="aspectos container">
         <h2 className="pr">Aspectos</h2>
         <div className="galeria-asp">
           <div className="card-asp">
-            <img src={test1} alt="" loading="lazy" />
+            <img src={containerIMG} alt="" loading="lazy" />
             <div className="card-asp-content">
               <h4>Container</h4>
               <p>
@@ -30,7 +32,7 @@ export default function HomeAspectosCard() {
             </div>
           </div>
           <div className="card-asp">
-            <img src={fibra} alt="" loading="lazy" />
+            <img src={lanaVidrioIMG} alt="" loading="lazy" />
             <div className="card-asp-content">
               <h4>Aislación térmica</h4>
               <p>
@@ -47,7 +49,7 @@ export default function HomeAspectosCard() {
             </div>
           </div>
           <div className="card-asp">
-            <img src={test2} alt="" loading="lazy" />
+            <img src={piloteIMG} alt="" loading="lazy" />
             <div className="card-asp-content">
               <h4>Pilotes</h4>
               <p>
