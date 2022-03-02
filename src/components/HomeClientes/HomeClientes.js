@@ -44,7 +44,7 @@ export default function HomeClientes() {
                     <h4>{e.name}</h4>
                     <h3>{e.casa}</h3>
                     <p>
-                      {e.testi}
+                      "{e.testi}"
                     </p>
                   </div>
                 </div>
