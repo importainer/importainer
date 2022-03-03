@@ -168,6 +168,12 @@ export default function NavBar({tipo}) {
 
                 }
 
+                {
+
+                    tipo === 'marketing' ? <li id="mnuPrin" ><Link to="/CreateTestimony">Crear Testimonio</Link></li> : null
+
+                }
+
                 <li id="mnuPrin" >Usuarios
 
                     <ul>

@@ -27,31 +27,35 @@ export default function HomeClientes() {
 
         {
 
-          testimonios?.map(e => {
+          testimonios?.map((e, i) => {
 
-            return (
+            if(e.idInterno < 3) {
 
-              <>
-              
-                <div className="cards">
-                  <img
-                    name="imgRadius"
-                    src={e.img}
-                    alt=""
-                    loading="lazy"
-                  />
-                  <div className="content-card">
-                    <h4>{e.name}</h4>
-                    <h3>{e.casa}</h3>
-                    <p>
-                      "{e.testi}"
-                    </p>
+              return (
+
+                <>
+                
+                  <div className="cards">
+                    <img
+                      name="imgRadius"
+                      src={e.file}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <div className="content-card">
+                      <h4>{e.name}</h4>
+                      <h3>{e.casa}</h3>
+                      <p>
+                        "{e.testi}"
+                      </p>
+                    </div>
                   </div>
-                </div>
-              
-              </>
+                
+                </>
+  
+              )
 
-            )
+            }
 
           })
 
