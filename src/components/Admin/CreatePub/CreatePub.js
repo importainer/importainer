@@ -25,7 +25,7 @@ export default function CreatePub({location}) {
 
     });
     
-    const [alertUploadImg, setAlertUploadImg] = useState(true)
+    const [alertUploadImg, setAlertUploadImg] = useState(true);
 
     const [submit, setSubmit] = useState(false);
 
@@ -184,7 +184,7 @@ export default function CreatePub({location}) {
 
         e.preventDefault();
 
-        setAlertUploadImg(true)
+        setAlertUploadImg(true);
 
         const collectionRef = app.firestore().collection("publicacion");
         
@@ -221,23 +221,6 @@ export default function CreatePub({location}) {
         document.getElementById('desc').value = '';
 
     };
-
-
-    const auth = getAuth();
-
-    
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-            // ...
-        } else {
-            // User is signed out
-            // ...
-            history.push("/admin")
-        }
-    });
 
     const alertMessage = () => {
 
