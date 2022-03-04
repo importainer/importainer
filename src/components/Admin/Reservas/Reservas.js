@@ -14,103 +14,117 @@ export default function Reservas({location}) {
     const [alignment, setAlignment] = useState('all');
     const [alignment2, setAlignment2] = useState(alignment);
 
-    useEffect(() => {
+    const callResDB = async () => {
 
-        const callResDB = async () => {
+        const getcollec = await getDocs(collection(db, 'reservas'));
+        
+        // setReservas(getcollec.docs.map(e => {
+            
+        //     const arr = e.data().userObject.fecha.split('/');
 
-            const getcollec = await getDocs(collection(db, 'reservas'));
+        //     const dia = arr[0];
 
-            setReservas(getcollec.docs.map(e => {
+        //     const mes = arr[1];
 
-                const arr = e.data().userObject.fecha.split('/');
+        //     const año = arr[2];
 
-                const dia = arr[0];
+        //     const hoy = new Date(año,mes,dia)
 
-                const mes = arr[1];
+        //     return {
 
-                const año = arr[2];
+        //         id: e.id,
+        //         checked: e.data().userObject.checked,
+        //         codCRM: e.data().userObject.codCRM,
+        //         email: e.data().userObject.email,
+        //         message: e.data().userObject.message,
+        //         name: e.data().userObject.name,
+        //         phone: e.data().userObject.phone,
+        //         fecha: hoy.toISOString(),
 
-                const hoy = new Date(año,mes,dia)
+        //     }
 
-                return {
+        // }));
 
-                    id: e.id,
-                    checked: e.data().userObject.checked,
-                    codCRM: e.data().userObject.codCRM,
-                    email: e.data().userObject.email,
-                    message: e.data().userObject.message,
-                    name: e.data().userObject.name,
-                    phone: e.data().userObject.phone,
-                    fecha: hoy.toISOString(),
+        setReservasBakup(getcollec.docs.map(e => {
 
-                }
+            const arr = e.data().userObject.fecha.split('/');
 
-            }));
+            const dia = arr[0];
 
-            setReservasBakup(getcollec.docs.map(e => {
+            const mes = arr[1];
 
-                const arr = e.data().userObject.fecha.split('/');
+            const año = arr[2];
 
-                const dia = arr[0];
+            const hoy = new Date(año,mes,dia)
+            console.log('hola')
+            return {
 
-                const mes = arr[1];
-
-                const año = arr[2];
-
-                const hoy = new Date(año,mes,dia)
-                
-                return {
-
-                    id: e.id,
-                    checked: e.data().userObject.checked,
-                    codCRM: e.data().userObject.codCRM,
-                    email: e.data().userObject.email,
-                    message: e.data().userObject.message,
-                    name: e.data().userObject.name,
-                    phone: e.data().userObject.phone,
-                    fecha: hoy.toISOString(),
-
-                }
-
-            }));
-
-        }
-
-        callResDB();
-
-    }, []);
-
-    const filterList = () => {
-
-        if(alignment !== alignment2) {
-
-            if(alignment === 'past') {
-    
-                setReservas(reservasBakup.filter(e => e.checked === true));
-    
-            } else if(alignment === 'notPast') {
-                
-                setReservas(reservasBakup.filter(e => e.checked === false));
-    
-            } else {
-
-                setReservas(reservasBakup);
+                id: e.id,
+                checked: e.data().userObject.checked,
+                codCRM: e.data().userObject.codCRM,
+                email: e.data().userObject.email,
+                message: e.data().userObject.message,
+                name: e.data().userObject.name,
+                phone: e.data().userObject.phone,
+                fecha: hoy.toISOString(),
 
             }
 
-            setAlignment2(alignment);
+        }));
+
+    }
+
+    useEffect(() => {
+
+        
+
+        callResDB();
+        
+    }, [reservas]);
+
+    setTimeout(() => {
+
+        if(reservas.length === 0 && alignment !== 'notPast') {
+
+            setReservas(reservasBakup);
+            
+            console.log('ss')
+
+        } 
+        
+    }, 100)
+    
+    const filterList = (estado) => {
+        // callResDB();
+        
+        if(estado === 'past') {
+            console.log('1')
+            setReservas(reservasBakup.filter(e => e.checked === true));
+
+        } else if(estado === 'notPast') {
+
+            if(reservas.length === reservasBakup.length) console.log('ahora')
+            console.log(reservasBakup, '2')
+                            
+            setReservas(reservasBakup.filter(e => e.checked === false));
+
+        } else {
+            console.log('3')
+            setReservas(reservasBakup)
 
         }
 
     }
 
     const handleChange = (event, newAlignment) => {
-
+        console.log(newAlignment, 'change');
         setAlignment(newAlignment);
+
+        filterList(newAlignment)
 
     };
 
-    filterList();
+    // filterList(true);
 
     const ordenarFecha = (a, b) => {
 
@@ -120,14 +134,58 @@ export default function Reservas({location}) {
 
     }
 
+    const estadoActualizado = async (estadoAct) => {
+
+        console.log(estadoAct, 'ver')
+        callResDB();
+        // const arr = estadoAct.fecha.split('/');
+
+        // const dia = arr[0];
+
+        // const mes = arr[1];
+
+        // const año = arr[2];
+
+        // const hoy = new Date(año,mes,dia);
+
+        // setReservas(reservasBakup.map((e, i) => {
+        //     console.log(e.id === estadoAct.id, estadoAct.checked, 'ver34')
+        //     if(e.id === estadoAct.id) {
+
+        //         return {
+
+        //             id: estadoAct.id,
+        //             checked: estadoAct.checked,
+        //             codCRM: estadoAct.codCRM,
+        //             email: estadoAct.email,
+        //             message: estadoAct.message,
+        //             name: estadoAct.name,
+        //             phone: estadoAct.phone,
+        //             fecha: hoy.toISOString(),
+
+        //         }
+
+        //     } else if(e.id !== estadoAct.id) return e
+
+        // }));
+
+        
+
+        setTimeout(() => filterList(alignment), 500)
+
+    }
+
     // window.onscroll = () => {
         
     //     const contenedor = document.getElementsByClassName("contReservas")
 
+    
+
     //     contenedor[0].style.height = "100%";
 
     // }
-
+    // console.log(reservas, 'resultado')
+    console.log(reservasBakup, 'act');
     return (
 
         <div className="contReservas">
@@ -177,6 +235,7 @@ export default function Reservas({location}) {
                             message={e.message !== "" ? e.message : "No hay mensajes"} 
                             fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`}
                             key={i}
+                            add={estadoActualizado}
                             
                         />
 

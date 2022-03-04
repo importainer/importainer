@@ -8,7 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import "./ResCard.css";
 
-export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB, fecha }) {
+export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB, fecha, add }) {
     
     const [reserva, setReserva] = useState({});
 
@@ -101,7 +101,9 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
 
         actualizarDB({userObject});
 
-        setChecked2(checked)
+        add(userObject);
+
+        setChecked2(checked);
 
     }
     

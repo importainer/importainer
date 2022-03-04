@@ -7,6 +7,8 @@ import "./HomeClientes.css";
 export default function HomeClientes() {
 
   const [testimonios, setTestimonios] = useState([]);
+  const [testSig, setTestSig] = useState(2);
+  const [testAnt, setTestAnt] = useState(0);
 
   useEffect(() =>{
 
