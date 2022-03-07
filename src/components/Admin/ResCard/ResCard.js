@@ -8,7 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import "./ResCard.css";
 
-export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB, fecha, add }) {
+export default function ResCard({ name, email, codCRM, phone, message, id, checkedDB, fecha, add, idClass }) {
     
     const [reserva, setReserva] = useState({});
 
@@ -34,6 +34,7 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
             name,
             phone,
             fecha,
+            idClass,
 
         })
 
@@ -104,6 +105,12 @@ export default function ResCard({ name, email, codCRM, phone, message, id, check
         add(userObject);
 
         setChecked2(checked);
+
+        // const res = document.getElementsByClassName("reservaCard");
+
+        // res[0].style.display = "none";
+
+        // console.log(res)
 
     }
     

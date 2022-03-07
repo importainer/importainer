@@ -83,7 +83,7 @@ export default function NavBar({tipo}) {
             
             e.addEventListener('mouseout', () => {
 
-                active[0].style.width = "2%";
+                active[0].style.width = "3%";
 
                 active[0].style.left = "0%";
 

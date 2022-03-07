@@ -18,33 +18,6 @@ export default function Reservas({location}) {
 
         const getcollec = await getDocs(collection(db, 'reservas'));
         
-        // setReservas(getcollec.docs.map(e => {
-            
-        //     const arr = e.data().userObject.fecha.split('/');
-
-        //     const dia = arr[0];
-
-        //     const mes = arr[1];
-
-        //     const año = arr[2];
-
-        //     const hoy = new Date(año,mes,dia)
-
-        //     return {
-
-        //         id: e.id,
-        //         checked: e.data().userObject.checked,
-        //         codCRM: e.data().userObject.codCRM,
-        //         email: e.data().userObject.email,
-        //         message: e.data().userObject.message,
-        //         name: e.data().userObject.name,
-        //         phone: e.data().userObject.phone,
-        //         fecha: hoy.toISOString(),
-
-        //     }
-
-        // }));
-
         setReservasBakup(getcollec.docs.map(e => {
 
             const arr = e.data().userObject.fecha.split('/');
@@ -56,7 +29,7 @@ export default function Reservas({location}) {
             const año = arr[2];
 
             const hoy = new Date(año,mes,dia)
-            console.log('hola')
+           
             return {
 
                 id: e.id,
@@ -76,11 +49,9 @@ export default function Reservas({location}) {
 
     useEffect(() => {
 
-        
-
         callResDB();
         
-    }, [reservas]);
+    }, []);
 
     setTimeout(() => {
 
@@ -88,43 +59,35 @@ export default function Reservas({location}) {
 
             setReservas(reservasBakup);
             
-            console.log('ss')
-
         } 
         
     }, 100)
     
     const filterList = (estado) => {
-        // callResDB();
         
         if(estado === 'past') {
-            console.log('1')
+            
             setReservas(reservasBakup.filter(e => e.checked === true));
 
         } else if(estado === 'notPast') {
 
-            if(reservas.length === reservasBakup.length) console.log('ahora')
-            console.log(reservasBakup, '2')
-                            
             setReservas(reservasBakup.filter(e => e.checked === false));
 
         } else {
-            console.log('3')
-            setReservas(reservasBakup)
+           
+            setReservas(reservasBakup);
 
         }
 
     }
 
     const handleChange = (event, newAlignment) => {
-        console.log(newAlignment, 'change');
+       
         setAlignment(newAlignment);
 
         filterList(newAlignment)
 
     };
-
-    // filterList(true);
 
     const ordenarFecha = (a, b) => {
 
@@ -136,42 +99,9 @@ export default function Reservas({location}) {
 
     const estadoActualizado = async (estadoAct) => {
 
-        console.log(estadoAct, 'ver')
         callResDB();
-        // const arr = estadoAct.fecha.split('/');
 
-        // const dia = arr[0];
-
-        // const mes = arr[1];
-
-        // const año = arr[2];
-
-        // const hoy = new Date(año,mes,dia);
-
-        // setReservas(reservasBakup.map((e, i) => {
-        //     console.log(e.id === estadoAct.id, estadoAct.checked, 'ver34')
-        //     if(e.id === estadoAct.id) {
-
-        //         return {
-
-        //             id: estadoAct.id,
-        //             checked: estadoAct.checked,
-        //             codCRM: estadoAct.codCRM,
-        //             email: estadoAct.email,
-        //             message: estadoAct.message,
-        //             name: estadoAct.name,
-        //             phone: estadoAct.phone,
-        //             fecha: hoy.toISOString(),
-
-        //         }
-
-        //     } else if(e.id !== estadoAct.id) return e
-
-        // }));
-
-        
-
-        setTimeout(() => filterList(alignment), 500)
+        filterList(alignment)
 
     }
 
@@ -184,8 +114,6 @@ export default function Reservas({location}) {
     //     contenedor[0].style.height = "100%";
 
     // }
-    // console.log(reservas, 'resultado')
-    console.log(reservasBakup, 'act');
     return (
 
         <div className="contReservas">
@@ -216,34 +144,39 @@ export default function Reservas({location}) {
 
             <div className="contReservas__contResCard">
 
-            {
+                {
 
-                reservas.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).map((e, i) => {
+                    reservas.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).map((e, i) => {
 
-                    const fechaMap = new Date(e.fecha);
+                        const fechaMap = new Date(e.fecha);
 
-                    return (
+                        return (
 
-                        <ResCard 
+                            <div id={i} >
 
-                            id={e.id}
-                            checkedDB={e.checked}
-                            name={e.name} 
-                            email={e.email} 
-                            codCRM={e.codCRM} 
-                            phone={e.phone} 
-                            message={e.message !== "" ? e.message : "No hay mensajes"} 
-                            fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`}
-                            key={i}
-                            add={estadoActualizado}
-                            
-                        />
+                                <ResCard 
 
-                    )
+                                    id={e.id}
+                                    checkedDB={e.checked}
+                                    name={e.name} 
+                                    email={e.email} 
+                                    codCRM={e.codCRM} 
+                                    phone={e.phone} 
+                                    message={e.message !== "" ? e.message : "No hay mensajes"} 
+                                    fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`}
+                                    key={i}
+                                    add={estadoActualizado}
+                                    idClass={i}
 
-                })
+                                />
 
-            }        
+                            </div>
+
+                        )
+
+                    })
+
+                }        
                 
             </div>    
 

@@ -2,67 +2,135 @@ import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { db } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import "./HomeClientes.css";
 
 export default function HomeClientes() {
 
   const [testimonios, setTestimonios] = useState([]);
-  const [testSig, setTestSig] = useState(2);
-  const [testAnt, setTestAnt] = useState(0);
 
-  useEffect(() =>{
+  const [inicio, setInicio] = useState(0);
+
+  const [final, setFinal] = useState(3);
+
+  useEffect(() => {
 
     getDocs(collection(db, "testimonios"))
-        .then(tbl => {
+      .then(tbl => {
 
-          setTestimonios(tbl.docs.map(e => e.data()));
+        setTestimonios(tbl.docs.map(e => e.data()));
 
-        })
-        .catch(err => console.log(err, 'error'))
+      })
+      .catch(err => console.log(err, 'error'))
 
   }, []);
+
+
+  const orderDate = (a, b) => {
+
+    if (a.idInterno > b.idInterno) {
+
+      return 1
+
+    }
+
+    if (a.idInterno < b.idInterno) {
+
+      return -1
+
+    }
+    // a must be equal to b
+    return 0
+
+  }
+
+  const datosFiltrados = testimonios.filter(e => e.status !== false);
+
+  const listRender = datosFiltrados.sort(orderDate).slice(inicio, final);
+
+  let caja = '';
+
+  const siguiente = () => {
+
+    if (inicio < testimonios.length && final > testimonios.length) {
+
+      setInicio(0);
+
+      setFinal(3);
+
+      // caja = document.getElementsByClassName('gal');
+
+      // console.log(caja)
+
+    } else {
+
+      setInicio(inicio + 3);
+
+      setFinal(final + 3);
+
+    }
+
+  }
+
+  const anterior = () => {
+
+    if (inicio === 0) {
+
+      setInicio(0);
+
+      setFinal(3);
+
+    } else {
+
+      setInicio(inicio - 3);
+
+      setFinal(final - 3);
+
+    }
+
+  }
 
   return (
     <section className="clientes">
       <h2 className="pr">Clientes</h2>
       <div className="gal">
 
+        {/* <ArrowBackIosNewIcon sx={{ fontSize: 60, color: '#FFF' }} onClick={anterior} /> */}
+
         {
 
-          testimonios?.map((e, i) => {
+          listRender?.map((e, i) => {
 
-            if(e.idInterno < 3) {
+            return (
 
-              return (
+              <>
 
-                <>
-                
-                  <div className="cards">
-                    <img
-                      name="imgRadius"
-                      src={e.file}
-                      alt=""
-                      loading="lazy"
-                    />
-                    <div className="content-card">
-                      <h4>{e.name}</h4>
-                      <h3>{e.casa}</h3>
-                      <p>
-                        "{e.testi}"
-                      </p>
-                    </div>
+                <div className="cards">
+                  <img
+                    name="imgRadius"
+                    src={e.file}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <div className="content-card">
+                    <h4>{e.name}</h4>
+                    <h3>{e.casa}</h3>
+                    <p>
+                      "{e.testi}"
+                    </p>
                   </div>
-                
-                </>
-  
-              )
+                </div>
 
-            }
+              </>
+
+            )
 
           })
 
         }
 
+        {/* <ArrowForwardIosIcon sx={{ fontSize: 60, color: '#FFF' }} onClick={siguiente} /> */}
 
         {/* <div className="cards">
           <img

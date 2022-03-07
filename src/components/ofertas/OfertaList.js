@@ -8,85 +8,85 @@ import "./OfertaList.css";
 
 const OfertaList = () => {
 
-const [datos, setDatos] = useState([]);
+  const [datos, setDatos] = useState([]);
 
-const [inicio, setInicio] = useState(0);
+  const [inicio, setInicio] = useState(0);
 
-const [final, setFinal] = useState(3);
+  const [final, setFinal] = useState(3);
 
-const datosFiltrados = datos.filter(e => e.status !== false );
+  const datosFiltrados = datos.filter(e => e.status !== false );
 
-const orderDate = (a, b) => {
+  const orderDate = (a, b) => {
 
-  if (a.codCRM > b.codCRM) {
+    if (a.codCRM > b.codCRM) {
 
-    return 1
+      return 1
 
-  }
+    }
 
-  if (a.codCRM < b.codCRM) {
+    if (a.codCRM < b.codCRM) {
 
-    return -1
+      return -1
 
-  }
-  // a must be equal to b
-  return 0
-
-}
-
-const listRender = datosFiltrados.sort(orderDate).slice(inicio, final);
-
-useEffect(() => {
-
-  const getData = async () => {
-
-    const querySnapshot = await getDocs(collection(db, "publicacion"));
-
-    setDatos(querySnapshot.docs.map(doc => doc.data()));
-
-  }
-  const data = getData()
-
-  setDatos([data])
-
-  // 
-}, []);
-
-const siguiente = () => {
-
-  if(inicio < datos.length && final > datos.length){
-
-    setInicio(0);
-    
-    setFinal(3);
-
-  } else {
-
-    setInicio(inicio + 3);
-
-    setFinal(final + 3);
+    }
+    // a must be equal to b
+    return 0
 
   }
 
-}
+  const listRender = datosFiltrados.sort(orderDate).slice(inicio, final);
 
-const anterior = () => {
+  useEffect(() => {
 
-  if(inicio === 0){
+    const getData = async () => {
 
-    setInicio(0);
-    
-    setFinal(3);
+      const querySnapshot = await getDocs(collection(db, "publicacion"));
 
-  } else {
+      setDatos(querySnapshot.docs.map(doc => doc.data()));
 
-    setInicio(inicio - 3);
+    }
+    const data = getData()
 
-    setFinal(final - 3);
+    setDatos([data])
+
+    // 
+  }, []);
+
+  const siguiente = () => {
+
+    if(inicio < datos.length && final > datos.length){
+
+      setInicio(0);
+      
+      setFinal(3);
+
+    } else {
+
+      setInicio(inicio + 3);
+
+      setFinal(final + 3);
+
+    }
 
   }
 
-}
+  const anterior = () => {
+
+    if(inicio === 0){
+
+      setInicio(0);
+      
+      setFinal(3);
+
+    } else {
+
+      setInicio(inicio - 3);
+
+      setFinal(final - 3);
+
+    }
+
+  }
 
   return (
     

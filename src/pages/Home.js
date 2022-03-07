@@ -23,7 +23,7 @@ const Home = () => {
     <div>
       <BannerF />
       <NavBarPrinc />
-      <Compañia />
+      {/* <Compañia /> */}
       <OfertaList />
       <HomeProyectos />
       <HomeAspectos />

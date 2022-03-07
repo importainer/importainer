@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { app, db } from '../../../firebase';
 import { getDocs, collection } from 'firebase/firestore';
 import NavBar from '../NavBar/NavBar';
-import CreateTesting from "./CreateTestimony.module.css";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import CreateTesting from "./CreateTestimony.module.css";
 
 export default function CreateTestimony({location}) {
 
