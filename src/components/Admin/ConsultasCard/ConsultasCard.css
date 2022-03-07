@@ -1,0 +1,122 @@
+.ConsultasContent {
+
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 2em;
+    margin: 0 auto;
+    padding: 0 0 .7em 0;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 1em;
+
+}
+
+.ConsultasContent > h1 {
+
+    width: 100%;
+    margin: 0  0 0 5%;
+    grid-column: 1 / 6;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 0 0 0 1em;
+    border-top: 0;
+    border-right: 0;
+    padding-bottom: .2em;
+
+}
+
+.fecha {
+
+    width: 95%;
+    margin: 0 0 0 0;
+    grid-column: 6 / 10;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 0 0 1em 0;
+    border-top: 0;
+    border-left: 0;
+    padding-top: .6em;
+
+}
+
+.consultasCard__icon {
+
+    height: 2.5em;
+    margin: 0 auto;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    grid-column: 1 / 11;
+
+}
+
+.ConsultaCard__content {
+
+    display: none;
+
+}
+
+.reservaCard__contentAction {
+
+    animation: deslizarActive 1.5s, opacityActive 2s;
+
+}
+
+@keyframes deslizarActive {
+
+    from {
+
+        display: none;
+        max-height: 0;
+        opacity: 0;
+
+    }
+
+    to {
+
+        display: block;
+        max-height: 10em;
+        opacity: 1;
+
+    }
+    
+}
+
+@keyframes opacityActive {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+    
+}
+
+.email {
+
+    grid-column: 1 / 6;
+
+}
+
+.phone {
+
+    grid-column: 6 / 11;
+
+}
+
+.ConsultasContent > p {
+
+    grid-column: 1 / 11;
+
+}
+
+.email, .phone {
+    
+    font-size: 1.3em;
+
+}

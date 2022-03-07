@@ -47,6 +47,8 @@ export default function EditarPub({location}) {
         porcen: 0,
         priceDesc: 0,
         file: '',
+        desc20porcen: 0,
+        desc50porcen: 0,
 
     });
 
@@ -245,6 +247,8 @@ export default function EditarPub({location}) {
 
     async function writeNewPost() {
 
+        const objRes = { priceDesc20: datos.priceDesc / 5, priceDesc50: datos.priceDesc / 2 }
+
         setAlertUploadImg(true);
 
         const collectionRef = app.firestore().collection("publicacion").doc(location.state.id);
@@ -254,6 +258,8 @@ export default function EditarPub({location}) {
             ...datos,
             price: datos.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
             priceDesc: datos.priceDesc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+            desc20porcen: objRes.priceDesc20.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+            desc50porcen: objRes.priceDesc50.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
     
         });
 

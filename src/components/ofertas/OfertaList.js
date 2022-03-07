@@ -112,9 +112,9 @@ const OfertaList = () => {
             //----------- esta card es con los datos de la base de datos
 
             listRender.map((e, i) => {
-              
+              // console.log(e.price.toString().replace(/\./g, ''))
               return (
-
+                
                 <>
 
                   <OfertaCard

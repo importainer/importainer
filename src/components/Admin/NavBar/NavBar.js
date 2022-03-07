@@ -180,7 +180,9 @@ export default function NavBar({tipo}) {
 
                         {
 
-                            tipo === 'admin' ? <li><Link to='/users' >Listado de Usuarios</Link></li> : null
+                            tipo === 'admin' ? <li><Link to='/users' >Listado de Usuarios</Link></li> : null,
+
+                            tipo === 'marketing' ? <li><Link to='/consultasADM' >Consultas de Usuarios</Link></li> : null
 
                         }
 
