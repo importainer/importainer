@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { app } from "../../../firebase";
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -10,17 +10,23 @@ import "../ConsultasCard/ConsultasCard.css";
 export default function ConsultasCard({ id, email, name, phone, usado, message, fecha}) {
     // id = 1
 
-    const [consultas, setConsultas] = useState({
-
-        email, name, phone, usado, message, fecha
-
-    })
+    const [consultas, setConsultas] = useState({});
     // 
     const [active, setActive] = useState(false);
 
     const [checked, setChecked] = useState(usado);
 
     const [checked2, setChecked2] = useState(usado);
+
+    useEffect(() => {
+
+        setConsultas({
+
+            email, name, phone, usado, message, fecha
+    
+        });
+
+    }, []);
 
     const deslizContent = () => {
 

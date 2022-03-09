@@ -13,12 +13,14 @@
 
 .arrowContent {
     width: 75%;
-    /* border: 1px solid #000000; */
+    height: 3em;
+    border: 1px solid #000000;
     /* display: grid;
     grid-template-columns: repeat(2, 1fr); */
     margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
+    padding: .2em 0 0 0;
+    /* display: flex;
+    justify-content: space-around; */
 
 }
 

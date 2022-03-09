@@ -3,6 +3,8 @@ import { db } from "../../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import NavBar from "../NavBar/NavBar";
 import ConsultasCard from "../ConsultasCard/ConsultasCard";
 import Consulta from "./Consultas.module.css";
@@ -10,6 +12,8 @@ import Consulta from "./Consultas.module.css";
 export default function Consultas({location}) {
 
     const [conUsers, setConUsers] = useState([]);
+
+    const [conActual, setConActual] = useState([]);
 
     const [paginationIz, setPaginationIz] = useState(0);
 
@@ -56,10 +60,31 @@ export default function Consultas({location}) {
     const ordenarFecha = (a, b) => {
 
         if(a > b) return -1
+
         else if(a < b) return 1
+
         else return 0
 
     }
+// console.log(conActual.length === 0, 'pp')
+
+    const conPag = () => {
+
+        setConActual(conUsers.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).slice(paginationIz, paginationDer));
+
+    }
+
+    setTimeout(() => {
+
+        if(conActual.length === 0) {
+
+            conPag()
+
+        }
+
+    }, 100);
+
+   
 
     const anterior = () => {
 
@@ -68,6 +93,8 @@ export default function Consultas({location}) {
         setPaginationIz(paginationIz - 10);
 
         setPaginationDer(paginationDer - 10);
+
+        conPag()
 
     }
 
@@ -78,6 +105,8 @@ export default function Consultas({location}) {
         setPaginationIz(paginationIz + 10); 
 
         setPaginationDer(paginationDer + 10);
+
+        conPag()
 
     }
 
@@ -91,7 +120,7 @@ export default function Consultas({location}) {
 
             <div className={Consulta.arrowContent}>
 
-                <div className={Consulta.arrowLeft} >
+                {/* <div className={Consulta.arrowLeft} >
 
                     <ArrowBackIosNewIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={anterior} />
                     
@@ -101,19 +130,26 @@ export default function Consultas({location}) {
 
                     <ArrowForwardIosIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={siguiente} />
                     
-                </div>   
+                </div>    */}
+
+                <Stack spacing={2}>
+                    {/* <Pagination count={10} variant="outlined" />
+                    <Pagination count={10} variant="outlined" color="primary" /> */}
+                    <Pagination count={10} variant="outlined" color="standard" size="large" />
+                    {/* <Pagination count={10} variant="outlined" disabled /> */}
+                </Stack>
 
             </div>
 
             {
 
-                conUsers.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).slice(paginationIz, paginationDer).map((e, i) => {
+                conActual.map((e, i) => {
 
                     const fechaMap = new Date(e.fecha);
-                    
+                    // console.log(e.usado)
                     return (
 
-                        <ConsultasCard id={e.id} email={e.email} name={e.name} phone={e.phone} 
+                        <ConsultasCard key={i} id={e.id} email={e.email} name={e.name} phone={e.phone} 
                             usado={e.usado} message={e.message} fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`} />
 
                     )
