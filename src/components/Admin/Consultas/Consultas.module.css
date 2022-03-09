@@ -12,13 +12,27 @@
 }
 
 .arrowContent {
-
-    height: 4.5em;
+    width: 75%;
     /* border: 1px solid #000000; */
     /* display: grid;
     grid-template-columns: repeat(2, 1fr); */
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
+}
+
+.arrowRight, .arrowLeft {
+
+    width: 4% !important;
+    height: 3.2em;
+    /* border: 1px solid #000000; */
+
+}
+
+.arrowRight:hover, .arrowLeft:hover {
+
+    cursor: pointer;
 
 }
 

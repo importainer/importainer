@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import { getDocs, collection } from "firebase/firestore";
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import NavBar from "../NavBar/NavBar";
 import ConsultasCard from "../ConsultasCard/ConsultasCard";
 import Consulta from "./Consultas.module.css";
@@ -53,13 +53,31 @@ export default function Consultas({location}) {
 
     }, []);
 
-    console.log(conUsers, 'users');
-
     const ordenarFecha = (a, b) => {
 
         if(a > b) return -1
         else if(a < b) return 1
         else return 0
+
+    }
+
+    const anterior = () => {
+
+        console.log('chau')
+
+        setPaginationIz(paginationIz - 10);
+
+        setPaginationDer(paginationDer - 10);
+
+    }
+
+    const siguiente = () => {
+
+        console.log('hola')
+
+        setPaginationIz(paginationIz + 10); 
+
+        setPaginationDer(paginationDer + 10);
 
     }
 
@@ -75,13 +93,13 @@ export default function Consultas({location}) {
 
                 <div className={Consulta.arrowLeft} >
 
-                    <ArrowLeftIcon sx={{ fontSize: 100, color: '#FF0000', margin: '0px', padding: '0px' }} />   
+                    <ArrowBackIosNewIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={anterior} />
                     
                 </div>
 
-                <div>
+                <div className={Consulta.arrowRight} >
 
-                    <ArrowRightIcon sx={{ fontSize: 100, color: '#FF0000' }} />
+                    <ArrowForwardIosIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={siguiente} />
                     
                 </div>   
 
