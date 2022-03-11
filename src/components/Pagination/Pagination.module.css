@@ -1,0 +1,36 @@
+.num {
+
+    width: 4%;
+    height: 2em;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 0.3em;
+
+}
+
+.num:hover {
+
+    background: rgba(253, 102, 102, 0.5);
+    cursor: pointer;
+
+}
+
+.active {
+
+    width: 4%;
+    background: rgba(248, 93, 93, 0.7);
+    height: 2em;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 0.3em;
+    color: #fff;
+
+}
+
+.active:hover {
+
+    cursor: pointer;
+    background: rgba(255, 186, 186, 0.5);
+    color: #000;
+
+}

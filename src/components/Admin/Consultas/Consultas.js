@@ -3,10 +3,12 @@ import { db } from "../../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+// import Pagination from '@mui/material/Pagination';
+// import Stack from '@mui/material/Stack';
 import NavBar from "../NavBar/NavBar";
+import Pagination from "../../Pagination/Pagination";
 import ConsultasCard from "../ConsultasCard/ConsultasCard";
+
 import Consulta from "./Consultas.module.css";
 
 export default function Consultas({location}) {
@@ -109,6 +111,16 @@ export default function Consultas({location}) {
         conPag()
 
     }
+    
+    // const active = () => {
+
+    //     const idActive = document?.getElementById('1');
+    //     console.log(idActive, 'active');
+    //     idActive.className = Consulta.active;
+    //     console.log(idActive, 'active2');
+    // }
+
+    // setTimeout(() => active(), 200)
 
     return (
 
@@ -120,24 +132,26 @@ export default function Consultas({location}) {
 
             <div className={Consulta.arrowContent}>
 
-                {/* <div className={Consulta.arrowLeft} >
+                <div className={Consulta.arrowLeft} >
 
-                    <ArrowBackIosNewIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={anterior} />
+                    <ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={anterior} />
                     
                 </div>
 
-                <div className={Consulta.arrowRight} >
-
-                    <ArrowForwardIosIcon sx={{ fontSize: 50, color: '#FF0000' }} onClick={siguiente} />
-                    
-                </div>    */}
-
-                <Stack spacing={2}>
+                {/* <Stack spacing={2}>
                     {/* <Pagination count={10} variant="outlined" />
                     <Pagination count={10} variant="outlined" color="primary" /> */}
-                    <Pagination count={10} variant="outlined" color="standard" size="large" />
+                    {/* <Pagination count={10} variant="outlined" color="standard" size="large" />
                     {/* <Pagination count={10} variant="outlined" disabled /> */}
-                </Stack>
+                {/* </Stack> */}
+
+                <Pagination />
+
+                <div className={Consulta.arrowRight} >
+
+                    <ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={siguiente} />
+                    
+                </div>   
 
             </div>
 

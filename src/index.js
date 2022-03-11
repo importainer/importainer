@@ -12,7 +12,4 @@ const container = document.getElementById('root')
 
 
 // ReactDOM.render(__QUE__,__DONDE__)
-ReactDOM.render(
-    <App/>, 
-container)
-
+ReactDOM.render(<App/>, document.getElementById('root'));
