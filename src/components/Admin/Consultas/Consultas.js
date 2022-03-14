@@ -15,11 +15,7 @@ export default function Consultas({location}) {
 
     const [conUsers, setConUsers] = useState([]);
 
-    const [conActual, setConActual] = useState([]);
-
-    const [paginationIz, setPaginationIz] = useState(0);
-
-    const [paginationDer, setPaginationDer] = useState(10);
+    const [indice, setIndice] = useState(0);
 
     useEffect(() => {
 
@@ -68,60 +64,72 @@ export default function Consultas({location}) {
         else return 0
 
     }
-// console.log(conActual.length === 0, 'pp')
 
-    const conPag = () => {
+    const cantPag = () => {
 
-        setConActual(conUsers.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).slice(paginationIz, paginationDer));
+        const paginas = Math.ceil(conUsers.length / 10);
 
-    }
+        let iz = 0;
+        let d = 10;
 
-    setTimeout(() => {
+        const arr = [];
+        let arrI = 0;
 
-        if(conActual.length === 0) {
+        arr[arrI] = []
 
-            conPag()
+        while(d <= paginas * 10) {
+            
+            arr[arrI] = conUsers.sort((a, b) => ordenarFecha(a.fecha, b.fecha)).slice(iz, d)
+
+            iz = iz + 10;
+            d = d + 10;
+            arrI ++;
 
         }
 
-    }, 100);
+        return {
 
-   
+            array: arr,
+            
+            paginas: paginas,
+        }
+    }
 
     const anterior = () => {
 
-        console.log('chau')
+        if(indice === 0) {
 
-        setPaginationIz(paginationIz - 10);
+            setIndice((cantPag().paginas - 1));
+            
+        } else {
 
-        setPaginationDer(paginationDer - 10);
+            setIndice(indice - 1);
 
-        conPag()
+        }
 
     }
 
     const siguiente = () => {
 
-        console.log('hola')
+        if(indice === (cantPag().paginas - 1)) {
 
-        setPaginationIz(paginationIz + 10); 
+            setIndice(0);
 
-        setPaginationDer(paginationDer + 10);
+        } else {
 
-        conPag()
+            setIndice(indice + 1);
+
+        }
 
     }
     
-    // const active = () => {
+    const selectPag = (n) => {
+        
+        setIndice((n - 1))
 
-    //     const idActive = document?.getElementById('1');
-    //     console.log(idActive, 'active');
-    //     idActive.className = Consulta.active;
-    //     console.log(idActive, 'active2');
-    // }
-
-    // setTimeout(() => active(), 200)
-
+    }
+    
+    console.log(cantPag().array, (cantPag().paginas - 1), 'return')
     return (
 
         <div className={Consulta.ConsultasContent} >
@@ -132,35 +140,28 @@ export default function Consultas({location}) {
 
             <div className={Consulta.arrowContent}>
 
-                <div className={Consulta.arrowLeft} >
+                {/* <div className={Consulta.arrowLeft} >
 
                     <ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={anterior} />
                     
-                </div>
+                </div> */}
 
-                {/* <Stack spacing={2}>
-                    {/* <Pagination count={10} variant="outlined" />
-                    <Pagination count={10} variant="outlined" color="primary" /> */}
-                    {/* <Pagination count={10} variant="outlined" color="standard" size="large" />
-                    {/* <Pagination count={10} variant="outlined" disabled /> */}
-                {/* </Stack> */}
+                <Pagination count={cantPag().paginas} indice={indice} pagSelect={selectPag} anterior={anterior} siguiente={siguiente} />
 
-                <Pagination />
-
-                <div className={Consulta.arrowRight} >
+                {/* <div className={Consulta.arrowRight} >
 
                     <ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={siguiente} />
                     
-                </div>   
+                </div>    */}
 
             </div>
 
             {
-
-                conActual.map((e, i) => {
+ 
+                cantPag().array[indice].map((e, i) => {
 
                     const fechaMap = new Date(e.fecha);
-                    // console.log(e.usado)
+                    
                     return (
 
                         <ConsultasCard key={i} id={e.id} email={e.email} name={e.name} phone={e.phone} 

@@ -1,38 +1,56 @@
 import React, { useState } from 'react';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Pag from "./Pagination.module.css";
 
-export default function Pagination() {
+export default function Pagination({ count, pagSelect, anterior, siguiente, indice }) {
 
-    const count = 10;
+    // const count = 10;
 
     const [recorrido, setRecorrido] = useState(true);
+
+    const selectArrow = () => {
+
+
+
+    }
     
     const active = (e) => {
 
         const { id } = e.target;
 
-        // const idActive = document?.getElementById('1');
-        // console.log(idActive, 'active');
-        // idActive.className = Pag.active;
-        // console.log(idActive, 'active2');
-        console.log(document.getElementsByClassName(Pag.active),'active1');
-        // console.log(document.getElementById(id),'active2');
-
-        const active = document.getElementsByClassName(Pag.active);
-
+        // quitamos el estilo activ al div anterior
+        const active = document.getElementsByClassName(Pag.active)[0];
+        
         active.className = Pag.num;
+        console.log(id === '' , 'go')
+        if(id === '') {
 
-        const divAction = document.getElementById(id);
+            console.log(active.id - 1, 'active')
+            
+            anterior();
 
-        divAction.className = Pag.active;
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById((active.id - 1));
+
+            actDiv.className = Pag.active;
+        
+        } else {
+
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById(id);
+
+            actDiv.className = Pag.active;
+
+            pagSelect(id)
+
+        }
 
     }
 
     // setTimeout(() => active(), 200)
 
     const cls = (e) => {
-
-        // console.log(document.getElementById(e), 'ver');
 
         if(recorrido){
 
@@ -65,17 +83,23 @@ export default function Pagination() {
 
             <>
 
+<div  >
+
+<ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={e => active(e)} />
+
+</div>
+
                 {
 
                     num.map((e, i) => {
-
+                        // console.log(e, 'e')
                         // let clss = e = 1 ? Pag.active : Pag.num; className={Pag.num}
                         setTimeout(() =>cls(e), 200)
                         return (
 
                             <>
                             
-                                <div id={e} key={i}  onClick={e => active(e)} >{e}</div>
+                                <div id={e} key={i} onClick={e => active(e)} >{e}</div>
                                 
                             </>
 
@@ -84,6 +108,14 @@ export default function Pagination() {
                     })
 
                 }
+
+                
+
+<div  >
+
+<ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={siguiente} />
+
+</div>   
 
             </>
 
