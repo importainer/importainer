@@ -19,7 +19,7 @@ export default function Consultas({location}) {
 
     useEffect(() => {
 
-        getDocs(collection(db, "usersBackup"))
+        getDocs(collection(db, "users"))
             .then(e => {
 
                 // e.docs.map(e => {
@@ -32,8 +32,9 @@ export default function Consultas({location}) {
                 //         const randomDay = diaArr[Math.floor(Math.random() * diaArr.length)];
                 //         console.log(Object.keys(e.data().userObject).length);
     
-                //         // console.log(typeof fechaRandom() === 'string')
-                //         app.firestore().collection("usersBackup").add({
+                //         console.log(typeof fechaRandom() === 'string')
+
+                //         const userObject = {
     
                 //             email: e.data().userObject.email === undefined ? 'no tiene correo' : e.data().userObject.email,
                 //             fecha: e.data().userObject.fecha === undefined ? `${randomDay}/${randomElement}/2021` : e.data().userObject.fecha,
@@ -42,20 +43,20 @@ export default function Consultas({location}) {
                 //             phone: e.data().userObject.phone,
                 //             usado: e.data().userObject.usado !== undefined ? e.data().userObject.usado : true,
     
-                //         })
+                //         }
+
+                //         app.firestore().collection("users").add({userObject})
 
                 //     }
 
-                    
-
                 // })
-                console.log()
+                
                 const consultas = e.docs.filter(e => e.data().userObject.fecha !== undefined);
                 
                 
 
                 setConUsers(consultas.map(e => {
-                    console.log(e.data().userObject)
+                    // console.log(e.data().userObject)
                     const arr = e.data().userObject.fecha.split('/');
 
                     const dia = arr[0];
@@ -65,12 +66,6 @@ export default function Consultas({location}) {
                     const año = arr[2];
 
                     const hoy = new Date(año,mes,dia);
-
-                    //-----------------------------------------
-
-                    
-
-                    //-----------------------------------------
                     
                     return {
 
