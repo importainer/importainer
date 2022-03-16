@@ -7,8 +7,6 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
     // console.log(count);
     const [recorrido, setRecorrido] = useState(true);
 
-    const [pagVisual, setPagVisual] = useState([]);
-
     const [paginasDer, setPaginasDer] = useState(5);
 
     const [paginasIzq, setPaginasIzq] = useState(0);
@@ -31,61 +29,39 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
 
     }
 
-    // if(parseInt(activeDiv.id) === pagVisual) {
+    const nextBackPaginado = (x) => {
 
-    //     setPagVisual(pagVisual)
+        const act = x === 1 ? (parseInt(activeDiv?.id) + 1) : (parseInt(activeDiv?.id) - 1);
+        console.log(activeDiv, 'ver')
 
-    // }
+        if(act >= (count - 2)) {
 
-    const createList = () => {
+            console.log('faltan 3')
 
-        const num = [];
+            setPaginasDer((count + 1));
 
-        for (let i = 1; i <= count; i++) {
-            // console.log(i,'hola')
+            setPaginasIzq((count - 5));
 
-            num.push(i);
-
-            // return <div>{i}</div>
-            
-        }
-
-        setPagVisual(num);
-
-    }
-
-    // createList()
-
-    const backPaginado = () => {
-
-        const act = (parseInt(activeDiv?.id) - 1);
-
-        if(act >= 3) { 
+        } else if(act > 3) { 
             
             setPaginasDer(act + 2);
 
             setPaginasIzq(act - 3);
 
-        }
+        } else {
 
-    }
+            setPaginasDer(5);
 
-    const nextPaginado = () => {
-
-        const act = (parseInt(activeDiv?.id) + 1);
-
-        if(act > 3) { 
-            
-            setPaginasDer(act + 2);
-
-            setPaginasIzq(act - 3);
+            setPaginasIzq(0);
 
         }
+
+        setRecorrido('2da');
 
     }
 
     const back = () => {
-
+        console.log(activeDiv, 'ver')
         const ant = parseInt(activeDiv.id) - 1;
 
         activeDiv.className = Pag.num;
@@ -108,7 +84,7 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         
         anterior();
 
-        backPaginado();
+        nextBackPaginado(0);
 
     }
 
@@ -136,17 +112,25 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         
         siguiente();
 
-        nextPaginado();
+        nextBackPaginado(1);
 
     }
 
     const cls = (e) => {
-
-        if(recorrido){
+        
+        if(recorrido === true){
 
             const d = document.getElementById(e);
 
-            e < 2 ? d.className = Pag.active: d.className = Pag.num;
+            e < 2 ? d.className = Pag?.active: d.className = Pag?.num;
+
+            setRecorrido(false);
+
+        } else if(recorrido === '2da') {
+            
+            const d = document?.getElementById(e);
+
+            e === parseInt(activeDiv.id) ? d.className = Pag?.active: d.className = Pag?.num;
 
             setRecorrido(false);
 
@@ -160,11 +144,8 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         const num = [];
 
         for (let i = 1; i <= count; i++) {
-            // console.log(i,'hola')
 
             num.push(i);
-
-            // return <div>{i}</div>
             
         }
         
@@ -181,8 +162,11 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
                 {
 
                     num.slice(paginasIzq, paginasDer).map((e, i) => {
-                        console.log(num.slice(paginasIzq, paginasDer), 'map')
-                        setTimeout(() =>cls(e), 200)
+                        
+                        setTimeout(() =>cls(e), 0.5)
+
+                        // cls(e)
+                        
                             return (
     
                                 <div key={e} className={Pag.cont} >
