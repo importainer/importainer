@@ -179,7 +179,7 @@ export default function Consultas({location}) {
                 cantPag().array[indice].map((e, i) => {
 
                     const fechaMap = new Date(e.fecha);
-                    console.log(indice + i, 'suma')
+                    
                     return (
 
                         <ConsultasCard key={i} id={e.id} email={e.email} name={e.name} phone={e.phone} 

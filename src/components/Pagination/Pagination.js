@@ -4,8 +4,14 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Pag from "./Pagination.module.css";
 
 export default function Pagination({ count, pagSelect, anterior, siguiente }) {
-
+    // console.log(count);
     const [recorrido, setRecorrido] = useState(true);
+
+    const [pagVisual, setPagVisual] = useState([]);
+
+    const [paginasDer, setPaginasDer] = useState(5);
+
+    const [paginasIzq, setPaginasIzq] = useState(0);
 
     const activeDiv = document.getElementsByClassName(Pag.active)[0];
     
@@ -22,6 +28,59 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
          actDiv.className = Pag.active;
 
          pagSelect(id)
+
+    }
+
+    // if(parseInt(activeDiv.id) === pagVisual) {
+
+    //     setPagVisual(pagVisual)
+
+    // }
+
+    const createList = () => {
+
+        const num = [];
+
+        for (let i = 1; i <= count; i++) {
+            // console.log(i,'hola')
+
+            num.push(i);
+
+            // return <div>{i}</div>
+            
+        }
+
+        setPagVisual(num);
+
+    }
+
+    // createList()
+
+    const backPaginado = () => {
+
+        const act = (parseInt(activeDiv?.id) - 1);
+
+        if(act >= 3) { 
+            
+            setPaginasDer(act + 2);
+
+            setPaginasIzq(act - 3);
+
+        }
+
+    }
+
+    const nextPaginado = () => {
+
+        const act = (parseInt(activeDiv?.id) + 1);
+
+        if(act > 3) { 
+            
+            setPaginasDer(act + 2);
+
+            setPaginasIzq(act - 3);
+
+        }
 
     }
 
@@ -49,6 +108,8 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         
         anterior();
 
+        backPaginado();
+
     }
 
     const next = () => {
@@ -75,12 +136,13 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         
         siguiente();
 
+        nextPaginado();
+
     }
 
     const cls = (e) => {
 
         if(recorrido){
-
 
             const d = document.getElementById(e);
 
@@ -118,19 +180,18 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
 
                 {
 
-                    num.map((e, i) => {
-                        // console.log(e, 'e')
-                        // let clss = e = 1 ? Pag.active : Pag.num; className={Pag.num}
+                    num.slice(paginasIzq, paginasDer).map((e, i) => {
+                        console.log(num.slice(paginasIzq, paginasDer), 'map')
                         setTimeout(() =>cls(e), 200)
-                        return (
-
-                            <div key={i} className={Pag.cont} >
-                            
-                                <div id={e} onClick={e => active(e)} >{e}</div>
+                            return (
+    
+                                <div key={e} className={Pag.cont} >
                                 
-                            </div>
-
-                        )
+                                    <div id={e} onClick={e => active(e)} >{e}</div>
+                                    
+                                </div>
+    
+                            )
 
                     })
 
