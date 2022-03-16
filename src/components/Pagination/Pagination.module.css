@@ -1,6 +1,11 @@
+.cont {
+
+    width: 3%;
+
+}
+
 .num {
 
-    width: 4%;
     height: 2em;
     border: 1px solid red;
     border-radius: 50%;
@@ -17,7 +22,6 @@
 
 .active {
 
-    width: 4%;
     background: rgba(248, 93, 93, 0.7);
     height: 2em;
     border: 1px solid red;

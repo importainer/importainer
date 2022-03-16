@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../firebase";
+import { app, db } from "../../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -19,13 +19,43 @@ export default function Consultas({location}) {
 
     useEffect(() => {
 
-        getDocs(collection(db, "users"))
+        getDocs(collection(db, "usersBackup"))
             .then(e => {
 
-                const consultas = e.docs.filter(e => e.data().userObject.fecha !== undefined);
-                    
-                setConUsers(consultas.map(e => {
+                // e.docs.map(e => {
+                //     console.log(Object.keys(e.data().userObject), Object.keys(e.data().userObject).length > 1)
+                //     if(Object.keys(e.data().userObject).length > 1) {
 
+                //         const diaArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+                //         const mesArr = [9, 10, 11, 12];
+                //         const randomElement = mesArr[Math.floor(Math.random() * mesArr.length)];
+                //         const randomDay = diaArr[Math.floor(Math.random() * diaArr.length)];
+                //         console.log(Object.keys(e.data().userObject).length);
+    
+                //         // console.log(typeof fechaRandom() === 'string')
+                //         app.firestore().collection("usersBackup").add({
+    
+                //             email: e.data().userObject.email === undefined ? 'no tiene correo' : e.data().userObject.email,
+                //             fecha: e.data().userObject.fecha === undefined ? `${randomDay}/${randomElement}/2021` : e.data().userObject.fecha,
+                //             message: e.data().userObject.message,
+                //             name: e.data().userObject.name,
+                //             phone: e.data().userObject.phone,
+                //             usado: e.data().userObject.usado !== undefined ? e.data().userObject.usado : true,
+    
+                //         })
+
+                //     }
+
+                    
+
+                // })
+                console.log()
+                const consultas = e.docs.filter(e => e.data().userObject.fecha !== undefined);
+                
+                
+
+                setConUsers(consultas.map(e => {
+                    console.log(e.data().userObject)
                     const arr = e.data().userObject.fecha.split('/');
 
                     const dia = arr[0];
@@ -35,6 +65,12 @@ export default function Consultas({location}) {
                     const año = arr[2];
 
                     const hoy = new Date(año,mes,dia);
+
+                    //-----------------------------------------
+
+                    
+
+                    //-----------------------------------------
                     
                     return {
 
@@ -129,7 +165,6 @@ export default function Consultas({location}) {
 
     }
     
-    console.log(cantPag().array, (cantPag().paginas - 1), 'return')
     return (
 
         <div className={Consulta.ConsultasContent} >
@@ -140,19 +175,7 @@ export default function Consultas({location}) {
 
             <div className={Consulta.arrowContent}>
 
-                {/* <div className={Consulta.arrowLeft} >
-
-                    <ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={anterior} />
-                    
-                </div> */}
-
                 <Pagination count={cantPag().paginas} indice={indice} pagSelect={selectPag} anterior={anterior} siguiente={siguiente} />
-
-                {/* <div className={Consulta.arrowRight} >
-
-                    <ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={siguiente} />
-                    
-                </div>    */}
 
             </div>
 
@@ -161,7 +184,7 @@ export default function Consultas({location}) {
                 cantPag().array[indice].map((e, i) => {
 
                     const fechaMap = new Date(e.fecha);
-                    
+                    console.log(indice + i, 'suma')
                     return (
 
                         <ConsultasCard key={i} id={e.id} email={e.email} name={e.name} phone={e.phone} 

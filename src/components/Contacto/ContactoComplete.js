@@ -7,6 +7,7 @@ import { collection, addDoc } from "firebase/firestore";
 const ContactoComplete = () => {
   const addUser = async (userObject) => {
     await addDoc(collection(db, "users"), { userObject });
+    await addDoc(collection(db, "usersBackup"), { userObject });
     console.log("new user added");
   };
 

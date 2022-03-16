@@ -3,52 +3,79 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Pag from "./Pagination.module.css";
 
-export default function Pagination({ count, pagSelect, anterior, siguiente, indice }) {
-
-    // const count = 10;
+export default function Pagination({ count, pagSelect, anterior, siguiente }) {
 
     const [recorrido, setRecorrido] = useState(true);
 
-    const selectArrow = () => {
-
-
-
-    }
+    const activeDiv = document.getElementsByClassName(Pag.active)[0];
     
     const active = (e) => {
 
         const { id } = e.target;
-
+        
         // quitamos el estilo activ al div anterior
-        const active = document.getElementsByClassName(Pag.active)[0];
+        activeDiv.className = Pag.num;
         
-        active.className = Pag.num;
-        console.log(id === '' , 'go')
-        if(id === '') {
+         // agregamos estilo activ al div actual
+         const actDiv = document.getElementById(id);
 
-            console.log(active.id - 1, 'active')
-            
-            anterior();
+         actDiv.className = Pag.active;
 
-            // agregamos estilo activ al div actual
-            const actDiv = document.getElementById((active.id - 1));
-
-            actDiv.className = Pag.active;
-        
-        } else {
-
-            // agregamos estilo activ al div actual
-            const actDiv = document.getElementById(id);
-
-            actDiv.className = Pag.active;
-
-            pagSelect(id)
-
-        }
+         pagSelect(id)
 
     }
 
-    // setTimeout(() => active(), 200)
+    const back = () => {
+
+        const ant = parseInt(activeDiv.id) - 1;
+
+        activeDiv.className = Pag.num;
+        
+        if(ant === 0) {
+            
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById(count);
+
+            actDiv.className = Pag.active;
+
+        } else {
+            
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById(ant);
+
+            actDiv.className = Pag.active;
+
+        }
+        
+        anterior();
+
+    }
+
+    const next = () => {
+
+        const sig = parseInt(activeDiv.id) + 1;
+
+        activeDiv.className = Pag.num;
+
+        if(sig > count) {
+            
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById('1');
+
+            actDiv.className = Pag.active;
+
+        } else {
+            
+            // agregamos estilo activ al div actual
+            const actDiv = document.getElementById(sig);
+
+            actDiv.className = Pag.active;
+
+        }
+        
+        siguiente();
+
+    }
 
     const cls = (e) => {
 
@@ -78,16 +105,16 @@ export default function Pagination({ count, pagSelect, anterior, siguiente, indi
             // return <div>{i}</div>
             
         }
-
+        
         return (
 
             <>
 
-<div  >
+                <div  >
 
-<ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={e => active(e)} />
+                    <ArrowBackIosNewIcon sx={{ fontSize: 30, color: '#FF0000' }} id='back' onClick={back} />
 
-</div>
+                </div>
 
                 {
 
@@ -97,11 +124,11 @@ export default function Pagination({ count, pagSelect, anterior, siguiente, indi
                         setTimeout(() =>cls(e), 200)
                         return (
 
-                            <>
+                            <div key={i} className={Pag.cont} >
                             
-                                <div id={e} key={i} onClick={e => active(e)} >{e}</div>
+                                <div id={e} onClick={e => active(e)} >{e}</div>
                                 
-                            </>
+                            </div>
 
                         )
 
@@ -109,13 +136,11 @@ export default function Pagination({ count, pagSelect, anterior, siguiente, indi
 
                 }
 
-                
+                <div  >
 
-<div  >
+                    <ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} id='next' onClick={next} />
 
-<ArrowForwardIosIcon sx={{ fontSize: 30, color: '#FF0000' }} onClick={siguiente} />
-
-</div>   
+                </div>   
 
             </>
 
