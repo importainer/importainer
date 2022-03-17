@@ -6,7 +6,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 // import Pagination from '@mui/material/Pagination';
 // import Stack from '@mui/material/Stack';
 import NavBar from "../NavBar/NavBar";
-import Pagination from "../../Pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 import ConsultasCard from "../ConsultasCard/ConsultasCard";
 
 import Consulta from "./Consultas.module.css";
@@ -179,10 +179,10 @@ export default function Consultas({location}) {
                 cantPag().array[indice].map((e, i) => {
 
                     const fechaMap = new Date(e.fecha);
-                    
+                    console.log(e)
                     return (
 
-                        <ConsultasCard key={i} id={e.id} email={e.email} name={e.name} phone={e.phone} 
+                        <ConsultasCard key={e.id} id={e.id} email={e.email} name={e.name} phone={e.phone} 
                             usado={e.usado} message={e.message} fecha={`${fechaMap.getDate()}/${fechaMap.getMonth()}/${fechaMap.getFullYear()}`} />
 
                     )
