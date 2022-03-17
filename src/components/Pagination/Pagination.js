@@ -11,12 +11,14 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
 
     const [paginasIzq, setPaginasIzq] = useState(0);
 
-    const activeDiv = document.getElementsByClassName(Pag.active)[0];
+    let activeDiv = document.getElementsByClassName(Pag.active)[0];
+
+    // setTimeout(() => activeDiv = document.getElementsByClassName(Pag.active)[0], 50);
     
     const active = (e) => {
 
         const { id } = e.target;
-        
+        console.log(id, 'id')
         // quitamos el estilo activ al div anterior
         activeDiv.className = Pag.num;
         
@@ -32,23 +34,35 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
     const nextBackPaginado = (x) => {
 
         const act = x === 1 ? (parseInt(activeDiv?.id) + 1) : (parseInt(activeDiv?.id) - 1);
-        console.log(activeDiv, 'ver')
+        console.log(act, 'ver')
 
         if(act >= (count - 2)) {
 
-            console.log('faltan 3')
+            // final
 
             setPaginasDer((count + 1));
 
             setPaginasIzq((count - 5));
 
-        } else if(act > 3) { 
+        } else if(act > 3) {
+            
+            // medio
             
             setPaginasDer(act + 2);
 
             setPaginasIzq(act - 3);
 
+        } else if(act === 0) {
+
+            // atras del 0
+
+            setPaginasDer((count + 1));
+
+            setPaginasIzq((count - 5));
+
         } else {
+
+            // inicio
 
             setPaginasDer(5);
 
@@ -62,6 +76,9 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
 
     const back = () => {
         console.log(activeDiv, 'ver')
+
+        nextBackPaginado(0);
+
         const ant = parseInt(activeDiv.id) - 1;
 
         activeDiv.className = Pag.num;
@@ -69,9 +86,13 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         if(ant === 0) {
             
             // agregamos estilo activ al div actual
-            const actDiv = document.getElementById(count);
+            setTimeout(() => {
+                
+                const actDiv = document?.getElementById(count);
 
-            actDiv.className = Pag.active;
+                actDiv.className = Pag.active;
+            
+            }, 10);
 
         } else {
             
@@ -83,8 +104,6 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
         }
         
         anterior();
-
-        nextBackPaginado(0);
 
     }
 
@@ -164,8 +183,6 @@ export default function Pagination({ count, pagSelect, anterior, siguiente }) {
                     num.slice(paginasIzq, paginasDer).map((e, i) => {
                         
                         setTimeout(() =>cls(e), 0.5)
-
-                        // cls(e)
                         
                             return (
     
