@@ -4,6 +4,7 @@ import { getDocs, collection } from 'firebase/firestore';
 import NavBar from '../NavBar/NavBar';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import CreateTesting from "./CreateTestimony.module.css";
 
 import queryDB from '../../../queryDB/queryDB';
@@ -143,7 +144,7 @@ export default function CreateTestimony({location}) {
 
         const archivoPath = storageRef.child(archivo.name);
 
-        const uploadTask = await archivoPath.put(archivo);
+        await archivoPath.put(archivo);
 
         const enlaceImg = await archivoPath.getDownloadURL();
 
@@ -281,6 +282,8 @@ export default function CreateTestimony({location}) {
                         <option value="Piletas 30M2">Piletas 30M2</option>
 
                     </select>
+
+                    {/* <ControlPointIcon sx={{ fontSize: 30, color: '#FF0000', border: '1px solid #000', margin: '0 auto'}} /> */}
 
                     <div className={CreateTesting.contText}>
                         

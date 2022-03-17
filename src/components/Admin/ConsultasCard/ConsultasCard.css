@@ -204,12 +204,6 @@
 
 }
 
-.titleDetail__Switch {
-
-    border: 1px solid rgb(255, 0, 0);
-
-}
-
 @media screen and (max-width: 1200px) {
 
     .contentHeat > h1 {
