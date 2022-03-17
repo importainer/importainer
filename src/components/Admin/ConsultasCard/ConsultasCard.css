@@ -10,9 +10,16 @@
 
 .contentHeat {
 
+    width: 95%;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 2em;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 0 0 1em 1em;
+    border-top: 0;
+    margin: 0 auto;
+    padding: .5em 0;
+    vertical-align: middle;
 
 }
 
@@ -21,11 +28,6 @@
     width: 100%;
     margin: 0  0 0 7%;
     grid-column: 1 / 6;
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 0 0 0 1em;
-    border-top: 0;
-    border-right: 0;
-    padding-bottom: .2em;
     font-size: 1.5em;
 
 }
@@ -34,11 +36,6 @@
 
     width: 100%;
     grid-column: 6 / 10;
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 0 0 1em 0;
-    border-top: 0;
-    border-left: 0;
-    padding-top: .6em;
 
 }
 
@@ -205,4 +202,86 @@
     margin: 1em auto 0;
     padding: .5em;
 
+}
+
+.titleDetail__Switch {
+
+    border: 1px solid rgb(255, 0, 0);
+
+}
+
+@media screen and (max-width: 1200px) {
+
+    .contentHeat > h1 {
+
+        grid-column: 1 / 5;
+        font-size: 1.3em;
+    
+    }
+    
+    .fecha {
+
+        grid-column: 5 / 9;
+    
+    }
+
+    .titleDetail__Switch {
+
+        grid-column: 9 / 11;
+
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+
+    .contentHeat > h1 {
+
+        font-size: 1em;
+    
+    }
+    
+    .fecha {
+    
+        font-size: 1em;
+    
+    }
+
+    .ConsultaCard__contentIzq, .ConsultaCard__contentDer {
+
+        font-size: .9em;
+    
+    }
+
+    .ConsultaCard__contentMess > p {
+
+        font-size: .8em;
+    
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+
+    .contentHeat > h1 {
+
+        grid-column: 1 / 6;
+        font-size: 1em;
+    
+    }
+    
+    .fecha {
+    
+        width: 100%;
+        grid-column: 6 / 9;
+        font-size: 1em;
+    
+    }
+
+    .ConsultaCard__contentIzq {
+
+        font-size: .8em;
+    
+    }
+    
 }
