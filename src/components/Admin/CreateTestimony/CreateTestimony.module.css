@@ -16,7 +16,6 @@
 .CreateTestimonyContent__fomr {
 
     width: 80%;
-    height: 17em;
     background: rgba(0, 0, 0, 0.7);
     margin: 1em auto;
     padding: 1em;
@@ -127,5 +126,32 @@
     grid-column: 1 / 3;
     margin: 0 auto;
     font-size: 1.2em;
+
+}
+
+.Select {
+
+    /* border: 1px solid #fff; */
+    display: flex;
+    /* justify-content: space-between; */
+
+}
+
+.Select > select {
+
+    width: 80%;
+    display: block;
+
+}
+
+.agregar {
+
+    padding: .2em 0 0 0;
+
+}
+
+.agregar:hover {
+
+    cursor: pointer;
 
 }

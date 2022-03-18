@@ -27,6 +27,8 @@ export default function CreateTestimony({location}) {
 
     const [idInt, setIdInt] = useState('');
 
+    const [nomProd, setNomProd] = useState([]);
+
     useEffect(() => {
 
         getDocs(collection(db, "testimonios"))
@@ -38,6 +40,22 @@ export default function CreateTestimony({location}) {
 
             })
             .catch(e => console.log(e, 'error'))
+
+        getDocs(collection(db, "productos"))
+            .then(tbl => {
+
+                setNomProd(tbl.docs.map(e => {
+
+                    return {
+
+                        id: e.id,
+                        prod:e.data().nombre,
+
+                    }
+
+                }))
+
+            })
 
     }, [])
 
@@ -224,8 +242,14 @@ export default function CreateTestimony({location}) {
 
     }
 
-    // console.log(queryDB.getTblProduct(), 'tbl products')
+    const popUp = () => {
+
+        window.open('#/CreateProducts', 'Crear Productos', 'toolbar=0, scrollbars=0, location=0, statusbar=0, menubar=0, resizable=1, width=800, height=200, left = 390, top = 200');
+
+    }
     
+    console.log(nomProd.sort())
+
     return (
 
         <>
@@ -240,51 +264,78 @@ export default function CreateTestimony({location}) {
 
                     <input name="name" type="text" value={input.name} placeholder="Nombre" onChange={e => inputHandleChange(e)} />
 
-                    <select name="casa" value={input.casa} onChange={e => inputHandleChange(e)} >
+                    <div className={CreateTesting.Select} >
 
-                        <option value="">Selecciona la Casa</option>
-                        <option value="Container Casa 15M2">Container Casa 15M2</option>
-                        <option value="Container Casa 30M2">Container Casa 30M2</option>
-                        <option value="Container Casa 45M2">Container Casa 45M2</option>
-                        <option value="Container Casa 60M2">Container Casa 60M2</option>
-                        <option value="Container Casa 75M2">Container Casa 75M2</option>
-                        <option value="Container Casa 90M2">Container Casa 90M2</option>
-                        <option value="Container Casa 120M2">Container Casa 120M2</option>
-                        <option value="Quincho 15M2">Quincho 15M2</option>
-                        <option value="Quincho 30M2">Quincho 30M2</option>
-                        <option value="Quincho 45M2">Quincho 45M2</option>
-                        <option value="Quincho 60M2">Quincho 60M2</option>
-                        <option value="Quincho 75M2">Quincho 75M2</option>
-                        <option value="Quincho 90M2">Quincho 90M2</option>
-                        <option value="Quincho 120M2">Quincho 120M2</option>
-                        <option value="Container Oficina 15M2">Container Oficina 15M2</option>
-                        <option value="Container Oficina 30M2">Container Oficina 30M2</option>
-                        <option value="Container Oficina 45M2">Container Oficina 45M2</option>
-                        <option value="Container Oficina 60M2">Container Oficina 60M2</option>
-                        <option value="Container Oficina 75M2">Container Oficina 75M2</option>
-                        <option value="Container Oficina 90M2">Container Oficina 90M2</option>
-                        <option value="Container Oficina 120M2">Container Oficina 120M2</option>
-                        <option value="Local 15M2">Local 15M2</option>
-                        <option value="Local 30M2">Local 30M2</option>
-                        <option value="Local 45M2">Local 45M2</option>
-                        <option value="Local 60M2">Local 60M2</option>
-                        <option value="Local 75M2">Local 75M2</option>
-                        <option value="Local 90M2">Local 90M2</option>
-                        <option value="Local 120M2">Local 120M2</option>
-                        <option value="Foodtrucks 15M2">Foodtrucks 15M2</option>
-                        <option value="Foodtrucks 30M2">Foodtrucks 30M2</option>
-                        <option value="Foodtrucks 45M2">Foodtrucks 45M2</option>
-                        <option value="Foodtrucks 60M2">Foodtrucks 60M2</option>
-                        <option value="Foodtrucks 75M2">Foodtrucks 75M2</option>
-                        <option value="Foodtrucks 90M2">Foodtrucks 90M2</option>
-                        <option value="Foodtrucks 120M2">Foodtrucks 120M2</option>
-                        <option value="Piletas 15M2">Piletas 15M2</option>
-                        <option value="Piletas 30M2">Piletas 30M2</option>
+                        <select name="casa" value={input.casa} onChange={e => inputHandleChange(e)} >
 
-                    </select>
+                            <option value="">Selecciona la Casa</option>
 
-                    {/* <ControlPointIcon sx={{ fontSize: 30, color: '#FF0000', border: '1px solid #000', margin: '0 auto'}} /> */}
+                            {
 
+                                nomProd.map(e => {
+
+                                    return (
+
+                                        <>
+
+                                            <option key={e.id} >{e.prod}</option>
+
+                                        </>
+
+                                    )
+
+                                })
+
+                            }
+
+                            {/* <option value="Container Casa 15M2">Container Casa 15M2</option>
+                            <option value="Container Casa 30M2">Container Casa 30M2</option>
+                            <option value="Container Casa 45M2">Container Casa 45M2</option>
+                            <option value="Container Casa 60M2">Container Casa 60M2</option>
+                            <option value="Container Casa 75M2">Container Casa 75M2</option>
+                            <option value="Container Casa 90M2">Container Casa 90M2</option>
+                            <option value="Container Casa 120M2">Container Casa 120M2</option>
+                            <option value="Quincho 15M2">Quincho 15M2</option>
+                            <option value="Quincho 30M2">Quincho 30M2</option>
+                            <option value="Quincho 45M2">Quincho 45M2</option>
+                            <option value="Quincho 60M2">Quincho 60M2</option>
+                            <option value="Quincho 75M2">Quincho 75M2</option>
+                            <option value="Quincho 90M2">Quincho 90M2</option>
+                            <option value="Quincho 120M2">Quincho 120M2</option>
+                            <option value="Container Oficina 15M2">Container Oficina 15M2</option>
+                            <option value="Container Oficina 30M2">Container Oficina 30M2</option>
+                            <option value="Container Oficina 45M2">Container Oficina 45M2</option>
+                            <option value="Container Oficina 60M2">Container Oficina 60M2</option>
+                            <option value="Container Oficina 75M2">Container Oficina 75M2</option>
+                            <option value="Container Oficina 90M2">Container Oficina 90M2</option>
+                            <option value="Container Oficina 120M2">Container Oficina 120M2</option>
+                            <option value="Local 15M2">Local 15M2</option>
+                            <option value="Local 30M2">Local 30M2</option>
+                            <option value="Local 45M2">Local 45M2</option>
+                            <option value="Local 60M2">Local 60M2</option>
+                            <option value="Local 75M2">Local 75M2</option>
+                            <option value="Local 90M2">Local 90M2</option>
+                            <option value="Local 120M2">Local 120M2</option>
+                            <option value="Foodtrucks 15M2">Foodtrucks 15M2</option>
+                            <option value="Foodtrucks 30M2">Foodtrucks 30M2</option>
+                            <option value="Foodtrucks 45M2">Foodtrucks 45M2</option>
+                            <option value="Foodtrucks 60M2">Foodtrucks 60M2</option>
+                            <option value="Foodtrucks 75M2">Foodtrucks 75M2</option>
+                            <option value="Foodtrucks 90M2">Foodtrucks 90M2</option>
+                            <option value="Foodtrucks 120M2">Foodtrucks 120M2</option>
+                            <option value="Piletas 15M2">Piletas 15M2</option>
+                            <option value="Piletas 30M2">Piletas 30M2</option> */}
+
+                        </select>
+
+                        <div class={CreateTesting.agregar} >
+
+                            <ControlPointIcon sx={{ fontSize: 35, color: '#FF0000'}} onClick={popUp} />
+
+                        </div>
+
+                    </div>
+                    
                     <div className={CreateTesting.contText}>
                         
                         <textarea name="testi" value={input.testi} placeholder="Escribe el testimonio del cliente.." onChange={e => inputHandleChange(e)} />

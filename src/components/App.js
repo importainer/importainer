@@ -62,7 +62,7 @@ import UserDetail from "./Admin/UserDetail/UserDetail";
 import ReservasADM from "./Admin/Reservas/Reservas";
 import CreateTestimony from "./Admin/CreateTestimony/CreateTestimony";
 import Consultas from "./Admin/Consultas/Consultas";
-import CreateProd from "./Admin/CreateProd/CreateProd";
+import CreateProducts from "./Admin/CreateProducts/CreateProducts";
 
 // ===== USER =====
 
@@ -92,7 +92,7 @@ const App = () => (
         <RouteMark path="/ReservasADM" component={ReservasADM} />
         <RouteMark path="/CreateTestimony" component={CreateTestimony} />
         <RouteMark path="/ConsultasADM" component={Consultas} />
-        <RouteMark path="/CreateProducts" component={CreateProd} />
+        <RouteMark path="/CreateProducts" component={CreateProducts} />
 
         {/* ===== USER ===== */}
         <Route exact path="/DatoPlan" component={Plan} />
