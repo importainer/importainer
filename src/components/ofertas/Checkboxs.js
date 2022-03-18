@@ -45,6 +45,7 @@ function Checkboxs({
           </label>
 
           <label htmlFor={cuota1} className="PrecioCuota">{cuotaPrecioA}</label>
+          
         </div>
         {/* ===== Cuota 2 ====== */}
         <div className="InputLabel">

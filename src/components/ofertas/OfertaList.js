@@ -143,6 +143,7 @@ const OfertaList = () => {
                     cuotaPrecio240B={`CUOTA 18 – ANTICIPO DE 20%: $ ${e.desc20porcen}`}
                     cuotaPrecio240C="CUOTA 24 – SIN ANTICIPO"
                     precioLista={e.priceDesc}
+                    precioCuota={e.precioCuota}
                     descuento={e.porcen}
                     precioListaAntes={e.price}
                   />

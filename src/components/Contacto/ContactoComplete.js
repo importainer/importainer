@@ -17,7 +17,7 @@ const ContactoComplete = () => {
       <div className="comp">
         <div className="container izq">
           <div className="datos">
-            <h2>Administración</h2>
+            <h2>Atencion al Cliente</h2>
             <p>- Bouchard 150 | Moreno</p>
             <p>Teléfono: +54 9 11 6543-7037</p>
             <h2>Sucursales </h2>

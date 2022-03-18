@@ -26,6 +26,7 @@ function Tabs({
   cuotaPrecio240B,
   cuotaPrecio240C,
   precioLista,
+  precioCuota,
   precioListaAntes,
 }) {
   const [toggleState, setToggleState] = useState(1);
@@ -59,10 +60,10 @@ function Tabs({
             Plan Contado: <hr />
           </h3>
           <h3 className="sangria descuento-cont">
-            - Precio Antes: {precioListaAntes} <hr />
+            - Precio Lista: {precioListaAntes} <hr />
           </h3>
           <h3 className="sangria">
-            - Precio Ahora: {precioLista} <hr />
+            - Precio Promocional: {precioLista} <hr />
           </h3>
 
           <div className="ContTabBoton">
@@ -99,6 +100,7 @@ function Tabs({
             cuotaPrecio240B={cuotaPrecio240B}
             cuotaPrecio240C={cuotaPrecio240C}
             precioLista={precioLista}
+            precioCuota={precioCuota}
           />
         </div>
       </div>

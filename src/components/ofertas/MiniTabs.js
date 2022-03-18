@@ -22,7 +22,8 @@ function MiniTabs({
   cuotaPrecio240A,
   cuotaPrecio240B,
   cuotaPrecio240C,
-  precioLista
+  precioLista,
+  precioCuota,
 }) {
   const [toggleState, setToggleState] = useState(1);
 
@@ -77,7 +78,8 @@ function MiniTabs({
       </div>
 
       <div className="MiniTabsContent">
-        <h4>Precio especial : {precioLista}</h4>
+        <h4>Precio especial : $ {precioLista}</h4>
+        <h4>Cuotas de : $ {precioCuota}</h4>
         <div
           className={
             toggleState === 1 ? "Check120  active-check-content" : "Check120"

@@ -27,6 +27,7 @@ const OfertaCard = ({
   cuotaPrecio240B,
   cuotaPrecio240C,
   precioLista,
+  precioCuota,
   descuento,
   precioListaAntes
 }) => {
@@ -77,6 +78,7 @@ const OfertaCard = ({
         cuotaPrecio240B={cuotaPrecio240B}
         cuotaPrecio240C={cuotaPrecio240C}
         precioLista={precioLista}
+        precioCuota={precioCuota}
         precioListaAntes={precioListaAntes}
       />
     </div>
