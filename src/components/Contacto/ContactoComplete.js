@@ -5,6 +5,9 @@ import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const ContactoComplete = () => {
+
+  window.scrollTo(0, 0);
+
   const addUser = async (userObject) => {
     await addDoc(collection(db, "users"), { userObject });
     await addDoc(collection(db, "usersBackup"), { userObject });

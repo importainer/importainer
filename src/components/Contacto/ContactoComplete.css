@@ -4,6 +4,7 @@
     margin: auto;
     overflow: visible;
     padding: 50px 0;
+    scroll-behavior: inherit;
   }
   
   .comp {
@@ -21,10 +22,10 @@
     font-size: 1.4rem;
   }
   
-.EnvConsulta {
-  margin-top: 20px;
-  margin-bottom: -45px;
-}
+  .EnvConsulta {
+    margin-top: 20px;
+    margin-bottom: -45px;
+  }
 
   /*===== Formulario =====*/
   
