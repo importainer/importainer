@@ -19,7 +19,7 @@ function Checkboxs({
       ...cuota,
       [e.target.name]: e.target.value,
     });
-    console.log(cuota)
+    
   };
 
   const handleSubmit = (e) => {
@@ -32,7 +32,7 @@ function Checkboxs({
       <form onsubmit={handleSubmit} className="CheckBox">
         {/* ===== Cuota 1 ====== */}
         <div className="InputLabel">
-          <label className="CustomCheck" htmlFor={cuota1}>
+          <label className="CustomCheck" >
             <input
               type="radio"
               id={cuota1}
@@ -49,7 +49,7 @@ function Checkboxs({
         </div>
         {/* ===== Cuota 2 ====== */}
         <div className="InputLabel">
-          <label className="CustomCheck" htmlFor={cuota2}>
+          <label className="CustomCheck" >
             <input
               type="radio"
               id={cuota2}
@@ -62,11 +62,11 @@ function Checkboxs({
             <span className="CheckMark"></span>
           </label>
 
-          <label htmlFor={cuota2} className="PrecioCuota">{cuotaPrecioB}</label>
+          <label  className="PrecioCuota">{cuotaPrecioB}</label>
         </div>
         {/* ===== Cuota 3 ====== */}
         <div className="InputLabel">
-          <label className="CustomCheck" htmlFor={cuota3}>
+          <label className="CustomCheck" >
             <input
               type="radio"
               id={cuota3}
@@ -78,7 +78,7 @@ function Checkboxs({
             <span className="CheckMark"></span>
           </label>
 
-          <label htmlFor={cuota3} className="PrecioCuota">{cuotaPrecioC}</label>
+          <label  className="PrecioCuota">{cuotaPrecioC}</label>
         </div>
         <br />
         <div className="ContCheckBoxBtn">

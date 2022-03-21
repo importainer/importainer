@@ -90,10 +90,8 @@
   }
 
   .sangria {
-    line-height: 10px;
+    font-size: 1em;
     font-weight: normal;
-    margin-top: 25px;
-    margin-bottom: 15px;
   }
 
   .descuento-cont{

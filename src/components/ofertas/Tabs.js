@@ -60,10 +60,10 @@ function Tabs({
             Plan Contado: <hr />
           </h3>
           <h3 className="sangria descuento-cont">
-            - Precio Lista: {precioListaAntes} <hr />
+            - Precio Lista: ${precioListaAntes} <hr />
           </h3>
           <h3 className="sangria">
-            - Precio Promocional: {precioLista} <hr />
+            - Precio Promocional: ${precioLista} <hr />
           </h3>
 
           <div className="ContTabBoton">
