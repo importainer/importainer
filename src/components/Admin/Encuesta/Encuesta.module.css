@@ -80,6 +80,21 @@
 
 }
 
+.towGorup {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.towGorup > div {
+
+    width: 50%;
+    text-align: left;
+    margin: 0 auto;
+
+}
+
 .rating > h3 {
 
     width: 59em;

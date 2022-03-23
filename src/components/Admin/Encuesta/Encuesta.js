@@ -263,36 +263,52 @@ export default function LinkCuestionario() {
                         <Box sx={{ display: 'flex' }}>
                             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                 <FormGroup>
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={financiacion} onChange={handleChange} name="financiacion" />
-                                    }
-                                    label="Financiación"
-                                />
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={tiempoEntrega} onChange={handleChange} name="tiempoEntrega" />
-                                    }
-                                    label="Tiempo de entrega"
-                                />
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={llaveEnMano} onChange={handleChange} name="llaveEnMano" />
-                                    }
-                                    label="Sistema llave en mano"
-                                />
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="diseñosPersonalizables" />
-                                    }
-                                    label="Diseños personalizables"
-                                />
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={Practicidad} onChange={handleChange} name="Practicidad" />
-                                    }
-                                    label="Practicidad"
-                                />
+                                    <div className={Encuest.towGorup}>
+
+                                        <div>
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={financiacion} onChange={handleChange} name="financiacion" />
+                                                }
+                                                label="Financiación"
+                                            />
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={tiempoEntrega} onChange={handleChange} name="tiempoEntrega" />
+                                                }
+                                                label="Tiempo de entrega"
+                                            />
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={llaveEnMano} onChange={handleChange} name="llaveEnMano" />
+                                                }
+                                                label="Sistema llave en mano"
+                                            />
+
+                                        </div>
+
+                                        <div>
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="diseñosPersonalizables" />
+                                                }
+                                                label="Diseños personalizables"
+                                            />
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={Practicidad} onChange={handleChange} name="Practicidad" />
+                                                }
+                                                label="Practicidad"
+                                            />
+
+                                        </div>
+
+                                    </div>
                                 </FormGroup>
                             </FormControl>
                         </Box>
