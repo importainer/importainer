@@ -46,6 +46,9 @@ export default function LinkCuestionario() {
                 diseñosPersonalizables: false,
 
                 Practicidad: false,
+
+                Atencion: false,
+                
             },
 
         },
@@ -194,14 +197,6 @@ export default function LinkCuestionario() {
     value: PropTypes.number.isRequired,
     };
 
-    
-    const [state, setState] = useState({
-        financiacion: true,
-        tiempoEntrega: false,
-        llaveEnMano: false,
-        diseñosPersonalizables: false,
-        Practicidad: false,
-    });
 
     const handleChange = (event) => {
 
@@ -213,8 +208,6 @@ export default function LinkCuestionario() {
         // });
 
         const divActive = document.getElementsByClassName(Encuest.rating)[0];
-
-        let n = parseInt(divActive.id);
 
         const h3Text = divActive?.childNodes[0].innerHTML;
 
@@ -236,7 +229,7 @@ export default function LinkCuestionario() {
 
     };
 
-    const { financiacion, tiempoEntrega, llaveEnMano, diseñosPersonalizables, Practicidad } = encuesta[1].data;
+    const { financiacion, tiempoEntrega, llaveEnMano, diseñosPersonalizables, Practicidad, Atencion } = encuesta[1].data;
 
     console.log(encuesta, 'encuesta');
 
@@ -265,7 +258,7 @@ export default function LinkCuestionario() {
                                 <FormGroup>
                                     <div className={Encuest.towGorup}>
 
-                                        <div>
+                                        <div className={Encuest.gr1} >
 
                                             <FormControlLabel
                                                 control={
@@ -290,7 +283,14 @@ export default function LinkCuestionario() {
 
                                         </div>
 
-                                        <div>
+                                        <div className={Encuest.gr2} >
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={Atencion} onChange={handleChange} name="Atencion" />
+                                                }
+                                                label="Atencion"
+                                            />
 
                                             <FormControlLabel
                                                 control={
