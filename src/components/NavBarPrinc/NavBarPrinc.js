@@ -32,6 +32,7 @@ export default function NavBarPrinc() {
               <a href="#compañia" onClick={firstClick}>Compañias</a>
               <Link to="../franquicias">Franquicias</Link>
               <Link to="../proyectos" >Proyectos</Link>
+              <Link to="../entregas" >Entregas</Link>
               <a href="#contacto" onClick={firstClick}>Contacto</a>
             </ul>
             {/* <LoginUser /> */}

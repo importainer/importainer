@@ -2,28 +2,28 @@ import React from 'react'
 import './ProyectoCardList.css'
 import ProyectoCard from './ProyectoCard'
 
-const ProyectoCardList = () => {
+const ProyectoCardList = ({p1, p2, p3, p4}) => {
     return (
         <div className="ProyCardList">
             <ProyectoCard
-                title="Emprendimientos"
-                img="https://live.staticflickr.com/65535/51674609153_83db79f768_z.jpg"
-                link="./emprendimientos"
+                title={p1.title}
+                img={p1.img}
+                link={p1.link}
             />
             <ProyectoCard
-                title="Casas"
-                img="https://live.staticflickr.com/65535/51632074362_f4bbbd2469_z.jpg"
-                link="./casas"
+                title={p2.title}
+                img={p2.img}
+                link={p2.link}
             />
             <ProyectoCard
-                title="Exterior"
-                img="https://live.staticflickr.com/65535/51675358599_76ebbb11fa_z.jpg"
-                link="./exterior"
+                title={p3.title}
+                img={p3.img}
+                link={p3.link}
             />
             <ProyectoCard
-                title="Oficinas"
-                img="https://live.staticflickr.com/65535/51687394575_8cf07a9134_z.jpg" 
-                link="./oficinas"
+                title={p4.title}
+                img={p4.img}
+                link={p4.link}
             />
         </div>
     )

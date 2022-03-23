@@ -49,6 +49,10 @@ import OfertaList from "../components/ofertas/OfertaList";
 import test from "../pages/test";
 import Compania from "./Compañia";
 
+// ===== Entregas =====
+
+import Entregas from "../components/Entregas/Entregas";
+
 // ===== ADMIN =====
 
 import Login from "./Admin/LoginIn/LoginIn";
@@ -63,6 +67,7 @@ import ReservasADM from "./Admin/Reservas/Reservas";
 import CreateTestimony from "./Admin/CreateTestimony/CreateTestimony";
 import Consultas from "./Admin/Consultas/Consultas";
 import CreateProducts from "./Admin/CreateProducts/CreateProducts";
+import Encuesta from "./Admin/Encuesta/Encuesta";
 
 // ===== USER =====
 
@@ -79,6 +84,7 @@ const App = () => (
 
         {/* ===== ADMINISTACION ===== */}
         <Route exact path="/admin" component={Login} />
+        <Route exact path="/Encuesta" component={Encuesta} />
         {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
         <RouteAM path="/indexAdm" component={IndexAdm} />
         <RouteAM path="/LoginCreate" component={LoginCreate} />
@@ -142,6 +148,9 @@ const App = () => (
         {/* ===== OFICINAS ===== */}
         <Route exact path="/oficinas" component={Oficinas} />
         <Route exact path="/oficinas/oficina60m2" component={Oficina60M2} />
+        
+        {/* ===== ENTREGAS ===== */}
+        <Route exact path="/entregas" component={Entregas} />
 
         {/* ===== OTROS ====== */}
         <Route exact path="/aspectos" component={Aspectos} />

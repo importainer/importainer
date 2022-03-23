@@ -1,10 +1,11 @@
 import React from 'react';
-import ProyectoCardList from '../components/ProyectosCards/ProyectoCardList';
-import NavBarSec from '../components/NavBarSec/NavBarSec'
-import FooterSec from '../components/FooterSec/FooterSec';
-import Titulo from "../components/Titulo";
+import NavBarSec from '../NavBarSec/NavBarSec';
+import Titulo from '../Titulo';
+import ProyectoCardList from '../ProyectosCards/ProyectoCardList';
+import FooterSec from '../FooterSec/FooterSec';
+import Ent from './Entregas.module.css';
 
-const Proyectos = () => {
+export default function Entregas() {
 
     const p1 = {
 
@@ -39,13 +40,19 @@ const Proyectos = () => {
     }
 
     return (
-        <div className="">
-            <NavBarSec title="Proyectos" link="/proyectos"/>
-            <Titulo titulo="Proyectos" />
-            <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} />
-            <FooterSec/>
-        </div>
-    )
-}
 
-export default Proyectos
+        <div>
+
+            <NavBarSec title="Entregas" link="/entregas" />
+
+            <Titulo title="Entregas" />
+
+            <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} />
+
+            <FooterSec />
+
+        </div>
+
+    )
+
+}

@@ -18,6 +18,11 @@ export default function CreateTestimony({location}) {
         file: '',
         testi: '',
         idInterno: 0,
+        ent1: '',
+        ent2: '',
+        entrega3: '',
+        entrega4: '',
+        entrega5: '',
 
     });
 
@@ -174,6 +179,46 @@ export default function CreateTestimony({location}) {
 
     };
 
+    const archivoHandlerGroup = async (e) => {
+
+        const { files, name } = e.target;
+
+        console.log(files, name)
+
+        // const textarea = document.getElementsByTagName("textarea")[0];
+
+        // textarea.style.width = "0%";
+
+        // textarea.style.height = "0%";
+        
+        const archivo = files[0];
+        
+        // const storageRef = app.storage().ref(`/testimonios/`);  // `/ImgPublicaciones/${archivo.name}` de esta forma crea una carpeta con el nombre de la img
+
+        // const archivoPath = storageRef.child(archivo.name);
+
+        // await archivoPath.put(archivo);
+
+        // const enlaceImg = await archivoPath.getDownloadURL();
+
+        // setInput({...input, file: enlaceImg, });
+
+        setInput({...input, [name]: archivo.name, });
+
+        // textarea.style.width = "100%";
+
+        // textarea.style.height = "7.5em";
+
+        const fileDom = document.getElementById(name)
+
+        fileDom.innerHTML = archivo.name
+
+        console.log(fileDom, 'dom')
+        
+        // fileDom.style.content = 'hola'
+
+    };
+
     const addTesting = (e) => {
 
         e.preventDefault();
@@ -248,7 +293,7 @@ export default function CreateTestimony({location}) {
 
     }
     
-    console.log(nomProd.sort())
+    console.log(input, 'final')
 
     return (
 
@@ -345,6 +390,50 @@ export default function CreateTestimony({location}) {
                     <input name="file" type="file"  onChange={e => archivoHandler(e)} />
 
                     <img src={input.file} />
+
+                    <div className={CreateTesting.contentEntFiles} >
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent1' >Seleccionar</p>
+
+                            <input name='ent1' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent2' >Seleccionar</p>
+
+                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent1' >Seleccionar</p>
+
+                            <input name='ent1' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent2' >Seleccionar</p>
+
+                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent2' >Seleccionar</p>
+
+                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                    </div>
 
                     <input type="submit" name="submit" value="Crear" />
 
