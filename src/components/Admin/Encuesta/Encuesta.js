@@ -8,6 +8,13 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import Box from '@mui/material/Box';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Checkbox from '@mui/material/Checkbox';
 import Encuest from './Encuesta.module.css';
 
 export default function LinkCuestionario() {
@@ -28,7 +35,18 @@ export default function LinkCuestionario() {
 
             query: '',
 
-            rating: 5,
+            data: {
+
+                financiacion: false,
+
+                tiempoEntrega: false,
+
+                llaveEnMano: false,
+
+                diseñosPersonalizables: false,
+
+                Practicidad: false,
+            },
 
         },
 
@@ -103,20 +121,34 @@ export default function LinkCuestionario() {
 
     const siguiente = () => {
 
-        const encuestaRef = app.firestore().collection('encuesta');
+        const divActive = document.getElementsByClassName(Encuest.rating)[0];
 
-        encuestaRef.doc().set(encuesta);
+        let n = parseInt(divActive.id);
 
-        if(encuesta[5].rating > 3) {
+        if(n === 5) {
 
-            window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+            const encuestaRef = app.firestore().collection('encuesta');
+
+            encuestaRef.doc().set(encuesta);
+    
+            if(encuesta[5].rating > 3) {
+    
+                window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+    
+            } else {
+    
+                n++;
+        
+                const divSecond = document.getElementById(n);
+        
+                divSecond.className = Encuest.rating;
+        
+                divActive.className = Encuest.desactiv;
+    
+            }
 
         } else {
-
-            const divActive = document.getElementsByClassName(Encuest.rating)[0];
-
-            let n = parseInt(divActive.id);
-
+    
             n++;
     
             const divSecond = document.getElementById(n);
@@ -162,7 +194,51 @@ export default function LinkCuestionario() {
     value: PropTypes.number.isRequired,
     };
 
-    console.log(encuesta, 'encuesta')
+    
+    const [state, setState] = useState({
+        financiacion: true,
+        tiempoEntrega: false,
+        llaveEnMano: false,
+        diseñosPersonalizables: false,
+        Practicidad: false,
+    });
+
+    const handleChange = (event) => {
+
+        const { name, checked } = event.target
+
+        // setState({
+        // ...state,
+        // [event.target.name]: event.target.checked,
+        // });
+
+        const divActive = document.getElementsByClassName(Encuest.rating)[0];
+
+        let n = parseInt(divActive.id);
+
+        const h3Text = divActive?.childNodes[0].innerHTML;
+
+        setEncuesta({...encuesta,
+            
+            1: {
+
+                query: h3Text,
+
+                data: {
+                    
+                    ...encuesta[1].data,
+
+                    [name]: checked
+                },
+
+            },
+        });
+
+    };
+
+    const { financiacion, tiempoEntrega, llaveEnMano, diseñosPersonalizables, Practicidad } = encuesta[1].data;
+
+    console.log(encuesta, 'encuesta');
 
     return (
 
@@ -182,17 +258,46 @@ export default function LinkCuestionario() {
 
                     <div id='1' className={Encuest.rating} >
 
-                        <h3>¿Qué tan satisfecho/a está usted con la atención brindada por nuestra empresa?</h3>
+                        <h3>¿Por qué elegiste construir con Importainer? (Podes marcar más de una opción)</h3>
 
-                        <Rating
-                            name="highlight-selected-only"
-                            defaultValue={5}
-                            IconContainerComponent={IconContainer}
-                            highlightSelectedOnly
-                            onChange={e => selected(e)}
-                        />
+                        <Box sx={{ display: 'flex' }}>
+                            <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                                <FormGroup>
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={financiacion} onChange={handleChange} name="financiacion" />
+                                    }
+                                    label="Financiación"
+                                />
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={tiempoEntrega} onChange={handleChange} name="tiempoEntrega" />
+                                    }
+                                    label="Tiempo de entrega"
+                                />
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={llaveEnMano} onChange={handleChange} name="llaveEnMano" />
+                                    }
+                                    label="Sistema llave en mano"
+                                />
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="diseñosPersonalizables" />
+                                    }
+                                    label="Diseños personalizables"
+                                />
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={Practicidad} onChange={handleChange} name="Practicidad" />
+                                    }
+                                    label="Practicidad"
+                                />
+                                </FormGroup>
+                            </FormControl>
+                        </Box>
 
-                        {/* <input type="submit" value="Siguiente" onClick={siguiente} /> */}
+                        <input type="submit" value="Siguiente" onClick={siguiente} />
 
                     </div>
 
@@ -208,8 +313,6 @@ export default function LinkCuestionario() {
                             onChange={e => selected(e)}
                         />
 
-                        {/* <input type="submit" value="Siguiente" onClick={siguiente} /> */}
-
                     </div>
 
                     <div id='3' className={Encuest.desactiv} >
@@ -224,8 +327,6 @@ export default function LinkCuestionario() {
                             onChange={e => selected(e)}
                         />
 
-                        {/* <input type="submit" value="Siguiente" onClick={siguiente} /> */}
-
                     </div>
 
                     <div id='4' className={Encuest.desactiv} >
@@ -239,8 +340,6 @@ export default function LinkCuestionario() {
                             highlightSelectedOnly
                             onChange={e => selected(e)}
                         />
-
-                        {/* <input type="submit" value="Siguiente" onClick={siguiente} /> */}
 
                     </div>
 

@@ -92,8 +92,17 @@
     width: 80%;
     height: 3em;
     background:rgba(255, 0, 0, 0.8);
+    color: #fff;
+    font-size: 1.2em;
     border: 1px solid red;
     margin: 1em 0 0 0;
+    padding: 0;
+
+}
+
+.rating > input:hover {
+
+    cursor: pointer;
 
 }
 
