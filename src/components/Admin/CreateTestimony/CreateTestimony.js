@@ -20,9 +20,9 @@ export default function CreateTestimony({location}) {
         idInterno: 0,
         ent1: '',
         ent2: '',
-        entrega3: '',
-        entrega4: '',
-        entrega5: '',
+        ent3: '',
+        ent4: '',
+        ent5: '',
 
     });
 
@@ -79,10 +79,20 @@ export default function CreateTestimony({location}) {
             file: '',
             testi: '',
             idInterno: '',
-    
+            ent1: '',
+            ent2: '',
+            ent3: '',
+            ent4: '',
+            ent5: '',
+
         });
 
         document.getElementsByName("file")[0].value = '';
+        document.getElementById("ent1")[0].value = '';
+        document.getElementById("ent2")[0].value = '';
+        document.getElementById("ent3")[0].value = '';
+        document.getElementById("ent4")[0].value = '';
+        document.getElementById("ent5")[0].value = '';
 
     }
 
@@ -99,7 +109,7 @@ export default function CreateTestimony({location}) {
             return;
 
         }
-    
+
         setOpen(false);
     };
 
@@ -162,8 +172,8 @@ export default function CreateTestimony({location}) {
         textarea.style.height = "0%";
 
         const archivo = e.target.files[0];
-        
-        const storageRef = app.storage().ref(`/testimonios/`);  // `/ImgPublicaciones/${archivo.name}` de esta forma crea una carpeta con el nombre de la img
+
+        const storageRef = app.storage().ref(`/testimonios/${input.name}`);  // `/ImgPublicaciones/${archivo.name}` de esta forma crea una carpeta con el nombre de la img
 
         const archivoPath = storageRef.child(archivo.name);
 
@@ -177,54 +187,68 @@ export default function CreateTestimony({location}) {
 
         textarea.style.height = "7.5em";
 
+        document.getElementById('1').style.display = "block";
+
+        const pAlert = document.getElementsByClassName(CreateTesting.textAlertActive)[0];
+        
+        if(pAlert.className === CreateTesting.textAlertActive) {
+
+            pAlert.className = CreateTesting.textAlert;
+
+        }
+
     };
 
     const archivoHandlerGroup = async (e) => {
 
-        const { files, name } = e.target;
+        const { files, name, id } = e.target;
 
-        console.log(files, name)
+        const n = parseInt(id) + 1;
 
-        // const textarea = document.getElementsByTagName("textarea")[0];
+        const desbloqued = document.getElementById(n);
 
-        // textarea.style.width = "0%";
+        if(n <= 5) desbloqued.style.display = 'block';
 
-        // textarea.style.height = "0%";
-        
         const archivo = files[0];
+
+        const storageRef = app.storage().ref(`/testimonios/${input.name}`);  // `/ImgPublicaciones/${archivo.name}` de esta forma crea una carpeta con el nombre de la img
+
+        const archivoPath = storageRef.child(archivo.name);
+
+        await archivoPath.put(archivo);
+
+        const enlaceImg = await archivoPath.getDownloadURL();
+
+        setInput({...input, [name]: enlaceImg, });
+
+        const fileDom = document.getElementById(name);
+
+        fileDom.innerHTML = archivo.name;
+
+        const pAlert = document.getElementsByClassName(CreateTesting.textAlertActive)[0];
         
-        // const storageRef = app.storage().ref(`/testimonios/`);  // `/ImgPublicaciones/${archivo.name}` de esta forma crea una carpeta con el nombre de la img
+        if(pAlert.className === CreateTesting.textAlertActive) {
 
-        // const archivoPath = storageRef.child(archivo.name);
+            pAlert.className = CreateTesting.textAlert;
 
-        // await archivoPath.put(archivo);
-
-        // const enlaceImg = await archivoPath.getDownloadURL();
-
-        // setInput({...input, file: enlaceImg, });
-
-        setInput({...input, [name]: archivo.name, });
-
-        // textarea.style.width = "100%";
-
-        // textarea.style.height = "7.5em";
-
-        const fileDom = document.getElementById(name)
-
-        fileDom.innerHTML = archivo.name
-
-        console.log(fileDom, 'dom')
-        
-        // fileDom.style.content = 'hola'
+        }
 
     };
+
+    const textAlert = (e) => {
+
+        const pAlert = document.getElementsByClassName(CreateTesting.textAlert)[0];
+
+        pAlert.className = CreateTesting.textAlertActive;
+
+    }
 
     const addTesting = (e) => {
 
         e.preventDefault();
 
         const collectionRef = app.firestore().collection("testimonios");
-
+        
         collectionRef.doc().set({
 
             name: input.name,
@@ -232,7 +256,12 @@ export default function CreateTestimony({location}) {
             file: input.file,
             testi: input.testi,
             idInterno: idInt + 1,
-    
+            ent1: input.ent1,
+            ent2: input.ent2,
+            ent3: input.ent3,
+            ent4: input.ent4,
+            ent5: input.ent5,
+
         });
 
         validar();
@@ -248,7 +277,7 @@ export default function CreateTestimony({location}) {
             return (
 
                 <>
-                
+
                     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 
                         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -258,7 +287,7 @@ export default function CreateTestimony({location}) {
                         </Alert>
 
                     </Snackbar>
-                
+
                 </>
 
             )
@@ -268,7 +297,7 @@ export default function CreateTestimony({location}) {
             return (
 
                 <>
-                
+
                     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 
                         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
@@ -278,7 +307,7 @@ export default function CreateTestimony({location}) {
                         </Alert>
 
                     </Snackbar>
-                
+
                 </>
 
             )
@@ -292,13 +321,11 @@ export default function CreateTestimony({location}) {
         window.open('#/CreateProducts', 'Crear Productos', 'toolbar=0, scrollbars=0, location=0, statusbar=0, menubar=0, resizable=1, width=800, height=200, left = 390, top = 200');
 
     }
-    
-    console.log(input, 'final')
 
     return (
 
         <>
-        
+
             <div className={CreateTesting.CreateTestimonyContent} >
 
                 <NavBar tipo={location.state.tipo} />
@@ -380,9 +407,11 @@ export default function CreateTestimony({location}) {
                         </div>
 
                     </div>
-                    
+
+                    <p className={CreateTesting.subText} >Espere a que las imagenes se carguen...</p>
+
                     <div className={CreateTesting.contText}>
-                        
+
                         <textarea name="testi" value={input.testi} placeholder="Escribe el testimonio del cliente.." onChange={e => inputHandleChange(e)} />
 
                     </div>
@@ -393,43 +422,45 @@ export default function CreateTestimony({location}) {
 
                     <div className={CreateTesting.contentEntFiles} >
 
+                        <p className={CreateTesting.textAlert} >Respetar el orden de Carga...</p>
+
                         <div className={CreateTesting.contentEntFile} >
 
-                            <p id='ent1' >Seleccionar</p>
+                            <p id='ent1' onClick={e => textAlert(e)} >Seleccionar</p>
 
-                            <input name='ent1' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+                            <input name='ent1' id='1' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
 
                         </div>
 
                         <div className={CreateTesting.contentEntFile} >
 
-                            <p id='ent2' >Seleccionar</p>
+                            <p id='ent2' onClick={e => textAlert(e)} >Seleccionar</p>
 
-                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
-
-                        </div>
-
-                        <div className={CreateTesting.contentEntFile} >
-
-                            <p id='ent1' >Seleccionar</p>
-
-                            <input name='ent1' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+                            <input name='ent2' id='2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
 
                         </div>
 
                         <div className={CreateTesting.contentEntFile} >
 
-                            <p id='ent2' >Seleccionar</p>
+                            <p id='ent3' onClick={e => textAlert(e)} >Seleccionar</p>
 
-                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+                            <input name='ent3' id='3' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
 
                         </div>
 
                         <div className={CreateTesting.contentEntFile} >
 
-                            <p id='ent2' >Seleccionar</p>
+                            <p id='ent4' onClick={e => textAlert(e)} >Seleccionar</p>
 
-                            <input name='ent2' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+                            <input name='ent4' id='4' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
+
+                        </div>
+
+                        <div className={CreateTesting.contentEntFile} >
+
+                            <p id='ent5' onClick={e => textAlert(e)} >Seleccionar</p>
+
+                            <input name='ent5' id='5' className={CreateTesting.grFile} type="file" onChange={e => archivoHandlerGroup(e)} />
 
                         </div>
 
@@ -442,7 +473,7 @@ export default function CreateTestimony({location}) {
                 {alertMessage()}
 
             </div>
-        
+
         </>
 
     )

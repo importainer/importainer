@@ -98,7 +98,17 @@ export default function IndexAdm({location}) {
 
             <NavBar tipo={location.state.tipo} />
 
-            <Graphics publicaciones={publicaciones} puntuacion={score} />
+            <div>
+
+                <div>
+
+                    <h3>Reservas</h3>
+
+                    <Graphics publicaciones={publicaciones} puntuacion={score} />
+
+                </div>
+
+            </div>
 
         </div>
 

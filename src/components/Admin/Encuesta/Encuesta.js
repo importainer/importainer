@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { app, db } from '../../../firebase';
-import { getDocs, collection } from 'firebase/firestore';
+import { app } from '../../../firebase';
 import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -9,11 +8,9 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import Box from '@mui/material/Box';
-import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import Encuest from './Encuesta.module.css';
 
@@ -110,13 +107,17 @@ export default function LinkCuestionario() {
 
         if(n < 5) {
 
-            n++;
-    
-            const divSecond = document.getElementById(n);
-    
-            divSecond.className = Encuest.rating;
-    
-            divActive.className = Encuest.desactiv;
+            setTimeout(() => {
+
+                n++;
+        
+                const divSecond = document.getElementById(n);
+        
+                divSecond.className = Encuest.rating;
+        
+                divActive.className = Encuest.desactiv;
+
+            }, 800)
 
         }
 
@@ -200,12 +201,7 @@ export default function LinkCuestionario() {
 
     const handleChange = (event) => {
 
-        const { name, checked } = event.target
-
-        // setState({
-        // ...state,
-        // [event.target.name]: event.target.checked,
-        // });
+        const { name, checked } = event.target;
 
         const divActive = document.getElementsByClassName(Encuest.rating)[0];
 
@@ -230,8 +226,6 @@ export default function LinkCuestionario() {
     };
 
     const { financiacion, tiempoEntrega, llaveEnMano, diseñosPersonalizables, Practicidad, Atencion } = encuesta[1].data;
-
-    console.log(encuesta, 'encuesta');
 
     return (
 
