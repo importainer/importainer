@@ -64,6 +64,18 @@ export default function CreateTestimony({location}) {
 
     }, [])
 
+    const ordenarProdNom = (a, b) => {
+
+        // a.match(/\d+/g)[0] de esta manera obtengo los numeros dentro del string
+
+        if(a > b) return 1
+
+        else if(a < b) return -1
+
+        else return 0
+
+    }
+
     const Alert = React.forwardRef(function Alert(props, ref) {
 
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -88,11 +100,11 @@ export default function CreateTestimony({location}) {
         });
 
         document.getElementsByName("file")[0].value = '';
-        document.getElementById("ent1")[0].value = '';
-        document.getElementById("ent2")[0].value = '';
-        document.getElementById("ent3")[0].value = '';
-        document.getElementById("ent4")[0].value = '';
-        document.getElementById("ent5")[0].value = '';
+        document.getElementById("1")[0].value = '';
+        document.getElementById("2")[0].value = '';
+        document.getElementById("3")[0].value = '';
+        document.getElementById("4")[0].value = '';
+        document.getElementById("5")[0].value = '';
 
     }
 
@@ -344,8 +356,8 @@ export default function CreateTestimony({location}) {
 
                             {
 
-                                nomProd.map(e => {
-
+                                nomProd.sort((a,b) => ordenarProdNom(a.prod, b.prod)).map(e => {
+                                    
                                     return (
 
                                         <>
@@ -359,44 +371,6 @@ export default function CreateTestimony({location}) {
                                 })
 
                             }
-
-                            {/* <option value="Container Casa 15M2">Container Casa 15M2</option>
-                            <option value="Container Casa 30M2">Container Casa 30M2</option>
-                            <option value="Container Casa 45M2">Container Casa 45M2</option>
-                            <option value="Container Casa 60M2">Container Casa 60M2</option>
-                            <option value="Container Casa 75M2">Container Casa 75M2</option>
-                            <option value="Container Casa 90M2">Container Casa 90M2</option>
-                            <option value="Container Casa 120M2">Container Casa 120M2</option>
-                            <option value="Quincho 15M2">Quincho 15M2</option>
-                            <option value="Quincho 30M2">Quincho 30M2</option>
-                            <option value="Quincho 45M2">Quincho 45M2</option>
-                            <option value="Quincho 60M2">Quincho 60M2</option>
-                            <option value="Quincho 75M2">Quincho 75M2</option>
-                            <option value="Quincho 90M2">Quincho 90M2</option>
-                            <option value="Quincho 120M2">Quincho 120M2</option>
-                            <option value="Container Oficina 15M2">Container Oficina 15M2</option>
-                            <option value="Container Oficina 30M2">Container Oficina 30M2</option>
-                            <option value="Container Oficina 45M2">Container Oficina 45M2</option>
-                            <option value="Container Oficina 60M2">Container Oficina 60M2</option>
-                            <option value="Container Oficina 75M2">Container Oficina 75M2</option>
-                            <option value="Container Oficina 90M2">Container Oficina 90M2</option>
-                            <option value="Container Oficina 120M2">Container Oficina 120M2</option>
-                            <option value="Local 15M2">Local 15M2</option>
-                            <option value="Local 30M2">Local 30M2</option>
-                            <option value="Local 45M2">Local 45M2</option>
-                            <option value="Local 60M2">Local 60M2</option>
-                            <option value="Local 75M2">Local 75M2</option>
-                            <option value="Local 90M2">Local 90M2</option>
-                            <option value="Local 120M2">Local 120M2</option>
-                            <option value="Foodtrucks 15M2">Foodtrucks 15M2</option>
-                            <option value="Foodtrucks 30M2">Foodtrucks 30M2</option>
-                            <option value="Foodtrucks 45M2">Foodtrucks 45M2</option>
-                            <option value="Foodtrucks 60M2">Foodtrucks 60M2</option>
-                            <option value="Foodtrucks 75M2">Foodtrucks 75M2</option>
-                            <option value="Foodtrucks 90M2">Foodtrucks 90M2</option>
-                            <option value="Foodtrucks 120M2">Foodtrucks 120M2</option>
-                            <option value="Piletas 15M2">Piletas 15M2</option>
-                            <option value="Piletas 30M2">Piletas 30M2</option> */}
 
                         </select>
 
