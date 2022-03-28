@@ -98,13 +98,13 @@ export default function CreateTestimony({location}) {
             ent5: '',
 
         });
-
+        
         document.getElementsByName("file")[0].value = '';
-        document.getElementById("1")[0].value = '';
-        document.getElementById("2")[0].value = '';
-        document.getElementById("3")[0].value = '';
-        document.getElementById("4")[0].value = '';
-        document.getElementById("5")[0].value = '';
+        document.getElementById("ent1").innerHTML = 'Seleccionar';
+        document.getElementById("ent2").innerHTML = 'Seleccionar';
+        document.getElementById("ent3").innerHTML = 'Seleccionar';
+        document.getElementById("ent4").innerHTML = 'Seleccionar';
+        document.getElementById("ent5").innerHTML = 'Seleccionar';
 
     }
 
@@ -258,7 +258,8 @@ export default function CreateTestimony({location}) {
     const addTesting = (e) => {
 
         e.preventDefault();
-
+        // console.log(document.getElementById("ent1"), 'buscar')
+        // document.getElementById("ent1").innerHTML = 'Seleccionar';
         const collectionRef = app.firestore().collection("testimonios");
         
         collectionRef.doc().set({
