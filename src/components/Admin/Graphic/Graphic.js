@@ -16,7 +16,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import './Graphic.css';
 
-export default function Graphics({ publicaciones, puntuacion }) {
+export default function Graphics({ publicaciones, score, label, indexAxis, barPercentage }) {
 
     ChartJS.register(
 
@@ -31,7 +31,7 @@ export default function Graphics({ publicaciones, puntuacion }) {
 
     );
 
-    const score = puntuacion;
+    // const score = puntuacion;
     const labels = publicaciones.filter(e => e !== undefined);
 
     const options = {
@@ -40,34 +40,40 @@ export default function Graphics({ publicaciones, puntuacion }) {
         color: "rgba(255,255,255,1)",
         layout: {
 
-            padding: 20,
+            padding: 10,
 
         },
         scales: {
 
             x: {
+
+                min: 0,
                 ticks: {
+                    stepSize: 1,
                   font: {
-                    size: 15,
+                    size: 13,
                   },
-                  backgroundColor: "red", 
-                  color: "rgba(255,255,255,1)" 
+                  backgroundColor: "red",
+                  color: "rgba(255,255,255,1)",
                 },
+
               },
+
             y: {
 
                 min: 0,
                 ticks: {
                     font: {
-                      size: 16,
+                      size: 13,
                     },
-                    backgroundColor: "red", 
-                    color: "rgba(255,255,255,1)" 
-                  },
+                    backgroundColor: "red",
+                    color: "rgba(255,255,255,1)",
+                  }, 
 
             },
 
-        }
+        },
+        indexAxis: indexAxis,
 
     }
 
@@ -79,11 +85,16 @@ export default function Graphics({ publicaciones, puntuacion }) {
 
                 {
 
-                    label: "Cantidad de Reservas",
+                    barPercentage: barPercentage,
+                    minBarLength: 2,
+                    label: label,
                     tension: 0.3,
                     data: score,
-                    backgroundColor: ["rgba(255,0,0,0.9)", "rgba(255,89,0,0.9)", "rgba(255,189,0,0.9)"],
-                    
+                    fill: false,
+                    borderWidth: 1.5,
+                    backgroundColor: ["rgba(255,0,0,0.3)", "rgba(255,89,0,0.3)", "rgba(255,189,0,0.3)"],
+                    borderColor: ["rgba(255,0,0,1)", "rgba(255,89,0,1)", "rgba(255,189,0,1)"],
+
                 }
 
             ],
@@ -93,7 +104,7 @@ export default function Graphics({ publicaciones, puntuacion }) {
         }
 
     })
-    
+
     return (
 
         <div className='GraphicsContent'>

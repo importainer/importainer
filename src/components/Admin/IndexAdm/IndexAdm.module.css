@@ -1,0 +1,35 @@
+
+.IndexAdmContent {
+
+    background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 1px solid #000000;
+    min-height: 100vh;
+
+}
+
+.contentGraphics {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    margin: 2em 0;
+
+}
+
+/* .boxGraphics {
+
+    border: 1px solid red;
+
+} */
+
+.boxGraphics > h1 {
+
+    background: linear-gradient(90deg, rgba(255,0,0,0) 20%, rgba(255,0,0,0.7) 50%, rgba(255,0,0,0) 80%);
+    color: #fff;
+    text-align: center;
+
+}
