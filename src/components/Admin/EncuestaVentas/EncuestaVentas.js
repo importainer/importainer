@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Encuest from './Encuesta.module.css';
+import EncuestaVen from './EncuestaVentas.module.css';
 
 export default function LinkCuestionario() {
 
@@ -34,17 +34,19 @@ export default function LinkCuestionario() {
 
             data: {
 
-                financiacion: false,
+                precioCaro: false,
 
-                tiempoEntrega: false,
+                entregaLejana: false,
 
-                llaveEnMano: false,
+                malaAtencion: false,
 
-                diseñosPersonalizables: false,
+                formaPago: false,
 
-                Practicidad: false,
+                otraEmpresa: false,
 
-                Atencion: false,
+                otroMotivo: false,
+
+                inputMot: '',
                 
             },
 
@@ -52,7 +54,7 @@ export default function LinkCuestionario() {
 
         2: {
 
-            query: '',
+            'Tiempo Respuesta': '',
 
             rating: 5,
 
@@ -60,7 +62,7 @@ export default function LinkCuestionario() {
 
         3: {
 
-            query: '',
+            'Atencion de Asesores': '',
 
             rating: 5,
 
@@ -68,7 +70,7 @@ export default function LinkCuestionario() {
 
         4: {
 
-            query: '',
+            'Probabilidad de Elegirnos': '',
 
             rating: 5,
 
@@ -76,7 +78,7 @@ export default function LinkCuestionario() {
 
         5: {
 
-            query: '',
+            'Calificacion Empresa': '',
 
             rating: 5,
 
@@ -88,7 +90,7 @@ export default function LinkCuestionario() {
 
         const { value } = e.target;
 
-        const divActive = document.getElementsByClassName(Encuest.rating)[0];
+        const divActive = document.getElementsByClassName(EncuestaVen.rating)[0];
 
         let n = parseInt(divActive.id);
         
@@ -113,9 +115,9 @@ export default function LinkCuestionario() {
         
                 const divSecond = document.getElementById(n);
         
-                divSecond.className = Encuest.rating;
+                divSecond.className = EncuestaVen.rating;
         
-                divActive.className = Encuest.desactiv;
+                divActive.className = EncuestaVen.desactiv;
 
             }, 800)
 
@@ -125,13 +127,13 @@ export default function LinkCuestionario() {
 
     const siguiente = () => {
 
-        const divActive = document.getElementsByClassName(Encuest.rating)[0];
+        const divActive = document.getElementsByClassName(EncuestaVen.rating)[0];
 
         let n = parseInt(divActive.id);
 
         if(n === 5) {
 
-            const encuestaRef = app.firestore().collection('encuesta');
+            const encuestaRef = app.firestore().collection('encuestaVentas');
 
             encuestaRef.doc().set(encuesta);
     
@@ -145,9 +147,9 @@ export default function LinkCuestionario() {
         
                 const divSecond = document.getElementById(n);
         
-                divSecond.className = Encuest.rating;
+                divSecond.className = EncuestaVen.rating;
         
-                divActive.className = Encuest.desactiv;
+                divActive.className = EncuestaVen.desactiv;
     
             }
 
@@ -157,9 +159,9 @@ export default function LinkCuestionario() {
     
             const divSecond = document.getElementById(n);
     
-            divSecond.className = Encuest.rating;
+            divSecond.className = EncuestaVen.rating;
     
-            divActive.className = Encuest.desactiv;
+            divActive.className = EncuestaVen.desactiv;
 
         }
 
@@ -201,9 +203,9 @@ export default function LinkCuestionario() {
 
     const handleChange = (event) => {
 
-        const { name, checked } = event.target;
+        const { name, checked, value } = event.target;
 
-        const divActive = document.getElementsByClassName(Encuest.rating)[0];
+        const divActive = document.getElementsByClassName(EncuestaVen.rating)[0];
 
         const h3Text = divActive?.childNodes[0].innerHTML;
 
@@ -217,11 +219,19 @@ export default function LinkCuestionario() {
                     
                     ...encuesta[1].data,
 
-                    [name]: checked
+                    [name]: name === 'inputMot' ? value : checked,
                 },
 
             },
         });
+
+        if(name === 'otroMotivo') {
+
+            const inputMot = document.getElementsByClassName(EncuestaVen.inputMot)[0];
+
+            checked ? inputMot.style.display = 'block' : inputMot.style.display = 'none';
+
+        }
 
     };
 
@@ -229,78 +239,81 @@ export default function LinkCuestionario() {
 
     return (
 
-        <div className={Encuest.content} >
+        <div className={EncuestaVen.content} >
 
-            <div className={Encuest.box} >
+            <div className={EncuestaVen.box} >
 
                 <p>
 
-                    Encuesta de satisfacción del cliente – IMPORTAINER S.A.
-                    Les pedimos por favor a nuestros clientes que respondan esta encuesta 
-                    para poder evaluar nuestro desempeño como empresa. Muchas gracias.
+                    Encuesta de satisfacción – IMPORTAINER S.A.
+                    ¡Hola! Te pedimos unos minutos de tu tiempo 
+                    para responder esta encuesta que nos va a ayudar a mejorar 
+                    nuestro asesoramiento, la encuesta es anónima y muy breve.
 
                 </p>
 
-                <div className={Encuest.ratingGroup} >
+                <div className={EncuestaVen.ratingGroup} >
 
-                    <div id='1' className={Encuest.rating} >
+                    <div id='1' className={EncuestaVen.rating} >
 
-                        <h3>¿Por qué elegiste construir con Importainer? (Podes marcar más de una opción)</h3>
+                        <h3>¿Por qué decidió no construir con IMPORTAINER? (Podes marcar más de una opción)</h3>
 
                         <Box sx={{ display: 'flex' }}>
                             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                 <FormGroup>
-                                    <div className={Encuest.towGorup}>
+                                    <div className={EncuestaVen.towGorup}>
 
-                                        <div className={Encuest.gr1} >
+                                        <div className={EncuestaVen.gr1} >
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={financiacion} onChange={handleChange} name="financiacion" />
+                                                <Checkbox checked={financiacion} onChange={handleChange} name="precioCaro" />
                                                 }
-                                                label="Financiación"
+                                                label="Me pareció muy caro"
                                             />
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={tiempoEntrega} onChange={handleChange} name="tiempoEntrega" />
+                                                <Checkbox checked={tiempoEntrega} onChange={handleChange} name="entregaLejana" />
                                                 }
-                                                label="Tiempo de entrega"
+                                                label="Queda muy lejana la entrega"
                                             />
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={llaveEnMano} onChange={handleChange} name="llaveEnMano" />
+                                                <Checkbox checked={llaveEnMano} onChange={handleChange} name="malaAtencion" />
                                                 }
-                                                label="Sistema llave en mano"
+                                                label="Recibí mala atención"
+                                            />
+
+                                        </div>
+
+                                        <div className={EncuestaVen.gr2} >
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={Atencion} onChange={handleChange} name="formaPago" />
+                                                }
+                                                label="No me convenció la forma de pago"
+                                            />
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="otraEmpresa" />
+                                                }
+                                                label="Compré en otra empresa"
+                                            />
+
+                                            <FormControlLabel
+                                                control={
+                                                <Checkbox checked={Practicidad} onChange={handleChange} name="otroMotivo" />
+                                                }
+                                                label="Otro motivo ¿Cuál?"
                                             />
 
                                         </div>
 
-                                        <div className={Encuest.gr2} >
-
-                                            <FormControlLabel
-                                                control={
-                                                <Checkbox checked={Atencion} onChange={handleChange} name="Atencion" />
-                                                }
-                                                label="Atencion"
-                                            />
-
-                                            <FormControlLabel
-                                                control={
-                                                <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="diseñosPersonalizables" />
-                                                }
-                                                label="Diseños personalizables"
-                                            />
-
-                                            <FormControlLabel
-                                                control={
-                                                <Checkbox checked={Practicidad} onChange={handleChange} name="Practicidad" />
-                                                }
-                                                label="Practicidad"
-                                            />
-
-                                        </div>
+                                        <input name='inputMot' className={EncuestaVen.inputMot} type="text" placeholder='Escribenos tu motivo...' onChange={handleChange} />
 
                                     </div>
                                 </FormGroup>
@@ -311,7 +324,7 @@ export default function LinkCuestionario() {
 
                     </div>
 
-                    <div id='2' className={Encuest.desactiv} >
+                    <div id='2' className={EncuestaVen.desactiv} >
 
                         <h3 id='Tiempo Respuesta'>¿Cómo fue el tiempo de respuesta?</h3>
 
@@ -325,9 +338,9 @@ export default function LinkCuestionario() {
 
                     </div>
 
-                    <div id='3' className={Encuest.desactiv} >
+                    <div id='3' className={EncuestaVen.desactiv} >
 
-                        <h3 id='Recomendacion Empresa' >¿Qué tan probable es que usted recomiende nuestra empresa a algún conocido?</h3>
+                        <h3 id='Atencion de Asesores' >¿Qué tan conforme quedó con la atención de nuestros asesores?</h3>
 
                         <Rating
                             name="highlight-selected-only"
@@ -339,7 +352,7 @@ export default function LinkCuestionario() {
 
                     </div>
 
-                    <div id='4' className={Encuest.desactiv} >
+                    <div id='4' className={EncuestaVen.desactiv} >
 
                         <h3 id='Probabilidad de Elegirnos' >¿Cuál es la probabilidad de que vuelva a adquirir uno de nuestros productos?</h3>
 
@@ -353,7 +366,7 @@ export default function LinkCuestionario() {
 
                     </div>
 
-                    <div id='5' className={Encuest.desactiv} >
+                    <div id='5' className={EncuestaVen.desactiv} >
 
                         <h3 id='Calificacion Empresa' >¿Cómo calificaría su experiencia general con la empresa?</h3>
 
@@ -369,7 +382,7 @@ export default function LinkCuestionario() {
 
                     </div>
 
-                    <div id='6' className={Encuest.desactiv} >
+                    <div id='6' className={EncuestaVen.desactiv} >
 
                         <h3>Gracias por sus respuestas, las estaremos evualuando para mejorar nuestro desempeño</h3>
 

@@ -68,6 +68,7 @@ import CreateTestimony from "./Admin/CreateTestimony/CreateTestimony";
 import Consultas from "./Admin/Consultas/Consultas";
 import CreateProducts from "./Admin/CreateProducts/CreateProducts";
 import Encuesta from "./Admin/Encuesta/Encuesta";
+import EncuestaVentas from "./Admin/EncuestaVentas/EncuestaVentas";
 
 // ===== USER =====
 
@@ -85,6 +86,7 @@ const App = () => (
         {/* ===== ADMINISTACION ===== */}
         <Route exact path="/admin" component={Login} />
         <Route exact path="/Encuesta" component={Encuesta} />
+        <Route exact path="/EncuestaVentas" component={EncuestaVentas} />
         {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
         <RouteAM path="/indexAdm" component={IndexAdm} />
         <RouteAM path="/LoginCreate" component={LoginCreate} />
