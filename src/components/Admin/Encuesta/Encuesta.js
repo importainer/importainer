@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { app } from '../../../firebase';
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -84,6 +85,59 @@ export default function LinkCuestionario() {
 
     })
 
+    const login = () => {
+
+        const provider = new GoogleAuthProvider();
+
+        const auth = getAuth();
+
+        signInWithPopup(auth, provider)
+            .then((result) => {
+
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+
+                const token = credential.accessToken;
+
+                // The signed-in user info.
+                const user = result.user;
+                
+                setEncuesta({
+
+                    ...encuesta,
+
+                    user: {
+
+                        name: user.displayName,
+                        email: user.email,
+                        tel: user.phoneNumber,
+            
+                    }
+
+                })
+
+                // ...
+            }).catch((error) => {
+
+                // Handle Errors here.
+                const errorCode = error.code;
+
+                const errorMessage = error.message;
+
+                // The email of the user's account used.
+                const email = error.email;
+
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+
+                // ...
+
+                console.log(errorCode, errorMessage, email, 'error')
+
+            });
+
+    }
+
     const selected = (e) => {
 
         const { value } = e.target;
@@ -123,24 +177,46 @@ export default function LinkCuestionario() {
 
     }
 
+    let google = true;
+
     const siguiente = () => {
 
         const divActive = document.getElementsByClassName(Encuest.rating)[0];
 
         let n = parseInt(divActive.id);
 
-        if(n === 5) {
+        if(google) {
 
-            const encuestaRef = app.firestore().collection('encuesta');
+            login()
 
-            encuestaRef.doc().set(encuesta);
+            google = false;
+
+        } else {
+
+            if(n === 5) {
+
+                const encuestaRef = app.firestore().collection('encuesta');
     
-            if(encuesta[5].rating > 3) {
-    
-                window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+                encuestaRef.doc().set(encuesta);
+        
+                if(encuesta[5].rating > 3) {
+        
+                    window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+        
+                } else {
+        
+                    n++;
+            
+                    const divSecond = document.getElementById(n);
+            
+                    divSecond.className = Encuest.rating;
+            
+                    divActive.className = Encuest.desactiv;
+        
+                }
     
             } else {
-    
+        
                 n++;
         
                 const divSecond = document.getElementById(n);
@@ -150,16 +226,6 @@ export default function LinkCuestionario() {
                 divActive.className = Encuest.desactiv;
     
             }
-
-        } else {
-    
-            n++;
-    
-            const divSecond = document.getElementById(n);
-    
-            divSecond.className = Encuest.rating;
-    
-            divActive.className = Encuest.desactiv;
 
         }
 

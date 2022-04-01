@@ -102,12 +102,12 @@ export default function LinkCuestionario() {
 
         // console.log(, 'nav') 
 
-        // navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
         //     console.log(position, 'position')
         //     console.log("Latitude is :", position.coords.latitude);
         //     console.log("Longitude is :", position.coords.longitude);
 
-        //     Geocode.setApiKey("AIzaSyAMwkTwKDl79-QaAmUCI5M7xHQhAKRl4AE");
+        //     Geocode.setApiKey("AIzaSyChzSbnHW5ZqqIW5sFeXQfSM0gR9t7z9MM");
         //     Geocode.setLanguage("en");
         //     Geocode.setLocationType("ROOFTOP");
         //     Geocode.fromLatLng(position.coords.latitude, position.coords.longitude).then(
@@ -120,21 +120,21 @@ export default function LinkCuestionario() {
         //         }
         //       );
 
-        //     // var geocoder = new google.maps.Geocoder;
-        //     // geocoder.geocode({
-        //     //     'location': `${position.coords.latitude},${position.coords.longitude}`
-        //     //     // ej. "-34.653015, -58.674850"
-        //     // }, function(results, status) {
-        //     //     // si la solicitud fue exitosa
-        //     //     if (status === google.maps.GeocoderStatus.OK) {
-        //     //         // si encontró algún resultado.
-        //     //         if (results[1]) {
-        //     //         console.log(results[1].formatted_address, 'funciona??');
-        //     //         }
-        //     //     }
-        //     // });
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({
+                'location': `${position.coords.latitude},${position.coords.longitude}`
+                // ej. "-34.653015, -58.674850"
+            }, function(results, status) {
+                // si la solicitud fue exitosa
+                if (status === google.maps.GeocoderStatus.OK) {
+                    // si encontró algún resultado.
+                    if (results[1]) {
+                    console.log(results[1].formatted_address, 'funciona??');
+                    }
+                }
+            });
 
-        //   });
+          });
 
         
 
@@ -142,49 +142,49 @@ export default function LinkCuestionario() {
         //     console.log(position)
         //   });
         
-        const provider = new GoogleAuthProvider();
+        // const provider = new GoogleAuthProvider();
 
-        const auth = getAuth();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
+        // const auth = getAuth();
+        // signInWithPopup(auth, provider)
+        //     .then((result) => {
+        //         // This gives you a Google Access Token. You can use it to access the Google API.
+        //         const credential = GoogleAuthProvider.credentialFromResult(result);
+        //         const token = credential.accessToken;
+        //         // The signed-in user info.
+        //         const user = result.user;
 
-                // console.log(user.displayName, user.metadata, user.phoneNumber, user.providerData, 'usuario')
+        //         // console.log(user.displayName, user.metadata, user.phoneNumber, user.providerData, 'usuario')
 
-                // console.log(user.displayName, user.email, user.phoneNumber, 'user')
+        //         // console.log(user.displayName, user.email, user.phoneNumber, 'user')
 
-                setEncuesta({
+        //         setEncuesta({
 
-                    ...encuesta,
+        //             ...encuesta,
 
-                    user: {
+        //             user: {
 
-                        name: user.displayName,
-                        email: user.email,
-                        tel: user.phoneNumber,
+        //                 name: user.displayName,
+        //                 email: user.email,
+        //                 tel: user.phoneNumber,
             
-                    }
+        //             }
 
-                })
+        //         })
 
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
+        //         // ...
+        //     }).catch((error) => {
+        //         // Handle Errors here.
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // The email of the user's account used.
+        //         const email = error.email;
+        //         // The AuthCredential type that was used.
+        //         const credential = GoogleAuthProvider.credentialFromError(error);
+        //         // ...
 
-                console.log(errorCode, errorMessage, email, 'error')
+        //         console.log(errorCode, errorMessage, email, 'error')
 
-            });
+        //     });
 
     }
 
