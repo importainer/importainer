@@ -8,8 +8,6 @@ import IndexStyle from "./IndexAdm.module.css";
 
 export default function IndexAdm({location}) {
 
-    const auth = getAuth();
-
     // ===== RESERVAS =====
     const [publicaciones, setPublicaciones] = useState([]);
     const [reservas, setReservas] = useState([]);

@@ -40,10 +40,10 @@ const Proyectos = () => {
 
     return (
         <div className="">
-            <NavBarSec title="Proyectos" link="/proyectos"/>
+            {/* <NavBarSec title="Proyectos" link="/proyectos"/> */}
             <Titulo titulo="Proyectos" />
             <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} />
-            <FooterSec/>
+            {/* <FooterSec/> */}
         </div>
     )
 }

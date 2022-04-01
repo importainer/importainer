@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import Compañia from "../components/Compañia";
 import HomeAspectos from "../components/HomeAspectos/HomeAspectos";
 import HomeProyectos from "../components/HomeProyectos/HomeProyectos";
+import Proyectos from "../pages/Proyectos";
 import NavBarPrinc from "../components/NavBarPrinc/NavBarPrinc";
 import Wpp from "../components/wpp";
 import BannerF from "./BannerF";
@@ -25,7 +26,8 @@ const Home = () => {
       <NavBarPrinc />
       {/* <Compañia /> */}
       <OfertaList />
-      <HomeProyectos />
+      {/* <HomeProyectos /> */}
+      <Proyectos />
       <HomeAspectos />
       {/* El suspense es para que se renderice esa seccion solo cuando sea necesario */}
       <Suspense fallback={<div>Cargando...</div>}>

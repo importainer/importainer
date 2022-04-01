@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { app } from '../../../firebase';
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -13,6 +14,8 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import EncuestaVen from './EncuestaVentas.module.css';
+
+import Geocode from "react-geocode";
 
 export default function LinkCuestionario() {
 
@@ -70,7 +73,7 @@ export default function LinkCuestionario() {
 
         4: {
 
-            'Probabilidad de Elegirnos': '',
+            'Probabilidad de Adquirir Otro': '',
 
             rating: 5,
 
@@ -83,8 +86,107 @@ export default function LinkCuestionario() {
             rating: 5,
 
         },
+        user: {
+
+            name: '',
+            email: '',
+            tel: '',
+
+        }
 
     })
+
+    const login = () => {
+
+
+
+        // console.log(, 'nav') 
+
+        // navigator.geolocation.getCurrentPosition(function(position) {
+        //     console.log(position, 'position')
+        //     console.log("Latitude is :", position.coords.latitude);
+        //     console.log("Longitude is :", position.coords.longitude);
+
+        //     Geocode.setApiKey("AIzaSyAMwkTwKDl79-QaAmUCI5M7xHQhAKRl4AE");
+        //     Geocode.setLanguage("en");
+        //     Geocode.setLocationType("ROOFTOP");
+        //     Geocode.fromLatLng(position.coords.latitude, position.coords.longitude).then(
+        //         (response) => {
+        //           const address = response.results[0].formatted_address;
+        //           console.log(address);
+        //         },
+        //         (error) => {
+        //           console.error(error);
+        //         }
+        //       );
+
+        //     // var geocoder = new google.maps.Geocoder;
+        //     // geocoder.geocode({
+        //     //     'location': `${position.coords.latitude},${position.coords.longitude}`
+        //     //     // ej. "-34.653015, -58.674850"
+        //     // }, function(results, status) {
+        //     //     // si la solicitud fue exitosa
+        //     //     if (status === google.maps.GeocoderStatus.OK) {
+        //     //         // si encontró algún resultado.
+        //     //         if (results[1]) {
+        //     //         console.log(results[1].formatted_address, 'funciona??');
+        //     //         }
+        //     //     }
+        //     // });
+
+        //   });
+
+        
+
+        // navigator.geolocation.getCurrentPosition(function(position) {
+        //     console.log(position)
+        //   });
+        
+        const provider = new GoogleAuthProvider();
+
+        const auth = getAuth();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+
+                // console.log(user.displayName, user.metadata, user.phoneNumber, user.providerData, 'usuario')
+
+                // console.log(user.displayName, user.email, user.phoneNumber, 'user')
+
+                setEncuesta({
+
+                    ...encuesta,
+
+                    user: {
+
+                        name: user.displayName,
+                        email: user.email,
+                        tel: user.phoneNumber,
+            
+                    }
+
+                })
+
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+
+                console.log(errorCode, errorMessage, email, 'error')
+
+            });
+
+    }
 
     const selected = (e) => {
 
@@ -125,24 +227,46 @@ export default function LinkCuestionario() {
 
     }
 
+    let google = true;
+
     const siguiente = () => {
 
         const divActive = document.getElementsByClassName(EncuestaVen.rating)[0];
 
         let n = parseInt(divActive.id);
+        
+        if(google) {
 
-        if(n === 5) {
+            login()
 
-            const encuestaRef = app.firestore().collection('encuestaVentas');
+            google = false;
 
-            encuestaRef.doc().set(encuesta);
+        } else {
+
+            if(n === 5) {
+
+                const encuestaRef = app.firestore().collection('encuestaVentas');
     
-            if(encuesta[5].rating > 3) {
-    
-                window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+                encuestaRef.doc().set(encuesta);
+        
+                if(encuesta[5].rating > 3) {
+        
+                    window.location.href = 'https://g.page/r/CQpbX5Jjq0H9EBE/review';
+        
+                } else {
+        
+                    n++;
+            
+                    const divSecond = document.getElementById(n);
+            
+                    divSecond.className = EncuestaVen.rating;
+            
+                    divActive.className = EncuestaVen.desactiv;
+        
+                }
     
             } else {
-    
+        
                 n++;
         
                 const divSecond = document.getElementById(n);
@@ -152,16 +276,6 @@ export default function LinkCuestionario() {
                 divActive.className = EncuestaVen.desactiv;
     
             }
-
-        } else {
-    
-            n++;
-    
-            const divSecond = document.getElementById(n);
-    
-            divSecond.className = EncuestaVen.rating;
-    
-            divActive.className = EncuestaVen.desactiv;
 
         }
 
@@ -236,6 +350,8 @@ export default function LinkCuestionario() {
     };
 
     const { financiacion, tiempoEntrega, llaveEnMano, diseñosPersonalizables, Practicidad, Atencion } = encuesta[1].data;
+
+    // console.log(encuesta, 'encuesta')
 
     return (
 
@@ -354,7 +470,7 @@ export default function LinkCuestionario() {
 
                     <div id='4' className={EncuestaVen.desactiv} >
 
-                        <h3 id='Probabilidad de Elegirnos' >¿Cuál es la probabilidad de que vuelva a adquirir uno de nuestros productos?</h3>
+                        <h3 id='Probabilidad de Adquirir Otro' >¿Cuál es la probabilidad de que en un futuro adquiera uno de nuestros productos?</h3>
 
                         <Rating
                             name="highlight-selected-only"
