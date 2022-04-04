@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { db, } from "../../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import NavBar from "../NavBar/NavBar";
 import Graphics from "../Graphic/Graphic";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -59,144 +59,194 @@ export default function IndexAdm({location}) {
         getRes();
 
             // ===== ENCUESTA =====
+
+        
+
         const getEncuestas = () => {
 
-            getDocs(collection(db, 'encuesta'))
+            getDocs(collection(db, 'encuestaBackup'))
                 .then(tbl => {
                     
                     setCantEncuestas(tbl.docs.length);
-                    
-                    tbl.docs.map(doc => {
+                    // console.log(tbl.docs.map(e => e.data()), 'buscar')
 
-                        // const ele = doc.data();
+                    // ----- CARGAR BACKUP ------
 
-                        for (const k in doc.data()) {
+                    // tbl.docs.map(async e => {
 
-                            if (Object.hasOwnProperty.call(doc.data(), k)) {
+                    //     console.log(e.data(), 'ver')
 
-                                const e = doc.data()[k];
+                    //     await addDoc(collection(db, "encuestaBackup"), e.data());
 
-                                if(parseInt(k) === 1) {
+                    // })
 
-                                    const check = e.data;
+                    // ----- CARGAR BACKUP ------
 
-                                    for (const i in check) {
+                    tbl.docs.map(e => e.data()[1].data).forEach(ele => {
 
-                                        if (Object.hasOwnProperty.call(check, i)) {
+                        console.log({
 
-                                            const ele = check[i];
+                            "hola gato": 'no se',
+                            'como estas': 'bien'
 
-                                            // console.log(ele, i, 'ele')
-                                            // console.log(scoreEncuesta[0], 'fuera switch')
-                                            // console.log(labelEncuesta.indexOf(i))
+                        }, 'ver')
 
-                                            // console.log(labelEncuesta.includes(i))
-                                            // if(labelEncuesta.length <= 5) {
-
-                                                // if(!labelEncuesta.includes(i)) {
-
-                                                //     labelEncuesta.push(i)
-    
-                                                // }
-
-                                            // }
-
-                                            // if(!labelEncuesta.includes(i)) {
-
-                                            //     labelEncuesta.push(i)
-
-                                            // }
-
-                                            switch (i) {
-
-                                                case 'Atencion':
-
-                                                    if(scoreEncuesta[0] === undefined) ele ? scoreEncuesta[0] = 1 : scoreEncuesta[0] = 0;
-                                                    else ele ? scoreEncuesta[0] = scoreEncuesta[0] + 1 : scoreEncuesta[0] = scoreEncuesta[0] + 0;
-                                                        break;
-
-                                                case 'Practicidad':
-
-                                                    if(scoreEncuesta[1] === undefined) ele ? scoreEncuesta[1] = 1 : scoreEncuesta[1] = 0;
-                                                    else ele ? scoreEncuesta[1] = scoreEncuesta[1] + 1 : scoreEncuesta[1] = scoreEncuesta[1] + 0;
-                                                        break;
-
-                                                case 'diseñosPersonalizables':
-
-                                                    if(scoreEncuesta[2] === undefined) ele ? scoreEncuesta[2] = 1 : scoreEncuesta[2] = 0;
-                                                    else ele ? scoreEncuesta[2] = scoreEncuesta[2] + 1 : scoreEncuesta[2] = scoreEncuesta[2] + 0;
-                                                        break;
-
-                                                case 'financiacion':
-
-                                                    if(scoreEncuesta[3] === undefined) ele ? scoreEncuesta[3] = 1 : scoreEncuesta[3] = 0;
-                                                    else ele ? scoreEncuesta[3] = scoreEncuesta[3] + 1 : scoreEncuesta[3] = scoreEncuesta[3] + 0;
-                                                        break;
-
-                                                case 'llaveEnMano':
-
-                                                    if(scoreEncuesta[4] === undefined) ele ? scoreEncuesta[4] = 1 : scoreEncuesta[4] = 0;
-                                                    else ele ? scoreEncuesta[4] = scoreEncuesta[4] + 1 : scoreEncuesta[4] = scoreEncuesta[4] + 0;
-                                                        break;
-
-                                                case 'tiempoEntrega':
-
-                                                    if(scoreEncuesta[5] === undefined) ele ? scoreEncuesta[5] = 1 : scoreEncuesta[5] = 0;
-                                                    else ele ? scoreEncuesta[5] = scoreEncuesta[5] + 1 : scoreEncuesta[5] = scoreEncuesta[5] + 0;
-                                                        break;
-
-                                            }
-                                            
-                                        }
-                                    }
-
-                                } else {
-
-                                    for (const j in e) {
-                                        if (Object.hasOwnProperty.call(e, j)) {
-                                            const el = e[j];
-    
-                                            if(j === 'Tiempo Respuesta') console.log(el, j, e.rating, 'seguimos')
-
-                                            switch (j) {
-
-                                                case 'Tiempo Respuesta':
-
-                                                    scoreEncuesta[6] = scoreEncuesta[6] + e.rating;
-
-                                                    // if(scoreEncuesta[6] === undefined) scoreEncuesta[6] = scoreEncuesta[6] + e.rating;
-                                                    // else ele ? scoreEncuesta[5] = scoreEncuesta[5] + 1 : scoreEncuesta[5] = scoreEncuesta[5] + 0;
-                                                        break;
-                                            
-                                                default:
-                                                    break;
-                                            }
-                                            
-                                        }
-                                    }
-
-                                }
-
-                                //---
-
-
-                                // labelEncuesta = [...labelEncuesta, 'Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de Elegirnos', 'Calificacion Empresa']
-
-                                // labelEncuesta.push('Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de elegirnos', 'Calificacion Empresa')
-
-                                // const txt = 
-
-                                // if(!labelEncuesta.includes(i)) {
-
-                                //     labelEncuesta.push(i)
-
-                                // }
-
-                            }
-                        }
-                        
+                        // if()
 
                     })
+
+                    // tbl.docs.map(doc => {
+
+                    //     // const ele = doc.data();
+
+                        
+
+                    //     // for (const k in doc.data()) {
+
+                    //     //     if (Object.hasOwnProperty.call(doc.data(), k)) {
+
+                    //     //         const e = doc.data()[k];
+
+                    //     //         if(parseInt(k) === 1) {
+
+                    //     //             const check = e.data;
+
+                    //     //             for (const i in check) {
+
+                    //     //                 if (Object.hasOwnProperty.call(check, i)) {
+
+                    //     //                     const ele = check[i];
+
+                    //     //                     // console.log(ele, i, 'ele')
+                    //     //                     // console.log(scoreEncuesta[0], 'fuera switch')
+                    //     //                     // console.log(labelEncuesta.indexOf(i))
+
+                    //     //                     // console.log(labelEncuesta.includes(i))
+                    //     //                     // if(labelEncuesta.length <= 5) {
+
+                    //     //                         // if(!labelEncuesta.includes(i)) {
+
+                    //     //                         //     labelEncuesta.push(i)
+    
+                    //     //                         // }
+
+                    //     //                     // }
+
+                    //     //                     // if(!labelEncuesta.includes(i)) {
+
+                    //     //                     //     labelEncuesta.push(i)
+
+                    //     //                     // }
+
+                    //     //                     switch (i) {
+
+                    //     //                         case 'Atencion':
+
+                    //     //                             if(scoreEncuesta[0] === undefined) ele ? scoreEncuesta[0] = 1 : scoreEncuesta[0] = 0;
+                    //     //                             else ele ? scoreEncuesta[0] = scoreEncuesta[0] + 1 : scoreEncuesta[0] = scoreEncuesta[0] + 0;
+                    //     //                                 break;
+
+                    //     //                         case 'Practicidad':
+
+                    //     //                             if(scoreEncuesta[1] === undefined) ele ? scoreEncuesta[1] = 1 : scoreEncuesta[1] = 0;
+                    //     //                             else ele ? scoreEncuesta[1] = scoreEncuesta[1] + 1 : scoreEncuesta[1] = scoreEncuesta[1] + 0;
+                    //     //                                 break;
+
+                    //     //                         case 'diseñosPersonalizables':
+
+                    //     //                             if(scoreEncuesta[2] === undefined) ele ? scoreEncuesta[2] = 1 : scoreEncuesta[2] = 0;
+                    //     //                             else ele ? scoreEncuesta[2] = scoreEncuesta[2] + 1 : scoreEncuesta[2] = scoreEncuesta[2] + 0;
+                    //     //                                 break;
+
+                    //     //                         case 'financiacion':
+
+                    //     //                             if(scoreEncuesta[3] === undefined) ele ? scoreEncuesta[3] = 1 : scoreEncuesta[3] = 0;
+                    //     //                             else ele ? scoreEncuesta[3] = scoreEncuesta[3] + 1 : scoreEncuesta[3] = scoreEncuesta[3] + 0;
+                    //     //                                 break;
+
+                    //     //                         case 'llaveEnMano':
+
+                    //     //                             if(scoreEncuesta[4] === undefined) ele ? scoreEncuesta[4] = 1 : scoreEncuesta[4] = 0;
+                    //     //                             else ele ? scoreEncuesta[4] = scoreEncuesta[4] + 1 : scoreEncuesta[4] = scoreEncuesta[4] + 0;
+                    //     //                                 break;
+
+                    //     //                         case 'tiempoEntrega':
+
+                    //     //                             if(scoreEncuesta[5] === undefined) ele ? scoreEncuesta[5] = 1 : scoreEncuesta[5] = 0;
+                    //     //                             else ele ? scoreEncuesta[5] = scoreEncuesta[5] + 1 : scoreEncuesta[5] = scoreEncuesta[5] + 0;
+                    //     //                                 break;
+
+                    //     //                     }
+                                            
+                    //     //                 }
+                    //     //             }
+
+                    //     //         } else {
+                                    
+                    //     //             for (const j in e) {
+
+                    //     //                 if (Object.hasOwnProperty.call(e, j)) {
+                    //     //                     const el = e[j];
+
+                    //     //                     if(labelEncuesta.includes(j)) {
+
+                    //     //                         const k = labelEncuesta.indexOf(j);
+
+                    //     //                         if(scoreEncuesta[k] === undefined) scoreEncuesta[k] = parseInt(e.rating);
+                    //     //                         else scoreEncuesta[k] = scoreEncuesta[k] + parseInt(e.rating);
+                                                    
+
+                    //     //                     }
+                                            
+                    //     //                 }
+                    //     //             }
+
+                    //     //             for (const j in e) {
+
+                    //     //                 if (Object.hasOwnProperty.call(e, j)) {
+                    //     //                     const el = e[j];
+
+                    //     //                     if(labelEncuesta.includes(j)) {
+
+                    //     //                         const k = labelEncuesta.indexOf(j);
+
+                    //     //                         scoreEncuesta[k] = Math.round(scoreEncuesta[k] / cantEncuestas);
+                                                    
+
+                    //     //                     }
+                                            
+                    //     //                 }
+                    //     //             }
+
+                    //     //         }
+
+                    //     //         if(scoreEncuesta2?.length === 0) {
+
+                    //     //             setScoreEncuesta2(scoreEncuesta)
+
+                    //     //         }
+
+                    //     //         //---
+
+
+                    //     //         // labelEncuesta = [...labelEncuesta, 'Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de Elegirnos', 'Calificacion Empresa']
+
+                    //     //         // labelEncuesta.push('Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de elegirnos', 'Calificacion Empresa')
+
+                    //     //         // const txt = 
+
+                    //     //         // if(!labelEncuesta.includes(i)) {
+
+                    //     //         //     labelEncuesta.push(i)
+
+                    //     //         // }
+
+                    //     //     }
+                    //     // }
+                        
+                    //     // setScoreEncuesta2
+
+                    // })
 
                 })
                 .catch(e => console.log(e, 'error'))
@@ -250,11 +300,11 @@ export default function IndexAdm({location}) {
 
     //     // }
 
-    //     console.log(labelEncuesta, 'fuera del time')
+    //     console.log(labelEncuesta, scoreEncuesta, scoreEncuesta, 'fuera del time')
 
     // }, 1000)
 
-    console.log(labelEncuesta, scoreEncuesta, 'fuera del time')
+    // console.log(labelEncuesta, scoreEncuesta, 'fuera del time')
 
     return (
 

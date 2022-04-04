@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import AspectosCard from "./AspectosCard";
 import "./AspectosList.css";
-import test1 from "./../../images/test/test1.jpg";
-import test2 from "./../../images/test/test2.jpg";
-import fibra from "./../../images/test/firbra.jpg";
+// import test1 from "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fcontainer.jpg?alt=media&token=a49f7386-3d5e-4e44-8fcb-f010cda43f2d";
+// import test2 from "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fpilote.JPG?alt=media&token=fdf36e74-d819-4b5e-b78b-91354bfcdd5d";
+// import fibra from "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2FlanaVidrio.jpg?alt=media&token=734a5dfc-9d89-4065-a33c-78e59ca41b93";
+
+// const containerIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fcontainer.jpg?alt=media&token=a49f7386-3d5e-4e44-8fcb-f010cda43f2d";
+//   const lanaVidrioIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2FlanaVidrio.jpg?alt=media&token=734a5dfc-9d89-4065-a33c-78e59ca41b93";
+//   const piloteIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fpilote.JPG?alt=media&token=fdf36e74-d819-4b5e-b78b-91354bfcdd5d";
+
+const test1 = '';
+const test2 = '';
+const fibra = '';
 
 export default class AspectosList extends Component {
   render() {

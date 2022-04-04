@@ -8,6 +8,10 @@ export default function HomeAspectosCard() {
   const lanaVidrioIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2FlanaVidrio.jpg?alt=media&token=734a5dfc-9d89-4065-a33c-78e59ca41b93";
   const piloteIMG = "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Aspectos%2Fpilote.JPG?alt=media&token=fdf36e74-d819-4b5e-b78b-91354bfcdd5d";
 
+  // const containerIMG = null;
+  // const lanaVidrioIMG = null;
+  // const piloteIMG = null;
+
   return (
     <div>
       <section className="aspectos container">

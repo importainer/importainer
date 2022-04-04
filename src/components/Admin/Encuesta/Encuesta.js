@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { app } from '../../../firebase';
+import { app, db } from '../../../firebase';
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 import PropTypes from 'prop-types';
 import Rating from '@mui/material/Rating';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -17,14 +18,14 @@ import Encuest from './Encuesta.module.css';
 
 export default function LinkCuestionario() {
 
-    const dia = new Date().getDay();
+    const dia = new Date().getDate();
 
     const mes = new Date().getMonth();
 
     const año = new Date().getFullYear();
 
-    const hoy = `${dia}/${mes}/${año}`;
-
+    const hoy = `${dia}/${mes + 1}/${año}`;
+    
     const [encuesta, setEncuesta] = useState({
 
         0: hoy,
@@ -35,13 +36,13 @@ export default function LinkCuestionario() {
 
             data: {
 
-                financiacion: false,
+                Financiacion: false,
 
-                tiempoEntrega: false,
+                'Tiempo Entrega': false,
 
-                llaveEnMano: false,
+                'Llave en Mano': false,
 
-                diseñosPersonalizables: false,
+                'Diseños Personalizables': false,
 
                 Practicidad: false,
 
@@ -179,7 +180,7 @@ export default function LinkCuestionario() {
 
     let google = true;
 
-    const siguiente = () => {
+    const siguiente = async () => {
 
         const divActive = document.getElementsByClassName(Encuest.rating)[0];
 
@@ -198,6 +199,8 @@ export default function LinkCuestionario() {
                 const encuestaRef = app.firestore().collection('encuesta');
     
                 encuestaRef.doc().set(encuesta);
+                
+                await addDoc(collection(db, "encuestaBackup"), encuesta);
         
                 if(encuesta[5].rating > 3) {
         
@@ -322,21 +325,21 @@ export default function LinkCuestionario() {
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={financiacion} onChange={handleChange} name="financiacion" />
+                                                <Checkbox checked={financiacion} onChange={handleChange} name="Financiacion" />
                                                 }
                                                 label="Financiación"
                                             />
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={tiempoEntrega} onChange={handleChange} name="tiempoEntrega" />
+                                                <Checkbox checked={tiempoEntrega} onChange={handleChange} name="Tiempo Entrega" />
                                                 }
                                                 label="Tiempo de entrega"
                                             />
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={llaveEnMano} onChange={handleChange} name="llaveEnMano" />
+                                                <Checkbox checked={llaveEnMano} onChange={handleChange} name="Llave en Mano" />
                                                 }
                                                 label="Sistema llave en mano"
                                             />
@@ -354,7 +357,7 @@ export default function LinkCuestionario() {
 
                                             <FormControlLabel
                                                 control={
-                                                <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="diseñosPersonalizables" />
+                                                <Checkbox checked={diseñosPersonalizables} onChange={handleChange} name="Diseños Personalizables" />
                                                 }
                                                 label="Diseños personalizables"
                                             />
