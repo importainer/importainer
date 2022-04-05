@@ -17,6 +17,7 @@ export default function IndexAdm({location}) {
 
     // ===== ENCUESTA =====
     const [tblState, setTblState] = useState([]);
+    const [tblQuery, setTblQuery] = useState([]);
     const [labelEncuesta, setLabelEncuesta] = useState([]);
     const [cantEncuestas, setCantEncuestas] = useState(0)
     const scoreEncuesta = [];
@@ -70,7 +71,7 @@ export default function IndexAdm({location}) {
 
             if(labelEncuesta.length === 0) {
 
-                getDocs(collection(db, 'encuesta'))
+                getDocs(collection(db, 'encuestaBackup'))
                 .then(tbl => {
                     
                     setCantEncuestas(tbl.docs.length);
@@ -90,6 +91,8 @@ export default function IndexAdm({location}) {
                     const data = tbl.docs.map(e => e.data()[1].data);
 
                     setTblState(tbl.docs.map(e => e.data()[1].data));
+
+                    setTblQuery(tbl.docs.map(e => e.data()))
 
                     const getDataLabel = () => {
 
@@ -229,6 +232,106 @@ export default function IndexAdm({location}) {
     }
 
     getPropData()
+
+    const getQueryData = () => {
+
+        const querys = tblQuery.map(e => {
+
+            return {
+
+                2: e[2],
+                3: e[3],
+                4: e[4],
+                5: e[5],
+
+            }
+
+        });
+
+        querys.forEach(e => {
+
+            for (const k in e) {
+
+                if (Object.hasOwnProperty.call(e, k)) {
+
+                    const element = e[k];
+
+                    if(!labelEncuesta.includes(Object.keys(element)[0]) && Object.keys(element)[0] !== 'rating'){
+                        
+                        setLabelEncuesta([...labelEncuesta, Object.keys(element)[0]])
+
+                    }
+                                        
+                }
+            }
+
+        });
+
+    }
+
+    getQueryData()
+
+    const getScoreQuery = () => {
+
+        const querys = tblQuery.map(e => {
+
+            return {
+
+                2: e[2],
+                3: e[3],
+                4: e[4],
+                5: e[5],
+
+            }
+
+        });
+
+        querys.forEach(e => {
+
+            for (const k in e) {
+
+                if (Object.hasOwnProperty.call(e, k)) {
+
+                    const element = e[k];
+
+                    let indexElement = labelEncuesta.indexOf(Object.keys(element)[0]);
+
+                    let rat = parseInt(element.rating);
+
+                    if(labelEncuesta.includes(Object.keys(element)[0]) && Object.keys(element)[0] !== 'rating'){
+
+                        if(scoreEncuesta[indexElement] === undefined) {
+                            
+                            scoreEncuesta[indexElement] = rat;
+
+                        } else {
+                            
+                            scoreEncuesta[indexElement] = scoreEncuesta[indexElement] + rat;
+
+                        }
+
+                    }
+                     
+                }
+            }
+
+        })
+
+        scoreEncuesta.reduce((acc, score, i) => {
+
+            if(i > 5) {
+
+                acc = Math.ceil(score / cantEncuestas);
+
+                scoreEncuesta[i] = acc;
+
+            }
+
+        }, 0)
+
+    }
+
+    getScoreQuery()
     
     // ===== ENCUESTA =====
 
@@ -267,6 +370,8 @@ export default function IndexAdm({location}) {
     getPropDataVentas()
     
     // ===== ENCUESTA VENTAS =====
+
+    // console.log(scoreEncuesta, labelEncuesta, 'fin')
 
     return (
 

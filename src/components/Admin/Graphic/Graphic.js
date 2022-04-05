@@ -104,7 +104,7 @@ export default function Graphics({ publicaciones, score, label, indexAxis, barPe
         }
 
     })
-    // console.log(label, 'grafico');
+    console.log(labels, 'grafico');
     return (
 
         <div className='GraphicsContent'>
