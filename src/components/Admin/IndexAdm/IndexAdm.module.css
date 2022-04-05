@@ -28,7 +28,7 @@
 
 .boxGraphics > h1 {
 
-    background: linear-gradient(90deg, rgba(255,0,0,0) 20%, rgba(255,0,0,0.9) 50%, rgba(255,0,0,0) 80%);
+    background: linear-gradient(90deg, rgba(255,0,0,0) 10%, rgba(255,0,0,0.9) 50%, rgba(255,0,0,0) 90%);
     color: #fff;
     text-align: center;
 

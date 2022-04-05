@@ -13,18 +13,22 @@ export default function IndexAdm({location}) {
     const [reservas, setReservas] = useState([]);
 
     const score = [];
+    // ===== RESERVAS =====
 
     // ===== ENCUESTA =====
     const [tblState, setTblState] = useState([]);
-    // const [labelEncuesta, setLabelEncuesta] = useState([]);
-    const [scoreEncuesta2, setScoreEncuesta2] = useState([]);
+    const [labelEncuesta, setLabelEncuesta] = useState([]);
     const [cantEncuestas, setCantEncuestas] = useState(0)
-
-    // let labelEncuesta = [];
-    const labelEncuesta = ['Atencion', 'Practicidad', 'Diseños Personalizabo', 'Financiación', 'Llave en Mano', 'Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de elegirnos', 'Calificacion Empresa'];
-
     const scoreEncuesta = [];
-    // console.log(scoreEncuesta, 'creamos el array')
+    // ===== ENCUESTA =====
+    
+    // ===== ENCUESTA VENTAS =====
+    const [tblStateVentas, setTblStateVentas] = useState([]);
+    const [labelEncuestaVentas, setLabelEncuestaVentas] = useState([]);
+    const [cantEncuestasVentas, setCantEncuestasVentas] = useState(0)
+    const scoreEncuestaVentas = [];
+    // ===== ENCUESTA VENTAS =====
+    
     useEffect(() => {
 
         // ===== RESERVAS =====
@@ -58,17 +62,18 @@ export default function IndexAdm({location}) {
 
         getRes();
 
-            // ===== ENCUESTA =====
+        // ===== RESERVAS =====
 
-        
+        // ===== ENCUESTA =====
 
         const getEncuestas = () => {
 
-            getDocs(collection(db, 'encuestaBackup'))
+            if(labelEncuesta.length === 0) {
+
+                getDocs(collection(db, 'encuesta'))
                 .then(tbl => {
                     
                     setCantEncuestas(tbl.docs.length);
-                    // console.log(tbl.docs.map(e => e.data()), 'buscar')
 
                     // ----- CARGAR BACKUP ------
 
@@ -76,190 +81,89 @@ export default function IndexAdm({location}) {
 
                     //     console.log(e.data(), 'ver')
 
-                    //     await addDoc(collection(db, "encuestaBackup"), e.data());
+                    //     await addDoc(collection(db, "encuesta"), e.data());
 
                     // })
 
                     // ----- CARGAR BACKUP ------
 
-                    tbl.docs.map(e => e.data()[1].data).forEach(ele => {
+                    const data = tbl.docs.map(e => e.data()[1].data);
 
-                        console.log({
+                    setTblState(tbl.docs.map(e => e.data()[1].data));
 
-                            "hola gato": 'no se',
-                            'como estas': 'bien'
+                    const getDataLabel = () => {
 
-                        }, 'ver')
+                        data.forEach(ele => setLabelEncuesta(Object.keys(ele)));
 
-                        // if()
+                    }
 
-                    })
+                    getDataLabel();
 
-                    // tbl.docs.map(doc => {
-
-                    //     // const ele = doc.data();
-
-                        
-
-                    //     // for (const k in doc.data()) {
-
-                    //     //     if (Object.hasOwnProperty.call(doc.data(), k)) {
-
-                    //     //         const e = doc.data()[k];
-
-                    //     //         if(parseInt(k) === 1) {
-
-                    //     //             const check = e.data;
-
-                    //     //             for (const i in check) {
-
-                    //     //                 if (Object.hasOwnProperty.call(check, i)) {
-
-                    //     //                     const ele = check[i];
-
-                    //     //                     // console.log(ele, i, 'ele')
-                    //     //                     // console.log(scoreEncuesta[0], 'fuera switch')
-                    //     //                     // console.log(labelEncuesta.indexOf(i))
-
-                    //     //                     // console.log(labelEncuesta.includes(i))
-                    //     //                     // if(labelEncuesta.length <= 5) {
-
-                    //     //                         // if(!labelEncuesta.includes(i)) {
-
-                    //     //                         //     labelEncuesta.push(i)
-    
-                    //     //                         // }
-
-                    //     //                     // }
-
-                    //     //                     // if(!labelEncuesta.includes(i)) {
-
-                    //     //                     //     labelEncuesta.push(i)
-
-                    //     //                     // }
-
-                    //     //                     switch (i) {
-
-                    //     //                         case 'Atencion':
-
-                    //     //                             if(scoreEncuesta[0] === undefined) ele ? scoreEncuesta[0] = 1 : scoreEncuesta[0] = 0;
-                    //     //                             else ele ? scoreEncuesta[0] = scoreEncuesta[0] + 1 : scoreEncuesta[0] = scoreEncuesta[0] + 0;
-                    //     //                                 break;
-
-                    //     //                         case 'Practicidad':
-
-                    //     //                             if(scoreEncuesta[1] === undefined) ele ? scoreEncuesta[1] = 1 : scoreEncuesta[1] = 0;
-                    //     //                             else ele ? scoreEncuesta[1] = scoreEncuesta[1] + 1 : scoreEncuesta[1] = scoreEncuesta[1] + 0;
-                    //     //                                 break;
-
-                    //     //                         case 'diseñosPersonalizables':
-
-                    //     //                             if(scoreEncuesta[2] === undefined) ele ? scoreEncuesta[2] = 1 : scoreEncuesta[2] = 0;
-                    //     //                             else ele ? scoreEncuesta[2] = scoreEncuesta[2] + 1 : scoreEncuesta[2] = scoreEncuesta[2] + 0;
-                    //     //                                 break;
-
-                    //     //                         case 'financiacion':
-
-                    //     //                             if(scoreEncuesta[3] === undefined) ele ? scoreEncuesta[3] = 1 : scoreEncuesta[3] = 0;
-                    //     //                             else ele ? scoreEncuesta[3] = scoreEncuesta[3] + 1 : scoreEncuesta[3] = scoreEncuesta[3] + 0;
-                    //     //                                 break;
-
-                    //     //                         case 'llaveEnMano':
-
-                    //     //                             if(scoreEncuesta[4] === undefined) ele ? scoreEncuesta[4] = 1 : scoreEncuesta[4] = 0;
-                    //     //                             else ele ? scoreEncuesta[4] = scoreEncuesta[4] + 1 : scoreEncuesta[4] = scoreEncuesta[4] + 0;
-                    //     //                                 break;
-
-                    //     //                         case 'tiempoEntrega':
-
-                    //     //                             if(scoreEncuesta[5] === undefined) ele ? scoreEncuesta[5] = 1 : scoreEncuesta[5] = 0;
-                    //     //                             else ele ? scoreEncuesta[5] = scoreEncuesta[5] + 1 : scoreEncuesta[5] = scoreEncuesta[5] + 0;
-                    //     //                                 break;
-
-                    //     //                     }
-                                            
-                    //     //                 }
-                    //     //             }
-
-                    //     //         } else {
-                                    
-                    //     //             for (const j in e) {
-
-                    //     //                 if (Object.hasOwnProperty.call(e, j)) {
-                    //     //                     const el = e[j];
-
-                    //     //                     if(labelEncuesta.includes(j)) {
-
-                    //     //                         const k = labelEncuesta.indexOf(j);
-
-                    //     //                         if(scoreEncuesta[k] === undefined) scoreEncuesta[k] = parseInt(e.rating);
-                    //     //                         else scoreEncuesta[k] = scoreEncuesta[k] + parseInt(e.rating);
-                                                    
-
-                    //     //                     }
-                                            
-                    //     //                 }
-                    //     //             }
-
-                    //     //             for (const j in e) {
-
-                    //     //                 if (Object.hasOwnProperty.call(e, j)) {
-                    //     //                     const el = e[j];
-
-                    //     //                     if(labelEncuesta.includes(j)) {
-
-                    //     //                         const k = labelEncuesta.indexOf(j);
-
-                    //     //                         scoreEncuesta[k] = Math.round(scoreEncuesta[k] / cantEncuestas);
-                                                    
-
-                    //     //                     }
-                                            
-                    //     //                 }
-                    //     //             }
-
-                    //     //         }
-
-                    //     //         if(scoreEncuesta2?.length === 0) {
-
-                    //     //             setScoreEncuesta2(scoreEncuesta)
-
-                    //     //         }
-
-                    //     //         //---
-
-
-                    //     //         // labelEncuesta = [...labelEncuesta, 'Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de Elegirnos', 'Calificacion Empresa']
-
-                    //     //         // labelEncuesta.push('Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de elegirnos', 'Calificacion Empresa')
-
-                    //     //         // const txt = 
-
-                    //     //         // if(!labelEncuesta.includes(i)) {
-
-                    //     //         //     labelEncuesta.push(i)
-
-                    //     //         // }
-
-                    //     //     }
-                    //     // }
-                        
-                    //     // setScoreEncuesta2
-
-                    // })
+                    
 
                 })
                 .catch(e => console.log(e, 'error'))
 
+            }
+
         }
 
         getEncuestas()
+        
+        // ===== ENCUESTA =====
+
+        // ===== ENCUESTA VENTAS =====
+
+        const getEncuestasVentas = () => {
+
+            if(labelEncuestaVentas.length === 0) {
+
+                getDocs(collection(db, 'encuestaVentas'))
+                .then(tbl => {
+                    
+                    setCantEncuestasVentas(tbl.docs.length);
+
+                    // ----- CARGAR BACKUP ------
+
+                    // tbl.docs.map(async e => {
+
+                    //     console.log(e.data(), 'ver')
+
+                    //     await addDoc(collection(db, "encuesta"), e.data());
+
+                    // })
+
+                    // ----- CARGAR BACKUP ------
+
+                    const data = tbl.docs.map(e => e.data()[1].data);
+
+                    setTblStateVentas(tbl.docs.map(e => e.data()[1].data));
+
+                    const getDataLabelVentas = () => {
+
+                        data.forEach(ele => setLabelEncuestaVentas(Object.keys(ele)));
+
+                    }
+
+                    getDataLabelVentas();
+
+                    
+
+                })
+                .catch(e => console.log(e, 'error'))
+
+            }
+
+        }
+
+        getEncuestasVentas()
+        
+        // ===== ENCUESTA VENTAS =====
               
     }, []);
 
+    // ===== RESERVAS =====
     
-    // const labelEncuesta = [];
-
     const sumScore = () => {
 
         reservas.map((e, i) => {
@@ -289,22 +193,80 @@ export default function IndexAdm({location}) {
     }
 
     sumScore();
-
-    // const labelEncuesta = ['Atencion', 'Practicidad', 'Diseños Personalizabo', 'Financiación', 'Llave en Mano', 'Tiempo Entrega', 'Tiempo Respuesta', 'Recomendacion Empresa', 'Probabilidad de elegirnos', 'Calificacion Empresa'];
     
-    // setTimeout(() => {
+    // ===== RESERVAS =====
+
+    // ===== ENCUESTA =====
+
+    const getPropData = () => {
+
+        let llaveMano, diseñosPersonalizables, practicidad, atencion, tiempoEntrega, financiacion;
         
-    //     // if(scoreEncuesta2.length === 0) {
+        llaveMano = tblState.map(e => e['Llave en Mano'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-    //     //     setScoreEncuesta2(scoreEncuesta);
+        diseñosPersonalizables = tblState.map(e => e['Diseños Personalizables'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-    //     // }
+        practicidad = tblState.map(e => e['Practicidad'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-    //     console.log(labelEncuesta, scoreEncuesta, scoreEncuesta, 'fuera del time')
+        atencion = tblState.map(e => e['Atencion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-    // }, 1000)
+        tiempoEntrega = tblState.map(e => e['Tiempo Entrega'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-    // console.log(labelEncuesta, scoreEncuesta, 'fuera del time')
+        financiacion = tblState.map(e => e['Financiacion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        scoreEncuesta[labelEncuesta.indexOf('Llave en Mano')] = llaveMano;
+        
+        scoreEncuesta[labelEncuesta.indexOf('Diseños Personalizables')] = diseñosPersonalizables;
+
+        scoreEncuesta[labelEncuesta.indexOf('Practicidad')] = practicidad;
+
+        scoreEncuesta[labelEncuesta.indexOf('Atencion')] = atencion;
+
+        scoreEncuesta[labelEncuesta.indexOf('Tiempo Entrega')] = tiempoEntrega;
+
+        scoreEncuesta[labelEncuesta.indexOf('Financiacion')] = financiacion;
+
+    }
+
+    getPropData()
+    
+    // ===== ENCUESTA =====
+
+    // ===== ENCUESTA VENTAS =====
+
+    const getPropDataVentas = () => {
+
+        let llaveMano, diseñosPersonalizables, practicidad, atencion, tiempoEntrega, financiacion;
+        
+        llaveMano = tblStateVentas.map(e => e['Llave en Mano'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        diseñosPersonalizables = tblStateVentas.map(e => e['Diseños Personalizables'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        practicidad = tblStateVentas.map(e => e['Practicidad'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        atencion = tblStateVentas.map(e => e['Atencion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        tiempoEntrega = tblStateVentas.map(e => e['Tiempo Entrega'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        financiacion = tblStateVentas.map(e => e['Financiacion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Llave en Mano')] = llaveMano;
+        
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Diseños Personalizables')] = diseñosPersonalizables;
+
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Practicidad')] = practicidad;
+
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Atencion')] = atencion;
+
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Tiempo Entrega')] = tiempoEntrega;
+
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Financiacion')] = financiacion;
+
+    }
+
+    getPropDataVentas()
+    
+    // ===== ENCUESTA VENTAS =====
 
     return (
 
@@ -329,6 +291,14 @@ export default function IndexAdm({location}) {
                     <Graphics publicaciones={labelEncuesta} score={scoreEncuesta} label='Encuestas' indexAxis='y' barPercentage='1' />
 
                 </div>
+                
+                {/* <div className={IndexStyle.boxGraphics} >
+
+                    <h1>{cantEncuestasVentas} Encuestas De Ventas</h1>
+
+                    <Graphics publicaciones={labelEncuestaVentas} score={scoreEncuestaVentas} label='Encuestas' indexAxis='y' barPercentage='1' />
+
+                </div> */}
 
             </div>
 
