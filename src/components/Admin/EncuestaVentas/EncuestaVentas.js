@@ -37,17 +37,17 @@ export default function LinkCuestionario() {
 
             data: {
 
-                precioCaro: false,
+                'Entrega Lejana': false,
 
-                entregaLejana: false,
+                'Forma de Pago': false,
 
-                malaAtencion: false,
+                'Mala Atencion': false,
 
-                formaPago: false,
+                'Otra Empresa': false,
 
-                otraEmpresa: false,
+                'Otro Motivo': false,
 
-                otroMotivo: false,
+                'Precio Caro': false,
 
                 inputMot: '',
                 

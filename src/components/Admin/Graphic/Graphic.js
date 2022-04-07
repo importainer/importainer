@@ -64,7 +64,7 @@ export default function Graphics({ publicaciones, score, label, indexAxis, barPe
                 min: 0,
                 ticks: {
                     font: {
-                      size: 13,
+                      size: 15,
                     },
                     backgroundColor: "red",
                     color: "rgba(255,255,255,1)",
@@ -92,7 +92,7 @@ export default function Graphics({ publicaciones, score, label, indexAxis, barPe
                     data: score,
                     fill: false,
                     borderWidth: 1.5,
-                    backgroundColor: ["rgba(255,0,0,0.3)", "rgba(255,89,0,0.3)", "rgba(255,189,0,0.3)"],
+                    backgroundColor: ["rgba(255,0,0,0.5)", "rgba(255,89,0,0.5)", "rgba(255,189,0,0.5)"],
                     borderColor: ["rgba(255,0,0,1)", "rgba(255,89,0,1)", "rgba(255,189,0,1)"],
 
                 }
@@ -104,7 +104,7 @@ export default function Graphics({ publicaciones, score, label, indexAxis, barPe
         }
 
     })
-    console.log(labels, 'grafico');
+    
     return (
 
         <div className='GraphicsContent'>

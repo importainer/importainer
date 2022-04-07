@@ -25,6 +25,7 @@ export default function IndexAdm({location}) {
     
     // ===== ENCUESTA VENTAS =====
     const [tblStateVentas, setTblStateVentas] = useState([]);
+    const [tblQueryVentas, setTblQueryVentas] = useState([]);
     const [labelEncuestaVentas, setLabelEncuestaVentas] = useState([]);
     const [cantEncuestasVentas, setCantEncuestasVentas] = useState(0)
     const scoreEncuestaVentas = [];
@@ -71,7 +72,7 @@ export default function IndexAdm({location}) {
 
             if(labelEncuesta.length === 0) {
 
-                getDocs(collection(db, 'encuestaBackup'))
+                getDocs(collection(db, 'encuesta'))
                 .then(tbl => {
                     
                     setCantEncuestas(tbl.docs.length);
@@ -132,7 +133,7 @@ export default function IndexAdm({location}) {
 
                     //     console.log(e.data(), 'ver')
 
-                    //     await addDoc(collection(db, "encuesta"), e.data());
+                    //     await addDoc(collection(db, "encuestaVentas"), e.data());
 
                     // })
 
@@ -142,9 +143,11 @@ export default function IndexAdm({location}) {
 
                     setTblStateVentas(tbl.docs.map(e => e.data()[1].data));
 
+                    setTblQueryVentas(tbl.docs.map(e => e.data()))
+
                     const getDataLabelVentas = () => {
 
-                        data.forEach(ele => setLabelEncuestaVentas(Object.keys(ele)));
+                        data.forEach(ele => setLabelEncuestaVentas(Object.keys(ele).filter(f => f !== 'inputMot')));
 
                     }
 
@@ -339,39 +342,137 @@ export default function IndexAdm({location}) {
 
     const getPropDataVentas = () => {
 
-        let llaveMano, diseñosPersonalizables, practicidad, atencion, tiempoEntrega, financiacion;
+        let entregaLejana, formaDePago, malaAtencion, otraEmpresa, otroMotivo, precioCaro;
         
-        llaveMano = tblStateVentas.map(e => e['Llave en Mano'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        entregaLejana = tblStateVentas.map(e => e['Entrega Lejana'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        diseñosPersonalizables = tblStateVentas.map(e => e['Diseños Personalizables'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        formaDePago = tblStateVentas.map(e => e['Forma de Pago'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        practicidad = tblStateVentas.map(e => e['Practicidad'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        malaAtencion = tblStateVentas.map(e => e['Mala Atencion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        atencion = tblStateVentas.map(e => e['Atencion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        otraEmpresa = tblStateVentas.map(e => e['Otra Empresa'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        tiempoEntrega = tblStateVentas.map(e => e['Tiempo Entrega'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        otroMotivo = tblStateVentas.map(e => e['Otro Motivo'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        financiacion = tblStateVentas.map(e => e['Financiacion'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
+        precioCaro = tblStateVentas.map(e => e['Precio Caro'] === true ? 1 : 0).reduce((acc, e) => acc += e, 0);
 
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Llave en Mano')] = llaveMano;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Entrega Lejana')] = entregaLejana;
         
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Diseños Personalizables')] = diseñosPersonalizables;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Forma de Pago')] = formaDePago;
 
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Practicidad')] = practicidad;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Mala Atencion')] = malaAtencion;
 
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Atencion')] = atencion;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Otra Empresa')] = otraEmpresa;
 
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Tiempo Entrega')] = tiempoEntrega;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Otro Motivo')] = otroMotivo;
 
-        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Financiacion')] = financiacion;
+        scoreEncuestaVentas[labelEncuestaVentas.indexOf('Precio Caro')] = precioCaro;
 
     }
 
     getPropDataVentas()
+
+    const getQueryDataVentas = () => {
+        
+        const querys = tblQueryVentas.map(e => {
+
+            return {
+
+                2: e[2],
+                3: e[3],
+                4: e[4],
+                5: e[5],
+
+            }
+
+        });
+
+        querys.forEach(e => {
+
+            for (const k in e) {
+
+                if (Object.hasOwnProperty.call(e, k)) {
+
+                    const element = e[k];
+
+                    if(!labelEncuestaVentas.includes(Object.keys(element)[0]) && Object.keys(element)[0] !== 'rating'){
+                        
+                        setLabelEncuestaVentas([...labelEncuestaVentas, Object.keys(element)[0]]);
+                        
+                    }
+                                        
+                }
+            }
+
+        });
+
+    }
+
+    getQueryDataVentas()
+
+    const getScoreQueryVentas = () => {
+
+        const querys = tblQueryVentas.map(e => {
+
+            return {
+
+                2: e[2],
+                3: e[3],
+                4: e[4],
+                5: e[5],
+
+            }
+
+        });
+
+        querys.forEach(e => {
+
+            for (const k in e) {
+                
+                if (Object.hasOwnProperty.call(e, k)) {
+
+                    const element = e[k];
+                    
+                    let indexElement = labelEncuestaVentas.indexOf(Object.keys(element)[0]);
+                    
+                    let rat = parseInt(element.rating);
+
+                    if(labelEncuestaVentas.includes(Object.keys(element)[0]) && Object.keys(element)[0] !== 'rating'){
+                        
+                        if(scoreEncuestaVentas[indexElement] === undefined) {
+                            
+                            scoreEncuestaVentas[indexElement] = rat;
+
+                        } else {
+                            
+                            scoreEncuestaVentas[indexElement] = scoreEncuestaVentas[indexElement] + rat;
+
+                        }
+
+                    }
+                     
+                }
+            }
+
+        })
+
+        scoreEncuestaVentas.reduce((acc, score, i) => {
+            
+            if(i > 5) {
+
+                acc = Math.ceil(score / cantEncuestasVentas);
+
+                scoreEncuestaVentas[i] = acc;
+
+            }
+
+        }, 0)
+
+    }
+
+    getScoreQueryVentas()
     
     // ===== ENCUESTA VENTAS =====
-
-    // console.log(scoreEncuesta, labelEncuesta, 'fin')
 
     return (
 
@@ -397,13 +498,13 @@ export default function IndexAdm({location}) {
 
                 </div>
                 
-                {/* <div className={IndexStyle.boxGraphics} >
+                <div className={IndexStyle.boxGraphics} >
 
                     <h1>{cantEncuestasVentas} Encuestas De Ventas</h1>
 
                     <Graphics publicaciones={labelEncuestaVentas} score={scoreEncuestaVentas} label='Encuestas' indexAxis='y' barPercentage='1' />
 
-                </div> */}
+                </div>
 
             </div>
 
