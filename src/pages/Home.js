@@ -7,6 +7,7 @@ import NavBarPrinc from "../components/NavBarPrinc/NavBarPrinc";
 import Wpp from "../components/wpp";
 import BannerF from "./BannerF";
 import OfertaList from "../components/ofertas/OfertaList";
+import EntregasSlider from "../components/EntregasSlider/EntregasSlider";
 
 const HomeClientes = React.lazy(() =>
   import("../components/HomeClientes/HomeClientes")
@@ -23,11 +24,12 @@ const Home = () => {
   return (
     <div>
       <BannerF />
-      <NavBarPrinc />
+      {/* <NavBarPrinc /> */}
       {/* <Compañia /> */}
       <OfertaList />
       {/* <HomeProyectos /> */}
       <Proyectos />
+      <EntregasSlider />
       <HomeAspectos />
       {/* El suspense es para que se renderice esa seccion solo cuando sea necesario */}
       <Suspense fallback={<div>Cargando...</div>}>
