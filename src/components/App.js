@@ -52,6 +52,7 @@ import Compania from "./Compañia";
 // ===== Entregas =====
 
 import Entregas from "../components/Entregas/Entregas";
+import EntregasDetail from "../components/EntregasDetail/EntregasDetail";
 
 // ===== ADMIN =====
 
@@ -153,6 +154,7 @@ const App = () => (
         
         {/* ===== ENTREGAS ===== */}
         <Route exact path="/entregas" component={Entregas} />
+        <Route exact path="/EntregasDetail/:id" component={EntregasDetail} />
 
         {/* ===== OTROS ====== */}
         <Route exact path="/aspectos" component={Aspectos} />

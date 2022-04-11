@@ -1,0 +1,19 @@
+.EntDetailContent {
+
+    /* background: rgba(0, 0, 0, 0.9); */
+
+}
+
+.EntDetailContent__contentColum {
+
+    display: flex;
+
+}
+
+.contentColum__izq, .contentColum__der {
+
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+
+}

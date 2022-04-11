@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div>
       <BannerF />
-      {/* <NavBarPrinc /> */}
+      <NavBarPrinc />
       {/* <Compañia /> */}
       <OfertaList />
       {/* <HomeProyectos /> */}
