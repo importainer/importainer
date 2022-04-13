@@ -262,7 +262,7 @@ export default function EntregasSlider() {
                                     <Link to={`/EntregasDetail/${e.idInterno}`} key={e.idInterno} >
 
                                         <div className="slider-single" key={e.idInterno}>
-                                            <img className="slider-single-image" src={e.file} alt="1" />
+                                            <img className="slider-single-image" src={e.img1} alt="1" />
                                             <h1 className="slider-single-title">{e.casa}</h1>
                                             {/* <a className="slider-single-likes" >
                                                 <i className="fa fa-heart"></i>

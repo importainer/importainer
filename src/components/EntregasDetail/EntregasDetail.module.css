@@ -1,8 +1,8 @@
-.EntDetailContent {
+/* .EntDetailContent {
 
-    /* background: rgba(0, 0, 0, 0.9); */
+    background: rgba(0, 0, 0, 0.9);
 
-}
+} */
 
 .EntDetailContent__contentColum {
 
@@ -12,8 +12,70 @@
 
 .contentColum__izq, .contentColum__der {
 
+    width: 45%;
+    margin: 0 auto;
+    padding: 1em 1.5em;
+
+}
+
+.contentColum__der h3 {
+
+    margin: 1em 0 0 0;
+
+}
+
+.izq__display {
+
+    border: 1px solid black;
+
+}
+
+.active {
+
+    /* display: block; */
+    opacity: 1;
+    transition: all 3s;
+
+}
+
+.display__img {
+
+    width: 45%;
+    /* background: rgba(255, 0, 0, 0.9);
+    border: 1px solid black; */
+    /* display: none; */
+    opacity: 0;
+    position: absolute;
+    transition: opacity 1.5s;
+
+}
+
+.display__img img, .active img {
+
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    z-index: 0;
+    background-size: cover;
+
+}
+
+.izq__list {
+
+    display: flex;
+
+}
+
+.list__img {
+
+    width: 50%;
+    border: 1px solid black;
+
+}
+
+.list__img img {
+
+    width: 100%;
+    height: 3em;
+    background-size: cover;
 
 }
