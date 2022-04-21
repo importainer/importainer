@@ -26,7 +26,14 @@
 
 }
 
-.CreateTestimonyContent__fomr > input[type="text"], .contText > textarea {
+.form__info {
+
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.form__info > input[type="text"], .contText > textarea {
 
     border: 1px solid rgb(255, 255, 255);
     margin: 0 auto;
@@ -47,7 +54,13 @@
 
 }
 
-.CreateTestimonyContent__fomr > input[type="text"]::placeholder, .contText > textarea::placeholder {
+.form__info > input[type="text"] {
+
+    width: 45%;
+
+}
+
+.form__info > input[type="text"]::placeholder, .contText > textarea::placeholder {
 
     color: #fff;
 

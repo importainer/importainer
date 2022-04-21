@@ -66,6 +66,7 @@ import LoginUser from "./Admin/ListUser/ListUser";
 import UserDetail from "./Admin/UserDetail/UserDetail";
 import ReservasADM from "./Admin/Reservas/Reservas";
 import CreateTestimony from "./Admin/CreateTestimony/CreateTestimony";
+import TestimonyList from "./Admin/TestimonyList/TestimonyList";
 import Consultas from "./Admin/Consultas/Consultas";
 import CreateProducts from "./Admin/CreateProducts/CreateProducts";
 import Encuesta from "./Admin/Encuesta/Encuesta";
@@ -99,6 +100,7 @@ const App = () => (
         <RouteMark path="/ListaPublicaciones" component={ListPub} />
         <RouteMark path="/EditarPub" component={EditarPub} />
         <RouteMark path="/ReservasADM" component={ReservasADM} />
+        <RouteMark path="/TestimonyList" component={TestimonyList} />
         <RouteMark path="/CreateTestimony" component={CreateTestimony} />
         <RouteMark path="/ConsultasADM" component={Consultas} />
         <RouteMark path="/CreateProducts" component={CreateProducts} />

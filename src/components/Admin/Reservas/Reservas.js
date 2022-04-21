@@ -104,16 +104,7 @@ export default function Reservas({location}) {
         filterList(alignment)
 
     }
-
-    // window.onscroll = () => {
-        
-    //     const contenedor = document.getElementsByClassName("contReservas")
-
     
-
-    //     contenedor[0].style.height = "100%";
-
-    // }
     return (
 
         <div className="contReservas">

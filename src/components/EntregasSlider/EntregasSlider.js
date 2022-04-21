@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { db } from '../../firebase';
+import { getDocs, collection } from 'firebase/firestore';
 import { usersMoq } from './moq';
 import './EntregasSlider.css';
 
 export default function EntregasSlider() {
 
+    const [testDb, setTestDb] = useState([]);
+
+    const testRandom = []
+
+    useEffect(() => {
+
+        getDocs(collection(db, 'testimoniosBackup'))
+            .then(tbl => {
+
+                if(tbl.docs.length >= 10) {
+
+                    while (testDb.length < 10) {
+
+                        setTestDb([...testDb, testDb[Math.floor(Math.random() * testDb.length)]]);
+                        
+                    }
+            
+                } else {
+
+                    setTestDb(tbl.docs.map(e => e.data()));
+            
+                }
+
+            })
+            .catch(e => console.log(e, 'error'))
+
+    }, []);
+
+    // if(usersMoq.length >= 10) {
+
+    //     while (testRandom.length < 10) {
+
+    //         testRandom.push(usersMoq[Math.floor(Math.random() * usersMoq.length)]);
+            
+    //     }
+
+    // } else {
+
+    //     usersMoq.forEach(e => testRandom.push(e));
+
+    // }
+    // console.log(testDb, 'asdasd')
     setTimeout(() => {
 
         const repeat = true;
@@ -241,7 +285,7 @@ export default function EntregasSlider() {
 
         slideInitial();
 
-    }, 100)
+    }, 100);
 
     return (
 
@@ -253,28 +297,24 @@ export default function EntregasSlider() {
 
                     {
 
-                        usersMoq.map((e, i) => {
+                        testDb.map((e, i) => {
 
-                            if(i < 10) {
+                            return (
 
-                                return (
+                                <Link to={`/EntregasDetail/${e.idInterno}`} key={e.idInterno} >
 
-                                    <Link to={`/EntregasDetail/${e.idInterno}`} key={e.idInterno} >
+                                    <div className="slider-single" key={e.idInterno}>
+                                        <img className="slider-single-image" src={e.ent1} alt="1" />
+                                        <h1 className="slider-single-title">{e.casa}</h1>
+                                        {/* <a className="slider-single-likes" >
+                                            <i className="fa fa-heart"></i>
+                                            <p>1,247</p>
+                                        </a> */}
+                                    </div>  
 
-                                        <div className="slider-single" key={e.idInterno}>
-                                            <img className="slider-single-image" src={e.img1} alt="1" />
-                                            <h1 className="slider-single-title">{e.casa}</h1>
-                                            {/* <a className="slider-single-likes" >
-                                                <i className="fa fa-heart"></i>
-                                                <p>1,247</p>
-                                            </a> */}
-                                        </div>  
+                                </Link>
 
-                                    </Link>
-    
-                                )
-
-                            }
+                            )
 
                         })
 

@@ -15,6 +15,7 @@ export default function CreateTestimony({location}) {
 
         name: '',
         casa: '',
+        localidad: '',
         file: '',
         testi: '',
         idInterno: 0,
@@ -88,6 +89,7 @@ export default function CreateTestimony({location}) {
 
             name: '',
             casa: '',
+            localidad: '',
             file: '',
             testi: '',
             idInterno: '',
@@ -266,6 +268,7 @@ export default function CreateTestimony({location}) {
 
             name: input.name,
             casa: input.casa,
+            localidad: input.localidad,
             file: input.file,
             testi: input.testi,
             idInterno: idInt + 1,
@@ -347,7 +350,13 @@ export default function CreateTestimony({location}) {
 
                 <form className={CreateTesting.CreateTestimonyContent__fomr} onSubmit={addTesting} >
 
-                    <input name="name" type="text" value={input.name} placeholder="Nombre" onChange={e => inputHandleChange(e)} />
+                    <div className={CreateTesting.form__info} >
+
+                        <input name="name" type="text" value={input.name} placeholder="Nombre" onChange={e => inputHandleChange(e)} />
+
+                        <input name="localidad" type="text" value={input.localidad} placeholder="Indique la zona de entrega..." onChange={e => inputHandleChange(e)} />
+
+                    </div>
 
                     <div className={CreateTesting.Select} >
 

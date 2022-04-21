@@ -170,7 +170,7 @@ export default function NavBar({tipo}) {
 
                 {
 
-                    tipo === 'marketing' ? <li id="mnuPrin" ><Link to="/CreateTestimony">Crear Testimonio</Link></li> : null
+                    tipo === 'marketing' ? <li id="mnuPrin" ><Link to="/TestimonyList">Testimonios</Link></li> : null
 
                 }
 
@@ -178,13 +178,9 @@ export default function NavBar({tipo}) {
 
                     <ul>
 
-                        {
+                        {tipo === 'admin' ? <li><Link to='/users' >Listado de Usuarios</Link></li> : null}
 
-                            tipo === 'admin' ? <li><Link to='/users' >Listado de Usuarios</Link></li> : null,
-
-                            tipo === 'marketing' ? <li><Link to='/consultasADM' >Consultas de Usuarios</Link></li> : null
-
-                        }
+                        {tipo === 'marketing' ? <li><Link to='/consultasADM' >Consultas de Usuarios</Link></li> : null}
 
                         <li><Link to="/LoginCreate" >Crear Usuario</Link></li>
 

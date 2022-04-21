@@ -204,7 +204,8 @@
   animation-fill-mode: forwards;
 }
 .slider-container .slider-left {
-  font-size: 20px;
+  background: linear-gradient( 45deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 0) 90%);
+  font-size: 30px;
   position: absolute;
   z-index: 3;
   display: block;
@@ -213,16 +214,16 @@
   color: #ffffff;
   transform: translateY(-50%);
   padding: 20px 15px;
-  border: 2px solid #ff0000;
+  /* border: 2px solid #ff0000; */
   border-top: 0;
   border-right: 0;
   border-radius: 50%;
   /* background:rgba(0, 0, 0, 0.3); */
-  background: linear-gradient( 225deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 90%);
   margin-right: -2px;
 }
 .slider-container .slider-right {
-  font-size: 20px;
+  background: linear-gradient( 310deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 0) 90%);
+  font-size: 30px;
   position: absolute;
   z-index: 3;
   display: block;
@@ -230,37 +231,38 @@
   top: 50%;
   color: #ffffff;
   /* background:rgba(0, 0, 0, 0.3); */
-  background: linear-gradient( 125deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 90%);
   transform: translateY(-50%);
   padding: 20px 15px;
-  border: 2px solid #ff0000;
+  /* border: 2px solid #ff0000; */
   border-top: 0;
   /* border-bottom: 0; */
   border-left: 0;
   border-radius: 50%;
   margin-left: -2px;
+  /* -webkit-text-stroke: .5px black; */
 }
 .slider-right:hover, .slider-left:hover {
 
+  /* font-size: 20px; */
   cursor: pointer; 
-  border: 2px solid #ff0000;
-  color: #000;
+  /* border: 2px solid #ff0000; */
+  /* color: #000; */
   /* background:rgba(255, 255, 255, 0.5); */
 
 }
 .slider-left:hover {
 
   /* background:rgba(255, 255, 255, 0.5); */
-  background: linear-gradient( 45deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 1) 90%);
+  background: linear-gradient( 225deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 1) 90%);
   border-left: 0;
   border-bottom: 0;
-  font-size: 20px;
+  /* font-size: 20px; */
 
 }
 .slider-right:hover {
 
   /* background:rgba(255, 255, 255, 0.5); */
-  background: linear-gradient( 310deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 1) 90%);
+  background: linear-gradient( 125deg, rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 1) 90%);
   border-right: 0;
   border-bottom: 0;
 
