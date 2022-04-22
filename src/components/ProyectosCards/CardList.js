@@ -14,7 +14,7 @@ const CardList = () => {
       />
       <CardContainer
         title="Casa 90M2"
-        beds="3,"
+        beds="3"
         img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Casas%2FCasa90M-9.jpg?alt=media&token=cf21a1e8-4e60-4481-b1c7-e90e06500c49"
         baths="2"
         link="/casas/90M2"

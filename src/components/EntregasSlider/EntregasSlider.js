@@ -310,7 +310,7 @@ export default function EntregasSlider() {
                                             <i className="fa fa-heart"></i>
                                             <p>1,247</p>
                                         </a> */}
-                                    </div>  
+                                    </div>
 
                                 </Link>
 

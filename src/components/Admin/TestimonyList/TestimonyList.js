@@ -8,20 +8,22 @@ import TestimonyCard from "../TestimonyCard/TestimonyCard";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import ListTestimony from './TestimonyList.module.css';
 
-export default function TestimonyList({location}) {
+export default function TestimonyList({ location }) {
 
-    const[DB, setDB] = useState([]);
+    const [DB, setDB] = useState([]);
+
+    const [ratingSelect, setRatingSelect] = useState(5);
 
     useEffect(() => {
 
         getDocs(collection(db, "testimoniosBackup"))
             .then(tbl => {
 
-                setDB(tbl.docs.map( e => {
+                setDB(tbl.docs.map(e => {
                     // ESTOS CODIGOS SON PARA HACER UNA COPIA DE LA TABLA PARA BACKUP
                     // const testRef = app.firestore().collection("testimoniosBackup");
 
-                    // testRef.doc().set(e.data()) e.id
+                    // testRef.doc().set(e.data())
                     // console.log(e.data(), 'buscando id');
 
                     return {
@@ -43,14 +45,46 @@ export default function TestimonyList({location}) {
                     }
 
                 }));
-                
+
 
             })
             .catch(err => console.log(err))
 
     }, []);
 
-    console.log(DB.sort(), 'estado');
+    const order = (a, b) => {
+
+        if (a < b) return 1
+
+        else if (a > b) return -1
+
+        else return 0
+
+    }
+
+    const selectRating = (rating) => {
+
+        const ratingLect = DB.sort((a, b) => order(a.rating, b.rating));
+
+        const arr = [];
+
+        ratingLect.forEach(e => {
+            
+            if(e.rating == rating) {
+
+                arr.unshift(e)
+
+            } else {
+
+                arr.push(e)
+
+            }
+            
+        })
+
+        return arr;
+
+    }
 
     return (
 
@@ -62,6 +96,22 @@ export default function TestimonyList({location}) {
 
                 <h1>Testimonios</h1>
 
+                <div className={ListTestimony.contentRating} >
+
+                    <h3>Nivel de Privilegio:</h3>
+
+                    <select className={ListTestimony.Select} >
+
+                        <option value="1" >1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" selected >5</option>
+
+                    </select>
+
+                </div>
+
                 <Link to="/CreateTestimony" ><AddToPhotosIcon sx={{ fontSize: 40, color: "#000" }} /></Link>
 
             </div>
@@ -70,11 +120,11 @@ export default function TestimonyList({location}) {
 
                 {
 
-                    DB.map(e => {
+                    selectRating(ratingSelect).map(e => {
 
                         return (
 
-                            <> 
+                            <>
 
                                 <TestimonyCard key={e.idInterno} data={e} />
 

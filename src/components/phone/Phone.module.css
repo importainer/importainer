@@ -1,0 +1,21 @@
+.Content {
+
+    /* Positioning */
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    z-index: 10;
+
+    /* Box-model */
+    display: flex;
+
+    /* Typography */
+
+    /* Visual */
+    background-color: #fff;
+    border: 3px solid black;
+    border-radius: 50%;
+
+    /* Misc */
+
+}

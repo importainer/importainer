@@ -39,7 +39,7 @@ export default function NavBarSec(props) {
               <Link to="../contacto">Contacto</Link>
             </ul>
 
-            <LoginUser />
+            {/* <LoginUser /> */}
 
           </nav>
         </div>

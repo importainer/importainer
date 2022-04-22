@@ -122,7 +122,7 @@ export default function EntregasDetail() {
                     </div>
 
                     {/* <input type='button' onClick={() => console.log('asdasd')} value='animate' /> */}
-
+|
                 </div>
 
                 <div className={EntDetail.contentColum__der} >
@@ -132,6 +132,8 @@ export default function EntregasDetail() {
                     <h2>{entDetail.casa}</h2>
 
                     <h4>{entDetail.testi}</h4>
+
+                    <a href={entDetail.linkTest} >Siqueres ver el Testimonio completo has clic aqui...</a>
 
                 </div>
 

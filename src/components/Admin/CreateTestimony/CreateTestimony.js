@@ -280,6 +280,24 @@ export default function CreateTestimony({location}) {
 
         });
 
+        const collectionRef2 = app.firestore().collection("testimoniosBackup");
+        
+        collectionRef2.doc().set({
+
+            name: input.name,
+            casa: input.casa,
+            localidad: input.localidad,
+            file: input.file,
+            testi: input.testi,
+            idInterno: idInt + 1,
+            ent1: input.ent1,
+            ent2: input.ent2,
+            ent3: input.ent3,
+            ent4: input.ent4,
+            ent5: input.ent5,
+
+        });
+
         validar();
 
         vaciarEstado();

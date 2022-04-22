@@ -29,7 +29,7 @@ const Home = () => {
       <OfertaList />
       {/* <HomeProyectos /> */}
       <Proyectos />
-      <EntregasSlider />
+      {/* <EntregasSlider /> */}
       <HomeAspectos />
       {/* El suspense es para que se renderice esa seccion solo cuando sea necesario */}
       <Suspense fallback={<div>Cargando...</div>}>

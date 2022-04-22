@@ -21,7 +21,9 @@
 
 .ContentHead {
 
+    background: rgba(255, 255, 255, 0.7);
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
     padding: .5em;
 
@@ -30,7 +32,19 @@
 .ContentHead h1 {
 
     width: 20%;
-    background: rgba(255, 255, 255, 0.7);
-    /* border: 1px solid #000000; */
+    border: 1px solid #000000;
+
+}
+
+.contentRating {
+
+    width: 15%;
+    display: flex;
+
+}
+
+.Select {
+
+    width: 20%;
 
 }

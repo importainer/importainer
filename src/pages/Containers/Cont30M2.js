@@ -4,6 +4,7 @@ import FooterSec from '../../components/FooterSec/FooterSec'
 import NavBarSec from '../../components/NavBarSec/NavBarSec'
 import SlideShow from '../../components/SlideShow/SlideShow'
 import Slide from '../../components/SlideShow/Slide';
+import Phone from "../../components/phone/Phone";
 
 export default function Cont30M2() {
     return (
@@ -20,6 +21,7 @@ export default function Cont30M2() {
                 ventanas="01"
                 litros="30"
             />
+            <Phone />
             <FooterSec/>
         </div>
     )
