@@ -15,6 +15,7 @@ export default function CreateTestimony({location}) {
 
         name: '',
         casa: '',
+        linkYou: '',
         localidad: '',
         file: '',
         testi: '',
@@ -89,6 +90,7 @@ export default function CreateTestimony({location}) {
 
             name: '',
             casa: '',
+            linkYou: '',
             localidad: '',
             file: '',
             testi: '',
@@ -268,6 +270,7 @@ export default function CreateTestimony({location}) {
 
             name: input.name,
             casa: input.casa,
+            linkYou: input.linkYou,
             localidad: input.localidad,
             file: input.file,
             testi: input.testi,
@@ -286,6 +289,7 @@ export default function CreateTestimony({location}) {
 
             name: input.name,
             casa: input.casa,
+            linkYou: input.linkYou,
             localidad: input.localidad,
             file: input.file,
             testi: input.testi,
@@ -421,6 +425,14 @@ export default function CreateTestimony({location}) {
                     <input name="file" type="file"  onChange={e => archivoHandler(e)} />
 
                     <img src={input.file} />
+
+                    <div className={CreateTesting.linkYoutube} >
+
+                        <p>Link Youtube:</p>
+
+                        <input name="linkYou" type="input" value={input.linkYou} onChange={e => inputHandleChange(e)} />
+
+                    </div>
 
                     <div className={CreateTesting.contentEntFiles} >
 

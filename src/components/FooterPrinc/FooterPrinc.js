@@ -58,10 +58,10 @@ export default class FooterPrinc extends Component {
                 <div className="cuad">
                   <h3 className="title-map-fo">Modelos</h3>
                   <ul className="links-fo">
-                    <Link to="/casas/15M2">Conatiner 15 M2</Link>
-                    <Link to="/casas/30M2">Conatiner 30 M2</Link>
-                    <Link to="/casas/45M2">Conatiner 45 M2</Link>
-                    <Link to="/casas/75M2">Conatiner 75 M2</Link>
+                    <Link to="/casas/15M2">Container 15 M2</Link>
+                    <Link to="/casas/30M2">Container 30 M2</Link>
+                    <Link to="/casas/45M2">Container 45 M2</Link>
+                    <Link to="/casas/75M2">Container 75 M2</Link>
                   </ul>
                 </div>
 

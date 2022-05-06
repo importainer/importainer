@@ -27,6 +27,7 @@ const ContactoComplete = () => {
             <p>- Av de mayo 844 | CABA</p>
             <p>- Boulevard Evita 75 | Moreno</p>
             <p>- Claudio Maria Joly 2570 | Moreno</p>
+            <p>- Colectora Oeste Ramal Pilar 2841 | Tortuguitas</p>
             <p>Teléfono: +54 9 11 5937-8945</p>
             <h2>Email</h2>
             <p>ventas@importainer.com.ar</p>

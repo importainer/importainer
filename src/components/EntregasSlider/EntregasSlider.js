@@ -9,25 +9,67 @@ export default function EntregasSlider() {
 
     const [testDb, setTestDb] = useState([]);
 
-    const testRandom = []
+    const order = (a, b) => {
+
+        if (a < b) return 1
+
+        else if (a > b) return -1
+
+        else return 0
+
+    }
 
     useEffect(() => {
 
         getDocs(collection(db, 'testimoniosBackup'))
             .then(tbl => {
 
-                if(tbl.docs.length >= 10) {
+                const config = tbl.docs.filter(e => e.data().hasOwnProperty("config"));
 
-                    while (testDb.length < 10) {
+                const { desde, hasta } = config[0].data().config;
 
-                        setTestDb([...testDb, testDb[Math.floor(Math.random() * testDb.length)]]);
+                const filterTesti = tbl.docs.filter(e => e.data().chekedDB !== false && !e.data().hasOwnProperty("config"));
+
+                const orderTesti = filterTesti.sort((a, b) => order(a.data().rating, b.data().rating));
+
+                const testiRang = orderTesti.filter(e => e.data().rating >= desde && e.data().rating <= hasta);
+
+                const testMayor = orderTesti.filter(e => e.data().rating >= hasta);
+
+                const testMenor = orderTesti.filter(e => e.data().rating <= desde);
+
+                if (testiRang.length > 10) {
+
+                    const arr = [];
+
+                    while (arr.length < 10) {
+
+                        const testimonioSelect = testiRang[Math.floor(Math.random() * testiRang.length)].data();
+
+                        if(arr.length === 0) {
+                            
+                            arr.push(testimonioSelect);
+
+                        } else {
+
+                            const recorridoArr = arr.find(e => e.idInterno === testimonioSelect.idInterno);
+
+                            if(recorridoArr === undefined) {
+                                
+                                arr.push(testimonioSelect);
+    
+                            }
+
+                        }
                         
                     }
-            
+
+                    setTestDb(arr);
+
                 } else {
 
-                    setTestDb(tbl.docs.map(e => e.data()));
-            
+                    setTestDb(orderTesti.map(e => e.data()));
+
                 }
 
             })
@@ -40,7 +82,7 @@ export default function EntregasSlider() {
     //     while (testRandom.length < 10) {
 
     //         testRandom.push(usersMoq[Math.floor(Math.random() * usersMoq.length)]);
-            
+
     //     }
 
     // } else {
@@ -48,7 +90,8 @@ export default function EntregasSlider() {
     //     usersMoq.forEach(e => testRandom.push(e));
 
     // }
-    // console.log(testDb, 'asdasd')
+    console.log(testDb, 'asdasd')
+
     setTimeout(() => {
 
         const repeat = true;
@@ -287,6 +330,8 @@ export default function EntregasSlider() {
 
     }, 100);
 
+    // console.log(testDb.sort((a, b) => order(a.rating, b.rating)), 'final')
+
     return (
 
         <div className="contenedor" >
@@ -297,7 +342,7 @@ export default function EntregasSlider() {
 
                     {
 
-                        testDb.map((e, i) => {
+                        testDb.sort((a, b) => order(a.rating, b.rating)).map((e, i) => {
 
                             return (
 

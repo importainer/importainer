@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { app } from '../../../firebase';
 import Rating from '@mui/material/Rating';
+import Switch from '@mui/material/Switch';
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 import CardStyle from "./TestimonyCard.module.css";
 
 export default function TestimonyCard({ data }) {
 
-    const { id, name, testi, casa, ent1, ent2, ent3, ent4, ent5, localidad, idInterno, rating } = data;
+    const { id, name, testi, casa, ent1, ent2, ent3, ent4, ent5, localidad, idInterno, rating, chekedDB } = data;
+
+    const [testimonio, setTestimonio] = useState(data);
 
     const imgGroup = [ent1, ent2, ent3, ent4, ent5];
 
+    const [ checked, setChecked ] = useState(chekedDB);
+    
     let state = 0;
 
     let iAct = 1;
@@ -135,9 +142,37 @@ export default function TestimonyCard({ data }) {
 
         state = value;
 
+        setTestimonio({ ...testimonio, rating: value });
+
         const testRef = await app.firestore().collection("testimoniosBackup").doc(id);
 
-        await testRef.update({ name, testi, casa, ent1, ent2, ent3, ent4, ent5, localidad, idInterno, rating: value })
+        await testRef.update({ name, testi, casa, ent1, ent2, ent3, ent4, ent5, localidad, idInterno, rating: value, checked });
+
+    }
+      
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+    const GreenSwitch = styled(Switch)(({ theme }) => ({
+
+        '& .MuiSwitch-switchBase.Mui-checked': {
+          color: red[500],
+          '&:hover': {
+            backgroundColor: alpha(red[500], theme.palette.action.hoverOpacity),
+          },
+        },
+        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+          backgroundColor: red[500],
+        },
+
+    }));
+
+    const handleChange = async () => {
+        
+        checked ? setChecked(false) : setChecked(true);
+        console.log(!checked, 'asdasdasd')
+        const testRef = await app.firestore().collection("testimoniosBackup").doc(id);
+
+        await testRef.update({ name, testi, casa, ent1, ent2, ent3, ent4, ent5, localidad, idInterno, rating, chekedDB: !checked });
 
     }
 
@@ -146,7 +181,13 @@ export default function TestimonyCard({ data }) {
 
         <div id={idInterno} className={CardStyle.cardContent} >
 
-            <h2>{name}</h2>
+            <div className={CardStyle.titleHead} >
+
+                <h2>{name}</h2>
+
+                <GreenSwitch {...label} checked={checked} onChange={handleChange} defaultChecked />
+
+            </div>
 
             <div className={CardStyle.headCard} >
 

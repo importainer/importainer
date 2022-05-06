@@ -6,20 +6,43 @@ import { getDocs, collection } from 'firebase/firestore';
 import NavBar from '../NavBar/NavBar';
 import TestimonyCard from "../TestimonyCard/TestimonyCard";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import MenuIcon from '@mui/icons-material/Menu';
 import ListTestimony from './TestimonyList.module.css';
 
 export default function TestimonyList({ location }) {
 
     const [DB, setDB] = useState([]);
 
+    const [config, setConfig] = useState({});
+
     const [ratingSelect, setRatingSelect] = useState(5);
+
+    const[active, setActive] = useState(false);
 
     useEffect(() => {
 
         getDocs(collection(db, "testimoniosBackup"))
             .then(tbl => {
 
-                setDB(tbl.docs.map(e => {
+                const testimonyFilter = tbl.docs.filter(e => !e.data().hasOwnProperty('config'));
+
+                tbl.docs.map(e => {
+
+                    if(e.data().hasOwnProperty('config')) {
+
+                        setConfig({
+
+                            id: e.id,
+
+                            config: e.data().config,
+
+                        })
+
+                    }
+
+                })
+
+                setDB(testimonyFilter.map(e => {
                     // ESTOS CODIGOS SON PARA HACER UNA COPIA DE LA TABLA PARA BACKUP
                     // const testRef = app.firestore().collection("testimoniosBackup");
 
@@ -41,6 +64,7 @@ export default function TestimonyList({ location }) {
                         name: e.data().name,
                         rating: e.data().rating,
                         testi: e.data().testi,
+                        chekedDB: e.data().chekedDB,
 
                     }
 
@@ -86,11 +110,96 @@ export default function TestimonyList({ location }) {
 
     }
 
+    const mnuFunction = () => {
+
+        const mnu = document.getElementsByClassName(ListTestimony.list)[0];
+
+        if(!active) {
+
+            mnu.style.opacity = 1;
+            mnu.style.color = "rgba(255, 255, 255, 1)";
+            mnu.style.width = "10%";
+            mnu.style.height = "16%"; //7%
+
+            setActive(true);
+
+        } else {
+
+            mnu.style.opacity = 0;
+            mnu.style.color = "rgba(255, 255, 255, 0)";
+            mnu.style.width = "0%";
+            mnu.style.height = "0%";
+
+            setActive(false);
+
+        }
+
+    }
+
+    const configTesti = () => {
+
+        const popupConfig = document.getElementsByClassName(ListTestimony.popupConfig)[0];
+
+        const mnu = document.getElementsByClassName(ListTestimony.list)[0];
+
+        if(active) {
+
+            mnu.style.opacity = 0;
+            mnu.style.color = "rgba(255, 255, 255, 0)";
+            mnu.style.width = "0%";
+            mnu.style.height = "0%";
+
+            popupConfig.style.opacity = 1;
+
+            setActive(false);
+
+        } else {
+
+            popupConfig.style.opacity = 0;
+
+            setActive(true);
+
+        }
+
+    }
+
+    const inputHandleChange = (e) => {
+
+        const { name, value } = e.target;
+        
+        setConfig({...config, config: {...config.config, [name]: parseInt(value)}});
+
+    }
+
+    const actRango = async (e) => {
+
+        e.preventDefault();
+
+        const testimonioRef = app.firestore().collection("testimoniosBackup").doc(config.id);
+
+        await testimonioRef.update(config)
+
+        const popupConfig = document.getElementsByClassName(ListTestimony.popupConfig)[0];
+
+        if(!active) {
+
+            popupConfig.style.opacity = 0;
+
+            setActive(true);
+
+        }
+
+    }
+
     return (
 
         <div className={ListTestimony.TestimonyContent} >
 
-            <NavBar tipo={location.state.tipo} />
+            <div className={ListTestimony.contentNav} >
+                
+                <NavBar tipo={location.state.tipo} />
+                
+            </div>
 
             <div className={ListTestimony.ContentHead} >
 
@@ -100,7 +209,7 @@ export default function TestimonyList({ location }) {
 
                     <h3>Nivel de Privilegio:</h3>
 
-                    <select className={ListTestimony.Select} >
+                    <select className={ListTestimony.Select} onChange={e => setRatingSelect(e.target.value)} >
 
                         <option value="1" >1</option>
                         <option value="2" >2</option>
@@ -112,7 +221,39 @@ export default function TestimonyList({ location }) {
 
                 </div>
 
-                <Link to="/CreateTestimony" ><AddToPhotosIcon sx={{ fontSize: 40, color: "#000" }} /></Link>
+                {/* <Link to="/CreateTestimony" ><AddToPhotosIcon sx={{ fontSize: 40, color: "#000" }} /></Link> */}
+
+                <div className={ListTestimony.mnu} >
+
+                    <div className={ListTestimony.mnu_icon} onClick={mnuFunction} >
+                        
+                        <MenuIcon sx={{ fontSize: 30 }} />
+                        
+                    </div>
+
+                    <ul className={ListTestimony.list} >
+                        
+                        <Link to="/CreateTestimony" > <li>Crear Testimonio</li> </Link>
+
+                        <li onClick={configTesti} >Configurar</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div className={ListTestimony.popupConfig} >
+
+                <form className={ListTestimony.popup_form} onSubmit={e => actRango(e)} >
+
+                    <input name="desde" type="number" placeholder="Desde.." onChange={e =>inputHandleChange(e)}/>
+
+                    <input name="hasta" type="number" placeholder="Hasta.." onChange={e =>inputHandleChange(e)}/>
+
+                    <input type="submit" value="Actualizar" />
+
+                </form>
 
             </div>
 
@@ -121,7 +262,7 @@ export default function TestimonyList({ location }) {
                 {
 
                     selectRating(ratingSelect).map(e => {
-
+                        
                         return (
 
                             <>

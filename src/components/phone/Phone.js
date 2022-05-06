@@ -9,9 +9,17 @@ export default function Phone() {
 
         <Link to='/contacto' >
 
+            
+
             <div className={PhoneStyle.Content} >
 
-                <PhoneInTalkIcon sx={{ color: '#000', fontSize: "2em", margin: ".2em" }} />
+                <p className={PhoneStyle.text} >Contacto</p>
+
+                <div className={PhoneStyle.icon} >
+
+                    <PhoneInTalkIcon sx={{ color: '#000', fontSize: "2em", margin: ".2em" }} />
+
+                </div>
 
             </div>
 

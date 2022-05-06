@@ -23,7 +23,7 @@ export default function EntregasDetail() {
             .then(tbl => {
 
                 setEntDetail(tbl.docs.filter(e => e.data().idInterno === parseInt(id)).map(e => e.data())[0]);
-
+                
             })
             .catch(err => console.log(err, 'error'))
 
@@ -81,7 +81,7 @@ export default function EntregasDetail() {
 
     }, 100);
 
-    // console.log(document.getElementById('idSlider'), 'entrega');
+    // console.log(entDetail.linkTest, 'entrega');
 
     return (
 
@@ -133,7 +133,7 @@ export default function EntregasDetail() {
 
                     <h4>{entDetail.testi}</h4>
 
-                    <a href={entDetail.linkTest} >Siqueres ver el Testimonio completo has clic aqui...</a>
+                    <a href={entDetail.linkYou} >Siqueres ver el Testimonio completo has clic aqui...</a>
 
                 </div>
 

@@ -7,6 +7,9 @@ import SlideShow from "./../../components/SlideShow/SlideShow";
 import Phone from "../../components/phone/Phone";
 
 export default function Cont90M2() {
+
+  window.scroll(0, 0);
+
   return (
     <div>
       <NavBarSec title="Casas" link="/casas" />

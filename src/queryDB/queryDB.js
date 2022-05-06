@@ -1,25 +1,21 @@
 import { db } from '../firebase';
 import { getDocs, collection } from 'firebase/firestore';
 
-const getTblProduct = async () => {
+const getTblProduct = async (tabla) => {
 
-    return await getDocs(collection(db, 'productos'))
-        .then(products => {
+    return await getDocs(collection(db, tabla))
+        .then(element => {
 
-            const v = products.docs.map(e => e.data())
+            const elements = element.docs.map(e => e.data());
 
-            console.log(v)
-
-            return 'hola'
+            return elements
 
         })
         .catch(err => console.log(err, 'error'))
 
-    // return 'hola'
-
 }
 
-export default {
+export {
     
     getTblProduct,
 

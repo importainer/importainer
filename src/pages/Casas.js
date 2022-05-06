@@ -5,6 +5,9 @@ import NavBarSec from "../components/NavBarSec/NavBarSec";
 import FooterSec from "../components/FooterSec/FooterSec";
 
 const Casas = () => {
+
+  window.scroll(0, 0);
+
   return (
     <div>
       <NavBarSec title="Casas" link="/proyectos"/>
