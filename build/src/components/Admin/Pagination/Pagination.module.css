@@ -1,0 +1,71 @@
+.cont {
+
+    width: 3%;
+
+}
+
+.num {
+
+    height: 2em;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 0.3em;
+
+}
+
+.num:hover {
+
+    background: rgba(253, 102, 102, 0.5);
+    cursor: pointer;
+
+}
+
+.active {
+
+    background: rgba(248, 93, 93, 0.7);
+    height: 2em;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 0.3em;
+    color: #fff;
+
+}
+
+.active:hover {
+
+    cursor: pointer;
+    background: rgba(255, 186, 186, 0.5);
+    color: #000;
+
+}
+
+@media screen and (max-width: 1400px) {
+
+    .cont {
+
+        width: 5%;
+    
+    }
+    
+    
+}
+
+@media screen and (max-width: 800px) {
+
+    .cont {
+
+        width: 7%;
+    
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+
+    .cont {
+
+        width: 9%;
+    
+    }
+    
+}
