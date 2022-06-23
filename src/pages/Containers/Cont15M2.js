@@ -21,8 +21,9 @@ export default function Cont15M2() {
             <InfoContainer
                 title="Container 15M2"
                 img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Planos%2F15m2%2002.jpg?alt=media&token=54bf9810-e877-4c74-8ccc-0fb3e7f4182d" 
-                aires="03"
-                ventanas="12"
+                aires="1"
+                ventanas="1"
+                litros="30"
             />
             <Phone />
             <FooterSec/>

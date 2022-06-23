@@ -188,7 +188,7 @@ export default function LinkCuestionario() {
 
         if(google) {
 
-            login()
+            // login()
 
             google = false;
 

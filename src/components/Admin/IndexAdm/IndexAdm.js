@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import IndexStyle from "./IndexAdm.module.css";
 
 export default function IndexAdm({location}) {
-
+    
     // ===== RESERVAS =====
     const [publicaciones, setPublicaciones] = useState([]);
     const [reservas, setReservas] = useState([]);

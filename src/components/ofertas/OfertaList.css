@@ -127,10 +127,42 @@
 
 @media screen and (max-width: 1000px) {
   .OFC {
-    width: 70%;
+    width: 95%;
   }
   .CardsContainer {
-    display: grid;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
   }
+
+  .CardsContainer-flechaSig, .CardsContainer-flechaAnt {
+
+    width: 90%;
+  
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  .OFC {
+
+    width: 100%;
+
+  }
+
+  .content-flech {
+
+    width: 4.3em;
+  
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+
+  .content-flech {
+
+    width: 4em;
+  
+  }
+  
 }

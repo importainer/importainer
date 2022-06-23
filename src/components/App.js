@@ -76,6 +76,8 @@ import EncuestaVentas from "./Admin/EncuestaVentas/EncuestaVentas";
 
 import Plan from "./User/Plan/Plan";
 
+import ejemplos from "./ejemplos/ejemplos.jsx";
+
 const App = () => (
 
   <>
@@ -83,6 +85,7 @@ const App = () => (
     <HashRouter>
       
       <Switch>
+        {/* <Route exact path="/ejemplos" component={ejemplos} /> */}
         <Route exact path="/" component={Home} />
 
         {/* ===== ADMINISTACION ===== */}
@@ -92,6 +95,7 @@ const App = () => (
         {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
         <RouteAM path="/indexAdm" component={IndexAdm} />
         <RouteAM path="/LoginCreate" component={LoginCreate} />
+        <Route exact path="/LoginCreatePrueba" component={LoginCreate} />
         {/* RouteAdm RUTAS DE ACCESO ADMINISTRACION */}
         <RouteAdm path="/users" component={LoginUser} />
         <RouteAdm path="/UserDetail" component={UserDetail} />

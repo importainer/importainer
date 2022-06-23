@@ -90,7 +90,7 @@ export default function EntregasSlider() {
     //     usersMoq.forEach(e => testRandom.push(e));
 
     // }
-    console.log(testDb, 'asdasd')
+    // console.log(testDb, 'asdasd')
 
     setTimeout(() => {
 

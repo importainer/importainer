@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { app, db } from '../../firebase';
 import { getDocs, collection } from 'firebase/firestore';
+import { set } from "firebase/database";
 import NavBarSec from '../NavBarSec/NavBarSec';
+import FooterSec from '../FooterSec/FooterSec';
 import { usersMoq } from "../EntregasSlider/moq";
 import EntDetail from './EntregasDetail.module.css';
-import { set } from "firebase/database";
 
 export default function EntregasDetail() {
 
@@ -122,7 +123,7 @@ export default function EntregasDetail() {
                     </div>
 
                     {/* <input type='button' onClick={() => console.log('asdasd')} value='animate' /> */}
-|
+
                 </div>
 
                 <div className={EntDetail.contentColum__der} >
@@ -138,6 +139,8 @@ export default function EntregasDetail() {
                 </div>
 
             </div>
+
+            {/* <FooterSec /> */}
 
         </div>
 

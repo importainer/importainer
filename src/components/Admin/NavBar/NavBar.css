@@ -17,6 +17,23 @@
 
 } */
 
+.action {
+
+    width: 3%;
+    height: 2em;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 10%,rgba(255,0,0,0.9) 100%);
+    border: 1px solid red;
+    border-radius: 0 30px 0 30px;
+    box-sizing: border-box;
+    z-index: 1;
+    cursor: pointer;
+    animation: ilum .7s alternate infinite;
+    transition: all 0.5s;
+
+}
+
 .navContent > ul {
 
     height: 2em;
@@ -76,26 +93,24 @@
 
     cursor: pointer;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 22%,rgba(255,0,0,0.9) 100%);
-    animation: activeColor 0.5s;
+    /* animation: activeColor 0.5s; */
 
 }
 
-.action {
+@keyframes ilum {
 
-    width: 3%;
-    height: 2em;
-    position: absolute;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 10%,rgba(255,0,0,0.9) 100%);
-    border: 1px solid red;
-    border-radius: 0 30px 0 30px;
-    box-sizing: border-box;
-    /* opacity:.8; */
-    transition: all .7s ease-in-out;
-    z-index: 1;
-    cursor: pointer;
-    /* margin: 0 0 0 5%; */
+    from {
 
+        opacity: .3;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+    
 }
 
 @keyframes slidein {

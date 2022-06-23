@@ -5,7 +5,7 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import "./NavBar.css";
 
 export default function NavBar({tipo}) {
-
+    
     const auth = getAuth();
     
     const logOut = () => {
@@ -17,28 +17,14 @@ export default function NavBar({tipo}) {
             })
 
     }
+    
+    const element = document.getElementsByTagName('li');
 
+    const active = document.getElementsByClassName("action");
+    
     const style = () => {
 
-        const element = document.getElementsByTagName('li');
-
-        const active = document.getElementsByClassName("action");
-
         const elementos = [];
-
-        setInterval(() => {
-
-            active[0].style.background = "linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,0,0,0.2) 5%,rgba(255,0,0,0.9) 100%)";
-            active[0].style.opacity = ".4";
-
-        }, 1000)
-
-        setInterval(() => {
-
-            active[0].style.background = "linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,0,0,0.2) 5%,rgba(255,0,0,0.4) 100%)";
-            active[0].style.opacity = "1";
-
-        }, 1500)
         
         for (let i = 0; i < element.length; i++) {
 
@@ -96,14 +82,7 @@ export default function NavBar({tipo}) {
 
     }
 
-    // setTimeout(() => {
-
-    //     style();
-
-    // }, 500)
-
     style();
-
 
     const [giro, setGiro] = useState(true);
 

@@ -1,6 +1,6 @@
 import React from "react";
-import "./ProyectoCard.css";
 import { Link } from "react-router-dom";
+import "./ProyectoCard.css";
 
 const ProyectoCard = ({ title, img, link }) => {
   return (

@@ -7,12 +7,16 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import "./OfertaList.css";
 
 const OfertaList = () => {
+  
+  const widthPan = window.innerWidth;
+
+  const finalReturn = widthPan <= 800 && widthPan >= 601 ? 2 : (widthPan <= 600 ? 1 : 3)
 
   const [datos, setDatos] = useState([]);
 
   const [inicio, setInicio] = useState(0);
 
-  const [final, setFinal] = useState(3);
+  const [final, setFinal] = useState(finalReturn);
 
   const datosFiltrados = datos.filter(e => e.status !== false );
 
@@ -34,6 +38,9 @@ const OfertaList = () => {
 
   }
 
+  // if(widthPan <= 600) setFinal(1)
+  // else if(widthPan >= 600 && widthPan <= 800) setFinal(2)
+
   const listRender = datosFiltrados.sort(orderDate).slice(inicio, final);
 
   useEffect(() => {
@@ -53,18 +60,18 @@ const OfertaList = () => {
   }, []);
 
   const siguiente = () => {
-
-    if(inicio < datos.length && final > datos.length){
-
+    console.log('1----')
+    if(inicio < datos.length && final === (datos.length - 1)){
+      console.log('2----')
       setInicio(0);
       
-      setFinal(3);
+      setFinal(finalReturn);
 
     } else {
 
-      setInicio(inicio + 3);
+      setInicio(inicio + (widthPan <= 800 && widthPan >= 601 ? 2 : (widthPan <= 600 ? 1 : 3)));
 
-      setFinal(final + 3);
+      setFinal(final + (widthPan <= 800 && widthPan >= 601 ? 2 : (widthPan <= 600 ? 1 : 3)));
 
     }
 
@@ -74,15 +81,15 @@ const OfertaList = () => {
 
     if(inicio === 0){
 
-      setInicio(0);
+      setInicio(widthPan <= 800 && widthPan >= 601 ? datos.length - 3 : (widthPan <= 600 ? datos.length - 2 : datos.length - 4));
       
-      setFinal(3);
+      setFinal(datos.length - 1);
 
     } else {
 
-      setInicio(inicio - 3);
+      setInicio(inicio - (widthPan <= 800 && widthPan >= 601 ? 2 : (widthPan <= 600 ? 1 : 3)));
 
-      setFinal(final - 3);
+      setFinal(final - (widthPan <= 800 && widthPan >= 601 ? 2 : (widthPan <= 600 ? 1 : 3)));
 
     }
 

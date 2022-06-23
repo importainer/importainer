@@ -80,11 +80,81 @@
 
 @media screen and (max-width: 1000px) {
   .OfertaCard {
-    width: 300px;
+    width: 25%;
   }
 
   .Descuento{
     margin-left: 35%;
+  }
+
+  .OfertaCardTitle, .Descuento, .OfertaCardDesc {
+
+    font-size: 1em;
+
+  }
+  
+}
+
+@media screen and (max-width: 800px) {
+  .OfertaCard {
+    width: 35%;
+  }
+
+  .OfertaCardTop{
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+
+  .Descuento{
+    margin: 0 0 2% 5%;
+    left: 0;
+  }
+
+  .OfertaCardTitle {
+
+    margin: 0 0 1.4em 5%;
+
+  }
+
+  .OfertaCardTitle, .Descuento {
+
+    font-size: 1.3em;
+
+  }
+
+  .OfertaCardDesc {
+
+    font-size: 1em;
+
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  .OfertaCard {
+    width: 70%;
+  }
+
+  .OfertaCardTop{
+    height: 90px;
+  }
+
+  .Descuento{
+    font-size: 1.7em;
+  }
+
+  .OfertaCardTitle {
+
+    font-size: 2em;
+
+  }
+
+  .OfertaCardDesc {
+
+    font-size: 1.1em;
+
   }
   
 }

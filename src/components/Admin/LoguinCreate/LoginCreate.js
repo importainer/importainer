@@ -96,7 +96,7 @@ export default function Loguin({location}) {
 
         <div className="LogInCreateContent">
 
-            <NavBar tipo={location.state.tipo} />
+            <NavBar tipo="marketing" />
 
             <div className="loginForm">
 
@@ -111,13 +111,13 @@ export default function Loguin({location}) {
                     <option value='user' >Usuario</option>
 
                     <option value='admin' >Admin</option>
-
-                    {
+                    <option value='marketing' >Marketing</option>
+                    {/* {
                         
                         location.state.tipo === "marketing" ? 
                             <option value='marketing' >Marketing</option> : null
                     
-                    }
+                    } */}
 
                 </select>
 

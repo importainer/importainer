@@ -21,8 +21,8 @@ export default function Cont30M2() {
                 title="Container 30M2"
                 img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Planos%2F30m2%20(1).jpg?alt=media&token=9ece09a4-e7d9-4df5-bafc-909fc1f3078e" 
                 aires="01"
-                ventanas="01"
-                litros="30"
+                ventanas="02"
+                litros="40"
             />
             <Phone />
             <FooterSec/>

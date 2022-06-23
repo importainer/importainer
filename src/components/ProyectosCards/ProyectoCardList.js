@@ -1,6 +1,6 @@
 import React from 'react'
-import './ProyectoCardList.css'
 import ProyectoCard from './ProyectoCard'
+import './ProyectoCardList.css'
 
 const ProyectoCardList = ({p1, p2, p3, p4}) => {
     return (

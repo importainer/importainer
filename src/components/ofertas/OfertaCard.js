@@ -3,35 +3,37 @@ import "./OfertaCard.css";
 import Tabs from "./Tabs";
 
 const OfertaCard = ({
-  codCRM,
-  title,
-  img,
-  description,
-  cuota120A,
-  cuota120B,
-  cuota120C,
-  cuota240A,
-  cuota240B,
-  cuota240C,
-  nameCuota120,
-  nameCuota240,
-  nameCuotaPrinc,
-  cuotaP1,
-  cuotaP2,
-  link120,
-  link240,
-  cuotaPrecio120A,
-  cuotaPrecio120B,
-  cuotaPrecio120C,
-  cuotaPrecio240A,
-  cuotaPrecio240B,
-  cuotaPrecio240C,
-  precioLista,
-  precioCuota,
-  descuento,
-  precioListaAntes
-}) => {
+    codCRM,
+    title,
+    img,
+    description,
+    cuota120A,
+    cuota120B,
+    cuota120C,
+    cuota240A,
+    cuota240B,
+    cuota240C,
+    nameCuota120,
+    nameCuota240,
+    nameCuotaPrinc,
+    cuotaP1,
+    cuotaP2,
+    link120,
+    link240,
+    cuotaPrecio120A,
+    cuotaPrecio120B,
+    cuotaPrecio120C,
+    cuotaPrecio240A,
+    cuotaPrecio240B,
+    cuotaPrecio240C,
+    precioLista,
+    precioCuota,
+    descuento,
+    precioListaAntes
+  }) => {
+
   
+
   return (
     <div className="OfertaCard">
       <div className="OfertaCardTop">
