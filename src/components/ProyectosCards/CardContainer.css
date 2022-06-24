@@ -136,6 +136,11 @@
 
 @media screen and (max-width: 780px) {
 
+  .proy-card .card-content {
+    transform: translateY(0);
+    transition-delay: 500ms;
+  }
+
   .fondo {
     background: var(--blanco-fondo);
   }

@@ -23,9 +23,9 @@ const InfoBares = ({
 
         <div className="cont-right">
           <h3>Baño ({baños}):</h3>
-          <h4>- {vanitory}Vanitory</h4>
-          <h4>- {lavamanos}Lavamanos</h4>
-          <h4>- {inodoro}Inodoro</h4>
+          <h4>- Vanitory</h4>
+          <h4>- Lavamanos</h4>
+          <h4>-Inodoro</h4>
           <h4>{extra}</h4>
           <h4>- Griferías (Marca Piazza, Moza o Hidro)</h4>
         </div>
@@ -41,43 +41,36 @@ const InfoBares = ({
       <div className="right">
         <div className="cont-right">
           <h3>Equipamiento</h3>
-          <p>{mesones} Mesones para barra de 4.00 x 0.50</p>
+          <p>{mesones} Mesones para barra de 2.40 x 0.50m</p>
           <p>{equipamiento}</p>
         </div>
 
         <div className="cont-right">
           <h3>Aberturas:</h3>
-          <h4>- Contará con apertura de ambos laterales de 4.70 x 2.00 m</h4>
-          <p>
-            Complementos: <br />- Apertura de laterales tipo decks retraibles de
-            4.70 x 2.00 m <br />- Sistema de fácil apertura de laterales del
-            local.
-          </p>
+          <h4>- Ventanas Línea Herrero con vidrio de 3mm</h4>
+          <h4>- 06 Ventanas paño fijo de 2.00 x 2.00m</h4>
+          <h4>- 02 Ventana paño fijo de 1.00 x 2.00m</h4>
+          <h4>- 01 Puerta ventana de 2.00 x 2.00m</h4>
+          <h4>- 01 Ventana de 0.60 x 0.40m para baño</h4>
+          <h4>- 01 Puerta interior de 0.70 x 2.00m</h4>
         </div>
 
         <div className="cont-right">
           <h3>Revestimientos</h3>
           <h4>Interior:</h4>
-          <h4>- Madera en listones tipo deck.</h4>
+          <h4>- Placa de yeso color blanco (Durlock)</h4>
           <h4>Exterior:</h4>
           <h4>
             - Esmalte sintético, color a elección de línea Emapi o Tersuave,
             colores estándar a decidir por el cliente
           </h4>
-          <h4>- Aislación térmica y acústica: Lana de vidrio de 20mm.</h4>
+          <h4>- Aislación térmica y acústica: Placas de Tergopol de 20mm.</h4>
         </div>
 
         <div className="cont-right">
           <h3>Pisos</h3>
           <h4>Interior:</h4>
-          <h4>- Vinílico símil madera (alto tránsito)</h4>
-          <h4>
-            - Hidrolaqueado, piso original del contenedor tratado con dos manos
-            de hidrolaca.
-          </h4>
-          <h4>- Tipo deck de madera saligna</h4>
-          <h4>Exterior:</h4>
-          <h4>- Revestimiento de madera tipo deck.</h4>
+          <h4>- Piso original del container con tratamiento de pintura especial para pisos.</h4>
         </div>
       </div>
     </div>

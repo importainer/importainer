@@ -17,8 +17,7 @@ export default function Foodtrack30M2() {
         title="Foodtruck 30M2"
         img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Foodtrack%2FFoodtrack30M-4.jpg?alt=media&token=043126a7-3dab-46e8-be53-af7cb82ad545"
         baños="toilette damas y caballeros"
-        equipamiento="01 Mesón para barra de 4.50 x 0.50m incluye apertura de mueble para
-        paso."
+        equipamiento="01 Mesón para barra de 4.50 x 0.50m incluye apertura de mueble para paso."
         medidas="1.20 hasta 1.80m"
         mesones="02"
       />

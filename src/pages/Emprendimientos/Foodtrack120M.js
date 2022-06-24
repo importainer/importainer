@@ -17,12 +17,12 @@ export default function Foodtrack120M2() {
       <InfoBares
         title="Foodtruck 120M2"
         img="https://live.staticflickr.com/65535/51687166059_b88b2be763_z.jpg"
-        baños="toilette damas y caballeros"
+        baños="toilette"
         medidas="1.60 x 0.50 hasta 3.00 x 0.50m"
-        vanitory="01 "
-        lavamanos="02 "
-        inodoro ="02 "
-        extra="- 01 Mingitorio (Baño hombres)"
+        vanitory="01"
+        lavamanos="01"
+        inodoro="01"
+        extra="El baño contará con revestimiento cerámico en piso y muros a media altura."
         mesones="04"
       />
       <FooterSec />
