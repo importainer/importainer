@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { useHistory } from "react-router-dom";
-import "./NavBarSec.css";
 import { Link } from 'react-router-dom';
 import LoginUser from "../LoginUser/LoginUser";
+import "./NavBarSec.css";
 
 export default function NavBarSec(props) {
 

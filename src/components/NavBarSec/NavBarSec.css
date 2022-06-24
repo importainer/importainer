@@ -9,15 +9,16 @@
   margin-top: -10px;
 }
 
-/* .logo {
-  height: 70%;
-  width: 70%;
-} */
+.logo-P img {
+  
+  width: 15em;
+
+}
 
 /*===== Header =====*/
 
 .header {
-  margin-bottom: 30px;
+  /* margin-bottom: 10px; */
 }
 
 .menu-btn-s {
@@ -26,7 +27,7 @@
 
 .menu-bar {
   display: flex;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 nav {
@@ -83,6 +84,11 @@ nav ul a {
 @media screen and (max-width: 780px) {
   /*===== Menu Responsive =====*/
 
+  .logo-P img {
+
+    width: 20em;
+    
+  }
 
   .nav-menu {
     position: fixed;
@@ -145,6 +151,12 @@ nav ul a {
 
 @media screen and (max-width: 430px) {
   /*===== Resp menu =====*/
+
+  .logo-P img {
+
+    width: 15em;
+    
+  }
 
   .nav-right a {
     margin-top: 50px;
