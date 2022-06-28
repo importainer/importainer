@@ -52,7 +52,7 @@ const Contacto = (props) => {
               />
 
               <input
-                type="text"
+                type="number"
                 name="phone"
                 id="phone"
                 placeholder="Telefono"

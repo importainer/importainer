@@ -34,9 +34,17 @@
 
 .c1 {
   /* background-image: url(../../images/120M2.jpg); */
+  
   background-repeat: no-repeat;
   background-size: 100% 100%;
   object-fit: cover;
+  border: 1px solid blue;
+}
+
+.proy-card, .c1 {
+  
+  height: 90%;
+
 }
 
 .proy-card:hover {

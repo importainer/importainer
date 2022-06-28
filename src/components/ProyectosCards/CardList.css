@@ -9,7 +9,8 @@
 @media screen and (max-width: 1500px) {
 
     .card{
-        grid-template-columns: 35% 35%;
+        grid-template-columns: 40% 40%;
+        border: 1px solid red;
     }
 }
 
