@@ -1,1 +1,0 @@
-export const REACT_APP_X_API_KEY = 'landingimportainer10382728';
