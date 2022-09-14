@@ -1,0 +1,302 @@
+.BannerSlide {
+    overflow: hidden;
+    transition: .3s ease all;
+    /* z-index: 10; */
+    height: 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.BannerSlide img {
+    
+    width: 100%;
+    height: 20em;
+    vertical-align: top;
+    object-fit: cover;
+    filter: brightness(70%);
+
+    z-index: 0;
+}
+
+.cardContent {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 40%;
+
+    width: 95%;
+    height: 7em;
+    /* background: rgba(232, 232, 232, 0.7); */
+    /* border: 1px solid #000000; */
+    color: white;
+    margin: 0 0 0 .7em;
+    padding: .5em;
+    /* transform: translateX(-50%);
+    transition: transform .5s; */
+    /* animation: arrastreX .5s; */
+    
+    z-index: 10;
+
+} 
+
+@keyframes arrastreX {/*todavia no esta aplicado*/
+
+    from {
+
+        /* transform: translateX(-50%); */
+        background:red;
+
+    }
+
+    to {
+        
+        /* transform: translateX(0%); */
+        background:black;
+
+    }
+    
+}
+
+.cardContent h1 {
+
+    font-size: .9em;
+
+}
+
+.cardContent h3 {
+
+    font-size: .9em;
+
+}
+
+.contDes {
+
+    display: flex;
+
+    margin: .5em;
+
+}
+
+.numDes {
+
+    height: 2.5em;
+    background:rgba(0, 0, 0, 0.8);
+    margin: .3em;
+    padding: .5em;
+    font-size: 1em;
+    font-weight: bold;
+
+}
+
+.txtDes {
+
+    display: flex;
+
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+
+}
+
+.h4Txt {
+
+    /* width: 90%; */
+    font-size: .9em;
+    font-weight: bold;
+    padding: .2em 0;
+
+}
+
+.h4Sub {
+
+    font-size: .9em;
+
+}
+
+.h4FondNeg {
+
+    padding: .5em;
+
+}
+
+.h4FondNeg h5 {
+
+    display: inline-block;
+
+    background: rgba(0, 0, 0, 0.8);
+    padding: .5em;
+    font-size: 1em;
+    font-weight: 100;
+    font-weight: bold;
+
+}
+
+.buttom {
+
+    position: relative;
+    left: 60%;
+
+    width: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 1px solid #000000;
+    text-align: center;
+    /* margin: .5em 0 0 0; */
+    padding: .3em 0;
+
+}
+
+.buttom:hover {
+
+    background: rgba(232, 232, 232, 0.8);
+    color: #000000;
+
+    cursor: pointer;
+
+}
+
+.styleNone {
+
+    display: none;
+
+}
+
+@media screen and (min-width: 500px) {
+
+    .buttom {
+
+        width: 30%;
+    
+    }
+    
+}
+
+@media screen and (min-width: 800px) {
+
+    .BannerSlide img {
+    
+        height: 100%;
+
+    }
+
+    .cardContent {
+
+        top: 60%;
+    
+    } 
+
+    .cardContent h1 {
+    
+        font-size: 1.3em;
+    
+    }
+    
+    .cardContent h3 {
+    
+        font-size: 1.2em;
+    
+    }
+
+    .h4Txt {
+    
+        /* width: 90%; */
+        font-size: 1em;
+        padding: .2em 0;
+    
+    }
+
+    .h4Sub {
+    
+        font-size: 1em;
+    
+    }
+
+    .numDes {
+    
+        height: 2em;
+        padding: .3em;
+        font-size: 1.3em;
+    
+    }
+
+    .txtDes {
+        
+        font-size: 1.3em;
+    
+    }
+    
+}
+
+@media screen and (min-width: 1000px) {
+
+    .buttom {
+
+        top: 1em;
+        left: 40%;
+
+        width: 20%;
+    
+    }
+
+    .cardContent {
+
+        top: 50%;
+    
+    } 
+
+    .cardContent h1 {
+    
+        font-size: 1.5em;
+    
+    }
+    
+    .cardContent h3 {
+    
+        font-size: 1.2em;
+    
+    }
+
+    .h4Txt {
+    
+        /* width: 90%; */
+        font-size: 1.2em;
+        padding: .2em 0;
+    
+    }
+
+    .h4Sub {
+    
+        font-size: 1.2em;
+    
+    }
+
+    .numDes {
+    
+        height: 2em;
+        padding: .3em;
+        font-size: 1.5em;
+    
+    }
+
+    .txtDes {
+        
+        font-size: 1.5em;
+    
+    }
+    
+}
+
+@media screen and (min-width: 1501px) {
+    
+    .buttom {
+
+        left: 30%;
+    
+        width: 15%;
+
+    }
+    
+}

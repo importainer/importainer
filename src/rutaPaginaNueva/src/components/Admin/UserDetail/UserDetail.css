@@ -1,0 +1,337 @@
+
+.userDetailContent {
+
+    background: url(../../../images/fondos/20-12\ FONDO\ WEB-02.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 1px solid #000000;
+    min-height: 100vh;
+
+}
+
+.userDetailContent__fac {
+
+    width: 90%;
+    background: rgba(255,255,255, .95);
+    margin: 2em auto;
+    padding: 1em;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+
+}
+
+.userDetailContent__fac > img {
+
+    width: 40%;
+    margin: auto;
+
+}
+
+.userDetailContent__fac > img, .userDetailContent__fac > h2, .userDetailContent__footer {
+
+    grid-column: 1 / 6;
+
+}
+
+.userDetailContent__nom, .titleDetail__total {
+
+    grid-column: 1 / 3;
+
+}
+
+.userDetailContent__dir, .userDetailContent__cuot {
+
+    grid-column: 3 / 4;
+
+}
+
+.userDetailContent__cp, .userDetailContent__plan {
+
+    grid-column: 4 / 5;
+
+}
+
+.userDetailContent__prov, .userDetailContent__mod {
+
+    grid-column: 5 / 6;
+
+}
+
+.userDetailContent__gru {
+
+    grid-column: 1 / 2;
+
+}
+
+.userDetailContent__ord {
+
+    grid-column: 2 / 3;
+
+}
+
+.userDetailContent__titleDetail, .userDetailContent__cbu1, .userDetailContent__cbu2, .userDetailContent__frances, .userDetailContent__comp {
+
+    grid-column: 1 / 7;
+
+}
+
+.userDetailContent__titleDetail {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.titleDetail__cont {
+
+    text-align: center;
+    border: 1px solid black;
+
+}
+
+.titleDetail__cont > h4 {
+
+    border-bottom: 1px solid black;;
+
+}
+
+.titleDetail__det {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 0.5em;
+
+}
+
+.titleDetail__det > ul {
+
+    list-style: none;
+    text-align: start;
+
+}
+
+.titleDetail__det__izq > li {
+
+    text-align: end;
+
+}
+
+.titleDetail__det__imp > ul {
+
+    list-style: none;
+
+}
+
+.titleDetail__total {
+
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+
+}
+
+.titleDetail__total > div {
+
+    width: 50%;
+    border-bottom: 1px solid black;
+
+}
+
+.titleDetail__total__text {
+
+    border-left: 1px solid black;
+
+}
+
+.titleDetail__total__monto {
+
+    text-align: center;
+    border-right: 1px solid black;
+
+}
+
+.userDetailContent__estadoPlan {
+
+    grid-column: 1 / 3;
+
+}
+
+.userDetailContent__estadoCont {
+
+    grid-column: 4 / 6;
+
+}
+
+.userDetailContent__estadoPlan, .userDetailContent__estadoCont {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.userDetailContent__estadoPlan > h5, .userDetailContent__estadoCont > h5 {
+
+    font-size: 1em;
+    padding: 0.3em 0;
+
+}
+
+.userDetailContent__estadoCont > select {
+
+    width: 40%;
+
+}
+
+.userDetailContent__estadoPlan > select, .userDetailContent__estadoCont > select {
+
+    height: 2em;
+    border-radius: 5px;
+
+}
+
+.userDetailContent__estadoPlan > select > option:checked, .userDetailContent__estadoCont > select > option:checked {
+
+    background:rgba(255, 0, 0, 0.7);
+    color: white;
+
+}
+
+.userDetailContent__footerN {
+
+    font-weight: 700;
+
+}
+
+.userDetailContent__cbu1, .userDetailContent__cbu2 {
+
+    background:rgba(185, 185, 185, 0.7);
+
+}
+
+/* deslizar las card hasta su lugar */
+
+@media screen and (max-width: 1100px) {
+
+    .userDetailContent__fac > h2 {
+
+        font-size: 1.2em;
+
+    }
+
+    .userDetailContent__nom,
+    .userDetailContent__dir,
+    .userDetailContent__cp,
+    .userDetailContent__prov,
+    .userDetailContent__gru,
+    .userDetailContent__ord,
+    .userDetailContent__cuot,
+    .userDetailContent__plan,
+    .userDetailContent__mod,
+    .userDetailContent__estadoPlan > h5, 
+    .userDetailContent__estadoCont > h5 {
+
+        font-size: 0.8em;
+
+    }
+
+    
+    .titleDetail__cont,
+    .titleDetail__det,
+    .titleDetail__det__izq,
+    .titleDetail__det__imp,
+    .titleDetail__total__text,
+    .titleDetail__total__monto,
+    .userDetailContent__footer,
+    .userDetailContent__cbu1,
+    .userDetailContent__frances, 
+    .userDetailContent__cbu2,
+    .userDetailContent__comp {
+
+        font-size: 0.9em;
+
+    }
+
+    .userDetailContent__estadoPlan > select, .userDetailContent__estadoCont > select {
+
+        width: 40%;
+        height: 1.5em;
+
+    }
+    
+}
+
+@media screen and (max-width: 800px) {
+
+    .userDetailContent__fac > h2 {
+
+        font-size: 1em;
+
+    }
+
+    .userDetailContent__nom,
+    .userDetailContent__dir,
+    .userDetailContent__cp,
+    .userDetailContent__prov,
+    .userDetailContent__gru,
+    .userDetailContent__ord,
+    .userDetailContent__cuot,
+    .userDetailContent__plan,
+    .userDetailContent__mod,
+    .userDetailContent__estadoPlan > h5, 
+    .userDetailContent__estadoCont > h5 {
+
+        font-size: 0.7em;
+
+    }
+
+    .userDetailContent__nom > p,
+    .userDetailContent__dir > p,
+    .userDetailContent__cp > p,
+    .userDetailContent__prov > p,
+    .userDetailContent__gru > p,
+    .userDetailContent__ord > p,
+    .userDetailContent__cuot > p,
+    .userDetailContent__plan > p,
+    .userDetailContent__mod > p {
+
+        font-size: 1em;
+
+    }
+
+    .titleDetail__cont > h4 {
+
+        font-size: 0.8em;
+
+    }
+
+    .titleDetail__total__text,
+    .titleDetail__total__monto {
+
+        font-size: 0.8em;
+
+    }
+
+    .userDetailContent__footer > p,
+    .userDetailContent__cbu1,
+    .userDetailContent__frances > p, 
+    .userDetailContent__cbu2,
+    .userDetailContent__comp > p {
+
+        font-size: 0.9em;
+
+    }
+
+    .userDetailContent__estadoPlan > select, .userDetailContent__estadoCont > select {
+
+        width: 40%;
+        height: 1.5em;
+        font-size: 0.8em;
+
+    }
+    
+}

@@ -96,7 +96,12 @@ export default function MiniTabs({
             activeRadius === 1 ? "Check120  active-check-content" : "Check120"
           }
         >
-          <Checkboxs
+
+          <br />
+
+          <h3>Entregas Programadas</h3>
+
+          {/* <Checkboxs
             cuota1={cuota120A}
             nameCuota={nameCuota120}
             cuotaPrecioA={cuotaPrecio120A}
@@ -105,7 +110,8 @@ export default function MiniTabs({
             cuota3={cuota120C}
             cuotaPrecioC={cuotaPrecio120C}
             link={link120}
-          />
+          /> */}
+          
         </div>
 
         <div

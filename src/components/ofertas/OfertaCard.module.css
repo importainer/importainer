@@ -1,0 +1,286 @@
+.OfertaCard {
+
+  background-color: #ffffff;
+  width: 60%;
+  height: 100%;
+  overflow: hidden;
+  border: solid 0.5px rgb(225, 225, 225);
+  /* border-radius: 5px; */
+  animation-duration: 2s;
+  animation-name: cardMove;
+  margin: 0 auto;
+
+}
+
+/* deslizar las card hasta su lugar */
+
+@keyframes cardMove {
+
+  from {
+
+    position: relative;
+
+  }
+
+  to {
+
+    left: 50%;
+
+  }
+  
+}
+
+.OfertaCardTitle {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.OfertaCardTop{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.Descuento{
+  position: absolute;
+  right: 20px;
+  color: rgb(255, 0, 0);
+  font-size: 25px;
+}
+
+.OfertaContImg {
+  /* width: 93%; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.OfertaCard img {
+  height: 100%;
+  width: 100%;
+  /* border-radius: 8px; */
+}
+
+.OfertaCarac {
+
+  display: flex;
+  justify-content: space-around;
+
+  margin: .5em 0 0 0;
+  font-size: 1.1em;
+
+}
+
+.OfertaCardSubtitle {
+
+  text-align: center;
+  margin: .5em 0;
+
+}
+
+.contentCuot, .contentPrecios {
+
+  width: 95%;
+  background: rgba(232, 232, 232, 0.8);
+  margin: 1em auto;
+  padding: .5em 1em;
+
+}
+
+.contentPrecios {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  font-size: .9em;
+
+}
+
+.preText {
+
+  grid-column: 1 / 3;
+
+}
+
+.preNum {
+
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.contentBtn {
+
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.btnVer, .btnCon {
+
+  display: flex;
+  justify-content: center;
+
+  width: 35%;
+  border: 1px solid black;
+  margin: 0 0 1em 0;
+  padding: .5em;
+  font-weight: bold;
+
+}
+
+.btnVer {
+
+  background: rgba(0, 0, 0, 1);
+  color: white;
+
+}
+
+.btnCon p {
+
+  color: black !important;
+
+}
+
+.btnVer:hover, .btnCon:hover, .btnCon:hover p {
+
+  background:rgba(185, 0, 0, 1);
+  color: white !important;
+  cursor: pointer;
+
+}
+
+.sangria {
+  text-indent: 1em;
+  text-decoration: none;
+}
+
+.OfertaCardDesc {
+  width: 90%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.PopupContent {
+
+  width: 70em;
+  background:rgba(232, 232, 232, .8);
+  border: 1px solid rgba(185, 0, 0, 1);
+  margin: 1em 0;
+
+}
+
+.PopupClouse {
+
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid rgba(185, 0, 0, 1);
+  margin: 0 .5em;
+
+}
+
+.PopupClouse:hover {
+
+  cursor: pointer;
+
+}
+
+.PopupHeader {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1em 5em;
+
+}
+
+.PopupHeader img {
+
+  height: 25em;
+
+}
+
+/* ===== Responsive ===== */
+
+@media screen and (max-width: 1100px) {
+  .OfertaCard {
+    width: 80%;
+  }
+
+  .Descuento{
+    margin-left: 35%;
+  }
+
+  .OfertaCardTitle, .Descuento, .OfertaCardDesc {
+
+    font-size: 1em;
+
+  }
+  
+}
+
+@media screen and (max-width: 800px) {
+  .OfertaCard {
+    width: 90%;
+  }
+
+  .OfertaCardTop{
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+
+  .Descuento{
+    margin: 0 0 2% 5%;
+    left: 0;
+  }
+
+  .OfertaCardTitle {
+
+    margin: 0 0 1.4em 5%;
+
+  }
+
+  .OfertaCardTitle, .Descuento {
+
+    font-size: 1.3em;
+
+  }
+
+  .OfertaCardDesc {
+
+    font-size: 1em;
+
+  }
+  
+}
+
+/* @media screen and (max-width: 600px) {
+  .OfertaCard {
+    width: 70%;
+  }
+
+  .OfertaCardTop{
+    height: 90px;
+  }
+
+  .Descuento{
+    font-size: 1.7em;
+  }
+
+  .OfertaCardTitle {
+
+    font-size: 2em;
+
+  }
+
+  .OfertaCardDesc {
+
+    font-size: 1.1em;
+
+  }
+  
+} */

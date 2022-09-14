@@ -1,5 +1,4 @@
 import React from 'react';
-import ProyectoCardList from '../components/ProyectosCards/ProyectoCardList';
 import NavBarSec from '../components/NavBarSec/NavBarSec'
 import FooterSec from '../components/FooterSec/FooterSec';
 import Titulo from "../components/Titulo";
@@ -42,7 +41,7 @@ const Proyectos = () => {
         <div className="">
             {/* <NavBarSec title="Proyectos" link="/proyectos"/> */}
             <Titulo titulo="Proyectos" />
-            <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} />
+            {/* <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} /> */}
             {/* <FooterSec/> */}
         </div>
     )

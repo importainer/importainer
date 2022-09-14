@@ -1,0 +1,186 @@
+/*===== Contacto =====*/
+.contactContainer {
+  
+  width: 100%;
+  margin: 5em auto;
+  overflow: visible;
+  scroll-behavior: inherit;
+
+}
+
+/* .comp {
+    margin-top: -20px;
+    display: flex;
+  } */
+
+.contH2 {
+
+  font-size: 2.5em;
+  text-align: center;
+
+}
+
+.datos {
+  margin-top: 0px;
+}
+
+.datos p {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.EnvConsulta {
+  margin-top: 20px;
+  margin-bottom: -45px;
+}
+
+/*===== Formulario =====*/
+
+.container {
+
+  width: 50%;
+  padding: 0 3em;
+  overflow: hidden;
+  margin: 0 auto;
+
+}
+
+.formulario {
+
+  width: 100%;
+
+  /* border: 1px solid blue; */
+
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="number"],
+.formulario input[type="submit"],
+.formulario textarea {
+
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid #383535;
+  border-radius: 3px;
+  background-color: #f6f6f600;
+  margin: 8px 0;
+  display: inline-block;
+
+}
+
+.formulario input[type="submit"] {
+
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background-color: #000;
+}
+
+.formulario input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.formulario textarea {
+
+  display: block;
+
+  height: 100px;
+  /*resize: vertical | horizontal | none | both*/
+  resize: none;
+
+}
+
+/*===== Map =====*/
+
+/* .der {
+    float: right;
+    height: 100%;
+    width: 55%;
+  } */
+
+/* .DescRight {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  text-align: center;
+  margin-right: -20%;
+}
+
+.DescRight h2 {
+  font-size: 26px;
+}
+
+.DescRight p {
+  font-size: 1.33rem;
+} */
+
+.mapouter {
+  position: static;
+  text-align: right;
+  width: 100%;
+  height: 100%;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  width: 100%;
+  height: 600px;
+}
+
+.gmap_iframe {
+  height: 600px !important;
+}
+
+/*===== Responsive =====*/
+
+@media screen and (max-width: 1500px) {
+
+  .container {
+
+    width: 70%;
+
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  /*===== Contacto =====*/
+
+  .container {
+
+    width: 100%;
+
+  }
+
+  .datos p {
+    font-size: 1.2rem;
+  }
+
+  /* .comp {
+    display: flex;
+    flex-wrap: wrap;
+  } */
+
+  .der {
+
+    width: 100%;
+    margin: auto;
+
+  }
+
+  .mapouter {
+
+    text-align: center;
+
+  }
+
+  .DescRight {
+
+    text-align: center;
+    margin-right: 0%;
+
+  }
+
+}

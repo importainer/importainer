@@ -1,0 +1,103 @@
+.contDetail {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 1em 3em;
+    z-index: 1;
+
+}
+
+.contDetail img {
+
+    height: 25em;
+    margin: 1em 0;
+
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+
+  display: flex;
+  justify-content: space-between;
+
+  background-color: #eee;
+  color: #444;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: all 1s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordArrow {
+
+  /* position: absolute; */
+
+  width: 5%;
+  border: 1px solid red;
+
+}
+
+/* .arrowLeft, .arrowRight {
+
+  position: absolute;
+
+  margin: 0;
+  padding: 0;
+  transform: rotate(90deg);
+
+}
+
+.arrowLeft {
+
+  margin-top: .5em;
+
+}
+
+.arrowRight {
+
+  margin-bottom: .5em;
+
+} */
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  height: 0em;
+  overflow: hidden;
+  transition: all 1s;
+}
+
+.panel ul {
+
+  list-style: none;
+  margin: 1em .7em;
+
+}
+
+.panel ul li {
+
+  margin: .3em 0;
+
+}
+
+.panel p {
+
+  margin: .5em 0;
+  font-weight: bold;
+
+}

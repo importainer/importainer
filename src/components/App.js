@@ -7,6 +7,7 @@ import ContactoPage from "../pages/ContactoPage";
 import RouteAdm from "./RouteDefined/RouteAdm";
 import RouteMark from "./RouteDefined/RouteMark";
 import RouteAM from "./RouteDefined/RouteAM";
+import RouteUserTemp from "./RouteDefined/RoutUserTemp";
 // import ContainerGeneral from "../pages/Containers/ContainerGeneral";
 
 // ===== PROYECTOS ======
@@ -71,6 +72,14 @@ import Consultas from "./Admin/Consultas/Consultas";
 import CreateProducts from "./Admin/CreateProducts/CreateProducts";
 import Encuesta from "./Admin/Encuesta/Encuesta";
 import EncuestaVentas from "./Admin/EncuestaVentas/EncuestaVentas";
+
+import Pnew from "../rutaPaginaNueva/src/pages/Home";
+import ContactoPage2 from "../rutaPaginaNueva/src/pages/ContactoPage";
+import ProyectosNew from "../rutaPaginaNueva/src/pages/Proyectos";
+import UserTemp from "../components/UserTemp/UserTemp";
+import LogOut from "../components/UserTemp/logOut";
+import ProyectGroup from "../rutaPaginaNueva/src/components/ProyectGoup/ProyectGroup";
+import Cont15M22 from "../rutaPaginaNueva/src/pages/Containers/ContDetail";
 
 // ===== USER =====
 
@@ -170,6 +179,20 @@ const App = () => (
 
         <Route exact path="/oferta" component={OfertaList} />
         <Route exact path="/test" component={test} />
+
+        <Route exact path="/userTemp" component={UserTemp} />
+        <RouteUserTemp path="/PaginaNueva" component={Pnew} />
+        <RouteUserTemp path="/contactoTest" component={ContactoPage2} />
+        <RouteUserTemp path="/proyectosNew" component={ProyectosNew} />
+        <RouteUserTemp path="/cerrarsesion" component={LogOut} />
+        <RouteUserTemp path="/Proyectos/:id" component={ProyectGroup} />
+        <RouteUserTemp path="/:id" component={Cont15M22} />
+
+        {/* <Route exact path="/userTemp" component={UserTemp} />
+        <Route exact path="/PaginaNueva" component={Pnew} />
+        <Route exact path="/contacto2" component={ContactoPage2} />
+        <Route exact path="/:id" component={Cont15M22} /> */}
+
         <Route component={NotFound} />
       </Switch>
     </HashRouter>

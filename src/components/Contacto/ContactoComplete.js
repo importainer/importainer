@@ -29,8 +29,8 @@ const ContactoComplete = () => {
             <p>- Claudio Maria Joly 2570 | Moreno</p>
             <p>- Colectora Oeste Ramal Pilar 2841 | Tortuguitas</p>
             <p>Teléfono: +54 9 11 5937-8945</p>
-            <h2>Email</h2>
-            <p>ventas@importainer.com.ar</p>
+            {/* <h2>Email</h2>
+            <p>ventas@importainer.com.ar</p> */}
           </div>
           <h2 className="EnvConsulta">Envianos tu Consulta!</h2>
           <Contacto add={addUser} />

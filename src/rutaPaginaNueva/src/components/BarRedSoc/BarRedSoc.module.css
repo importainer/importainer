@@ -1,0 +1,94 @@
+.containerRedSocial, .whatsapp, .redes {
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #fff;
+    
+}
+
+.containerRedSocial {
+
+    background: rgba(0, 0, 0, 1);
+    padding: 1em 2em;
+
+}
+
+.whatsapp {
+
+    justify-content: flex-start;
+
+    width: 75%;
+
+}
+
+.whatsapp p {
+
+    margin: 0 0 0 .5em;
+    padding: .3em 0 0 0;
+
+}
+
+.redes {
+
+    width: 7%;
+
+}
+
+@media screen and (max-width: 1500px) {
+
+    .redes {
+
+        width: 10%;
+    
+    }
+    
+}
+
+@media screen and (max-width: 1000px) {
+
+    .redes {
+
+        width: 15%;
+    
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+    
+    .containerRedSocial {
+
+        /* justify-content: center; */
+
+        padding: 1em .5em;
+
+    }
+
+    .whatsapp {
+
+        width: 80%;
+
+    }
+
+    .whatsapp p {
+
+        justify-content: center;
+
+        font-size: .85em;
+
+    }
+
+    /* .containerRedSocial {
+
+        padding: 1em .5em;
+
+    } */
+
+    .redes {
+
+        width: 25%;
+    
+    }
+    
+}

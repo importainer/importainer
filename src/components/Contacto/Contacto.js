@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import Alert from '@mui/material/Alert';
 
 const Contacto = (props) => {
+
+  const [msjAlert, setMsjAlert] = useState(false);
 
   const dia = new Date().getDate();
   const mes = new Date().getMonth();
@@ -20,14 +23,31 @@ const Contacto = (props) => {
   const [values, setValues] = useState(initialStateValues);
 
   const handleInputChange = (e) => {
+
     const { name, value } = e.target;
+
     setValues({ ...values, [name]: value });
+    
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
-    props.add(values);
-    setValues({ ...initialStateValues });
+
+    if(values.phone.length < 10) {
+
+      setMsjAlert(true);
+
+    } else {
+
+      setMsjAlert(false);
+      
+      props.add(values);
+
+      setValues({ ...initialStateValues });
+
+    }
+
   };
 
   return (
@@ -58,6 +78,7 @@ const Contacto = (props) => {
                 placeholder="Telefono"
                 value={values.phone}
                 onChange={handleInputChange}
+                required
               />
 
               <input
@@ -97,6 +118,15 @@ const Contacto = (props) => {
             ))}
           </ul>
         </div> */}
+
+        {
+
+          msjAlert ? <Alert variant="filled" severity="error">
+              Verifica que el numero telefonico este correcto!!
+            </Alert> : null
+
+        }
+
     </div>
   );
 };

@@ -12,9 +12,9 @@ export default function NavBar({tipo}) {
 
         signOut(auth).then(() => {
             // Sign-out successful.
-            }).catch((error) => {
+        }).catch((error) => {
             // An error happened.
-            })
+        })
 
     }
     

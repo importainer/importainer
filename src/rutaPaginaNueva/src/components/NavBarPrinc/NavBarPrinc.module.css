@@ -1,0 +1,234 @@
+.Cont {
+
+  position: static;
+
+  z-index: 90;
+}
+
+/*===== Logo Importainer =====*/
+
+.logoC {
+
+  width: 30%;
+  height: 5%;
+  object-fit: cover;
+  align-items: center;
+  margin: 0 3%;
+  display: flex;
+
+}
+
+.logoC img {
+
+  width: 100%;
+
+}
+
+.logo {
+  opacity: 0.8;
+}
+
+.container {
+
+  margin: auto;
+  overflow: hidden;
+  z-index: 4;
+
+}
+
+/*===== Header =====*/
+
+.menuBar {
+
+  position: absolute;
+  top: 4em;
+  right: 10em;
+
+  display: flex;
+
+  color: #000;
+
+}
+
+.menuBtn {
+
+  position: absolute;
+  top: 5em;
+  right: 1em;
+
+  display: block;
+
+  padding: .5em;
+  align-items: center;
+  color: #fff;
+
+  z-index: 100;
+
+}
+
+.navMenu {
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.61);
+  align-items: center;
+  justify-content: center;
+  transform: translateX(500%);
+  transition: transform 0.8s ease-in-out;
+
+  z-index: 100;
+
+}
+
+.show {
+
+  transform: translateX(0%);
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(2px);
+
+}
+
+.faTimes {
+  transition: 2500ms;
+  color: #ffffff;
+}
+
+.navMenu ul {
+  display: block;
+  position: absolute;
+  padding-top: -300px;
+  list-style: none;
+
+}
+
+.navMenu ul li {
+
+  font-weight: 500;
+  padding: 0em;
+  margin-left: 1em;
+
+}
+
+.navMenu li:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.navMenu ul li p {
+
+  color: #fff;
+  margin: 0;
+
+}
+
+.redSocBar {
+
+  position: absolute;
+  top: 0px;
+
+  width: 100%;
+
+  z-index: 100;
+
+}
+
+p {
+  font-size: 1rem;
+}
+
+.navRight {
+  top: 28%;
+}
+
+.navRight a {
+  margin-top: 80px;
+  display: block;
+  text-align: center;
+  font-size: 30px;
+}
+
+/*===== Responsive =====*/
+
+@media screen and (min-width: 800px) {
+
+  .Cont {
+
+    position: absolute;
+    top: 0vh;
+
+    width: 100%;
+    background: rgba(0, 0, 0, 1);
+
+  }
+
+  .logoC {
+
+    width: 15em;
+    height: 100%;
+
+  }
+
+  .container {
+
+    padding: 50px 0;
+
+  }
+
+  .menuBtn {
+
+    display: none;
+
+  }
+
+  .menuBar {
+
+    right: 0em;
+
+    display: flex;
+
+    width: 100%;
+    height: 4em;
+
+  }
+
+  .navMenu {
+
+    position: absolute;
+
+    justify-content: flex-end;
+
+    background: rgba(0, 0, 0, 0);
+    margin: 0 1em 0 0;
+    transform: translateX(0%);
+
+  }
+
+  .navMenu ul {
+
+    position: relative;
+    right: 1em;
+
+    display: flex;
+
+    text-align: right;
+
+  }
+
+  .navRight {
+
+    top: 0%;
+
+  }
+
+  .navRight a {
+
+    margin-top: 0px;
+    padding: 0em;
+
+  }
+
+}

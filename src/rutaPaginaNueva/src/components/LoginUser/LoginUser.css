@@ -1,0 +1,20 @@
+
+.loginContent {
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    border-radius: 50%;
+
+}
+
+.loginContent:hover {
+
+    background: rgba(255, 255, 255, 0.5);
+
+}
+
+.loginContent__menuItem {
+
+    color: rgb(255, 255, 255);
+
+}
