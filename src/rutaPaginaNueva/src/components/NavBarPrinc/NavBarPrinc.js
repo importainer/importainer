@@ -22,7 +22,7 @@ export default function NavBarPrinc() {
   return ( 
     <div className={NavBarPr.Cont}>
 
-      <div className={NavBarPr.redSocBar} ><BarRedSoc /></div>
+      {/* <div className={NavBarPr.redSocBar} ><BarRedSoc /></div> */}
 
       <HashRouter>
 
@@ -52,7 +52,7 @@ export default function NavBarPrinc() {
               <li><Link to="/" ><p>ENTREGAS</p></Link></li>
               <li><Link to="/" ><p>SOBRE NOSOTROS</p></Link></li>
               <li><Link to="/" ><p>SUCURSALES</p></Link></li> */}
-              <li><Link to="/contacto2" style={{ color: '#fff'}} ><p>CONTACTO</p></Link></li>
+              <li><Link to="/contactoTest" style={{ color: '#fff'}} ><p>CONTACTO</p></Link></li>
               {/* <li><LoginUser /></li> */}
 
             </ul>
@@ -67,4 +67,3 @@ export default function NavBarPrinc() {
     </div>
   );
 }
-

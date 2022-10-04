@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getAllProyect, getAllProducts, getProyectGoup } from "../../Redux/Actions/index";
+import { getAllProyect, getAllProducts, getProyectGoup, setOfertStatus } from "../../Redux/Actions/index";
 import StyleProyectCards from "./ProyectosCardsStyle.module.css";
 
 export default function ProyectosCards({ title, txtDesc, image, tipo }) {
@@ -26,7 +26,7 @@ export default function ProyectosCards({ title, txtDesc, image, tipo }) {
 
                 <div className={StyleProyectCards.contentBTN} >
 
-                    <div className={StyleProyectCards.btnVer} onClick={e => dispatch(getProyectGoup(tipo))} ><Link to={`/Proyectos/${title}`} >VER TODOS</Link></div>
+                    <div className={StyleProyectCards.btnVer} onClick={e => { dispatch(getProyectGoup(tipo)); dispatch(setOfertStatus(false)) }} ><Link to={`/Proyectos/${title}`} >VER TODOS</Link></div>
 
                     <div className={StyleProyectCards.btnCon} >CONSULTAR</div> 
 

@@ -1,0 +1,47 @@
+.BannerSlideSecond {
+    overflow: hidden;
+    transition: .3s ease all;
+    /* z-index: 10; */
+    height: 26em;
+    min-width: 100%;
+    position: relative;
+}
+
+.BannerSlideSecond img {
+
+    width: 100%;
+    height: 20em;
+    vertical-align: top;
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+@media screen and (min-width: 500px) {
+
+    .buttom {
+
+        width: 30%;
+
+    }
+
+}
+
+@media screen and (min-width: 800px) {
+
+    .BannerSlideSecond img {
+
+        height: 100%;
+
+    }
+
+}
+
+@media screen and (min-width: 1000px) {
+
+}
+
+@media screen and (min-width: 1501px) {
+
+
+}

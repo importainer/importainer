@@ -12,24 +12,6 @@
 
 }
 
-/* deslizar las card hasta su lugar */
-
-@keyframes cardMove {
-
-    from {
-
-        position: relative;
-
-    }
-
-    to {
-
-        left: 50%;
-
-    }
-
-}
-
 .OfertaCardTitle {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -57,9 +39,12 @@
 }
 
 .cardProductContent img {
-    height: 100%;
+
     width: 100%;
+    height: 15em;
+    object-fit: cover;
     /* border-radius: 8px; */
+
 }
 
 .OfertaCarac {
@@ -206,19 +191,241 @@
 
 }
 
+/* -------------------- POP UP ----------------------------- */
+
+.contentPopup {
+
+    position: fixed;
+    top: 100vh;
+    left: 15%;
+
+    width: 10%;
+    height: 10%;
+    background: rgba(232, 232, 232, 0.5);
+    opacity: 0;
+    transition: all .7s ease-in-out;
+
+    z-index: 100;
+
+    border: 1px solid white;
+
+}
+
+.maxWidth {
+
+    top: 1em;
+
+    width: 70%;
+    height: 70%;
+    opacity: 1;
+
+}
+
+.closePop {
+
+    display: flex;
+    justify-content: flex-end;
+
+    background: rgba(0, 0, 0, 1);
+    margin: 0 0 .5em;
+    padding: .2em;
+
+}
+
+.closePopIcon {
+
+    display: flex;
+
+    padding: 0;
+    /* border: 1px solid red; */
+
+}
+
+.closePopIcon:hover {
+
+    cursor: pointer;
+
+}
+
+.containerP {
+
+    width: 90%;
+    height: 92%;
+    margin: 0 5%;
+    /* filter: blur(2em); */
+    overflow: scroll;
+
+}
+
+.contentImg {
+    
+    height: 70%;
+    margin: 0 auto;
+
+    /* border: 1px solid red; */
+
+}
+
+.imgSlider {
+
+    position: relative;
+
+    display: flex;
+
+    height: 100%;
+    transform: translateX(0em);
+    transition: transform 2s;
+
+    /* border: 1px solid blue; */
+
+}
+
+.imgSlider img {
+
+    min-height: 100%;
+    min-width: 100%;
+    margin: auto;
+    object-fit: cover;
+    /* transform: translateX(0em);
+    transition: transform 2s; */
+
+}
+
+.contentDet {
+
+    width: 100%;
+    height: 2.5em;
+    background:rgba(232, 232, 232, 0.9);
+    color: black;
+    border-bottom: 1px solid black;
+    margin: .3em auto;
+    transition: height 1s;
+
+}
+
+.detHead:hover {
+
+    cursor: pointer;
+
+}
+
+.detHead {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.detHead p {
+
+    width: 95%;
+    height: 2em;
+    padding: .3em;
+    font-weight: bold;
+
+}
+
+.iconArrow {
+
+    transition: transform .5s;
+
+}
+
+.iconGiro {
+
+    transform: rotate(180deg);
+
+}
+
+.detProd {
+
+    width: 95%;
+    height: 100%;
+    margin: .5em auto;
+    opacity: 0;
+    transform: translateX(100em);
+
+    transition: transform .3s, opacity .2s;
+
+}
+
+.detProd ul {
+
+    margin: 0 0 1em 0;
+    list-style: none;
+
+}
+
+.detProd ul li {
+
+    margin: 0 0 .2em 0;
+
+}
+
+.detProd p {
+
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 1em 0;
+
+}
+
+.detList {
+
+    height: 25em;
+
+}
+
+.detList p {
+
+    text-decoration: underline;
+    
+}
+
+.detList .detProd {
+
+    transform: translateX(0em);
+    opacity: 1;
+    transition: transform .5s, opacity 2s;
+
+}
+
+/* prueba */
+
+.containerListDes {
+
+    color: #fff;
+
+}
+
+.item{
+
+    background: red;
+
+}
+
+/* prueba */
+
 /* ===== Responsive ===== */
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
 
     .cardProductContent {
 
         width: 70%;
 
     }
-    
-}
 
-@media screen and (min-width: 800px) {
+    .cardProductContent img {
+    
+        height: 20em;
+    
+    }
+    
+} */
+
+/* @media screen and (min-width: 800px) {
 
     .cardProductContent {
         width: 90%;
@@ -255,11 +462,18 @@
 
     }
 
-}
+} */
 
-@media screen and (min-width: 1100px) {
+/* @media screen and (min-width: 1100px) {
+
     .cardProductContent {
         width: 80%;
+    }
+
+    .cardProductContent img {
+    
+        height: 25em;
+    
     }
 
     .Descuento {
@@ -274,31 +488,4 @@
 
     }
 
-}
-
-/* @media screen and (max-width: 600px) {
-    .OfertaCard {
-      width: 70%;
-    }
-  
-    .OfertaCardTop{
-      height: 90px;
-    }
-  
-    .Descuento{
-      font-size: 1.7em;
-    }
-  
-    .OfertaCardTitle {
-  
-      font-size: 2em;
-  
-    }
-  
-    .OfertaCardDesc {
-  
-      font-size: 1.1em;
-  
-    }
-    
-  } */
+} */

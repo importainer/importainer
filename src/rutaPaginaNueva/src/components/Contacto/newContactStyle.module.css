@@ -1,0 +1,84 @@
+.contactContainer {
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 90%;
+    margin: 3em auto;
+
+}
+
+.contentLeft,
+.contentRight {
+
+    width: 50%;
+
+}
+
+.contentLeft {
+
+    padding: 0 1em;
+
+    /* border: 1px solid red; */
+
+}
+
+.contentLeft ul li {
+
+    list-style: none;
+
+}
+
+.contentLeft ul li:before {
+
+    font-size: 1.3em;
+    font-weight: bold;
+    content: "- ";
+
+}
+
+.contentLeft p {
+
+    margin: 0.5em;
+
+}
+
+.contentForm {
+
+    margin: 1em;
+
+}
+
+.contentRight {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.contentMap {
+
+    height: 48%;
+    padding: 0.5em;
+    border: 1px solid #000;
+
+}
+
+.gmap_iframe {
+
+    width: 100% !important; 
+    height: 100% !important;
+
+}
+
+.img1 {
+
+    height: 48%;
+    background: #999;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10em;
+    border: 1px solid green;
+
+}

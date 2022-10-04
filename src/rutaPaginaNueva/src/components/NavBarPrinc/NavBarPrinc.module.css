@@ -41,7 +41,7 @@
 .menuBar {
 
   position: absolute;
-  top: 4em;
+  top: 1em;
   right: 10em;
 
   display: flex;
@@ -141,14 +141,19 @@ p {
 }
 
 .navRight {
+
   top: 28%;
+
 }
 
-.navRight a {
-  margin-top: 80px;
+.navRight p {
+
   display: block;
+  
+  font-size: .9em;
+  font-weight: bold;
   text-align: center;
-  font-size: 30px;
+
 }
 
 /*===== Responsive =====*/
@@ -224,7 +229,7 @@ p {
 
   }
 
-  .navRight a {
+  .navRight p {
 
     margin-top: 0px;
     padding: 0em;

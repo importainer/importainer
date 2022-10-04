@@ -8,6 +8,7 @@ import RouteAdm from "./RouteDefined/RouteAdm";
 import RouteMark from "./RouteDefined/RouteMark";
 import RouteAM from "./RouteDefined/RouteAM";
 import RouteUserTemp from "./RouteDefined/RoutUserTemp";
+import RouteSecond from "./RouteDefined/RouteSecond";
 // import ContainerGeneral from "../pages/Containers/ContainerGeneral";
 
 // ===== PROYECTOS ======
@@ -78,7 +79,7 @@ import ContactoPage2 from "../rutaPaginaNueva/src/pages/ContactoPage";
 import ProyectosNew from "../rutaPaginaNueva/src/pages/Proyectos";
 import UserTemp from "../components/UserTemp/UserTemp";
 import LogOut from "../components/UserTemp/logOut";
-import ProyectGroup from "../rutaPaginaNueva/src/components/ProyectGoup/ProyectGroup";
+import ProductGroup from "../rutaPaginaNueva/src/components/ProductGroup/ProductGroup";
 import Cont15M22 from "../rutaPaginaNueva/src/pages/Containers/ContDetail";
 
 // ===== USER =====
@@ -102,21 +103,39 @@ const App = () => (
         <Route exact path="/Encuesta" component={Encuesta} />
         <Route exact path="/EncuestaVentas" component={EncuestaVentas} />
         {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
-        <RouteAM path="/indexAdm" component={IndexAdm} />
+        {/* <RouteAM path="/indexAdm" component={IndexAdm} />
         <RouteAM path="/LoginCreate" component={LoginCreate} />
-        <Route exact path="/LoginCreatePrueba" component={LoginCreate} />
+        <Route exact path="/LoginCreatePrueba" component={LoginCreate} /> */}
         {/* RouteAdm RUTAS DE ACCESO ADMINISTRACION */}
-        <RouteAdm path="/users" component={LoginUser} />
-        <RouteAdm path="/UserDetail" component={UserDetail} />
+        {/* <RouteAdm path="/users" component={LoginUser} />
+        <RouteAdm path="/UserDetail" component={UserDetail} /> */}
         {/* RouteMark RUTAS DE ACCESO MARKETING */}
-        <RouteMark path="/CreatePub" component={CreatePub} />
+        {/* <RouteMark path="/CreatePub" component={CreatePub} />
         <RouteMark path="/ListaPublicaciones" component={ListPub} />
         <RouteMark path="/EditarPub" component={EditarPub} />
         <RouteMark path="/ReservasADM" component={ReservasADM} />
         <RouteMark path="/TestimonyList" component={TestimonyList} />
         <RouteMark path="/CreateTestimony" component={CreateTestimony} />
         <RouteMark path="/ConsultasADM" component={Consultas} />
-        <RouteMark path="/CreateProducts" component={CreateProducts} />
+        <RouteMark path="/CreateProducts" component={CreateProducts} /> */}
+
+        
+        {/* RouteAM RUTAS DE ACCESO ADMINISTRACION Y MARKETING */}
+        <RouteSecond path="/indexAdm" component={IndexAdm} />
+        <RouteSecond path="/LoginCreate" component={LoginCreate} />
+        <Route exact path="/LoginCreatePrueba" component={LoginCreate} />
+        {/* RouteAdm RUTAS DE ACCESO ADMINISTRACION */}
+        <RouteSecond path="/users" component={LoginUser} />
+        <RouteSecond path="/UserDetail" component={UserDetail} />
+        {/* RouteMark RUTAS DE ACCESO MARKETING */}
+        <RouteSecond path="/CreatePub" component={CreatePub} />
+        <RouteSecond path="/ListaPublicaciones" component={ListPub} />
+        <RouteSecond path="/EditarPub" component={EditarPub} />
+        <RouteSecond path="/ReservasADM" component={ReservasADM} />
+        <RouteSecond path="/TestimonyList" component={TestimonyList} />
+        <RouteSecond path="/CreateTestimony" component={CreateTestimony} />
+        <RouteSecond path="/ConsultasADM" component={Consultas} />
+        <RouteSecond path="/CreateProducts" component={CreateProducts} />
 
         {/* ===== USER ===== */}
         <Route exact path="/DatoPlan" component={Plan} />
@@ -185,7 +204,7 @@ const App = () => (
         <RouteUserTemp path="/contactoTest" component={ContactoPage2} />
         <RouteUserTemp path="/proyectosNew" component={ProyectosNew} />
         <RouteUserTemp path="/cerrarsesion" component={LogOut} />
-        <RouteUserTemp path="/Proyectos/:id" component={ProyectGroup} />
+        <RouteUserTemp path="/Proyectos/:id" component={ProductGroup} />
         <RouteUserTemp path="/:id" component={Cont15M22} />
 
         {/* <Route exact path="/userTemp" component={UserTemp} />

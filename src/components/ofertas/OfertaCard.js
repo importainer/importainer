@@ -41,7 +41,7 @@ const OfertaCard = ({
         <h3 className="Descuento">-{descuento}%</h3>
       </div>
       <div className="OfertaContImg">
-        <img src={img} alt="" ClassName="img-oferta" loading="lazy" />
+        <img src={img} alt="" className="img-oferta" loading="lazy" />
       </div>
       <p className="OfertaCardDesc">{description?.split("/").map((e, i) => {
 

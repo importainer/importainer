@@ -3,29 +3,29 @@ import Checkboxs from "./Checkboxs";
 import "./MiniTabs.css";
 
 export default function MiniTabs({
-    cuota120A,
-    cuota120B,
-    cuota120C,
-    cuota240A,
-    cuota240B,
-    cuota240C,
-    nameCuota120,
-    nameCuota240,
-    nameCuotaPrinc,
-    cuotaP1,
-    cuotaP2,
-    link120,
-    link240,
-    cuotaPrecio120A,
-    cuotaPrecio120B,
-    cuotaPrecio120C,
-    cuotaPrecio240A,
-    cuotaPrecio240B,
-    cuotaPrecio240C,
-    precioLista,
-    precioCuota,
-  }) {
-  
+  cuota120A,
+  cuota120B,
+  cuota120C,
+  cuota240A,
+  cuota240B,
+  cuota240C,
+  nameCuota120,
+  nameCuota240,
+  nameCuotaPrinc,
+  cuotaP1,
+  cuotaP2,
+  link120,
+  link240,
+  cuotaPrecio120A,
+  cuotaPrecio120B,
+  cuotaPrecio120C,
+  cuotaPrecio240A,
+  cuotaPrecio240B,
+  cuotaPrecio240C,
+  precioLista,
+  precioCuota,
+}) {
+
   const [activeRadius, setActiveRadius] = useState(1);
 
   const activeRadiusFun = (i) => {
@@ -39,8 +39,8 @@ export default function MiniTabs({
       <div className="ContainerTop">
         <div
           className='ContInput'
-          onClick={() => activeRadiusFun(1)}
-          // htmlFor={cuotaP1}
+          // onClick={() => }
+        // htmlFor={cuotaP1}
         >
           <label className="PrincCheckBox" >
             <input
@@ -48,7 +48,7 @@ export default function MiniTabs({
               id={cuotaP1}
               name={nameCuotaPrinc}
               value={cuotaP1}
-              onChange=""
+              onChange={e => activeRadiusFun(1)}
               defaultChecked
             />
             {
@@ -65,7 +65,7 @@ export default function MiniTabs({
 
         <div
           className={activeRadius === 2 ? "ContInput active-check" : "ContInput"}
-          onClick={() => activeRadiusFun(2)}
+          // onClick={() => activeRadiusFun(2)}
           htmlFor={cuotaP2}
         >
           <label className="PrincCheckBox" >
@@ -74,7 +74,7 @@ export default function MiniTabs({
               id={cuotaP2}
               name={nameCuotaPrinc}
               value={cuotaP2}
-              onChange=""
+              onChange={e => activeRadiusFun(2)}
             />
             {
 
@@ -90,18 +90,16 @@ export default function MiniTabs({
 
       <div className="MiniTabsContent">
         <h4>Precio especial : $ {precioLista}</h4>
-        <h4>Cuotas de : $ {precioCuota}</h4>
-        <div
+            {console.log(precioCuota, '0000')}
+        {/* {activeRadius === 1 ? <h4>Cuotas de : ${precioCuota[0]}</h4> : <h4>Cuotas de : ${precioCuota[1]}</h4>} */}
+        
+        {/* <div
           className={
             activeRadius === 1 ? "Check120  active-check-content" : "Check120"
           }
         >
 
-          <br />
-
-          <h3>Entregas Programadas</h3>
-
-          {/* <Checkboxs
+          <Checkboxs
             cuota1={cuota120A}
             nameCuota={nameCuota120}
             cuotaPrecioA={cuotaPrecio120A}
@@ -110,11 +108,11 @@ export default function MiniTabs({
             cuota3={cuota120C}
             cuotaPrecioC={cuotaPrecio120C}
             link={link120}
-          /> */}
-          
-        </div>
+          />
 
-        <div
+        </div> */}
+
+        {/* <div
           className={
             activeRadius === 2 ? "Check120  active-check-content" : "Check120"
           }
@@ -129,7 +127,11 @@ export default function MiniTabs({
             cuotaPrecioC={cuotaPrecio240C}
             link={link240}
           />
-        </div>
+        </div> */}
+
+        <br />
+
+        <h3>Entregas Programadas</h3>
       </div>
     </div>
   );

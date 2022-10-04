@@ -50,7 +50,7 @@ export default function FooterPrinc() {
 
           <TelegramIcon sx={{color: '#FFF'}} />
 
-          <Link to="/contactoTest"><p>Dejanos tu Consulta</p></Link>
+          <Link to="/contactoTest"><p>Dejá tus Consultas</p></Link>
 
         </div>
 

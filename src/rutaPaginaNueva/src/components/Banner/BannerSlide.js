@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 import BannerSlideM from "./BannerSlide.module.css";
 
-export default function BannerSlide({ img, toph4, h1, h12, h3, h32, h4, h4Blod2, h4sub, des, h4FondNeg, btn }) {
+export default function BannerSlide({ key, banner, img, toph4, h1, h12, h3, h32, h4, h4Blod2, h4sub, des, h4FondNeg, btn }) {
 
+  const ofertState = useSelector(state => state.ofertState);
 
   return (
 
@@ -86,7 +88,7 @@ export default function BannerSlide({ img, toph4, h1, h12, h3, h32, h4, h4Blod2,
 
       </div>
 
-      <img src={img} alt="" />
+      <img className={BannerSlideM.imgStyle} src={img} alt="" />
 
     </div>
   );

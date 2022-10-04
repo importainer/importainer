@@ -4,7 +4,7 @@ import NavBarPrinc from "../components/NavBarPrinc/NavBarPrinc";
 import Wpp from "../components/wpp";
 import BannerF from "./BannerF";
 import { getAllProyect, getAllProducts, getProyectGoup, setOfertFilter, setOfertStatus } from "../Redux/Actions/index";
-import ProyectGroup from "../components/ProyectGoup/ProyectGroup";
+import ProductGroup from "../components/ProductGroup/ProductGroup";
 import Base64 from 'crypto-js/enc-base64';
 import Utf8 from 'crypto-js/enc-utf8';
 
@@ -32,7 +32,7 @@ const Home = () => {
     <div>
       <BannerF />
       <NavBarPrinc />
-      <ProyectGroup />
+      <ProductGroup banner={true} />
       {/* El suspense es para que se renderice esa seccion solo cuando sea necesario */}
       <Suspense fallback={<div>Cargando...</div>}>
         <FooterPrinc />

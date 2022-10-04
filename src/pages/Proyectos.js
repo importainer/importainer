@@ -1,5 +1,6 @@
 import React from 'react';
-import NavBarSec from '../components/NavBarSec/NavBarSec'
+import NavBarSec from '../components/NavBarSec/NavBarSec';
+import ProyectoCardList from '../components/ProyectosCards/ProyectoCardList';
 import FooterSec from '../components/FooterSec/FooterSec';
 import Titulo from "../components/Titulo";
 
@@ -39,10 +40,10 @@ const Proyectos = () => {
 
     return (
         <div className="">
-            {/* <NavBarSec title="Proyectos" link="/proyectos"/> */}
+            <NavBarSec title="Proyectos" link="/proyectos"/>
             <Titulo titulo="Proyectos" />
-            {/* <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} /> */}
-            {/* <FooterSec/> */}
+            <ProyectoCardList p1={p1} p2={p2} p3={p3} p4={p4} />
+            <FooterSec/>
         </div>
     )
 }

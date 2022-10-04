@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import "./BannerFinal.css";
 
-const BannerFinal = ({ children }) => {
+const BannerFinal = ({ children, banner, arrLength }) => {
   const slideshow = useRef(null);
   const intervaloSlideshow = useRef(null);
   const contenido = useRef(null);
 
   const Siguiente = () => {
+
     // Comprobamos que el slideshow tenga elementos
     if (slideshow.current.children.length > 0) {
       // Obtenemos el primer elemento del slideshow
@@ -45,10 +46,14 @@ const BannerFinal = ({ children }) => {
     //   }, 5000);
     // });
 
-    intervaloSlideshow.current = setInterval(() => {
-      Siguiente();
-      // next()
-    }, 6000);
+    setTimeout(() => {
+
+      intervaloSlideshow.current = setInterval(() => {
+        Siguiente();
+        // next()
+      }, 6000);
+
+    }, 500)
 
     // Eliminamos el intervalo
     // contenido.current.addEventListener("mouseleave", () => {
@@ -82,7 +87,7 @@ const BannerFinal = ({ children }) => {
         {children}
 
       </div>
-      
+
     </div>
   );
 };
