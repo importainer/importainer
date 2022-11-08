@@ -47,8 +47,9 @@ export default function NavBarPrinc() {
 
               <li><Link to="/PaginaNueva" style={{ color: '#fff'}} ><p>INICIO</p></Link></li>
               <li><Link to="/proyectosNew" style={{ color: '#fff'}} onClick={e => dispatch(setOfertStatus(false))} ><p>PROYECTOS</p></Link></li>
+              <li><Link to="/AspectosConstructivos" style={{ color: '#fff'}} ><p>ASPECTOS</p></Link></li>
+              <li><Link to="/EntregasCategory" style={{ color: '#fff'}} ><p>ENTREGAS</p></Link></li>
               {/* <li><Link to="/" ><p>FRANQUICIAS</p></Link></li>
-              <li><Link to="/" ><p>ASPECTOS TECNICOS</p></Link></li>
               <li><Link to="/" ><p>ENTREGAS</p></Link></li>
               <li><Link to="/" ><p>SOBRE NOSOTROS</p></Link></li>
               <li><Link to="/" ><p>SUCURSALES</p></Link></li> */}

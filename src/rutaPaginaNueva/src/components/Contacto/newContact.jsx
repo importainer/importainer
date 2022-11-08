@@ -1,15 +1,138 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { db } from '../../firebase';
+import { collection, addDoc } from 'firebase/firestore';
+import AlertError from '../Alert/AlertError';
+import AlertOk from '../Alert/AlertOk';
 import stNewContact from "./newContactStyle.module.css";
 
-export default function newContact() {
+export default function NewContact() {
+
+    const dia = new Date().getDate();
+    const mes = new Date().getMonth();
+    const año = new Date().getFullYear();
+
+    const hoy = dia + '/' + (mes + 1) + '/' + año;
+
+    const [userObject, setUserObject] = useState({
+
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        fecha: hoy,
+        usado: false,
+
+    });
+
+    const [stAltErr, setStAltErr] = useState(false);
+
+    const [stAltOk, setStAltOk] = useState(false);
+
+    const changeState = async (state) => {
+
+        setStAltErr(state);
+
+    }
+
+    const changeStateOk = async (state) => {
+
+        setStAltOk(state);
+
+    }
+
+    const inputDisabled = () => {
+
+        const inputForm = document.getElementsByTagName("input");
+
+        const textAreaForm = document.getElementsByTagName("textarea")[0];
+
+        if (stAltErr) {
+
+            for (let i = 0; i < inputForm.length; i++) {
+                const e = inputForm[i];
+
+                e.disabled = true;
+
+            }
+
+            textAreaForm.disabled = true;
+
+        } else {
+
+            for (let i = 0; i < inputForm.length; i++) {
+                const e = inputForm[i];
+
+                e.disabled = false;
+
+            }
+
+            textAreaForm.disabled = false;
+
+        }
+
+    }
+
+    setTimeout(() => inputDisabled(), 500);
+
+    const addUserContact = async (e) => {
+
+        e.preventDefault();
+
+        const {
+
+            name,
+            email,
+            phone,
+            message,
+
+        } = userObject
+
+        if (name.length > 0 && phone.length > 0) {
+
+            // await addDoc(collection(db, "users"), { userObject });
+
+            setUserObject({
+
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+                fecha: hoy,
+                usado: false,
+
+            });
+
+            changeStateOk(true);
+
+        } else {
+
+            setStAltErr(true);
+
+        }
+
+    }
+
+    const onChangeInput = (e) => {
+
+        e.preventDefault();
+
+        const { name, value } = e.target;
+
+        setUserObject({ ...userObject, [name]: value });
+
+    }
 
     return (
 
         <div className={stNewContact.contactContainer} >
 
-            <div className={stNewContact.contentLeft} >
+            <div className={stNewContact.content1} >
 
                 <h1>Contactá con Importainer S.A.</h1>
+
+            </div>
+
+            <div className={stNewContact.content2} >
 
                 <p>
 
@@ -23,21 +146,27 @@ export default function newContact() {
 
                 <div className={stNewContact.contentForm} >
 
-                    <form>
+                    <p>Recuerde que los campos con * son campos obligatorios, si ellos estan mal cargados es posible que nuestros asesores no puedan comunicarse con usted.</p>
 
-                        <input type="text" placeholder="Nombre" />
+                    <form onSubmit={addUserContact} >
 
-                        <input type="number" placeholder="Teléfono" />
+                        <input id="activeDisable" type="text" name="name" onChange={e => onChangeInput(e)} value={userObject.name} placeholder="Nombre*" />
 
-                        <input type="email" placeholder="Email" />
+                        <input id="activeDisable" type="number" name="phone" onChange={e => onChangeInput(e)} value={userObject.phone} placeholder="Teléfono*" />
 
-                        <textarea placeholder="¡Dejá tu mensaje!" />
+                        <input id="activeDisable" type="email" name="email" onChange={e => onChangeInput(e)} value={userObject.email} placeholder="Email" />
 
-                        <input type="submit" placeholder="Enviar" />
+                        <textarea id="activeDisable" name="message" onChange={e => onChangeInput(e)} value={userObject.message} placeholder="¡Dejá tu mensaje!" />
+
+                        <input id="activeDisable" type="submit" placeholder="Enviar" />
 
                     </form>
 
                 </div>
+
+            </div>
+
+            <div className={stNewContact.content4} >
 
                 <h1>Atención al cliente</h1>
 
@@ -62,9 +191,13 @@ export default function newContact() {
 
             </div>
 
-            <div className={stNewContact.contentRight} >
+            <div className={stNewContact.content3} >
 
                 <div className={stNewContact.img1} ><p>imagen</p></div>
+
+            </div>
+
+            <div className={stNewContact.content5} >
 
                 <div className={stNewContact.contentMap} >
 
@@ -82,6 +215,10 @@ export default function newContact() {
                 </div>
 
             </div>
+
+            <AlertError title="Error" message="Verifique que los campos obligatorios esten cargados" state={stAltErr} add={changeState} />
+
+            <AlertOk title="Ok" message="Los datos se guardaron Exitosamente!" state={stAltOk} add={changeStateOk} />
 
         </div>
 

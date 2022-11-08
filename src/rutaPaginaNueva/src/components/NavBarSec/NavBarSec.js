@@ -32,9 +32,11 @@ export default function NavBarSec(props) {
             {/* <Link to={link ? link : history.location.pathname} className={navBarSe.subrayado}>
                 {title}
               </Link> */}
-            <li><Link to="/PaginaNueva" style={{ color: '#fff'}} >Inicio</Link></li>
-            <li><Link to="/proyectosNew" style={{ color: '#fff'}} >Proyectos</Link></li>
-            <li><Link to="/contactoTest" style={{ color: '#fff'}} >Contacto</Link></li>
+            <li><Link to="/PaginaNueva" style={{ color: '#fff'}} ><p>Inicio</p></Link></li>
+            <li><Link to="/proyectosNew" style={{ color: '#fff'}} ><p>Proyectos</p></Link></li>
+            <li><Link to="/AspectosConstructivos" style={{ color: '#fff'}} ><p>Aspectos</p></Link></li>
+            <li><Link to="/EntregasCategory" style={{ color: '#fff'}} ><p>Entregas</p></Link></li>
+            <li><Link to="/contactoTest" style={{ color: '#fff'}} ><p>Contacto</p></Link></li>
           </ul>
 
           {/* <LoginUser /> */}

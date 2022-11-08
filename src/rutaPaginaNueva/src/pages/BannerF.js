@@ -16,53 +16,53 @@ const BannerF = () => {
             <BannerFinal>
                 <BannerSlide 
                     key="1"
-                    h3="LA CASA DE TUS SUEÑOS"
-                    h32="AL MEJOR PRECIO Y CALIDAD DEL MERCADO" 
-                    des={[10, 15, 20]}
+                    h1="La casa container de tus sueños 100% financiada con hasta 240 cuotas y entrega programada"
+                    // h32="100% financiada con hasta 240 cuotas y entrega programada" 
+                    // des={[10, 15, 20]}
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej2.jpg?alt=media&token=88962b72-d701-41aa-955d-c61319fdc5f3"
                 />
                 <BannerSlide 
                     key="2"
-                    h1="¡PROYECTOS FINANCIADOS" 
-                    h12="CON ENTREGAS PROGRAMADAS!" 
-                    h4="CASAS, EXTERIORES, EMPRENDIMIENTOS Y OFICINAS AL CONTADO"
-                    h4FondNeg="Y HASTA 120 ó 240 CUOTAS"
+                    h1="Los mejores dúplex container o casas container de dos pisos en hasta 240 cuotas y con entrega programada" 
+                    // h12="hasta 240 cuotas y con entrega programada" 
+                    //h4="CASAS, EXTERIORES, EMPRENDIMIENTOS Y OFICINAS AL CONTADO"
+                    //h4FondNeg="Y HASTA 120 ó 240 CUOTAS"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej3.jpg?alt=media&token=14d05dbe-b715-441c-ae7d-3bb9b636b352"
                 />
                 <BannerSlide 
                     key="3"
-                    h1="APROVECHÁ NUESTROS COMBOS" 
-                    h4="CASA + PISCINA + QUINCHO / CASA + PISCINA / CASA + QUINCHO"
-                    h4sub="¡COMPLETAMENTE FINANCIADO!"
-                    h4FondNeg="CONTADO Y HASTA 120 ó 240 CUOTAS"
+                    h1="Conseguí la pileta, quincho, garaje y jardín de invierno con los mejores planes de financiación del mercado" 
+                    // h4="mejores planes de financiación del mercado"
+                    // h4sub="¡COMPLETAMENTE FINANCIADO!"
+                    // h4FondNeg="CONTADO Y HASTA 120 ó 240 CUOTAS"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej4.jpg?alt=media&token=5d323742-6874-4993-b056-9bd69c9ac9e8"
                 />
                 <BannerSlide 
                     key="4"
-                    toph4="HOY PODÉS TENER TU PROPIA"
-                    h1="FRANQUICIA DE IMPORTAINER" 
-                    h4="¡Y GOZAR DE TODOS SUS BENEFICIOS!"
-                    h4sub="SI SOS EMPRENDEDOR O EMPRESARIO, ESCRIBINOS"
-                    h4FondNeg="FRANQUICIA@IMPORTAINER.COM.AR"
+                    // toph4="HOY PODÉS TENER TU PROPIA"
+                    h1="¡Tu casa + pileta + quincho en 240 cuotas y con entrega programada!" 
+                    // h4="240 cuotas y con entrega programada!"
+                    // h4sub="SI SOS EMPRENDEDOR O EMPRESARIO, ESCRIBINOS"
+                    // h4FondNeg="FRANQUICIA@IMPORTAINER.COM.AR"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej5.jpg?alt=media&token=739e92d5-0675-40f4-9f9a-c9943d99abcc"
                 />
                 <BannerSlide 
                     key="5"
-                    h1="EXTERIORES DE ENSUEÑO"
-                    h4="¡VIVÍ LA RECREACIÓN QUE TE MERECÉS!"
-                    h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
+                    h1="¡Hoy podés tener tu propia franquicia Importainer y beneficiarte!"
+                    h4="Si sos emprendedor o empresario, escribinos: franquicia@importainer.com.ar"
+                    // h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej6.jpg?alt=media&token=7c767ebe-33ca-427f-8922-f33f898f0e7b"
                 />
                 <BannerSlide 
                     key="6"
-                    h1="EMPRENDIMIENTOS" 
-                    h4="BARES, FOODTRUCKS, ESTUDIOS DE FOTOGRAFIA Y MUCHO MAS"
-                    h4Blod2="!TUS SUEÑOS HECHOS REALIDAD EN UN CLICK!"
-                    h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
+                    h1="Oficinas container 100% financiadas, con entrega " 
+                    // h4="BARES, FOODTRUCKS, ESTUDIOS DE FOTOGRAFIA Y MUCHO MAS"
+                    // h4Blod2="!TUS SUEÑOS HECHOS REALIDAD EN UN CLICK!"
+                    // h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Foodtrack%2FFoodtrack120M-3.jpg?alt=media&token=328a5aab-a991-45b9-98b6-66ddf03404a4"
                 />

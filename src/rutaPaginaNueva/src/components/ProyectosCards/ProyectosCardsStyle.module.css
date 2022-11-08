@@ -11,11 +11,11 @@
 
 }
 
-/* .contentImg, .contentImg img {
+.contentProyectsCards:nth-child(even) {
 
-
+    flex-direction: row-reverse;
     
-} */
+}
 
 .contentImg {
 

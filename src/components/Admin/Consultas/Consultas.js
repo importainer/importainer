@@ -50,8 +50,6 @@ export default function Consultas({location}) {
                 
                 const consultas = e.docs.filter(e => e.data().userObject.fecha !== undefined);
                 
-                
-
                 setConUsers(consultas.map(e => {
                     // console.log(e.data().userObject)
                     const arr = e.data().userObject.fecha.split('/');

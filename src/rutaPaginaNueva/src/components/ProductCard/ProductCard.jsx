@@ -147,7 +147,7 @@ export default function ProductCard({ banner, prod, index, len }) {
 
             <div className={PrCdStyle.OfertaCarac} >
 
-                <div>SUP:<TransformIcon />{prod.sup}</div>
+                <div>SUP:<TransformIcon />{prod.sup}M²</div>
 
                 <div>AMB:<NightShelterIcon />{prod.amb}</div>
 

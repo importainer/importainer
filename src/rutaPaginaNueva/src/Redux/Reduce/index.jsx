@@ -6,7 +6,7 @@ const persistConfig = {
   key: "root",
   debug: true,
   storage,
-  whitelist: ["proyect", "allProducts", "proyectGroup", "ofertState", "ofertFilter"],
+  whitelist: ["proyect", "allProducts", "proyectGroup", "ofertState", "ofertFilter", "aspeConst", "entregasFilter"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

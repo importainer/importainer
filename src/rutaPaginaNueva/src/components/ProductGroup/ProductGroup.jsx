@@ -1,30 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../firebase";
-import { getAllProyect, getAllProducts, getProyectGoup, setOfertFilter } from "../../Redux/Actions/index";
 import NavBarSec from "../NavBarSec/NavBarSec";
 import ProductCard from "../ProductCard/ProductCard";
+import { getAllProyect, getAllProducts, getProyectGoup, setOfertStatus, setFilterEnt } from "../../Redux/Actions/index";
 import GroupStyle from "./ProductGroupStyle.module.css";
 
-export default function ProyectGroup({ banner }) {
+export default function ProyectGroup({ banner, location }) {
+// estoy buscando por useparams el id del producto para poder traer el detalle de la base de datos buscando la conexion de todo para llegar al resultado
+    const { id } = useParams();
+    console.log(id, 'hhhh');
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+
+        dispatch(setFilterEnt(id));
+
+    }, [])
+
     const proyect = useSelector(state => state.proyect);
-    const allProducts = useSelector(state => state.allProducts);
     const proyectGroup = useSelector(state => state.proyectGroup);
     const ofertState = useSelector(state => state.ofertState);
     const ofertFilter = useSelector(state => state.ofertFilter);
+    const entregasFilter = useSelector(state => state.entregasFilter);
 
     const [proyectSelect, setProyectSelect] = useState("");
-    const [prodSelect, setProdSelect] = useState([]);
 
     useEffect(() => {
 
-        setProyectSelect(proyect.filter(e => e.tipo === proyectGroup[0]?.tipo))
+        setProyectSelect(proyect.filter(e => e.tipo === proyectGroup[0]?.tipo)); 
 
     }, []);
+
+    console.log(entregasFilter, 'llll')
 
     return (
 

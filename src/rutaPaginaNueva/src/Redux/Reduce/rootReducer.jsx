@@ -3,72 +3,96 @@ import {
     GET_ALL_PROYECT,
     GET_ALL_PRODUCTS,
     GET_PROYECT_GROUP,
+    GET_ALL_ASPECONST,
+    GET_ALL_ENTREGAS,
     SET_OFERT_STATUS,
     SET_FILTER_OFERT,
-    SET_STATUS_OFERT
+    SET_STATUS_OFERT,
+    SET_FILTER_ENT
 
-  } from "../Actions/actionType";
-  
-  const initialState = {
+} from "../Actions/actionType";
+
+const initialState = {
 
     proyect: [],
     allProducts: [],
     proyectGroup: [],
     ofertState: true,
     ofertFilter: [],
+    aspeConst: [],
+    allEntregas: [],
+    entregasFilter: [],
 
-  };
-  
-    export default function rootReducer(state = initialState, action) {
+};
 
-        switch (action.type) {
+export default function rootReducer(state = initialState, action) {
 
-            case GET_ALL_PROYECT:
+    switch (action.type) {
 
-                return {
+        case GET_ALL_PROYECT:
+            
+            return {
 
-                    ...state,
-                    proyect: action.payload
+                ...state,
+                proyect: action.payload
 
-                }
+            }
 
-            case GET_ALL_PRODUCTS:
+        case GET_ALL_PRODUCTS:
 
-                return {
+            return {
 
-                    ...state,
-                    allProducts: action.payload
+                ...state,
+                allProducts: action.payload
 
-                }
+            }
 
-            case GET_PROYECT_GROUP:
-                
-                return {
-    
-                    ...state,
-                    proyectGroup: state.allProducts.filter(e => e.tipo === action.payload)
+        case GET_PROYECT_GROUP:
 
-                }
+            return {
 
-            case SET_OFERT_STATUS:
+                ...state,
+                proyectGroup: state.allProducts.filter(e => e.tipo === action.payload)
 
-                return {
+            }
 
-                    ...state,
-                    ofertState: action.payload
+        case GET_ALL_ASPECONST:
+            
+            return {
 
-                }
+                ...state,
+                aspeConst: action.payload
 
-            case SET_FILTER_OFERT:
+            }
 
-                return {
+        case GET_ALL_ENTREGAS:
 
-                    ...state,
-                    ofertFilter: state.allProducts.filter(e => e.ofert === true)
+            return {
 
-                }
+                ...state,
+                allEntregas: action.payload
 
-            case SET_STATUS_OFERT:
+            }
+
+        case SET_OFERT_STATUS:
+
+            return {
+
+                ...state,
+                ofertState: action.payload
+
+            }
+
+        case SET_FILTER_OFERT:
+
+            return {
+
+                ...state,
+                ofertFilter: state.allProducts.filter(e => e.ofert === true)
+
+            }
+
+        case SET_STATUS_OFERT:
 
             return {
 
@@ -76,11 +100,19 @@ import {
                 ofertState: action.payload
             }
 
-            default:
+        case SET_FILTER_ENT:
+            
+            return {
 
-                return state;
-        
-        }
+                ...state,
+                entregasFilter: state.allEntregas.filter(e => e.id === action.payload)
+            
+            }
+
+        default:
+
+            return state;
 
     }
-  
+
+}

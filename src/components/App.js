@@ -81,6 +81,9 @@ import UserTemp from "../components/UserTemp/UserTemp";
 import LogOut from "../components/UserTemp/logOut";
 import ProductGroup from "../rutaPaginaNueva/src/components/ProductGroup/ProductGroup";
 import Cont15M22 from "../rutaPaginaNueva/src/pages/Containers/ContDetail";
+import AspeConst from "../rutaPaginaNueva/src/components/AspeConst/AspeConst";
+import AllEntregas from "../rutaPaginaNueva/src/components/AllEntregas/AllEntregas";
+import EntDesc from "../rutaPaginaNueva/src/components/EntDesc/EntDesc";
 
 // ===== USER =====
 
@@ -204,8 +207,11 @@ const App = () => (
         <RouteUserTemp path="/contactoTest" component={ContactoPage2} />
         <RouteUserTemp path="/proyectosNew" component={ProyectosNew} />
         <RouteUserTemp path="/cerrarsesion" component={LogOut} />
+        <RouteUserTemp path="/AspectosConstructivos" component={AspeConst} />   
+        <RouteUserTemp path="/EntregasCategory" component={AllEntregas} />
         <RouteUserTemp path="/Proyectos/:id" component={ProductGroup} />
-        <RouteUserTemp path="/:id" component={Cont15M22} />
+        <RouteUserTemp path="/Entregas/:id" component={EntDesc} />
+        {/* <RouteUserTemp path="/:id" component={Cont15M22} /> */}
 
         {/* <Route exact path="/userTemp" component={UserTemp} />
         <Route exact path="/PaginaNueva" component={Pnew} />

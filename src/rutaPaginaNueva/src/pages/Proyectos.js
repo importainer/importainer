@@ -22,7 +22,7 @@ export default function Proyectos() {
         dispatch(getAllProyect());
 
     }, []);
-    // console.log(allProyect, 'kkk')
+    console.log(allProyect, 'kkk')
     const crearProductos = () => {
 
         const obj = {
@@ -103,7 +103,7 @@ export default function Proyectos() {
         <div className="">
 
             <NavBarSec title="Proyectos" />
-            <Titulo titulo="Proyectos" />
+            <Titulo titulo="DESCUBRÍ NUESTROS PROYECTOS" />
 
             {/* <input type="button" value="click function" onClick={crearProductos} /> */}
 
@@ -113,7 +113,7 @@ export default function Proyectos() {
 
                     return(
 
-                        <ProyectosCards title={e.title} txtDesc={e.txtDetail} image={e.imgLink} tipo={e.tipo} />
+                        <ProyectosCards tipoLanding="proyect" btnSecond={true} title={e.title} txtDesc={e.txtDetail} image={e.imgLink} tipo={e.tipo} id={e.id} />
 
                     )
 

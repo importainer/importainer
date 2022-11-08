@@ -25,8 +25,6 @@ nav {
 
   height: 5em;
 
-  /* border: 1px solid green; */
-
 }
 
 .navMenu {
@@ -43,17 +41,22 @@ nav {
   display: flex;
   justify-content: space-between;
   
-  width: 30%;
+  width: 75%;
   list-style: none;
-
-  /* border: 1px solid red; */
 
 }
 
 .navRight li {
 
-  padding: 1em 0 0 0;
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.navRight li p {
+
+  font-size: 1em;
 
 }
 
@@ -91,33 +94,11 @@ nav {
 
 /*===== Responsive =====*/
 
-@media screen and (max-width: 1500px) {
-
-  /* .logoP img {
-
-    width: 30%;
-
-  } */
-
-  .navRight {
-
-    width: 50%;
-
-  }
-
-}
-
 @media screen and (max-width: 1200px) {
 
-  /* .logoP img {
-
-    width: 40%;
-
-  } */
-
   .navRight {
 
-    width: 70%;
+    width: 80%;
 
   }
 
@@ -125,16 +106,16 @@ nav {
 
 @media screen and (max-width: 1000px) {
 
-  /* .logoP img {
-
-    width: 50%;
-
-  } */
-
   .navRight {
 
-    width: 100%;
+    width: 90%;
 
+  }
+
+  .navRight li p {
+  
+    font-size: .8em;
+  
   }
 
 }

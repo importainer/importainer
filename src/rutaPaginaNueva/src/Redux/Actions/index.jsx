@@ -6,9 +6,12 @@ import {
     GET_ALL_PROYECT,
     GET_ALL_PRODUCTS,
     GET_PROYECT_GROUP,
+    GET_ALL_ASPECONST,
+    GET_ALL_ENTREGAS,
     SET_OFERT_STATUS,
     SET_FILTER_OFERT,
-    SET_STATUS_OFERT
+    SET_STATUS_OFERT,
+    SET_FILTER_ENT
 
 } from "./actionType";
 
@@ -61,6 +64,64 @@ export function getAllProducts() {
 
 }
 
+export function getAllAspeConst() {
+
+    return async function(dispatch) {
+
+        try {
+            
+            let allAspeConst = await getDocs(collection(db, "aspeConst"));
+
+            return dispatch({ type: GET_ALL_ASPECONST, payload: allAspeConst.docs.map(e => {
+
+                return {
+
+                    ...e.data(),
+                    id: e.id
+
+                }
+
+            })})
+            
+        } catch (error) {
+
+            console.log(error, "Error de Sistema.")
+            
+        }
+
+    }
+
+}
+
+export function getAllEntregas() {
+
+    return async function(dispatch) {
+
+        try {
+            
+            let allEntregas = await getDocs(collection(db, "AllEntregas"));
+
+            return dispatch({ type: GET_ALL_ENTREGAS, payload: allEntregas.docs.map(e => {
+
+                return {
+
+                    ...e.data(),
+                    id: e.id
+
+                }
+
+            })})
+            
+        } catch (error) {
+
+            console.log(error, "Error de Sistema.")
+            
+        }
+
+    }
+
+}
+
 export function setOfertFilter() {
 
     return {type: SET_FILTER_OFERT, payload: ""}
@@ -82,5 +143,11 @@ export function setOfertStatus(st) {
 export function setStatusOfert(payload) {
 
     return {type: SET_STATUS_OFERT, payload: payload}
+
+}
+
+export function setFilterEnt(payload) {
+    
+    return {type: SET_FILTER_ENT, payload: payload}
 
 }
