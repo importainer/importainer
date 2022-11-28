@@ -22,8 +22,22 @@ export default function Cont75M2() {
         title="Container 75M2"
         img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Planos%2F75m2.jpg?alt=media&token=33b7c3ff-6ed1-4664-b366-99689c49aa4b"
         aires="03"
+        ventDif={false}
         ventanas="07"
         litros="65"
+        bidet={true}
+        boxDucha={true}
+        bajoMesada="1.40 hasta 1.60"
+        ventBalc={true}
+        ventCocina="1.50m x 0.60m"
+        puerta={false}
+        puerOp=" 2.00 x 2.00m"
+        op2={false}
+        pvc={true}
+        alacena={false}
+        griferia={false}
+        ventBaño="01"
+        portRom="01"
       />
       <Phone />
       <FooterSec />

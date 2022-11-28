@@ -19,6 +19,7 @@ const BannerF = () => {
                     h1="La casa container de tus sueños 100% financiada con hasta 240 cuotas y entrega programada"
                     // h32="100% financiada con hasta 240 cuotas y entrega programada" 
                     // des={[10, 15, 20]}
+                    btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Banner%2Fej2.jpg?alt=media&token=88962b72-d701-41aa-955d-c61319fdc5f3"
                 />
                 <BannerSlide 
@@ -59,7 +60,7 @@ const BannerF = () => {
                 />
                 <BannerSlide 
                     key="6"
-                    h1="Oficinas container 100% financiadas, con entrega " 
+                    h1="Oficinas container 100% financiadas, con entrega programada y adaptables a tus necesidades." 
                     // h4="BARES, FOODTRUCKS, ESTUDIOS DE FOTOGRAFIA Y MUCHO MAS"
                     // h4Blod2="!TUS SUEÑOS HECHOS REALIDAD EN UN CLICK!"
                     // h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
@@ -68,9 +69,9 @@ const BannerF = () => {
                 />
                 <BannerSlide 
                     key="7"
-                    h1="OFICINAS" 
-                    h4="¡TU ESPACIO DE TRABAJO A OJO Y SEMEJANZA!"
-                    h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
+                    h1="Bares, foodtrucks, estudios fotográficos y mucho más con hasta 240 cuotas y entrega programada." 
+                    // h4="¡TU ESPACIO DE TRABAJO A OJO Y SEMEJANZA!"
+                    // h4sub="CON ENTREGA PROGRAMADA, AL CONTADO Y HASTA 240 CUOTAS"
                     btn="DESCUBRI TODOS"
                     img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Oficinas%2FOficina60M-9.jpg?alt=media&token=f411de2e-130c-4c39-a902-dedcc29ffa07"
                 />

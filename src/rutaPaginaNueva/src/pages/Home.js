@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NavBarPrinc from "../components/NavBarPrinc/NavBarPrinc";
 import Wpp from "../components/wpp";
 import BannerF from "./BannerF";
@@ -17,7 +17,11 @@ const FooterPrinc = React.lazy(() =>
 
 const Home = () => {
 
+  // window.scroll(0,0);
+
   const dispatch = useDispatch();
+
+  const allProducts = useSelector(state => state.allProducts);
 
   useEffect(() => {
 
@@ -32,7 +36,7 @@ const Home = () => {
     <div>
       <BannerF />
       <NavBarPrinc />
-      <ProductGroup banner={true} />
+      <ProductGroup navFoo={true} items={allProducts.sort((a,b) => a.orden - b.orden)} />
       {/* El suspense es para que se renderice esa seccion solo cuando sea necesario */}
       <Suspense fallback={<div>Cargando...</div>}>
         <FooterPrinc />

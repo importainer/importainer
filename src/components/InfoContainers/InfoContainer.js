@@ -1,7 +1,7 @@
 import React from "react";
 import "./InfoContainer.css";
 
-const InfoContainer = ({ title, ventanas, img, aires, litros }) => {
+const InfoContainer = ({ title, ventanas, img, aires, litros, bidet, boxDucha, bajoMesada, ventBalc, ventCocina, puerta, op2, pvc, puerOp, alacena, griferia, ventDif, ventBaño, portRom }) => {
   return (
     <div className="descripcion">
       <div className="left">
@@ -10,11 +10,11 @@ const InfoContainer = ({ title, ventanas, img, aires, litros }) => {
 
         <h2>Detalles Constructivos</h2>
 
-        <div className="cont-right">  
+        <div className="cont-right">
           <h3>Baños:</h3>
           <h4>- Vanitory</h4>
           <h4>- Lavamanos</h4>
-          <h4>- Bidet</h4>
+          {bidet && <h4>- Bidet</h4>}
           <h4>- Inodoro</h4>
           <h4>- Ducha en box de 0.80 x 0.80 cm y mampara de vidrio</h4>
           <h4>- Griferías Marca (Piazza, Moza o Hidro)</h4>
@@ -22,17 +22,19 @@ const InfoContainer = ({ title, ventanas, img, aires, litros }) => {
             El baño contará con revestimiento cerámico (a media altura, box de
             ducha de piso a techo).
           </p>
-          <p>
+          {boxDucha && <p>
             Opcional: El cliente tendrá la opción de cambiar el box de ducha por una
             bañera de 1.50m.
-          </p>
+          </p>}
         </div>
 
         <div className="cont-right">
           <h3>Cocina:</h3>
-          <h4>- 01 Bajo mesada de 1.40m hasta 1.60m.</h4>
-          <h4>- 01 Mesada de granito sintético desde 1.40 hasta 1.60m.</h4>
+          <h4>- 01 Bajo mesada de {bajoMesada}m.</h4>
+          <h4>- 01 Mesada de granito sintético de {bajoMesada}m.</h4>
           <h4>- Bacha de acero inoxidable</h4>
+          {alacena && <h4>- Alacena de 1.40m hasta 1.60m</h4>}
+          {griferia && <h4>- Grifería Piazza Premium</h4>}
         </div>
       </div>
 
@@ -48,7 +50,7 @@ const InfoContainer = ({ title, ventanas, img, aires, litros }) => {
         <div className="cont-right">
           <h3>Revestimientos</h3>
           <p>
-            Interior: Placa de yeso color blanco (Durlock)  o como opción machimbre de PVC color blanco.
+            Interior: Placa de yeso color blanco (Durlock){pvc && " o como opción machimbre de PVC color blanco"}.
             <br />
             Exterior: Esmalte sintético, color a elección de línea Emapi o
             Tersuave, colores estándar a decidir por el cliente. <br />
@@ -69,14 +71,19 @@ const InfoContainer = ({ title, ventanas, img, aires, litros }) => {
           <h3>Aberturas:</h3>
           <h4>- Ventanas Línea Herrero con vidrio de 3mm</h4>
           <h4>- Con rejas como medida de seguridad</h4>
-          <h4>- {ventanas} ventanas de 1.50 x 1.10m con traba interior</h4>
-          <h4>- 02 Ventanas balcón de 2.00 x 2.00m</h4>
-          <h4>- 01 Ventana 0.60 x 0.40m para baño</h4>
-          <h4>- 01 Ventana de 1.00 x 0.40 hasta 1.50 x 0.40 para cocina</h4>
-          <h4>- 01 Puerta de entrada doble chapa o mitad vidrio y mitad aluminio.</h4>
-          <p> 
-            Opcional: 01 Portón Romano de 2.00 x 2.00m.
+          {ventDif ? <h4>- {ventanas} ventanas de 1.80 x 1.10m con traba interior</h4> : <h4>- {ventanas} ventanas de 1.50 x 1.10m con traba interior</h4>}
+          {ventBalc ? <h4>- 02 Ventanas balcón de 2.00 x 2.00m</h4> : <h4>- 03 Ventanas balcón de 2.00 x 2.00m</h4>}
+          <h4>- {ventBaño} Ventana 0.60 x 0.40m para baño</h4>
+          <h4>- 01 Ventana de {ventCocina} para cocina</h4>
+          {puerta && <h4>- 01 Puerta de entrada doble chapa o mitad vidrio y mitad aluminio.</h4>}
+          <p>
+            Opcional: {portRom} Portón Romano de{puerOp}.
           </p>
+
+          {op2 && <p>
+            El tendrá la opción de cambiar la puerta de ingreso por Ventana
+            balcón 1.50 x 2.00m
+          </p>}
         </div>
       </div>
     </div>

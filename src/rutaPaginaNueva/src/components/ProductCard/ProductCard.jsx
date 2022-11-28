@@ -15,7 +15,7 @@ import BannerFinalSecond from '../Banner/BannerFinalSecond';
 import BannerSlideSecond from '../Banner/BannerSlideSecond';
 import PrCdStyle from "./ProductCardStyle.module.css";
 
-export default function ProductCard({ banner, prod, index, len }) {
+export default function ProductCard({ prod, index, len }) {
 
     const arr = [
 
@@ -24,6 +24,10 @@ export default function ProductCard({ banner, prod, index, len }) {
         "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/ImgPublicaciones%2F60m2.JPG?alt=media&token=9b62065d-a866-456f-8de5-4392b1b8d37e",
         "https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Planos%2F75m2.jpg?alt=media&token=33b7c3ff-6ed1-4664-b366-99689c49aa4b"
     ];
+
+    // const [firstPositionWind, setFirstPositionWind] = useState(window.innerHeight / 3);
+
+    // const [sectionActive, setSectionActive] = useState(firstPositionWind);
 
     // const slideshow = useRef(null);
 
@@ -45,6 +49,8 @@ export default function ProductCard({ banner, prod, index, len }) {
         if (radioGroup) {
             checked = radioGroup.value === props.value;
             setEstRadio(radioGroup.value === props.value);
+
+            // console.log(radioGroup.value, 'ooooo')
         }
 
         return <StyledFormControlLabel checked={checked} {...props} />;
@@ -64,12 +70,13 @@ export default function ProductCard({ banner, prod, index, len }) {
     }
 
     const desDesliz = (i) => {
-
+        // console.log(document.getElementById("popUp").classList,'sssss')
+        // console.log(getElementsByClassName(PrCdStyle.detProd).item,'sssss')
         let res = document.getElementsByClassName(PrCdStyle.contentDet).length;
-
+        // console.log(res, 'ppp')
         // -> (((total de div en dom / cantidad total de cards) * posicion de card) + index del div)
-        let indEnc = (((res / len) * index) + i);
-
+        let indEnc = Math.ceil((((res / len) * index) + i));
+        // console.log(indEnc, len, index, 'iiii')
         const prodDiv = document.getElementsByClassName(PrCdStyle.detProd)[indEnc];
 
         // prodDiv.style.display === 'none' ? prodDiv.style.display = 'block' : prodDiv.style.display = 'none';
@@ -135,6 +142,57 @@ export default function ProductCard({ banner, prod, index, len }) {
 
     // console.log(document.getElementsByClassName(PrCdStyle.imgSlider), 'jj')
 
+    setTimeout(() => {
+
+        document.getElementsByClassName(PrCdStyle.cardProductContent).item(0).style.left = "0em";
+
+        document.getElementsByClassName(PrCdStyle.cardProductContent).item(1).style.right = "0em";
+
+        document.getElementsByClassName(PrCdStyle.cardProductContent).item(2).style.left = "0em";
+
+    }, 500);
+
+    let it1 = 3;
+    let it2 = 4;
+    let it3 = 5;
+
+    window.addEventListener("scroll", () => {
+
+        let anitacion = document.getElementsByClassName(PrCdStyle.cardProductContent);
+
+        let tamaño = (window.innerHeight / 5) * 4;
+
+        // console.log(tamaño, 'yyy');
+
+        if (tamaño > anitacion[it1].getBoundingClientRect().top) {
+
+            if (it1 % 2 === 0) {
+
+                anitacion.item(it1).style.left = "0em";
+
+                anitacion.item(it2).style.right = "0em";
+
+                anitacion.item(it3).style.left = "0em";
+
+            } else {
+
+                anitacion.item(it1).style.right = "0em";
+
+                anitacion.item(it2).style.left = "0em";
+
+                anitacion.item(it3).style.right = "0em";
+
+            }
+
+            it1 = it1 + 3;
+            it2 = it2 + 3;
+            it3 = it3 + 3;
+
+        }
+
+    })
+
+    // console.log(estRadio, 'iiiiii')
 
     return (
 
@@ -142,7 +200,9 @@ export default function ProductCard({ banner, prod, index, len }) {
 
             {/* <img src={prod?.file} alt={prod?.title} /> */}
             <div className={PrCdStyle.OfertaContImg}>
+
                 <img src={prod?.file} alt={prod?.title} />
+
             </div>
 
             <div className={PrCdStyle.OfertaCarac} >
@@ -167,25 +227,13 @@ export default function ProductCard({ banner, prod, index, len }) {
 
                     <MyFormControlLabel value="first" label="120 Cuotas" control={
 
-                        <Radio sx={{
-                            color: "#B90000",
-                            '&.Mui-checked': {
-                                color: "#B90000",
-                            },
-                        }}
-                        />
+                        <Radio sx={{ color: "#B90000", '&.Mui-checked': { color: "#B90000", }, }} />
 
                     } />
 
                     <MyFormControlLabel value="second" label="240 Cuotas" control={
 
-                        <Radio sx={{
-                            color: "#B90000",
-                            '&.Mui-checked': {
-                                color: "#B90000",
-                            },
-                        }}
-                        />
+                        <Radio sx={{ color: "#B90000", '&.Mui-checked': { color: "#B90000", }, }} />
 
                     } />
 
@@ -198,7 +246,7 @@ export default function ProductCard({ banner, prod, index, len }) {
 
                 <p className={PrCdStyle.preText} >Cuotas de</p>
 
-                <p className={PrCdStyle.preNum} >${estRadio ? prod.preCuot120 : prod.preCuot240}</p>
+                <p className={PrCdStyle.preNum} >${!estRadio ? prod.preCuot120 : prod.preCuot240}</p>
 
                 <p className={PrCdStyle.preText} >Precio de lista</p>
 
@@ -238,7 +286,7 @@ export default function ProductCard({ banner, prod, index, len }) {
 
                                 {
 
-                                    arr.map((e, i) => <BannerSlideSecond banner={banner} img={e} key={i} />)
+                                    arr.map((e, i) => <BannerSlideSecond img={e} key={i} />)
 
                                 }
 
@@ -248,7 +296,7 @@ export default function ProductCard({ banner, prod, index, len }) {
 
                     </div>
 
-                    <div>
+                    <div id="popUp" >
 
                         <ul>
 

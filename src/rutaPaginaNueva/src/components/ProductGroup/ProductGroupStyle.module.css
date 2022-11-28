@@ -1,19 +1,28 @@
 .ContainerPG {
 
-    /* height: 100vh; */
+    /* height: 50em; */
     background: rgba(232, 232, 232, 1);
+    padding: 0 0 3em 0;
 
 }
 
 .containerGroup {
 
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1em;
-
     width: 90%;
+    height: 42em; /*126*/
     margin: 0 auto;
-    padding: 3em 0;
+    overflow: hidden;
+    transition: all 3s ease-in-out;
+
+    /* border: 1px solid red; */
+
+}
+
+.gridGroup {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
 
 }
 
@@ -23,6 +32,42 @@
     font-size: 3em;
     /* line-height: 3em; */
     text-align: center;
+
+}
+
+.btnVerMas {
+
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+
+    width: 10%;
+    height: 3em;
+    margin: 2em auto 0;
+    font-weight: bold;
+
+    border: 1px solid red;
+
+}
+
+.btnVerMas:before {
+    
+    content: "VER MAS";
+
+}
+
+.btnVerMas:hover {
+
+    cursor: pointer;
+    background: rgba(182, 0, 0, 0.8);
+    color: #fff;
+
+}
+
+.btnVerMasClose:before {
+
+    content: "VER MENOS";
 
 }
 

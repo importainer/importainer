@@ -22,7 +22,7 @@ export default function Proyectos() {
         dispatch(getAllProyect());
 
     }, []);
-    console.log(allProyect, 'kkk')
+    // console.log(allProyect, 'kkk')
     const crearProductos = () => {
 
         const obj = {
@@ -98,6 +98,8 @@ export default function Proyectos() {
 
     }
 
+    // console.log(allProyect.sort((a, b) => a.id - b.id ), 'lll')
+
     return (
 
         <div className="">
@@ -109,7 +111,7 @@ export default function Proyectos() {
 
             {
 
-                allProyect.map( e => {
+                allProyect.sort((a, b) => a.id - b.id ).map( e => {
 
                     return(
 

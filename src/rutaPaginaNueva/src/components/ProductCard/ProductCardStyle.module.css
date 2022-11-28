@@ -1,5 +1,7 @@
 .cardProductContent {
 
+    position: relative;
+
     background-color: #ffffff;
     width: 90%;
     height: 100%;
@@ -8,7 +10,20 @@
     /* border-radius: 5px; */
     animation-duration: 2s;
     animation-name: cardMove;
+    transition: all 1.5s;
     margin: 0 auto;
+
+}
+
+.cardProductContent:nth-child(even) {
+
+    right: -200em;
+
+}
+
+.cardProductContent:nth-child(odd) {
+
+    left: -200em;
 
 }
 

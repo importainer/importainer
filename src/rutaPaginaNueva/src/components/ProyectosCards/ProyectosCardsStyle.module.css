@@ -1,26 +1,31 @@
+/* .prueba {
+
+    position: absolute;
+
+    width: 1000px;
+    height: 619.34px;
+    border: 1px solid red;
+
+} */
 
 .contentProyectsCards {
 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
 
-    width: 70%;
+    width: 90%;
     margin: 3em auto;
 
     /* border: 1px solid red; */
 
 }
 
-.contentProyectsCards:nth-child(even) {
+.contentImg,
+.bodyProyectCard {
 
-    flex-direction: row-reverse;
-    
-}
-
-.contentImg {
-
-    width: 40%;
-    padding: 1em;
+    width: 100%;
+    padding: .5em;
 
     /* border: 1px solid red; */
 
@@ -37,14 +42,27 @@
 
 .bodyProyectCard {
 
-    width: 60%;
-    padding: 2em;
+    transition: height 1.5s;
 
 }
 
-.bodyProyectCard p {
+.contentTxtDesc {
 
-    margin: 1em 0;
+    margin: 1em 0 0;
+    text-align: justify;
+    transition: height 1.5s;
+
+    /* border: 1px solid red; */
+
+}
+
+.verMas {
+
+    display: none;
+
+    /* padding: .5em 0; */
+
+    /* border: 1px solid greenyellow; */
 
 }
 
@@ -53,82 +71,146 @@
     display: flex;
     justify-content: space-between;
 
-    width: 70%;
+    width: 100%;
+    margin: .7em 0 0 0;
 
 }
 
-.btnVer, .btnCon {
+.btnVer,
+.btnCon {
 
     display: flex;
     justify-content: center;
-  
+
     width: 45%;
     border: 1px solid black;
     margin: 0 0 1em 0;
     padding: .5em;
     font-weight: bold;
-  
+
 }
 
 .btnVer {
 
     background: rgba(0, 0, 0, 1);
     color: white;
-  
+
 }
-  
+
 .btnCon p {
-  
+
     color: black !important;
-  
-}
-  
-.btnVer:hover, .btnCon:hover, .btnCon:hover p {
-
-background:rgba(185, 0, 0, 1);
-color: white !important;
-cursor: pointer;
 
 }
 
-@media screen and (max-width: 1300px) {
+.btnVer:hover,
+.btnCon:hover,
+.btnCon:hover p {
+
+    background: rgba(185, 0, 0, 1);
+    color: white !important;
+    cursor: pointer;
+
+}
+
+@media screen and (min-width: 800px) {
 
     .contentProyectsCards {
 
-        width: 80%;
+        flex-direction: row;
 
     }
+
+    .contentProyectsCards:nth-child(even) {
     
-}
+        flex-direction: row-reverse;
+    
+    }
 
-@media screen and (max-width: 1000px) {
+    .contentTxtDesc {
 
-    .contentProyectsCards {
-
-        width: 95%;
+        height: 9.7em;
+        overflow: hidden;
 
     }
+
+    .verMas {
+
+        position: relative;
+        left: 75%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 7em;
+        height: 2em;
+        color: rgba(185, 0, 0, 1);
+        text-align: center;
+
+    }
+
+    .verMas:before {
+
+        content: "Ver mas...";
+
+    }
+
+    .verMas:hover {
+
+        cursor: pointer;
+
+    }
+
+    /* 
+    .verMas::after {
+
+        content: "Ver mas...";
+
+    } */
+
+    .contentTxtDescActive {
+
+        height: 100%;
+
+    }
+
+    .verMasClose:before {
+
+        content: "Ver menos";
+
+    }
+
+}
+
+@media screen and (min-width: 1100px) {
+
+    .verMas {
+
+        left: 80%;
+
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
 
     .bodyProyectCard {
 
-        padding: 1em;
+        height: 100%;
 
     }
 
-    .bodyProyectCard p {
+    .contentTxtDesc {
 
-        font-size: .9em;
-
-    }
-    
-}
-
-@media screen and (max-width: 800px) {
-
-    .contentBTN {
-
-        width: 100%;
+        height: 100%;
 
     }
-    
+
+    .verMas {
+
+        display: none;
+
+    }
+
 }

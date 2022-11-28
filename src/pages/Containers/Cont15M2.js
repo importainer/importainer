@@ -22,8 +22,22 @@ export default function Cont15M2() {
                 title="Container 15M2"
                 img="https://firebasestorage.googleapis.com/v0/b/base-datos-importaner.appspot.com/o/Planos%2F15m2%2002.jpg?alt=media&token=54bf9810-e877-4c74-8ccc-0fb3e7f4182d" 
                 aires="1"
+                ventDif={false}
                 ventanas="1"
                 litros="30"
+                bidet={false}
+                boxDucha={false}
+                bajoMesada="1.20"
+                ventBalc={false}
+                ventCocina="1.00m x 0.40m"
+                puerta={false}
+                puerOp=" 1.50 x 2.00m"
+                op2={true}
+                pvc={false}
+                alacena={false}
+                griferia={false}
+                ventBaño="01"
+                portRom="01"
             />
             <Phone />
             <FooterSec/>
